@@ -8,9 +8,9 @@ const config = {
     {
       resolve: '@narative/gatsby-theme-novela',
       options: {
-        contentPosts: 'posts',
+        contentPosts: 'content/posts',
         contentAuthors: 'content/about',
-        basePath: '/',
+        basePath: '/blog',
         authorsPage: false,
         sources: {
           local: true,

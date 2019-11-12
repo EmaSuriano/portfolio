@@ -5,6 +5,10 @@
   avatar: ./avatar.jpg
   featured: true
   website: https://emasuriano.com/
+  roles:
+    - Open-Source Enthusiast
+    - Web Developer
+    - Writer
   social:
     - name: github
       url: https://github.com/EmaSuriano

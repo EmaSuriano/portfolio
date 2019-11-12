@@ -6,7 +6,7 @@ const loadSiteMetadata = () => {
     fs.readFileSync('./content/about/authors.yml', 'utf8'),
   );
 
-  const { name, bio, social, website } = data;
+  const { name, bio, social, website, ...rest } = data;
 
   return {
     title: `${name} Portfolio`,
@@ -18,6 +18,7 @@ const loadSiteMetadata = () => {
       maxWidth: 652,
     },
     social,
+    ...rest,
   };
 };
 
