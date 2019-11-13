@@ -30,8 +30,8 @@ const Hero = () => {
         <HeroSubheading>
           <Typed
             strings={roles.sort(() => Math.random() - 0.5)}
-            typeSpeed={50}
-            backSpeed={40}
+            backSpeed={70}
+            typeSpeed={70}
             backDelay={2000}
             loop
           />
