@@ -17,4 +17,8 @@ exports.onPreInit = () => {
     './src/queries/useArticlesQuery.js',
     createUseQuery(local.articles),
   );
+  writeFileSync(
+    './src/queries/useAuthorsQuery.js',
+    createUseQuery(local.authors),
+  );
 };

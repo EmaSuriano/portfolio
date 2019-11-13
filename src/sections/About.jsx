@@ -1,34 +1,52 @@
 import React from 'react';
-import Section from '@narative/gatsby-theme-novela/src/components/Section';
-import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
-
+import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
+import MDXRenderer from '@narative/gatsby-theme-novela/src/components/MDX';
+import Image from '@narative/gatsby-theme-novela/src/components/Image';
+import { local } from '@narative/gatsby-theme-novela/src/gatsby/data/data.normalize';
 import { graphql, useStaticQuery } from 'gatsby';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import Section from '../components/Section';
+import useAuthorsQuery from '../queries/useAuthorsQuery';
 
-// const siteQuery = graphql`
-//   {
-//     allSite {
-//       edges {
-//         node {
-//           siteMetadata {
-//             name
-//             roles
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const siteQuery = graphql`
+  {
+    about: mdx(fileAbsolutePath: { regex: "/\\\\about.mdx$/" }) {
+      body
+    }
+  }
+`;
+
+const InfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  ${mediaqueries.tablet`
+    flex-direction: column;
+  `}
+`;
+
+const BioAvatarInner = styled.div`
+  width: 300px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  margin-left: 16px;
+  overflow: hidden;
+`;
 
 const About = () => {
+  const { about } = useStaticQuery(siteQuery);
+  const author = local.authors(useAuthorsQuery().authors.edges[0]);
+
+  console.log(author.avatar);
   return (
-    <Section
-      relative
-      css={css`
-        margin-top: 100px;
-      `}
-    >
-      <Headings.h2>Latest Articles</Headings.h2>
+    <Section title="About me">
+      <InfoWrapper>
+        <MDXRenderer content={about.body} />
+        <BioAvatarInner>
+          <Image src={author.avatar.large} />
+        </BioAvatarInner>
+      </InfoWrapper>
     </Section>
   );
 };
