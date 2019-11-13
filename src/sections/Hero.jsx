@@ -2,6 +2,7 @@ import React from 'react';
 import Section from '@narative/gatsby-theme-novela/src/components/Section';
 import Typed from 'react-typed';
 import { graphql, useStaticQuery } from 'gatsby';
+import { css } from '@emotion/core';
 import { HeroHeading, HeroSubheading } from '../components/Hero';
 
 const siteQuery = graphql`
@@ -24,19 +25,22 @@ const Hero = () => {
   const { name, roles } = results.allSite.edges[0].node.siteMetadata;
 
   return (
-    <Section relative>
-      <div style={{ marginTop: '100px' }}>
-        <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
-        <HeroSubheading>
-          <Typed
-            strings={roles.sort(() => Math.random() - 0.5)}
-            backSpeed={70}
-            typeSpeed={70}
-            backDelay={2000}
-            loop
-          />
-        </HeroSubheading>
-      </div>
+    <Section
+      relative
+      css={css`
+        margin-top: 100px;
+      `}
+    >
+      <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
+      <HeroSubheading>
+        <Typed
+          strings={roles.sort(() => Math.random() - 0.5)}
+          backSpeed={70}
+          typeSpeed={70}
+          backDelay={2000}
+          loop
+        />
+      </HeroSubheading>
     </Section>
   );
 };

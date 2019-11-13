@@ -1,10 +1,10 @@
 import React from 'react';
-import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
 import Section from '@narative/gatsby-theme-novela/src/components/Section';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import Anchor from '@narative/gatsby-theme-novela/src/components/Anchor';
 import ArticlesList from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List';
 import { local } from '@narative/gatsby-theme-novela/src/gatsby/data/data.normalize';
+import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
 import useArticlesQuery from '../queries/useArticlesQuery';
 
 const LatestArticles = () => {

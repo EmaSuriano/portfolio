@@ -1,4 +1,4 @@
-import mediaqueries from '@styles/media';
+import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 import styled from '@emotion/styled';
 
 export const HeroHeading = styled.h1`
