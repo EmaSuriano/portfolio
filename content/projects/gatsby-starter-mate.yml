@@ -1,0 +1,11 @@
+name: Gatsby Starter Mate
+description: |
+  A good looking Gatsby starter to have a quick portfolio for developer and writers.
+hero: ./logos/gatsby-starter-mate.jpg
+type: project
+publishedDate: 2/2/2222
+sites:
+  - name: github
+    url: https://github.com/EmaSuriano
+  - name: website
+    url: https://twitter.com/EmaSuriano

@@ -4,6 +4,7 @@ import SEO from '@narative/gatsby-theme-novela/src/components/SEO';
 import LatestArticles from '../sections/LatestArticles';
 import Hero from '../sections/Hero';
 import About from '../sections/About';
+import Projects from '../sections/Projects';
 
 function Landing() {
   return (
@@ -11,6 +12,7 @@ function Landing() {
       <SEO />
       <Hero />
       <About />
+      <Projects />
       <LatestArticles />
     </Layout>
   );

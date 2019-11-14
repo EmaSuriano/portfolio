@@ -10,6 +10,7 @@ const Section = ({ children, title }) => {
       css={css`
         margin-top: 100px;
       `}
+      id="projects"
     >
       <Headings.h2
         css={css`

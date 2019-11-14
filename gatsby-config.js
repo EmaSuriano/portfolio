@@ -18,10 +18,17 @@ const config = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: 'content/projects',
+        name: 'content/projects',
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: siteMetadata.title,
+        short_name: siteMetadata.name,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
