@@ -19,7 +19,7 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 
 - [x] Implement `gatsby-theme-novela`
 - [ ] Move all the article into the project
-- [ ] Add information about my self
+- [x] Add information about my self
 - [x] Deploy site to Netlify
 - [ ] Add projects to Landing Page
 - [ ] Add CV using `gatsby-theme-jsonresume`
