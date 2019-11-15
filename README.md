@@ -4,6 +4,8 @@
 
 My personal site that I use for [emasuriano.com](https://emasuriano.com/).
 
+Current public url --> https://emasuriano-new.netlify.com/
+
 This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static Website Generator.
 
 ## Current pages
@@ -25,4 +27,15 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [ ] Add CV using `gatsby-theme-jsonresume`
 - [ ] Add Newsletter at Footer (shadowing)
 - [x] Add lint and prettier
-- [ ] Add Travis CI
+- [x] Add Travis CI
+
+
+## Articles ported
+
+- [ ] docker-for-frontend-developers.md
+- [ ] e2e-in-react-native-with-detox.md
+- [ ] generate-add-resume-to-portfolio.md
+- [ ] how-to-create-module-interfaces-with-typescript.md
+- [ ] creating-a-notification-after-installing-dependencies.md
+- [ ] using-storybook-as-a-powerful-visual-testing-platform.md
+- [ ] building-a-maintainable-icon-system-for-react-and-react-native.md
