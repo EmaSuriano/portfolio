@@ -1,22 +1,19 @@
 import React from 'react';
-import ArticlesList from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List';
 import { graphql, useStaticQuery } from 'gatsby';
 import { local } from '@narative/gatsby-theme-novela/src/gatsby/data/data.normalize';
 import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
+import ProjectList from '../components/ProjectList';
 
 const siteQuery = graphql`
   {
-    projects: allProjectsYaml {
+    projects: allProjectsYaml(sort: { fields: publishedDate, order: DESC }) {
       edges {
         node {
           name
           description
           type
-          sites {
-            name
-            url
-          }
+          link
           publishedDate
           hero {
             regular: childImageSharp {
@@ -49,7 +46,7 @@ const siteQuery = graphql`
 `;
 
 const mapProjectToArticle = ({ node }) => {
-  const { name, description, type, sites, publishedDate, hero } = node;
+  const { name, description, type, link, publishedDate, hero } = node;
 
   return {
     node: {
@@ -59,45 +56,41 @@ const mapProjectToArticle = ({ node }) => {
         seo: {},
         full: {},
       },
-      slug: sites[0].url,
+      slug: link,
       excerpt: description,
       date: publishedDate,
-      timeToRead: type,
+      type,
     },
   };
 };
 
-const changeNodeRecursive = (children, type, transform) => {
-  return React.Children.map(children, child => {
-    console.log(child.type.name);
-    if (child.type.name === type) {
-      return transform(child);
-    }
-    if (React.Children.count(child) > 0) {
-      return React.Children.map(child.props.children, innerChild =>
-        changeNodeRecursive(innerChild, type, transform),
-      );
-    }
-    return React.cloneElement(child);
-  });
-};
+// const changeNodeRecursive = (children, type, transform) => {
+//   return React.Children.map(children, child => {
+//     console.log(child.type.name);
+//     if (child.type.name === type) {
+//       return transform(child);
+//     }
+//     if (React.Children.count(child) > 0) {
+//       return React.Children.map(child.props.children, innerChild =>
+//         changeNodeRecursive(innerChild, type, transform),
+//       );
+//     }
+//     return React.cloneElement(child);
+//   });
+// };
 
 const Projects = () => {
   const projects = useStaticQuery(siteQuery)
     .projects.edges.map(mapProjectToArticle)
     .map(local.articles);
 
-  const articlesRendered = (
-    <GridLayoutProviderMock layout="rows">
-      <ArticlesList articles={projects} />
-    </GridLayoutProviderMock>
+  return (
+    <Section title="Open Source Projects">
+      <GridLayoutProviderMock layout="rows">
+        <ProjectList projects={projects} />
+      </GridLayoutProviderMock>
+    </Section>
   );
-
-  // const result = changeNodeRecursive(articlesRendered, 'Metadata', child => {
-  //   return React.cloneElement(child, { children: 'cloned!' });
-  // });
-
-  return <Section title="Open Source Projects">{articlesRendered}</Section>;
 };
 
 export default Projects;

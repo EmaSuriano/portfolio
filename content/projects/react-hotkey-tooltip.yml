@@ -1,11 +1,6 @@
 name: React Hotkey Tooltip
-description: |
-  A React component to provide out of the box tooltip and hotkey support
-hero: ./logos/react-hotkey-tooltip.jpg
-type: project
-publishedDate: 2/2/2222
-sites:
-  - name: github
-    url: https://github.com/EmaSuriano
-  - name: website
-    url: https://twitter.com/EmaSuriano
+description: A global Hotkey provider with built in tooltip for React.
+hero: ./logos/react-hotkey-tooltip.png
+type: library
+publishedDate: 2018
+link: https://github.com/EmaSuriano/react-hotkey-tooltip

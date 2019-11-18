@@ -1,0 +1,7 @@
+name: Event Calendar
+description: |
+  A Gatsby Starter to display information about events from Google Spreadsheets with Calendars.
+hero: ./logos/gatsby-starter-event-calendar.png
+type: Gatsby Starter
+publishedDate: 2018
+link: https://github.com/EmaSuriano/gatsby-starter-event-calendar
