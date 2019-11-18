@@ -14,7 +14,7 @@ const loadSiteMetadata = () => {
     siteUrl: website,
     description: bio,
     hero: {
-      heading: `Welcome to my blog 😄`,
+      heading: `Ema Suriano's blog`,
       maxWidth: 652,
     },
     social,

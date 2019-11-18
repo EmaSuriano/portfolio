@@ -10,7 +10,7 @@ const config = {
       options: {
         contentPosts: 'content/posts',
         contentAuthors: 'content/about',
-        basePath: '/blog',
+        basePath: '/',
         authorsPage: false,
         sources: {
           local: true,

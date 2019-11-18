@@ -12,6 +12,19 @@ export default () =>
   \`);
  `;
 
+exports.onCreatePage = ({ page, actions }) => {
+  if (page.path === '/' && !page.component.includes('src/pages/index')) {
+    const { createPage, deletePage } = actions;
+    const newPage = {
+      ...page,
+      path: '/blog',
+    };
+
+    deletePage(page);
+    createPage(newPage);
+  }
+};
+
 exports.onPreInit = () => {
   writeFileSync(
     './src/queries/useArticlesQuery.js',
