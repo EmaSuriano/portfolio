@@ -23,12 +23,13 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [ ] Move all the article into the project
 - [x] Add information about my self
 - [x] Deploy site to Netlify
-- [ ] Add projects to Landing Page
+- [x] Add projects to Landing Page
 - [ ] Add CV using `gatsby-theme-jsonresume`
-- [ ] Add Newsletter at Footer (shadowing)
+- [ ] Add Newsletter at Footer (shadowing) --> Check customization inside novela there is something already created!
+- [ ] Add Contact section
+- [ ] Change theme into my colours
 - [x] Add lint and prettier
 - [x] Add Travis CI
-
 
 ## Articles ported
 
