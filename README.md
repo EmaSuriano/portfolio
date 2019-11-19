@@ -20,18 +20,27 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 ## Features
 
 - [x] Implement `gatsby-theme-novela`
-- [ ] Move all the article into the project
 - [x] Add information about my self
 - [x] Deploy site to Netlify
 - [x] Add projects to Landing Page
-- [ ] Add CV using `gatsby-theme-jsonresume`
-- [ ] Add Newsletter at Footer (shadowing) --> Check customization inside novela there is something already created!
-- [ ] Add Contact section
-- [ ] Change theme into my colours
+- [x] Change Logo
 - [x] Add lint and prettier
 - [x] Add Travis CI
+- [ ] Add CV using `gatsby-theme-jsonresume`
+- [ ] Add Newsletter at Footer (shadowing) --> Check customization inside novela there is something already created!
+- [ ] Improve Contact section
+- [ ] Change page icon
+- [ ] Change theme into my colours
+- [ ] Move all the article into the project
+
+## Bugs
+
+- [ ] Submit of Contact Form is not working in netlify due to redirect
+- [ ] Moving from Home to Blog or Articles is broken, but when entering directly it works.
 
 ## Articles ported
+
+Link to [articles](https://github.com/EmaSuriano/articles)
 
 - [ ] docker-for-frontend-developers.md
 - [ ] e2e-in-react-native-with-detox.md

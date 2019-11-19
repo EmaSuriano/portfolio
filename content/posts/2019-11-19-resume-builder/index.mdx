@@ -1,0 +1,91 @@
+---
+title: Generate and add your resume to your Portfolio
+author: Ema Suriano
+date: 2019-11-19
+hero: ./images/hero.jpg
+excerpt: There is no doubts that updating our resume is the most annoying taks because it's a process that involves just copying information from one place to another, also sometimes we would like to change how it looks without expending hours adapting a new template.
+---
+
+Photo by [Ben Sweet](https://unsplash.com/@benjaminsweet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
+## Context
+
+There is no doubts that updating our resume is the most annoying taks because it's a process that involves just copying information from one place to another, also sometimes we would like to change how it looks without expending hours adapting a new template.
+
+In this post I'm going to show you how you can generate your resume given a set of standard data about yourself and obtain it in two different formats HTML and PDF. All of this without expending any penny during the process! Trust me you're going to expend more time changing between themes than configuring the tool 😅
+
+## Current Situation
+
+Almost every week, some company came up with a CV Generator full of features and nice UI that address the problem I've described above. They are able to produce amazing results, with very original templates, also they give you the possibility to export your Cv in different formats like PDF, HTML, DOCX, etc. and some of them also offer hosting for the web version.
+
+Some good examples I found is:
+
+- Stardard Resume:
+  - Watermark on free version
+  - Not able to sync your data but I love how simple and minimal is the resume that outputs.
+-
+
+All of this sounds amazing, right? But there is a catch, in most of the examples you can use the service with the only condition that will put a watermark in some part of the document or disable the option to export in an specific format. Which basically force to pay for this service ... - Who wants to submit a CV with a watermark on it ? 🤦‍♂️
+
+I'm a true believer of the Open Source community, I'm a maintainer and contributor in several projects. And I went into a journey to find someone that address this problem that I described above ... After a few tries testing different projects and their setup, I think I managed to find the best one that works for me.
+
+## The solution
+
+The framework
+
+So I'm not going to lie, the stuff that it's doing all the magic is this tool called JSONResume, it's an Open Source application that takes your information in a JSON format and then outputs your CVs. Also it has the possibility of hosting, theming, etc.
+
+### How to create and publish your own theme
+
+### Re-using your information in LinkedIn
+
+## Integration with Gatsby
+
+In case you have your website made with Gatsby, I made a Gatbsy Theme that will remove all the steps from below.
+
+The theme is called `gatsby-theme-jsonresume`, you can find more information inside the [repository](https://github.com/EmaSuriano/gatsby-theme-jsonresume). In a nutshell, you need to add the theme to your Gatsby Config (`gatbsy-config.js`), send as a parameter the JSON of the resume, and then everytime you build your website it will generate the resume (`.pdf` and `.html`) and add them as new routes in your project.
+
+These routes are accesible from anywhere in your application, therefore the only thing you need to do is create the entry points that will take the user to them. Example:
+
+```javascript
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-theme-jsonresume`,
+      options: {
+        resumeJson: {
+          /* ...JSON Resume Schema */
+        },
+      },
+    },
+  ],
+};
+```
+
+```javascript
+// src/index.js
+import React from 'react';
+
+const LandingPage = () => (
+  <div>
+    <h1>Welcome to my Wonderful Website</h1>
+    <h2>
+      {`Check out my Resume: ${(<a href="/resume.html">Web version</a>)} or ${(
+        <a href="/resume.pdf">PDF version</a>
+      )}`}
+    </h2>
+  </div>
+);
+
+export default LandingPage;
+```
+
+## Last Words
+
+## References
+
+- Standard Resume
+- JSON Resume
+- jsonresume-theme-standard-resume
+- [gatsby-theme-jsonresume](https://github.com/EmaSuriano/gatsby-theme-jsonresume)

@@ -10,7 +10,6 @@ const Hologram = styled.h1`
   transition: translate 250ms ease;
 
   ${mediaqueries.tablet`
-    
     font-size: 0.8em;
   `}
 

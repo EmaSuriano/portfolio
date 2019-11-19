@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
+    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint --ext .jsx --ext .js src"
   },
@@ -15,7 +16,9 @@
     "@narative/gatsby-theme-novela": "^0.*",
     "eslint-config-prettier": "^6.5.0",
     "gatsby": "^2.13.41",
+    "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.4",
+    "gatsby-plugin-netlify": "^2.1.25",
     "js-yaml": "^3.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
