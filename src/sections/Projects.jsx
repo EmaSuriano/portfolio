@@ -64,21 +64,6 @@ const mapProjectToArticle = ({ node }) => {
   };
 };
 
-// const changeNodeRecursive = (children, type, transform) => {
-//   return React.Children.map(children, child => {
-//     console.log(child.type.name);
-//     if (child.type.name === type) {
-//       return transform(child);
-//     }
-//     if (React.Children.count(child) > 0) {
-//       return React.Children.map(child.props.children, innerChild =>
-//         changeNodeRecursive(innerChild, type, transform),
-//       );
-//     }
-//     return React.cloneElement(child);
-//   });
-// };
-
 const Projects = () => {
   const projects = useStaticQuery(siteQuery)
     .projects.edges.map(mapProjectToArticle)
