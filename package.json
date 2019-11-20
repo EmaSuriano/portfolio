@@ -15,7 +15,7 @@
     "@emotion/styled": "^10.0.23",
     "@narative/gatsby-theme-novela": "^0.*",
     "eslint-config-prettier": "^6.5.0",
-    "gatsby": "^2.13.41",
+    "gatsby": "^2.15.7",
     "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-netlify-cache": "^1.2.0",

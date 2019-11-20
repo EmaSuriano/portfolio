@@ -6534,7 +6534,7 @@ gatsby-transformer-yaml@^2.2.4:
     lodash "^4.17.15"
     unist-util-select "^1.5.0"
 
-gatsby@^2.13.41, gatsby@^2.15.7:
+gatsby@^2.15.7:
   version "2.17.12"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.17.12.tgz#0ec9e182e58e27882027e74be3f4a6656683726e"
   integrity sha512-5xXzVRddv2wG2iD8k1xKDfToUbQ3IMhimjvUFPCum58gdH93nwoh3lbXLb8xEGxn/pwlgeSXZgnNZgKYFN6Pzg==
