@@ -5,6 +5,8 @@ const siteMetadata = loadSiteMetadata();
 const config = {
   siteMetadata,
   plugins: [
+    'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-netlify',
     {
       resolve: '@narative/gatsby-theme-novela',
       options: {
@@ -44,7 +46,6 @@ const config = {
         icon: 'src/assets/favicon-ema.png',
       },
     },
-    'gatsby-plugin-netlify-cache',
   ],
 };
 
