@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@narative/gatsby-theme-novela/src/components/Layout';
 import SEO from '@narative/gatsby-theme-novela/src/components/SEO';
+import { Link } from 'gatsby';
 import LatestArticles from '../sections/LatestArticles';
 import Hero from '../sections/Hero';
 // import Contact from '../sections/Contact';
@@ -12,6 +13,8 @@ function Landing() {
     <Layout>
       <SEO />
       <Hero />
+      <Link to="/test">Test!</Link>
+      <a href="/test">Test!</a>
       <About />
       <Projects />
       <LatestArticles />
