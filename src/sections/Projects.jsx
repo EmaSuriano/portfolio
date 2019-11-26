@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { local } from '@narative/gatsby-theme-novela/src/gatsby/data/data.normalize';
+import ArticlesList from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List';
 import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
-import ProjectList from '../components/ProjectList';
 
 const siteQuery = graphql`
   {
@@ -14,7 +14,7 @@ const siteQuery = graphql`
           description
           type
           link
-          publishedDate
+          publishedDate(formatString: "MMMM, YYYY")
           hero {
             regular: childImageSharp {
               fluid(maxWidth: 653, quality: 100) {
@@ -65,14 +65,14 @@ const mapProjectToArticle = ({ node }) => {
 };
 
 const Projects = () => {
-  const projects = useStaticQuery(siteQuery)
+  const articles = useStaticQuery(siteQuery)
     .projects.edges.map(mapProjectToArticle)
     .map(local.articles);
 
   return (
     <Section title="Open Source Projects">
       <GridLayoutProviderMock layout="rows">
-        <ProjectList projects={projects} />
+        <ArticlesList articles={articles} />
       </GridLayoutProviderMock>
     </Section>
   );
