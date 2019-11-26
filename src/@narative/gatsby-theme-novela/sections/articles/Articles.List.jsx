@@ -39,7 +39,7 @@ function ArticlesList({ articles, alwaysShowAllDetails }) {
 
         return (
           <List
-            key={index}
+            key={index} // eslint-disable-line
             gridLayout={gridLayout}
             hasOnlyOneArticle={hasOnlyOneArticle}
             reverse={isEven}
