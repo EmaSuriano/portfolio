@@ -6,7 +6,7 @@ node_js:
 cache: yarn
 
 install:
-  - yarn install --frozen-lockfile
+  - yarn install --frozen-lockfile --ignore-engines
 
 script:
   - yarn lint
