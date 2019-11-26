@@ -1,4 +1,5 @@
 const loadSiteMetadata = require('./loadSiteMetadata');
+const resumeJson = require('./resume.json');
 
 const siteMetadata = loadSiteMetadata();
 
@@ -44,6 +45,13 @@ const config = {
         theme_color: '#fff',
         display: 'standalone',
         icon: 'src/assets/favicon-ema.png',
+      },
+    },
+    {
+      resolve: `gatsby-theme-jsonresume`,
+      options: {
+        resumeJson,
+        theme: 'standard-resume',
       },
     },
   ],
