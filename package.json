@@ -23,7 +23,7 @@
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-theme-jsonresume": "^1.0.3",
     "js-yaml": "^3.13.1",
-    "jsonresume-theme-standard-resume": "^1.0.1",
+    "jsonresume-theme-standard-resume": "^1.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-typed": "^1.2.0"

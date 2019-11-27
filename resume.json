@@ -1,17 +1,17 @@
 {
   "basics": {
     "name": "Emanuel Suriano",
-    "label": "I am a motivated, enthusiastic person, and passionate about new technologies. Always building side projects which allow me to always be up to date with the current stack in the field.   I firmly believe in the Open Source philosophy, therefore I am a maintainer of some Open Source project, you can find them inside my GitHub profile. Also, I am keen to contribute to Open Source projects whenever I can because I think is the best to grow as a community.",
+    "label": "Software Engineer",
     "picture": "",
     "email": "emanuel.suriano@gmail.com",
     "phone": "",
     "website": "http://emasuriano.com/",
-    "summary": "Internet",
+    "summary": "I am a motivated, enthusiastic person, and passionate about new technologies. Always building side projects which allow me to always be up to date with the current stack in the field.   I firmly believe in the Open Source philosophy, therefore I am a maintainer of some Open Source project, you can find them inside my GitHub profile. Also, I am keen to contribute to Open Source projects whenever I can because I think is the best to grow as a community.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "",
-      "countryCode": "",
+      "city": "Berlin",
+      "countryCode": "DEU",
       "region": ""
     },
     "profiles": []
