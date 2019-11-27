@@ -2,6 +2,7 @@
   "private": true,
   "name": "portfolio",
   "version": "1.0.0",
+  "author": "Ema Suriano",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -20,7 +21,9 @@
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-netlify": "^2.1.25",
     "gatsby-plugin-netlify-cache": "^1.2.0",
+    "gatsby-theme-jsonresume": "^1.0.3",
     "js-yaml": "^3.13.1",
+    "jsonresume-theme-standard-resume": "^1.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-typed": "^1.2.0"

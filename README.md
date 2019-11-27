@@ -28,7 +28,7 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Add Travis CI
 - [x] Add Newsletter at Footer (shadowing) --> Check customization inside novela there is something already created!
 - [x] Change page icon
-- [ ] Add CV using `gatsby-theme-jsonresume`
+- [x] Add CV using `gatsby-theme-jsonresume`
 - [ ] Improve Contact section
 - [ ] Change theme into my colors
 - [ ] Move all the article into the project
@@ -36,9 +36,9 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 ## Bugs
 
 - [x] Submit of Contact Form is not working in netlify due to redirect
-- [ ] Moving from Home to Blog or Articles is broken, but when entering directly it works.
+- [x] Moving from Home to Blog or Articles is broken, but when entering directly it works.
+- [x] Add transparency to Icon
 - [ ] Properly style Subscribe box.
-- [ ] Add transparency to Icon
 
 ## Articles ported
 
