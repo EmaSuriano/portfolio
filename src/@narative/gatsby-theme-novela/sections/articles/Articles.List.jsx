@@ -11,15 +11,15 @@ import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 
 import { GridLayoutContext } from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List.Context';
 
-const ArticlesList = ({ projects }) => {
-  if (!projects) return null;
+function ArticlesList({ articles, alwaysShowAllDetails }) {
+  if (!articles) return null;
 
-  const hasOnlyOneArticle = projects.length === 1;
+  const hasOnlyOneArticle = articles.length === 1;
   const { gridLayout = 'tiles', hasSetGridLayout, getGridLayout } = useContext(
     GridLayoutContext,
   );
 
-  const articlePairs = projects.reduce((result, value, index, array) => {
+  const articlePairs = articles.reduce((result, value, index, array) => {
     if (index % 2 === 0) {
       result.push(array.slice(index, index + 2));
     }
@@ -31,7 +31,7 @@ const ArticlesList = ({ projects }) => {
   return (
     <ArticlesListContainer
       style={{ opacity: hasSetGridLayout ? 1 : 0 }}
-      alwaysShowAllDetails
+      alwaysShowAllDetails={alwaysShowAllDetails}
     >
       {articlePairs.map((ap, index) => {
         const isEven = index % 2 !== 0;
@@ -39,7 +39,7 @@ const ArticlesList = ({ projects }) => {
 
         return (
           <List
-            key={index}
+            key={index} // eslint-disable-line
             gridLayout={gridLayout}
             hasOnlyOneArticle={hasOnlyOneArticle}
             reverse={isEven}
@@ -51,7 +51,7 @@ const ArticlesList = ({ projects }) => {
       })}
     </ArticlesListContainer>
   );
-};
+}
 
 export default ArticlesList;
 
@@ -63,9 +63,19 @@ const ListItem = ({ article, narrow }) => {
   const imageSource = narrow ? article.hero.narrow : article.hero.regular;
   const hasHeroImage =
     Object.keys(imageSource).length !== 0 && imageSource.constructor === Object;
-  const footer = `${article.type.toUpperCase()} - ${article.date}`;
+
+  const isProject = !article.timeToRead;
+
+  const footer = `${article.date} · ${
+    isProject ? article.type : `${article.timeToRead} min read`
+  }`;
+
   return (
-    <ArticleLink href={article.slug} data-a11y="false" target="_blank">
+    <ArticleLink
+      href={article.slug}
+      data-a11y="false"
+      target={isProject ? '_blank' : '_self'}
+    >
       <Item gridLayout={gridLayout}>
         <ImageContainer narrow={narrow} gridLayout={gridLayout}>
           {hasHeroImage ? <Image src={imageSource} /> : <ImagePlaceholder />}
