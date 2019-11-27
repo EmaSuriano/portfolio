@@ -31,14 +31,14 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Add CV using `gatsby-theme-jsonresume`
 - [ ] Improve Contact section
 - [ ] Change theme into my colors
-- [ ] Move all the article into the project
+- [ ] Move all the articles into the project
 
 ## Bugs
 
 - [x] Submit of Contact Form is not working in netlify due to redirect
 - [x] Moving from Home to Blog or Articles is broken, but when entering directly it works.
 - [x] Add transparency to Icon
-- [ ] Properly style Subscribe box.
+- [x] Properly style Subscribe box.
 
 ## Articles ported
 
