@@ -12,16 +12,15 @@
 }
 
 .field.active {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
-.wrapper + textarea {
-  padding-top: 10px;
+.field.active input::placeholder {
+  color: rgba(255, 255, 255, 0);
 }
 
-.field.active input,
-.field.active textarea {
+.field.active input {
   padding: 24px 16px 8px 16px;
 }
 
@@ -31,8 +30,7 @@
   color: #512da8;
 }
 
-.field input,
-.field textarea {
+.field input {
   width: 100%;
   height: 56px;
   position: relative;
@@ -50,25 +48,10 @@
   transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out,
     0.1s padding ease-in-out;
   -webkit-appearance: none;
+  resize: none;
 }
 
-.field input::-webkit-input-placeholder,
-.field textarea::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.field input::-moz-placeholder,
-.field textarea::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.field input:-ms-input-placeholder,
-.field textarea:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.field textarea:-moz-placeholder,
-.field input:-moz-placeholder {
+.field input::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
 

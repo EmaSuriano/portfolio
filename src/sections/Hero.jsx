@@ -29,6 +29,7 @@ const Hero = () => {
       relative
       css={css`
         margin-top: 100px;
+        margin-bottom: 100px;
       `}
     >
       <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
