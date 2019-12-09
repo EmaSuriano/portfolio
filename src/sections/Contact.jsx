@@ -68,41 +68,73 @@ const Text = styled.p`
   `}
 `;
 
+const FormRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px 0;
+
+  & > div {
+    margin-right: 10px;
+  }
+
+  & > div:last-child {
+    margin-right: 0px;
+  }
+`;
+
+const ConfirmButton = styled.button`
+  height: 36px;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  transition: 0.3s border ease;
+  color: ${p => p.theme.colors.accent};
+
+  &:focus,
+  &:hover {
+    border-bottom-color: ${p => p.theme.colors.accent};
+  }
+`;
+
 const About = () => (
   <NovelaSection narrow>
     <Container>
       <Content>
         <Heading>Get in Touch</Heading>
         <Text>
-          Do you want to contact me directly? Just fill out the following form
-          and I will reply as soon as possible!
+          A contact form really? This screams old school from far away, but as
+          you I have a life and I can't address all the request via WhatsApp ...
+          So then if you can fill out the form, I will go back to you as soon as
+          I can!
         </Text>
         <form
           name="contact"
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          style={{ zIndex: 1, position: 'relative' }}
         >
           <input type="hidden" name="bot-field" />
 
-          <Input id="name" label="Name" pattern={REGEX_EXPRESSIONS.name} />
+          <FormRow>
+            <Input id="name" label="Name" pattern={REGEX_EXPRESSIONS.name} />
 
-          <Input
-            id="email"
-            label="Email"
-            type="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-          />
-          <Input id="message" label="Message" type="textarea" />
-          <ul>
-            <li>
-              <input type="submit" value="Send Message" className="special" />
-            </li>
-            <li>
-              <input type="reset" value="Clear" />
-            </li>
-          </ul>
+            <Input
+              id="email"
+              label="Email"
+              type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            />
+          </FormRow>
+
+          <FormRow>
+            <Input id="message" label="Message" type="textarea" />
+          </FormRow>
+
+          <FormRow>
+            <ConfirmButton type="submit" value="Send Message">
+              Send Message
+            </ConfirmButton>
+          </FormRow>
         </form>
       </Content>
     </Container>
