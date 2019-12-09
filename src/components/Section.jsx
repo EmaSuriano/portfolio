@@ -8,7 +8,7 @@ const Section = ({ children, title }) => {
     <NovelaSection
       relative
       css={css`
-        margin-top: 100px;
+        margin-bottom: 100px;
       `}
       id="projects"
     >
