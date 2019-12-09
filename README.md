@@ -29,7 +29,7 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Add Newsletter at Footer (shadowing) --> Check customization inside novela there is something already created!
 - [x] Change page icon
 - [x] Add CV using `gatsby-theme-jsonresume`
-- [ ] Improve Contact section
+- [x] Improve Contact section
 - [ ] Change theme into my colors
 - [ ] Move all the articles into the project
 
