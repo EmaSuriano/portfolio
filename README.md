@@ -32,6 +32,9 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Improve Contact section
 - [ ] Change theme into my colors
 - [ ] Move all the articles into the project
+- [ ] Change content of `/blog` --> title of the page and description of author
+- [ ] Fix icon of the page
+- [ ] Fix CI
 
 ## Bugs
 
