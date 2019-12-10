@@ -1,5 +1,8 @@
 const loadSiteMetadata = require('./loadSiteMetadata');
 const resumeJson = require('./resume.json');
+require('dotenv').config();
+
+const { ANALYTICS_ID } = process.env;
 
 const siteMetadata = loadSiteMetadata();
 
@@ -52,6 +55,12 @@ const config = {
       options: {
         resumeJson,
         theme: 'standard-resume',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: ANALYTICS_ID,
       },
     },
   ],

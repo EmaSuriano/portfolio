@@ -42,6 +42,7 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Moving from Home to Blog or Articles is broken, but when entering directly it works.
 - [x] Add transparency to Icon
 - [x] Properly style Subscribe box.
+- [ ] The application has been deployed but for some reason when I open the link it throws an error of resources not loaded ...
 
 ## Articles ported
 
