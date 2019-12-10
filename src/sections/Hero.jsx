@@ -36,7 +36,7 @@ const Hero = () => {
       <HeroSubheading>
         <Typed
           strings={roles.sort(() => Math.random() - 0.5)}
-          backSpeed={70}
+          backSpeed={50}
           typeSpeed={70}
           backDelay={2000}
           loop

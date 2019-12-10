@@ -33,6 +33,8 @@ const Hologram = styled.h1`
   }
 
   &:hover {
+    color: ${p => p.theme.colors.accent};
+
     &:before,
     &:after {
       transform: translateX(0) translateY(0);

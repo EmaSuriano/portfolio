@@ -84,15 +84,17 @@ const FormRow = styled.div`
 `;
 
 const ConfirmButton = styled.button`
-  height: 36px;
-  border-bottom: 2px solid transparent;
+  padding: 10px;
+  border: 2px solid ${p => p.theme.colors.grey};
+  border-radius: 8px;
   background-color: transparent;
-  transition: 0.3s border ease;
-  color: ${p => p.theme.colors.accent};
+  transition: 0.3s border ease, 0.3s color ease;
+  color: ${p => p.theme.colors.grey};
 
   &:focus,
   &:hover {
-    border-bottom-color: ${p => p.theme.colors.accent};
+    color: ${p => p.theme.colors.accent};
+    border-color: ${p => p.theme.colors.accent};
   }
 `;
 
@@ -103,9 +105,9 @@ const About = () => (
         <Heading>Get in Touch</Heading>
         <Text>
           A contact form really? This screams old school from far away, but as
-          you I have a life and I can't address all the request via WhatsApp ...
-          So then if you can fill out the form, I will go back to you as soon as
-          I can!
+          you I have a life and I can&apos;t address all the request via
+          WhatsApp ... So then if you can fill out the form, I will go back to
+          you as soon as I can!
         </Text>
         <form
           name="contact"

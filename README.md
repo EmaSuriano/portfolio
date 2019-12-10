@@ -30,11 +30,11 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Change page icon
 - [x] Add CV using `gatsby-theme-jsonresume`
 - [x] Improve Contact section
-- [ ] Change theme into my colors
+- [x] Change theme into my colors
+- [x] Change content of `/blog` --> title of the page and description of author
 - [ ] Move all the articles into the project
-- [ ] Change content of `/blog` --> title of the page and description of author
-- [ ] Fix icon of the page
-- [ ] Fix CI
+- [x] Fix icon of the page
+- [x] Fix CI
 
 ## Bugs
 
