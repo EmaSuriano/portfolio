@@ -84,17 +84,16 @@ const FormRow = styled.div`
 `;
 
 const ConfirmButton = styled.button`
-  padding: 10px;
-  border: 2px solid ${p => p.theme.colors.grey};
-  border-radius: 8px;
+  height: 36px;
+  padding: 5px;
+  border-bottom: 2px solid ${p => p.theme.colors.grey};
   background-color: transparent;
-  transition: 0.3s border ease, 0.3s color ease;
-  color: ${p => p.theme.colors.grey};
+  transition: 0.3s border ease;
+  color: ${p => p.theme.colors.accent};
 
   &:focus,
   &:hover {
-    color: ${p => p.theme.colors.accent};
-    border-color: ${p => p.theme.colors.accent};
+    border-bottom-color: ${p => p.theme.colors.accent};
   }
 `;
 
