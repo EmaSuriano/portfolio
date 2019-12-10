@@ -32,7 +32,7 @@ This project is using [Gatsby.js](https://www.gatsbyjs.org/) which is a Static W
 - [x] Improve Contact section
 - [x] Change theme into my colors
 - [x] Change content of `/blog` --> title of the page and description of author
-- [ ] Move all the articles into the project
+- [x] Move all the articles into the project
 - [x] Fix icon of the page
 - [x] Fix CI
 
@@ -52,5 +52,5 @@ Link to [articles](https://github.com/EmaSuriano/articles)
 - [ ] generate-add-resume-to-portfolio.md
 - [ ] how-to-create-module-interfaces-with-typescript.md
 - [ ] creating-a-notification-after-installing-dependencies.md
-- [ ] using-storybook-as-a-powerful-visual-testing-platform.md
-- [ ] building-a-maintainable-icon-system-for-react-and-react-native.md
+- [x] using-storybook-as-a-powerful-visual-testing-platform.md
+- [x] building-a-maintainable-icon-system-for-react-and-react-native.md

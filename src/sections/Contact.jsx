@@ -81,12 +81,17 @@ const FormRow = styled.div`
   & > div:last-child {
     margin-right: 0px;
   }
+
+  ${mediaqueries.tablet`
+    padding: 0 26px;
+  `}
 `;
 
 const ConfirmButton = styled.button`
-  height: 36px;
+  height: 40px;
+  margin: 10px 0;
   padding: 5px;
-  border-bottom: 2px solid ${p => p.theme.colors.grey};
+  border-bottom: 2px solid transparent;
   background-color: transparent;
   transition: 0.3s border ease;
   color: ${p => p.theme.colors.accent};
