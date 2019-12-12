@@ -8,10 +8,10 @@ import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
 import useArticlesQuery from '../queries/useArticlesQuery';
 
-const LatestArticles = () => {
-  const articles = useArticlesQuery()
-    .articles.edges.filter((_, i) => i < 4)
-    .map(local.articles);
+const LatestArticles = ({ articles }) => {
+  // const articles = useArticlesQuery()
+  //   .articles.edges.filter((_, i) => i < 4)
+  //   .map(local.articles);
 
   return (
     <Section title="Latest Articles">

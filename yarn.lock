@@ -6262,7 +6262,7 @@ gatsby-page-utils@^0.0.32:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-paginate@^1.1.0:
+gatsby-paginate@^1.1.0, gatsby-paginate@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/gatsby-paginate/-/gatsby-paginate-1.1.1.tgz#56f59910082eacb809297c89b02d31a0e3bd2f0c"
   integrity sha512-TZSM5olaXDsdQCwHJ1a+MVRAegUH6esjGGIASPYN/CNTkaSvYr91BtHhrgxPU4yl7pmKIRVUG+rC0Pb+vUG+zQ==
