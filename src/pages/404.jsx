@@ -24,6 +24,8 @@ const NotFoundThemed = styled(NotFound)`
 
 const MessageContainer = styled.div`
   margin-top: 80px;
+  text-align: center;
+
   & h1 {
     margin-bottom: 30px;
   }
@@ -49,7 +51,6 @@ const NotFoundPage = () => (
     <Section
       css={css`
         margin-top: 100px;
-        text-align: center;
         z-index: 1;
         position: relative;
       `}
