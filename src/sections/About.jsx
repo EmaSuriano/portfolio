@@ -24,11 +24,9 @@ const InfoWrapper = styled.div`
   `}
 `;
 
-const BioAvatarInner = styled.div`
+const AvatarContainer = styled.div`
   width: 300px;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.25);
-  grid-row: 1 / -1;
   border-radius: 50%;
   margin-left: 16px;
 
@@ -39,8 +37,6 @@ const BioAvatarInner = styled.div`
 `;
 
 const RoundedImage = styled(Image)`
-  background: rgba(0, 0, 0, 0.25);
-  grid-row: 1 / -1;
   border-radius: 50%;
 `;
 
@@ -51,9 +47,9 @@ const About = ({ author }) => {
     <Section title="About me">
       <InfoWrapper>
         <MDXRenderer content={about.body} />
-        <BioAvatarInner>
+        <AvatarContainer>
           <RoundedImage src={author.avatar.large} />
-        </BioAvatarInner>
+        </AvatarContainer>
       </InfoWrapper>
     </Section>
   );
