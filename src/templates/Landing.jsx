@@ -8,16 +8,15 @@ import About from '../sections/About';
 import Projects from '../sections/Projects';
 
 const Landing = ({ location, pageContext }) => {
-  console.log(pageContext);
-  const articles = pageContext.group;
+  const { authors, articles, projects } = pageContext.additionalContext;
 
   return (
     <Layout>
       <SEO pathname={location.pathname} />
       <Hero />
-      <About />
-      {/* <Projects /> */}
-      <LatestArticles articles={articles || []} />
+      <About author={authors[0]} />
+      <Projects projects={projects} />
+      <LatestArticles articles={articles} />
       <Contact />
     </Layout>
   );

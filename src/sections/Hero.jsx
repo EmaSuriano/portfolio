@@ -7,14 +7,10 @@ import { HeroHeading, HeroSubheading } from '../components/Hero';
 
 const siteQuery = graphql`
   {
-    allSite {
-      edges {
-        node {
-          siteMetadata {
-            name
-            roles
-          }
-        }
+    site {
+      siteMetadata {
+        name
+        roles
       }
     }
   }
@@ -22,7 +18,7 @@ const siteQuery = graphql`
 
 const Hero = () => {
   const results = useStaticQuery(siteQuery);
-  const { name, roles } = results.allSite.edges[0].node.siteMetadata;
+  const { name, roles } = results.site.siteMetadata;
 
   return (
     <Section

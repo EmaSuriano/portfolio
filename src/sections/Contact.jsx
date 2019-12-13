@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 import NovelaSection from '@narative/gatsby-theme-novela/src/components/Section';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
-
 import Input from '../components/Input';
 
 const REGEX_EXPRESSIONS = {
