@@ -26,15 +26,22 @@ const InfoWrapper = styled.div`
 
 const BioAvatarInner = styled.div`
   width: 300px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.25);
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  grid-row: 1 / -1;
+  border-radius: 50%;
   margin-left: 16px;
 
   ${mediaqueries.tablet`
     margin-left: 0;
     margin-top: 16px;
   `}
+`;
+
+const RoundedImage = styled(Image)`
+  background: rgba(0, 0, 0, 0.25);
+  grid-row: 1 / -1;
+  border-radius: 50%;
 `;
 
 const About = ({ author }) => {
@@ -45,7 +52,7 @@ const About = ({ author }) => {
       <InfoWrapper>
         <MDXRenderer content={about.body} />
         <BioAvatarInner>
-          <Image src={author.avatar.large} />
+          <RoundedImage src={author.avatar.large} />
         </BioAvatarInner>
       </InfoWrapper>
     </Section>
