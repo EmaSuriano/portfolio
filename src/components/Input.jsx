@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import './styles.css';
 
 const Field = styled.div`
   width: 100%;
