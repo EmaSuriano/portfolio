@@ -2,8 +2,9 @@ import React from 'react';
 import Section from '@narative/gatsby-theme-novela/src/components/Section';
 import Typed from 'react-typed';
 import { graphql, useStaticQuery } from 'gatsby';
+import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { HeroHeading, HeroSubheading } from '../components/Hero';
 
 const siteQuery = graphql`
   {
@@ -14,6 +15,38 @@ const siteQuery = graphql`
       }
     }
   }
+`;
+
+const HeroHeading = styled.h1`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.15;
+  color: ${p => p.theme.colors.primary};
+
+  ${mediaqueries.desktop`
+    font-size: 38px
+  `}
+
+  ${mediaqueries.phablet`
+    font-size: 32px;
+  `}
+`;
+
+const HeroSubheading = styled.h2`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 38px;
+  margin-top: 20px;
+  line-height: 1.15;
+  color: ${p => p.theme.colors.grey};
+
+  ${mediaqueries.desktop`
+  font-size: 32px
+`}
+  ${mediaqueries.phablet`
+  font-size: 28px;
+`}
 `;
 
 const Hero = () => {
@@ -32,10 +65,11 @@ const Hero = () => {
       <HeroSubheading>
         <Typed
           strings={roles.sort(() => Math.random() - 0.5)}
-          backSpeed={50}
-          typeSpeed={70}
+          backSpeed={40}
+          typeSpeed={40}
           backDelay={2000}
           loop
+          smartBackspace
         />
       </HeroSubheading>
     </Section>

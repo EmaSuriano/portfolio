@@ -40,13 +40,21 @@ const RoundedImage = styled(Image)`
   border-radius: 50%;
 `;
 
+const AboutContainer = styled.div`
+  p {
+    padding: 0;
+  }
+`;
+
 const About = ({ author }) => {
   const { about } = useStaticQuery(siteQuery);
 
   return (
     <Section title="About me">
       <InfoWrapper>
-        <MDXRenderer content={about.body} />
+        <AboutContainer>
+          <MDXRenderer content={about.body} />
+        </AboutContainer>
         <AvatarContainer>
           <RoundedImage src={author.avatar.large} />
         </AvatarContainer>
