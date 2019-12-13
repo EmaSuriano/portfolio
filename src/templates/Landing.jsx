@@ -14,9 +14,9 @@ const Landing = ({ location, pageContext }) => {
     <Layout>
       <SEO pathname={location.pathname} />
       <Hero />
-      {/* <About author={authors[0]} /> */}
-      {/* <Projects projects={projects} /> */}
-      {/* <LatestArticles articles={articles} /> */}
+      <About author={authors[0]} />
+      <Projects projects={projects} />
+      <LatestArticles articles={articles} />
       <Contact />
     </Layout>
   );

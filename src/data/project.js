@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-const GatsbyFluid_withWebp = `
+const gatsbyFluid = `
   base64
   aspectRatio
   src
@@ -10,7 +8,7 @@ const GatsbyFluid_withWebp = `
   sizes
 `;
 
-module.exports = `{
+const query = `{
   projects: allProjectsYaml(sort: { fields: publishedDate, order: DESC }) {
     edges {
       node {
@@ -22,12 +20,12 @@ module.exports = `{
         hero {
           regular: childImageSharp {
             fluid(maxWidth: 653, quality: 100) {
-              ${GatsbyFluid_withWebp}
+              ${gatsbyFluid}
             }
           }
           narrow: childImageSharp {
             fluid(maxWidth: 457, quality: 100) {
-              ${GatsbyFluid_withWebp}
+              ${gatsbyFluid}
             }
           }
         }
@@ -35,3 +33,27 @@ module.exports = `{
     }
   }
 }`;
+
+const normalize = ({ node }) => {
+  const { name, description, type, link, publishedDate, hero } = node;
+
+  return {
+    node: {
+      title: name,
+      hero: {
+        ...hero,
+        seo: {},
+        full: {},
+      },
+      slug: link,
+      excerpt: description,
+      date: publishedDate,
+      type,
+    },
+  };
+};
+
+module.exports = {
+  query,
+  normalize,
+};
