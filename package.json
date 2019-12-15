@@ -17,7 +17,6 @@
     "gatsby": "^2.18.12",
     "gatsby-paginate": "^1.1.1",
     "gatsby-plugin-google-analytics": "^2.1.31",
-    "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.33",
     "gatsby-plugin-netlify": "^2.1.25",
     "gatsby-plugin-netlify-cache": "^1.2.0",
@@ -30,6 +29,7 @@
     "react-typed": "^1.2.0"
   },
   "peerDependencies": {
+    "gatsby-plugin-mailchimp": "^5.1.2",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23"
   },
