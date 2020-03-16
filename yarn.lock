@@ -1417,10 +1417,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@narative/gatsby-theme-novela@^0.11.3":
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.11.3.tgz#d3fcfe85804a8c22b68781f7da6795e15c3fcc38"
-  integrity sha512-MCTVPAVaphUX50QbxzMTMDW9DMkvXObwXhQhEihSaKPZo5PV/z2WMyU/+DzD58oY/KmMu64BlzWSSQr2/U85qw==
+"@narative/gatsby-theme-novela@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.13.3.tgz#8f814b8306550130ff7c961aae7be17acc3cfe42"
+  integrity sha512-jzKb1g/PiO1Sy7VRimcUwJsMuFoGFO1C6JSdfQAD0Qw2MCBQ49/G0OMp2UmKRpHXR2hDvwoZyy5yNQWTZCGwWg==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
@@ -1461,6 +1461,7 @@
     react-outside-click-handler "^1.2.4"
     remark-slug "^5.1.2"
     request "^2.88.0"
+    slugify "^1.3.6"
     theme-ui "^0.2.40"
     typeface-merriweather "^0.0.72"
 
