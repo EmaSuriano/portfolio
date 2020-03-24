@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
+const REGEX_EXPRESSIONS = {
+  name: "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$",
+  email: '[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$',
+};
+
 const Field = styled.div`
   width: 100%;
   border-radius: 4px;
@@ -58,23 +63,35 @@ const Field = styled.div`
   }
 `;
 
-const Input = ({ label = '', id, pattern, type = 'text' }) => {
-  const [value, setValue] = useState('');
+const Input = ({
+  label = '',
+  id,
+  pattern,
+  type = 'text',
+  value: controlledValue,
+  onChange: controlledOnChange,
+}) => {
+  const [internalValue, setInternalValue] = useState('');
   const [active, setActive] = useState(false);
 
+  const onChange = e =>
+    controlledOnChange
+      ? controlledOnChange(e.currentTarget.value)
+      : setInternalValue(e.currentTarget.value);
+
   return (
-    <Field active={active || value}>
+    <Field active={active || internalValue}>
       <div className="wrapper">
         <input
           id={id}
           type={type}
-          value={value}
+          value={controlledValue || internalValue}
           placeholder={label}
-          onChange={e => setValue(e.target.value)}
+          onChange={onChange}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
           required
-          pattern={pattern}
+          pattern={REGEX_EXPRESSIONS[pattern]}
         />
       </div>
 
