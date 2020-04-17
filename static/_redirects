@@ -1,1 +1,2 @@
-/talks/*           https://emasuriano-talks.netlify.app/:splat
+/talks/*           https://talks.emasuriano.com/:splat
+/resume/*           https://talks.emasuriano.com/:splat
