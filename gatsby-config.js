@@ -1,6 +1,6 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-const resumeJson = require('./resume.json');
+// const resumeJson = require('./resume.json');
 require('dotenv').config();
 
 const { ANALYTICS_ID } = process.env;
@@ -65,13 +65,13 @@ const plugins = [
       icon: 'src/assets/favicon-ema.png',
     },
   },
-  {
-    resolve: `gatsby-theme-jsonresume`,
-    options: {
-      resumeJson,
-      theme: 'standard-resume',
-    },
-  },
+  // {
+  //   resolve: `gatsby-theme-jsonresume`,
+  //   options: {
+  //     resumeJson,
+  //     theme: 'standard-resume',
+  //   },
+  // },
   {
     resolve: 'gatsby-plugin-google-analytics',
     options: {
