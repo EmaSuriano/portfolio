@@ -49,6 +49,8 @@ const HeroSubheading = styled.h2`
 `}
 `;
 
+const randomSort = () => Math.random() - 0.5;
+
 const Hero = () => {
   const results = useStaticQuery(siteQuery);
   const { name, roles } = results.site.siteMetadata;
@@ -64,7 +66,7 @@ const Hero = () => {
       <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
       <HeroSubheading>
         <Typed
-          strings={roles.sort(() => Math.random() - 0.5)}
+          strings={roles.sort(randomSort)}
           backSpeed={40}
           typeSpeed={40}
           backDelay={2000}
