@@ -1469,10 +1469,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@narative/gatsby-theme-novela@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.14.1.tgz#af0fdbc3a9fddea33a731971724a675695b1c411"
-  integrity sha512-TrD1K4b9Dy6k/ndGbtLcl23iUi+CioVZjzFkQVvNnjwGASUSjVf4RTEX3WIYdcQcnsBoRrn4Yj2vs8x55vwmpw==
+"@narative/gatsby-theme-novela@^0.14.3":
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.14.3.tgz#9a061202323d0e6a8bd76d9a345fcf678d35fe16"
+  integrity sha512-cdGMPwgSD75Pueg0iFm8wTS7bOsU1zzm9D4pispcXxEoYNDg12KBgKM9xh5WzEoom2a4LqprcQqNpJaoyDMAtA==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
@@ -6701,7 +6701,7 @@ gatsby-cli@^2.11.22:
     ink "^2.7.1"
     ink-spinner "^3.0.1"
 
-gatsby-core-utils@^1.1.2, gatsby-core-utils@^1.1.3, gatsby-core-utils@^1.1.4:
+gatsby-core-utils@^1.1.2, gatsby-core-utils@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.1.4.tgz#4b3c482f9633bafab1291a91f84caab23cdd8b85"
   integrity sha512-cXUB9PiPGqHzbFlwnJMgd9ezXb1goWOufh8oJglxp4x7vlPKUjPWpVG0UkwF6HNunpreN4WD8Jex5ed/dxEgtw==
