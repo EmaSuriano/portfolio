@@ -1,0 +1,18 @@
+[build]
+  publish = "public"
+  command = "gatsby build"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+
+[[redirects]]
+  from = "/talks/*"
+  to = "https://talks.emasuriano.com/:splat"
+
+[[redirects]]
+  from="/resume/*"
+  to="https://resume.emasuriano.com/:splat"
+
+[[redirects]]
+  from="/oss/*"
+  to="https://oss.emasuriano.com/:splat"
