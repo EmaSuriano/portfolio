@@ -13,7 +13,7 @@
     "lint": "eslint --ext .jsx --ext .js src"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.14.1",
+    "@narative/gatsby-theme-novela": "^0.14.3",
     "dotenv": "^8.2.0",
     "gatsby": "^2.20.36",
     "gatsby-paginate": "^1.1.1",
@@ -21,8 +21,8 @@
     "gatsby-plugin-manifest": "^2.3.7",
     "gatsby-plugin-netlify": "^2.2.4",
     "gatsby-plugin-netlify-cache": "^1.2.0",
-    "gatsby-plugin-react-svg": "^2.1.2",
     "gatsby-plugin-typescript": "^2.4.0",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "js-yaml": "^3.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

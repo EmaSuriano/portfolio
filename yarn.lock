@@ -1469,10 +1469,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@narative/gatsby-theme-novela@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.14.1.tgz#af0fdbc3a9fddea33a731971724a675695b1c411"
-  integrity sha512-TrD1K4b9Dy6k/ndGbtLcl23iUi+CioVZjzFkQVvNnjwGASUSjVf4RTEX3WIYdcQcnsBoRrn4Yj2vs8x55vwmpw==
+"@narative/gatsby-theme-novela@^0.14.3":
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.14.3.tgz#9a061202323d0e6a8bd76d9a345fcf678d35fe16"
+  integrity sha512-cdGMPwgSD75Pueg0iFm8wTS7bOsU1zzm9D4pispcXxEoYNDg12KBgKM9xh5WzEoom2a4LqprcQqNpJaoyDMAtA==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
@@ -6893,10 +6893,10 @@ gatsby-plugin-react-helmet@^3.1.2:
   dependencies:
     "@babel/runtime" "^7.8.7"
 
-gatsby-plugin-react-svg@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-svg/-/gatsby-plugin-react-svg-2.1.2.tgz#e5aa026ece1a8aa3319bf10a8e20cf4595aec932"
-  integrity sha512-y2vqiI/+bW8UPNL8628NwoX6kHtM4WJz6CiHPc9fhvSUa2Y8wriFJnGl1K249/9RXomOUQhl7r7JOuVhweSl1w==
+gatsby-plugin-react-svg@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-svg/-/gatsby-plugin-react-svg-3.0.0.tgz#67984bf350bce0532bef965fab094b0b461cdf68"
+  integrity sha512-myZl5NjVZwLLn4ovwSDM7cufa8yjaRiU5KoufJrz8FEalRroZ/hFSCCKNVna3blTwxcS0rZgISigYn9/xY7rkw==
   dependencies:
     svg-react-loader "^0.4.4"
 
