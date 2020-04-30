@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import NovelaSection from '@narative/gatsby-theme-novela/src/components/Section';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import { css } from '@emotion/core';
 
-const Section = ({ children, title }) => {
+const Section = ({ children, title }: { children: ReactNode, title: string}) => {
   return (
     <NovelaSection
       relative

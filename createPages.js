@@ -15,7 +15,9 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const { pageLength = 6 } = themeOptions;
 
   const localAuthors = await graphql(query.local.authors);
-  const authors = localAuthors.data.authors.edges.map(normalize.local.authors);
+  const author = localAuthors.data.authors.edges.map(
+    normalize.local.authors,
+  )[0];
 
   const localArticles = await graphql(query.local.articles);
   const articles = localArticles.data.articles.edges
@@ -35,11 +37,11 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     pathPrefix: '/',
     createPage,
     pageLength,
-    pageTemplate: path.resolve(`./src/templates/Landing.jsx`),
+    pageTemplate: path.resolve(`./src/templates/Landing.tsx`),
     buildPath: '/',
     context: {
       articles,
-      authors,
+      author,
       projects,
     },
   });

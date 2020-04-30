@@ -24,6 +24,7 @@ const siteMetadata = {
 const plugins = [
   'gatsby-plugin-netlify-cache',
   'gatsby-plugin-netlify',
+  `gatsby-plugin-typescript`,
   {
     resolve: '@narative/gatsby-theme-novela',
     options: {

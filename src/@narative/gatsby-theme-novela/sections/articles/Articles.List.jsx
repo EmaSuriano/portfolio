@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import Image, {
