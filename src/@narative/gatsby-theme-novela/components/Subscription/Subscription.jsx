@@ -1,10 +1,8 @@
 import addToMailchimp from 'gatsby-plugin-mailchimp';
 import React, { useState } from 'react';
-
 import Section from '@narative/gatsby-theme-novela/src/components/Section';
-
-import styled from '@emotion/styled';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
+import styled from '@emotion/styled';
 import {
   Container,
   Content,

@@ -6,7 +6,7 @@ import { css } from '@emotion/core';
 import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
 
-const LatestArticles = ({ articles = [] }) => (
+const LatestArticles = ({ articles = [] }: { articles: IArticle[] }) => (
   <Section title="Latest Articles">
     <GridLayoutProviderMock layout="tiles">
       <ArticlesList articles={articles} />

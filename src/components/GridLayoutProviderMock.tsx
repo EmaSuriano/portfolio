@@ -1,11 +1,17 @@
 import React from 'react';
 import { GridLayoutContext } from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List.Context';
 
-const GridLayoutProviderMock = ({ children, layout }) => {
+const GridLayoutProviderMock = ({
+  children,
+  layout,
+}: {
+  children: React.ReactNode;
+  layout: Layout;
+}) => {
   const [gridLayout, setGridLayout] = React.useState(layout);
 
-  function setGridLayoutAndSave(tile) {
-    setGridLayout(tile);
+  function setGridLayoutAndSave(tile: string) {
+    setGridLayout(tile as Layout);
   }
 
   return (

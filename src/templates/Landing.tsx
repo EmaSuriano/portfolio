@@ -7,14 +7,14 @@ import Contact from '../sections/Contact';
 import About from '../sections/About';
 import Projects from '../sections/Projects';
 
-const Landing = ({ location, pageContext }) => {
-  const { authors, articles, projects } = pageContext.additionalContext;
+const Landing: LandingPage = ({ location, pageContext }) => {
+  const { author, articles, projects } = pageContext;
 
   return (
     <Layout>
       <SEO pathname={location.pathname} />
       <Hero />
-      <About author={authors[0]} />
+      <About author={author} />
       <Projects projects={projects} />
       <LatestArticles articles={articles} />
       <Contact />

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '../helpers/styled';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 

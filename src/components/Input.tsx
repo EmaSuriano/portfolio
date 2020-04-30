@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import React, { useState, ChangeEvent } from 'react';
+import styled from '../helpers/styled';
 
 const REGEX_EXPRESSIONS = {
   name: "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$",
   email: '[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$',
 };
 
-const Field = styled.div`
+const Field = styled.div<{ active: boolean }>`
   width: 100%;
   border-radius: 4px;
   position: relative;
@@ -63,6 +63,12 @@ const Field = styled.div`
   }
 `;
 
+type InputProps = {
+  onChange?: (value: string) => void;
+  label?: string;
+  pattern?: 'name' | 'email';
+} & React.HTMLProps<HTMLInputElement>;
+
 const Input = ({
   label = '',
   id,
@@ -70,17 +76,17 @@ const Input = ({
   type = 'text',
   value: controlledValue,
   onChange: controlledOnChange,
-}) => {
+}: InputProps) => {
   const [internalValue, setInternalValue] = useState('');
   const [active, setActive] = useState(false);
 
-  const onChange = e =>
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
     controlledOnChange
       ? controlledOnChange(e.currentTarget.value)
       : setInternalValue(e.currentTarget.value);
 
   return (
-    <Field active={active || internalValue}>
+    <Field active={active || !!internalValue}>
       <div className="wrapper">
         <input
           id={id}
@@ -91,7 +97,7 @@ const Input = ({
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
           required
-          pattern={REGEX_EXPRESSIONS[pattern]}
+          pattern={pattern ? REGEX_EXPRESSIONS[pattern] : undefined}
         />
       </div>
 

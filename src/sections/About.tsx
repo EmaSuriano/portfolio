@@ -3,7 +3,7 @@ import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 import MDXRenderer from '@narative/gatsby-theme-novela/src/components/MDX';
 import Image from '@narative/gatsby-theme-novela/src/components/Image';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled from '@emotion/styled';
+import styled from '../helpers/styled';
 import Section from '../components/Section';
 
 const siteQuery = graphql`
@@ -46,7 +46,7 @@ const AboutContainer = styled.div`
   }
 `;
 
-const About = ({ author }) => {
+const About = ({ author }: { author: IAuthor }) => {
   const { about } = useStaticQuery(siteQuery);
 
   return (
