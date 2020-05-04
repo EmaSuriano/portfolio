@@ -13,7 +13,7 @@
     "lint": "eslint --ext .jsx --ext .js src"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.14.3",
+    "@narative/gatsby-theme-novela": "^0.14.6",
     "dotenv": "^8.2.0",
     "gatsby": "^2.21.9",
     "gatsby-paginate": "^1.1.1",
