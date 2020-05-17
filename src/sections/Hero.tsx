@@ -3,8 +3,8 @@ import Section from '@narative/gatsby-theme-novela/src/components/Section';
 import Typed from 'react-typed';
 import { graphql, useStaticQuery } from 'gatsby';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
-import styled from '../helpers/styled';
 import { css } from '@emotion/core';
+import styled from '../helpers/styled';
 
 const siteQuery = graphql`
   {

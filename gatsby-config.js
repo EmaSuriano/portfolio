@@ -4,26 +4,23 @@ require('dotenv').config();
 
 const { ANALYTICS_ID } = process.env;
 
-const [{ name, bio, social, website, ...rest }] = yaml.safeLoad(
+const [{ name, bio, website, ...rest }] = yaml.safeLoad(
   fs.readFileSync('./content/about/authors.yml', 'utf8'),
 );
 
 const siteMetadata = {
   title: `${name} Portfolio`,
-  name,
   siteUrl: website,
+  name,
   description: bio,
   hero: {
-    heading: `Hello, this is my Blog`,
+    heading: `${name}'s Blog`,
     maxWidth: 652,
   },
-  social,
   ...rest,
 };
 
 const plugins = [
-  'gatsby-plugin-netlify-cache',
-  'gatsby-plugin-netlify',
   `gatsby-plugin-typescript`,
   {
     resolve: '@narative/gatsby-theme-novela',

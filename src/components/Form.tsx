@@ -1,6 +1,6 @@
-import styled from '../helpers/styled';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
+import styled from '../helpers/styled';
 
 export const Container = styled.div`
   position: relative;
