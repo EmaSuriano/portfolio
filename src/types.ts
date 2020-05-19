@@ -66,9 +66,9 @@ type IProgress = {
   onClose?: () => void;
 };
 
-type Icon = React.FC<{
+type Icon = {
   fill: string;
-}>;
+};
 
 type Layout = 'tiles' | 'rows';
 
