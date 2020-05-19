@@ -1,29 +1,29 @@
-interface IPaginator {
+type IPaginator = {
   pageCount: number;
   index: number;
   pathPrefix: string;
-}
+};
 
-interface IGatsbyImage {
+type IGatsbyImage = {
   src: string;
   base64?: string;
   srcWebp?: string;
   srcSet?: string;
   srcSetWebp?: string;
   tracedSVG?: string;
-}
+};
 
-interface IGatsbyImageFluid extends IGatsbyImage {
+type IGatsbyImageFluid = IGatsbyImage & {
   maxHeight: number;
   maxWidth: number;
-}
+};
 
-interface IGatsbyImageFixed extends IGatsbyImage {
+type IGatsbyImageFixed = IGatsbyImage & {
   height: number;
   width: number;
-}
+};
 
-interface IAuthor {
+type IAuthor = {
   authorsPage?: boolean;
   featured?: boolean;
   name: string;
@@ -34,9 +34,9 @@ interface IAuthor {
     medium: IGatsbyImageFluid;
     small: IGatsbyImageFluid;
   };
-}
+};
 
-interface IArticle {
+type IArticle = {
   slug: string;
   authors: IAuthor[];
   excerpt: string;
@@ -50,21 +50,21 @@ interface IArticle {
   };
   timeToRead: number;
   date: string;
-}
+};
 
-interface IArticleQuery {
+type IArticleQuery = {
   edges: {
     node: IArticle;
   }[];
-}
+};
 
-interface IProgress {
+type IProgress = {
   height: number;
   offset: number;
   title: string;
   mode: string;
   onClose?: () => void;
-}
+};
 
 type Icon = React.FC<{
   fill: string;
@@ -75,12 +75,3 @@ type Layout = 'tiles' | 'rows';
 type IProject = {
   name: string;
 };
-
-type LandingPage = React.FC<{
-  pageContext: {
-    author: IAuthor;
-    articles: IArticle[];
-    projects: IProject[];
-  };
-  location: Location;
-}>;
