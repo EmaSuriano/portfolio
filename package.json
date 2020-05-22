@@ -6,9 +6,10 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc -p . --noEmit",
-    "build": "gatsby build",
+    "build": "yarn transpile-blog && gatsby build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn build --log-pages",
-    "start": "gatsby develop",
+    "start": "yarn transpile-blog --watch & gatsby develop",
+    "transpile-blog": "node transpile-blog",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-and-serve": "yarn clean && yarn build && yarn serve",

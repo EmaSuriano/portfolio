@@ -41,10 +41,7 @@ I created a repository from which I extracted the snippets that are going to fol
 
 ## Time to code
 
-<div class="Image__Small">
-  <img src="./images/time-to-start.gif" alt="Time to start" />
-  <figcaption>Time to start</figcaption>
-</div>
+![Time to start](./images/time-to-start.gif)
 
 So let's start a clean project using `create-react-app` and `create-react-native-app`. After playing around a little bit I realized that it's easier to bootstrap the project using `create-react-native-app` and then add the missing files to the project.
 
@@ -308,10 +305,7 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-<div class="Image__Medium">
-  <img src="./images/demo-react.png" alt="Demo React" />
-  <figcaption>Demo React</figcaption>
-</div>
+![Demo React](./images/demo-react.png)
 
 ### React Native implemntation
 
@@ -335,10 +329,7 @@ const App = () => (
 export default App;
 ```
 
-<div class="Image__Medium">
-  <img src="./images/demo-react-native.png" alt="Demo React Native" />
-  <figcaption>Demo React Native</figcaption>
-</div>
+![Demo React Native](./images/demo-react-native.png)
 
 ## Last words 👋
 

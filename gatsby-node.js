@@ -1,3 +1,1 @@
-const createPages = require('./createPages');
-
-exports.createPages = createPages;
+exports.createPages = require('./createPages');
