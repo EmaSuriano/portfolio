@@ -7,14 +7,23 @@ const path = require('path');
 const fs = require('fs');
 const sizeOf = require('image-size');
 
-const RAW_EXTENSION = 'mdx-raw';
 const FOLDER = './content/posts';
-const GLOB_PATTERN = `${FOLDER}/**/*.${RAW_EXTENSION}`;
+
+const POST_EXTENSION = 'mdx-raw';
+const GLOB_PATTERN = `${FOLDER}/**/*.${POST_EXTENSION}`;
+
+const POST_EXTENSION_DRAFT = 'mdx-draft';
+const GLOB_PATTERN_DRAFT = `${FOLDER}/**/*.${POST_EXTENSION_DRAFT}`;
+
 const NAME_SEPARATOR = '_';
 
 const getPostInfo = filePath => {
-  const folder = path.dirname(filePath);
+  const folder = path
+    .dirname(filePath)
+    .split('/')
+    .pop();
   const [date, rawTitle] = folder.split(NAME_SEPARATOR);
+
   const title = rawTitle.split('-').join(' ');
 
   return { date, title };
@@ -35,7 +44,7 @@ const generateNovelaImage = (filePath, line) => {
   ].join('\n');
 };
 
-const writeHeader = (filePath, firstLine) => {
+const writeHeader = (filePath, firstLine, draft) => {
   const { date, title } = getPostInfo(filePath);
 
   return [
@@ -45,15 +54,18 @@ const writeHeader = (filePath, firstLine) => {
     `date: ${date}`,
     `hero: ./images/hero.jpg`,
     `excerpt: ${firstLine}`,
+    `secret: ${!!draft}`,
     `---`,
     '',
     firstLine,
   ].join('\n');
 };
 
-const transpileBlog = async filePath => {
+const transpileBlog = async (filePath, draft) => {
   const fileStream = fs.createReadStream(filePath);
-  const writeSteam = fs.createWriteStream(filePath.replace('-raw', ''));
+  const writeSteam = fs.createWriteStream(
+    filePath.replace(draft ? POST_EXTENSION_DRAFT : POST_EXTENSION, 'mdx'),
+  );
 
   const rl = readline.createInterface({
     input: fileStream,
@@ -67,7 +79,7 @@ const transpileBlog = async filePath => {
 
     const line =
       (isMarkdownImg && generateNovelaImage(filePath, rawLine)) ||
-      (isFirstLine && writeHeader(filePath, rawLine)) ||
+      (isFirstLine && writeHeader(filePath, rawLine, draft)) ||
       rawLine;
 
     writeSteam.write(`${line}\n`);
@@ -82,9 +94,13 @@ const transpileBlog = async filePath => {
 
 const main = async ({ watch }) => {
   glob.sync(GLOB_PATTERN, {}).map(transpileBlog);
+  glob.sync(GLOB_PATTERN_DRAFT, {}).map(file => transpileBlog(file, true));
 
   if (watch) {
     chokidar.watch(GLOB_PATTERN).on('all', (_, file) => transpileBlog(file));
+    chokidar
+      .watch(GLOB_PATTERN_DRAFT)
+      .on('all', (_, file) => transpileBlog(file, true));
   }
 };
 
