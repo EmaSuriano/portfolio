@@ -10,47 +10,48 @@ const sizeOf = require('image-size');
 const RAW_EXTENSION = 'mdx-raw';
 const FOLDER = './content/posts';
 const GLOB_PATTERN = `${FOLDER}/**/*.${RAW_EXTENSION}`;
+const NAME_SEPARATOR = '_';
 
-const generateNovelaImage = (dir, line) => {
+const getPostInfo = filePath => {
+  const folder = path.dirname(filePath);
+  const [date, rawTitle] = folder.split(NAME_SEPARATOR);
+  const title = rawTitle.split('-').join(' ');
+
+  return { date, title };
+};
+
+const generateNovelaImage = (filePath, line) => {
+  const dir = path.dirname(filePath);
   const [alt, src] = line.replace(/\!\[|\)/g, '').split(`](`);
   const { width } = sizeOf(path.join(dir, src));
   const size =
     (width > 2000 && 'Large') || (width > 1000 && 'Medium') || 'Small';
 
-  const tags = [
+  return [
     `<div class="Image__${size}">`,
     `  <img src="${src}" alt="${alt}" />`,
     `  <figcaption>${alt}</figcaption>`,
     `</div>`,
-  ];
-
-  return tags.join('\n');
+  ].join('\n');
 };
 
-const NAME_SEPARATOR = '_';
+const writeHeader = (filePath, firstLine) => {
+  const { date, title } = getPostInfo(filePath);
 
-const writeHeader = (dir, firstLine) => {
-  const folder = dir.split(path.sep).pop();
-  const [date, rawTitle] = folder.split(NAME_SEPARATOR);
-
-  const title = rawTitle.split('-').join(' ');
-  const lines = [
+  return [
     '---',
     `title: ${title}`,
     `author: Ema Suriano`,
-    `date: ${date}-01`,
+    `date: ${date}`,
     `hero: ./images/hero.jpg`,
     `excerpt: ${firstLine}`,
     `---`,
     '',
     firstLine,
-  ];
-
-  return lines.join('\n');
+  ].join('\n');
 };
 
 const transpileBlog = async filePath => {
-  const dir = path.dirname(filePath);
   const fileStream = fs.createReadStream(filePath);
   const writeSteam = fs.createWriteStream(filePath.replace('-raw', ''));
 
@@ -65,14 +66,16 @@ const transpileBlog = async filePath => {
     const isFirstLine = index === 0;
 
     const line =
-      (isMarkdownImg && generateNovelaImage(dir, rawLine)) ||
-      (isFirstLine && writeHeader(dir, rawLine)) ||
+      (isMarkdownImg && generateNovelaImage(filePath, rawLine)) ||
+      (isFirstLine && writeHeader(filePath, rawLine)) ||
       rawLine;
 
     writeSteam.write(`${line}\n`);
     index++;
   }
 
+  const { title } = getPostInfo(filePath);
+  console.log(`Blog "${title}" transpiled!`);
   writeSteam.close();
   fileStream.close();
 };
