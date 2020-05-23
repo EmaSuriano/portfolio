@@ -1,7 +1,7 @@
 import React from 'react';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 import MDXRenderer from '@narative/gatsby-theme-novela/src/components/MDX';
-import Image from '@narative/gatsby-theme-novela/src/components/Image';
+import { ImageZoom } from '@narative/gatsby-theme-novela/src/components/Image';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from '../helpers/styled';
 import Section from '../components/Section';
@@ -36,7 +36,7 @@ const AvatarContainer = styled.div`
   `}
 `;
 
-const RoundedImage = styled(Image)`
+const RoundedImage = styled(ImageZoom)`
   border-radius: 50%;
 `;
 
@@ -48,7 +48,7 @@ const AboutContainer = styled.div`
 
 const About = ({ author }: { author: IAuthor }) => {
   const { about } = useStaticQuery(siteQuery);
-
+  console.log(author.avatar);
   return (
     <Section title="About me">
       <InfoWrapper>
@@ -56,7 +56,7 @@ const About = ({ author }: { author: IAuthor }) => {
           <MDXRenderer content={about.body} />
         </AboutContainer>
         <AvatarContainer>
-          <RoundedImage src={author.avatar.large} />
+          <RoundedImage src={author.avatar} alt="Profile Picture" />
         </AvatarContainer>
       </InfoWrapper>
     </Section>

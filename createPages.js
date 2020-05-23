@@ -11,13 +11,32 @@ const log = (message, section) =>
   console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`);
 // ///////////////////////////////////////////////////////
 
+const AUTHOR_QUERY = `{
+  author {
+    bio
+    id
+    name
+    social {
+      url
+    }
+    avatar {
+      childImageSharp {
+        fluid(maxWidth: 1024, quality: 100) {
+          src
+        }
+      }
+    }
+  }
+}`;
+
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const { pageLength = 6 } = themeOptions;
 
-  const localAuthors = await graphql(query.local.authors);
-  const author = localAuthors.data.authors.edges.map(
-    normalize.local.authors,
-  )[0];
+  const rawAuthor = await graphql(AUTHOR_QUERY);
+  const author = {
+    ...rawAuthor.data.author,
+    avatar: rawAuthor.data.author.avatar.childImageSharp.fluid.src,
+  };
 
   const localArticles = await graphql(query.local.articles);
   const articles = localArticles.data.articles.edges
