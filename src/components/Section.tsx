@@ -3,25 +3,25 @@ import NovelaSection from '@narative/gatsby-theme-novela/src/components/Section'
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import { css } from '@emotion/core';
 
-const Section = ({ children, title }: { children: ReactNode, title: string}) => {
-  return (
-    <NovelaSection
-      relative
+type Props = { children: ReactNode; title: string };
+
+const Section = ({ children, title }: Props) => (
+  <NovelaSection
+    relative
+    css={css`
+      margin-bottom: 100px;
+    `}
+    id="projects"
+  >
+    <Headings.h2
       css={css`
-        margin-bottom: 100px;
+        margin-bottom: 50px;
       `}
-      id="projects"
     >
-      <Headings.h2
-        css={css`
-          margin-bottom: 50px;
-        `}
-      >
-        {title}
-      </Headings.h2>
-      {children}
-    </NovelaSection>
-  );
-};
+      {title}
+    </Headings.h2>
+    {children}
+  </NovelaSection>
+);
 
 export default Section;

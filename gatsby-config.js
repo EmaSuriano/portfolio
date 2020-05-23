@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const { ANALYTICS_ID } = process.env;
 
-const [{ name, bio, website, ...rest }] = yaml.safeLoad(
+const [{ name, bio, website, social, roles }] = yaml.safeLoad(
   fs.readFileSync('./content/about/authors.yml', 'utf8'),
 );
 
@@ -17,7 +17,8 @@ const siteMetadata = {
     heading: `${name}'s Blog`,
     maxWidth: 652,
   },
-  ...rest,
+  social,
+  roles,
 };
 
 const plugins = [
@@ -59,7 +60,7 @@ const plugins = [
       background_color: '#fff',
       theme_color: '#fff',
       display: 'standalone',
-      icon: 'src/assets/favicon-ema.png',
+      icon: 'src/assets/favicon.png',
     },
   },
   {
@@ -76,6 +77,7 @@ const plugins = [
       },
     },
   },
+  'gatsby-plugin-offline',
 ];
 
 module.exports = {

@@ -7,7 +7,16 @@ import Contact from '../sections/Contact';
 import About from '../sections/About';
 import Projects from '../sections/Projects';
 
-const Landing: LandingPage = ({ location, pageContext }) => {
+type Props = {
+  pageContext: {
+    author: IAuthor;
+    articles: IArticle[];
+    projects: IProject[];
+  };
+  location: Location;
+};
+
+const Landing = ({ location, pageContext }: Props) => {
   const { author, articles, projects } = pageContext;
 
   return (

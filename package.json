@@ -6,19 +6,21 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc -p . --noEmit",
-    "build": "gatsby build",
+    "build": "yarn transpile-blog && gatsby build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn build --log-pages",
-    "start": "gatsby develop",
+    "start": "yarn transpile-blog --watch & gatsby develop",
+    "transpile-blog": "node transpile-blog",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-and-serve": "yarn clean && yarn build && yarn serve",
-    "lint": "eslint --ext .tsx,.ts src"
+    "lint": "eslint --cache --ext .ts,.tsx src"
   },
   "dependencies": {
     "@narative/gatsby-theme-novela": "^0.15.5",
     "gatsby": "^2.21.33",
     "gatsby-plugin-google-analytics": "^2.3.1",
     "gatsby-plugin-manifest": "^2.4.2",
+    "gatsby-plugin-offline": "^3.2.7",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-typescript": "^2.4.2",
     "react": "^16.13.1",
@@ -27,19 +29,24 @@
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.22",
-    "gatsby-paginate": "^1.1.1",
     "@emotion/styled": "^10.0.23",
-    "gatsby-plugin-mailchimp": "^5.1.2"
+    "gatsby-paginate": "^1.1.1"
   },
   "devDependencies": {
     "@types/react-dom": "^16.9.8",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
-    "js-yaml": "^3.13.1",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "image-size": "^0.8.3",
+    "js-yaml": "^3.13.1",
     "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint --fix"
+    }
   }
 }

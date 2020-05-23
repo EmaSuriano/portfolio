@@ -39,14 +39,15 @@ const HeroSubheading = styled.h2`
   font-size: 38px;
   margin-top: 20px;
   line-height: 1.15;
-  color: ${p => p.theme.colors.grey};
+  color: ${p => p.theme.colors.accent};
 
   ${mediaqueries.desktop`
-  font-size: 32px
-`}
+    font-size: 32px
+  `}
+
   ${mediaqueries.phablet`
-  font-size: 28px;
-`}
+    font-size: 28px;
+  `}
 `;
 
 const randomSort = () => Math.random() - 0.5;

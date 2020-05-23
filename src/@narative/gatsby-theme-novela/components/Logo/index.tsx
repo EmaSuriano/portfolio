@@ -42,6 +42,6 @@ const Hologram = styled.h1`
   }
 `;
 
-const Logo = ({ fill = 'white' }) => <Hologram color={fill}>ES</Hologram>;
+const Logo = ({ fill = 'white' }: Icon) => <Hologram color={fill}>ES</Hologram>;
 
 export default Logo;

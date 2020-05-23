@@ -1,11 +1,24 @@
 module.exports = {
-  extends: ['airbnb', 'plugin:prettier/recommended'],
-  plugins: ['react', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+  ],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
-    'react/prop-types': 0,
-    'react/jsx-one-expression-per-line': 0,
-    'jsx-a11y/label-has-associated-control': 0,
-    'import/no-unresolved': 0,
-    'import/extensions': 0,
+    '@typescript-eslint/explicit-function-return-type': 'off',
+  },
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+  },
+  parser: '@typescript-eslint/parser',
+  env: {
+    browser: true,
+    node: true,
   },
 };
