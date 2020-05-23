@@ -1,12 +1,4 @@
----
-title: Using Storybook as a powerful Visual Testing Platform
-author: Ema Suriano
-date: 2019-10-01
-hero: ./images/hero.jpeg
-excerpt: My experience working with this strategy of testing (which does not replace the others) and the integration with my current development tool.
----
-
-_Photo by [Markus Spiske](https://unsplash.com/@markusspiske?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/hqCEQTc5gZA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+My experience working with this strategy of testing (which does not replace the others) and the integration with my current development tool.
 
 I’ve always had visual testing in my TODO list until a few weeks ago when I finally decided to mark it as done. In this article, I am going to share my experience working with this strategy of testing (which does **NOT** replace the others) and the integration with my current development tool: [Storybook](https://storybook.js.org/).
 
@@ -168,7 +160,7 @@ Inside package.json , you need to create a new script which will start storybook
 },
 ```
 
-![Test CI output](https://cdn-images-1.medium.com/max/2264/1*KekXGREL7z3wIjT3q_Q9cw.png)
+![Test CI output](./images/ci-output.png)
 
 ## Interactive Visual Testing 🕺
 

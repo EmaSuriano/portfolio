@@ -2,11 +2,11 @@
 title: Using Storybook as a powerful Visual Testing Platform
 author: Ema Suriano
 date: 2019-10-01
-hero: ./images/hero.jpeg
+hero: ./images/hero.jpg
 excerpt: My experience working with this strategy of testing (which does not replace the others) and the integration with my current development tool.
 ---
 
-_Photo by [Markus Spiske](https://unsplash.com/@markusspiske?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/hqCEQTc5gZA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+My experience working with this strategy of testing (which does not replace the others) and the integration with my current development tool.
 
 I’ve always had visual testing in my TODO list until a few weeks ago when I finally decided to mark it as done. In this article, I am going to share my experience working with this strategy of testing (which does **NOT** replace the others) and the integration with my current development tool: [Storybook](https://storybook.js.org/).
 
@@ -47,7 +47,7 @@ $ npx -p @storybook/cli sb init
 
 When the installation is finished you can check if everything was set up properly by running yarn storybook , and you should see the Homepage with two stories that were created by default.
 
-<div class="Image__Medium">
+<div class="Image__Large">
   <img src="./images/storybook-homepage.png" alt="Storybook Homepage" />
   <figcaption>Storybook Homepage</figcaption>
 </div>
@@ -161,7 +161,7 @@ initStoryshots({
 
 One thing to mention is that now our tests depends on having an instance of storybook running. I recommend managing two terminals at the same time for this kind of scenarios: in one terminal you run yarn storybook and in another yarn test .
 
-<div class="Image__Medium">
+<div class="Image__Large">
   <img src="./images/visual-testing-storyshots.png" alt="Running visual testing along with Storybook" />
   <figcaption>Running visual testing along with Storybook</figcaption>
 </div>
@@ -170,7 +170,7 @@ The old snapshots are obsolete (you can safely delete them) because now we have 
 
 In the following diffing I changed the border-color of the button from pink to blue. The original image will be on the left, the new on the right and in the middle the difference between both with the changes in red color.
 
-<div class="Image__Medium">
+<div class="Image__Large">
   <img src="./images/visual-testing-storyshots.png" alt="Visual diffing in action" />
   <figcaption>Visual diffing in action</figcaption>
 </div>
@@ -196,7 +196,7 @@ Inside package.json , you need to create a new script which will start storybook
 ```
 
 <div class="Image__Medium">
-  <img src="https://cdn-images-1.medium.com/max/2264/1*KekXGREL7z3wIjT3q_Q9cw.png" alt="Test CI output" />
+  <img src="./images/ci-output.png" alt="Test CI output" />
   <figcaption>Test CI output</figcaption>
 </div>
 
@@ -250,7 +250,7 @@ describe('<DuplicationButton />', () => {
 
 In order to run this test, we need to start Storybook or you can directly use yarn test:ci which will do it for you! This is how the screenshot looks like:
 
-<div class="Image__Medium">
+<div class="Image__Small">
   <img src="./images/interactive-testing.png" alt="Interactive visual testing" />
   <figcaption>Interactive visual testing</figcaption>
 </div>

@@ -3,7 +3,7 @@ title: Building a maintainable Icon System for React and React Native
 author: Ema Suriano
 date: 2019-10-01
 hero: ./images/hero.jpg
-excerpt: Maintaining Icons in React and React Native can be a hard task, in this post I share the experience of implementing a consisting icon system inside the component libraries of my company.
+excerpt: Implementing a maintainable icon system for a React and React Native can a hard task, specially when it comes to have the same workflow to add/remove/use an icon in web and native applications (Android/iOS). In this post, I'm going to share my experience of implementing a consisting icon system inside the component libraries of my company.
 ---
 
 Implementing a maintainable icon system for a React and React Native can a hard task, specially when it comes to have the same workflow to add/remove/use an icon in web and native applications (Android/iOS). In this post, I'm going to share my experience of implementing a consisting icon system inside the component libraries of my company.
@@ -32,8 +32,9 @@ At the same, both implementation will implement the same API (`propTypes`) makin
 
 I created a repository from which I extracted the snippets that are going to follow, so in case you want to skip the explanation and jump into the code I leave you the link.
 
-<div className="Image__Medium">
+<div class="Image__Medium">
   <img src="./images/final-demo.gif" alt="Final Demo" />
+  <figcaption>Final Demo</figcaption>
 </div>
 
 [Repo link](https://github.com/EmaSuriano/maintainable-icon-system-react.git)
@@ -41,7 +42,10 @@ I created a repository from which I extracted the snippets that are going to fol
 
 ## Time to code
 
-![Time to start](./images/time-to-start.gif)
+<div class="Image__Small">
+  <img src="./images/time-to-start.gif" alt="Time to start" />
+  <figcaption>Time to start</figcaption>
+</div>
 
 So let's start a clean project using `create-react-app` and `create-react-native-app`. After playing around a little bit I realized that it's easier to bootstrap the project using `create-react-native-app` and then add the missing files to the project.
 
@@ -305,7 +309,10 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-![Demo React](./images/demo-react.png)
+<div class="Image__Medium">
+  <img src="./images/demo-react.png" alt="Demo React" />
+  <figcaption>Demo React</figcaption>
+</div>
 
 ### React Native implemntation
 
@@ -329,7 +336,10 @@ const App = () => (
 export default App;
 ```
 
-![Demo React Native](./images/demo-react-native.png)
+<div class="Image__Medium">
+  <img src="./images/demo-react-native.png" alt="Demo React Native" />
+  <figcaption>Demo React Native</figcaption>
+</div>
 
 ## Last words 👋
 
