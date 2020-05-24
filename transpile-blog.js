@@ -105,6 +105,7 @@ const main = async ({ watch }) => {
 
   glob.sync(GLOB_PATTERN).map(file => transpileBlog(file, false));
   glob.sync(GLOB_PATTERN_DRAFT).map(file => transpileBlog(file, true));
+  return;
 };
 
 const parseParams = params => ({
