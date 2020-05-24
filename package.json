@@ -13,10 +13,9 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-and-serve": "yarn clean && yarn build && yarn serve",
-    "test": "cypress run && test:markdown",
-    "test:cypress": "cypress open",
-    "test:markdown": "find ./content -name *.mdx -exec yarn markdown-link-check -c markdown-config.json {} \\;",
-    "test:ci": "start-server-and-test 8000",
+    "check-markdown": "find ./content -name *.mdx -exec yarn markdown-link-check -c markdown-config.json {} \\;",
+    "e2e": "cypress open",
+    "e2e:ci": "start-server-and-test 8000 'cypress run'",
     "lint": "eslint --cache --ext .ts,.tsx src"
   },
   "dependencies": {

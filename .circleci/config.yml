@@ -18,4 +18,5 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run: yarn lint
-      - run: yarn test:ci
+      - run: yarn check-markdown
+      - run: yarn e2e:ci
