@@ -2,32 +2,25 @@ jobs:
   install:
     executor:
       name: node/default
-      tag: '13'
+      tag: 'latest'
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: latest
-      - run: node --version
       - node/install-packages
   build:
     executor:
       name: node/default
     steps:
-      - run:
-        command: yarn build
+      - run: yarn build
   lint:
     executor:
       name: node/default
     steps:
-      - run:
-        command: yarn lint
+      - run: yarn lint
   test-ci:
     executor:
       name: node/default
     steps:
-      - run:
-        command: yarn test:ci
+      - run: yarn test:ci
 version: 2.1
 orbs:
   node: circleci/node@2.1.1
@@ -37,10 +30,10 @@ workflows:
       - install
       - build
         requires:
-            - install
+          - install
       - test-ci
         requires:
-            - install
+          - install
       - lint
         requires:
-            - install
+          - install
