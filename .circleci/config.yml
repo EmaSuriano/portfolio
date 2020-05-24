@@ -5,8 +5,8 @@ jobs:
   test-ci:
     executor:
       name: node/default
-        tag: '12.14'
-    steps:  
+      tag: '12.14'
+    steps:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
