@@ -1,18 +1,44 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.1.1
 jobs:
-  build-and-test:
+  install:
+    executor:
+      name: node/default
+      tag: '13'
+    steps:
+      - checkout
+       - node/install:
+          install-yarn: true
+          node-version: latest
+  build:
     executor:
       name: node/default
     steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn --frozen-lockfile
-            - run: yarn lint
-            - run: yarn build
+      - run:
+        command: yarn build
+  lint:
+    executor:
+      name: node/default
+    steps:
+      - run:
+        command: yarn lint
+  test-ci:
+    executor:
+      name: node/default
+    steps:
+      - run:
+        command: yarn test:ci
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  build:
+    jobs:
+      - install
+      - build
+        requires:
+            - install
+      - test-ci
+        requires:
+            - install
+      - lint
+        requires:
+            - install
