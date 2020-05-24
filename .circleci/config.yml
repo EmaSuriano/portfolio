@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-and-test:
+  build:
     docker:
       - image: cypress/base:12
         environment:
@@ -20,7 +20,3 @@ jobs:
       - run: yarn lint
       - run: yarn build
       - run: yarn test:ci
-workflows:
-  build-and-test:
-    jobs:
-      - build-and-test
