@@ -1,27 +1,25 @@
-/* eslint-disable */
-
-const chokidar = require('chokidar');
-const glob = require('glob');
-const readline = require('readline');
-const path = require('path');
-const fs = require('fs');
-const sizeOf = require('image-size');
+import chokidar from 'chokidar';
+import glob from 'glob';
+import readline from 'readline';
+import path from 'path';
+import fs from 'fs';
+import { imageSize } from 'image-size';
 
 const FOLDER = './content/posts';
-
 const POST_EXTENSION = 'mdx-raw';
-const GLOB_PATTERN = `${FOLDER}/**/*.${POST_EXTENSION}`;
-
 const POST_EXTENSION_DRAFT = 'mdx-draft';
+
+const GLOB_PATTERN = `${FOLDER}/**/*.${POST_EXTENSION}`;
 const GLOB_PATTERN_DRAFT = `${FOLDER}/**/*.${POST_EXTENSION_DRAFT}`;
 
 const NAME_SEPARATOR = '_';
 
-const getPostInfo = filePath => {
-  const folder = path
-    .dirname(filePath)
-    .split('/')
-    .pop();
+const getPostInfo = (filePath: string) => {
+  const folder =
+    path
+      .dirname(filePath)
+      .split('/')
+      .pop() || '1999-01-01_Wrong-folder-name';
   const [date, rawTitle] = folder.split(NAME_SEPARATOR);
 
   const title = rawTitle.split('-').join(' ');
@@ -29,10 +27,10 @@ const getPostInfo = filePath => {
   return { date, title };
 };
 
-const generateNovelaImage = (filePath, line) => {
+const generateNovelaImage = (filePath: string, line: string) => {
   const dir = path.dirname(filePath);
-  const [alt, src] = line.replace(/\!\[|\)/g, '').split(`](`);
-  const { width } = sizeOf(path.join(dir, src));
+  const [alt, src] = line.replace(/!\[|\)/g, '').split(`](`);
+  const { width = 0 } = imageSize(path.join(dir, src));
   const size =
     (width > 2000 && 'Large') || (width > 1000 && 'Medium') || 'Small';
 
@@ -44,7 +42,7 @@ const generateNovelaImage = (filePath, line) => {
   ].join('\n');
 };
 
-const writeHeader = (filePath, firstLine, draft) => {
+const writeHeader = (filePath: string, firstLine: string, draft: boolean) => {
   const { date, title } = getPostInfo(filePath);
 
   return [
@@ -61,7 +59,7 @@ const writeHeader = (filePath, firstLine, draft) => {
   ].join('\n');
 };
 
-const transpileBlog = async (filePath, draft) => {
+const transpileBlog = async (filePath: string, draft: boolean) => {
   const fileStream = fs.createReadStream(filePath);
   const writeSteam = fs.createWriteStream(
     filePath.replace(draft ? POST_EXTENSION_DRAFT : POST_EXTENSION, 'mdx'),
@@ -92,7 +90,7 @@ const transpileBlog = async (filePath, draft) => {
   fileStream.close();
 };
 
-const main = async ({ watch }) => {
+const main = async ({ watch }: { watch: boolean }) => {
   if (watch) {
     chokidar
       .watch(GLOB_PATTERN)
@@ -108,7 +106,7 @@ const main = async ({ watch }) => {
   return;
 };
 
-const parseParams = params => ({
+const parseParams = (params: string[]) => ({
   watch: params.includes('--watch'),
 });
 
