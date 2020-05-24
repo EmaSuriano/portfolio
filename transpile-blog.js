@@ -94,15 +94,17 @@ const transpileBlog = async (filePath, draft) => {
 
 const main = async ({ watch }) => {
   if (watch) {
-    chokidar.watch(GLOB_PATTERN).on('all', (_, file) => transpileBlog(file));
+    chokidar
+      .watch(GLOB_PATTERN)
+      .on('all', (_, file) => transpileBlog(file, false));
     chokidar
       .watch(GLOB_PATTERN_DRAFT)
       .on('all', (_, file) => transpileBlog(file, true));
     return;
   }
 
-  glob.sync(GLOB_PATTERN, {}).map(transpileBlog);
-  glob.sync(GLOB_PATTERN_DRAFT, {}).map(file => transpileBlog(file, true));
+  glob.sync(GLOB_PATTERN).map(file => transpileBlog(file, false));
+  glob.sync(GLOB_PATTERN_DRAFT).map(file => transpileBlog(file, true));
 };
 
 const parseParams = params => ({
