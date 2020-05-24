@@ -8,9 +8,9 @@ jobs:
       tag: '13'
     steps:
       - checkout
-       - node/install:
-          install-yarn: true
-          node-version: latest
+      - node/install:
+        install-yarn: true
+        node-version: latest
   build:
     executor:
       name: node/default
