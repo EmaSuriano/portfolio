@@ -12,7 +12,8 @@ jobs:
             - run: yarn --frozen-lockfile
             - run: yarn lint
             - run: yarn build
+            - run: yarn test:ci
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  build-and-test:
+    jobs:
+      - build-and-test
