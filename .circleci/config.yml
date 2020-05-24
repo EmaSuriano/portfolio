@@ -2,20 +2,18 @@ version: 2.1
 orbs:
   node: circleci/node@2.1.1
 jobs:
-  test-ci:
+  build-and-test:
     executor:
       name: node/default
-      tag: '12.14'
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: yarn.lock
-      - run: node -v
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test:ci
+      - node/with-cache:
+          steps:
+            - run: yarn --frozen-lockfile
+            - run: yarn lint
+            - run: yarn build
+            - run: yarn test:ci
 workflows:
-  test-ci:
+  build-and-test:
     jobs:
-      - test-ci
+      - build-and-test
