@@ -3,23 +3,23 @@ import glob from 'glob';
 import readline from 'readline';
 import path from 'path';
 import fs from 'fs';
-import { imageSize } from 'image-size';
+import sizeOf from 'image-size';
 
 const FOLDER = './content/posts';
-
 const POST_EXTENSION = 'mdx-raw';
-const GLOB_PATTERN = `${FOLDER}/**/*.${POST_EXTENSION}`;
-
 const POST_EXTENSION_DRAFT = 'mdx-draft';
+
+const GLOB_PATTERN = `${FOLDER}/**/*.${POST_EXTENSION}`;
 const GLOB_PATTERN_DRAFT = `${FOLDER}/**/*.${POST_EXTENSION_DRAFT}`;
 
 const NAME_SEPARATOR = '_';
 
 const getPostInfo = (filePath: string) => {
-  const folder = path
-    .dirname(filePath)
-    .split('/')
-    .pop();
+  const folder =
+    path
+      .dirname(filePath)
+      .split('/')
+      .pop() || '1999-01-01_Wrong-folder-name';
   const [date, rawTitle] = folder.split(NAME_SEPARATOR);
 
   const title = rawTitle.split('-').join(' ');
@@ -30,7 +30,7 @@ const getPostInfo = (filePath: string) => {
 const generateNovelaImage = (filePath: string, line: string) => {
   const dir = path.dirname(filePath);
   const [alt, src] = line.replace(/!\[|\)/g, '').split(`](`);
-  const { width } = imageSize(path.join(dir, src));
+  const { width } = sizeOf(path.join(dir, src));
   const size =
     (width > 2000 && 'Large') || (width > 1000 && 'Medium') || 'Small';
 

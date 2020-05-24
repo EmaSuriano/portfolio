@@ -13,7 +13,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-and-serve": "yarn clean && yarn build && yarn serve",
-    "test": "cypress run & test:markdown",
+    "test": "cypress run && test:markdown",
     "test:cypress": "cypress open",
     "test:markdown": "ts-node check-markdown.ts",
     "test:ci": "start-server-and-test 8000",
