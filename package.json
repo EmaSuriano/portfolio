@@ -15,7 +15,8 @@
     "clean-and-serve": "yarn clean && yarn build && yarn serve",
     "check-markdown": "find ./content -name *.mdx -exec yarn markdown-link-check -c markdown-config.json {} \\;",
     "e2e": "cypress open",
-    "e2e:ci": "start-server-and-test 8000 'cypress run'",
+    "e2e:run": "cypress run",
+    "e2e:ci": "start-server-and-test 8000 e2e:run",
     "lint": "eslint --cache --ext .ts,.tsx src"
   },
   "dependencies": {
