@@ -5,20 +5,5 @@
 ## TODO
 
 - [ ] Add gatsby-theme-talks and add new site with the proper style
+- [ ] Update projects and screenshots
 - [ ] Port all the articles here
-- [ ]
-
-## Bugs
-
-- [ ] After rendering an image or a code block the text below it's displayed like shit ...
-- [ ]
-
-## Articles ported
-
-Link to [articles](https://github.com/EmaSuriano/articles)
-
-- [ ] docker-for-frontend-developers.md
-- [ ] e2e-in-react-native-with-detox.md
-- [ ] generate-add-resume-to-portfolio.md
-- [x] using-storybook-as-a-powerful-visual-testing-platform.md
-- [x] building-a-maintainable-icon-system-for-react-and-react-native.md
