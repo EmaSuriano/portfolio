@@ -1,25 +1,18 @@
 jobs:
-  install:
-    executor:
-      name: node/default
-      tag: 'latest'
-    steps:
-      - checkout
-      - node/install-packages
   build:
     executor:
       name: node/default
     steps:
+      - checkout
+      - node/install-packages
       - run: yarn build
-  lint:
-    executor:
-      name: node/default
-    steps:
       - run: yarn lint
   test-ci:
     executor:
       name: node/default
     steps:
+      - checkout
+      - node/install-packages
       - run: yarn test:ci
 version: 2.1
 orbs:
@@ -27,13 +20,5 @@ orbs:
 workflows:
   build:
     jobs:
-      - install
       - build
-        requires:
-          - install
       - test-ci
-        requires:
-          - install
-      - lint
-        requires:
-          - install
