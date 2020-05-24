@@ -1,5 +1,5 @@
 jobs:
-  build:
+  test-ci:
     executor:
       name: node/default
     steps:
@@ -9,13 +9,6 @@ jobs:
           cache-key: yarn.lock
       - run: yarn build
       - run: yarn lint
-  test-ci:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
       - run: yarn test:ci
 version: 2.1
 orbs:
@@ -23,5 +16,4 @@ orbs:
 workflows:
   build:
     jobs:
-      - build
       - test-ci
