@@ -9,8 +9,9 @@ jobs:
     steps:
       - checkout
       - node/install:
-        install-yarn: true
-        node-version: latest
+          install-yarn: true
+          node-version: latest
+      - run: node --version
   build:
     executor:
       name: node/default
