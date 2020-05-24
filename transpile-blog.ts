@@ -3,7 +3,7 @@ import glob from 'glob';
 import readline from 'readline';
 import path from 'path';
 import fs from 'fs';
-import sizeOf from 'image-size';
+import { imageSize } from 'image-size';
 
 const FOLDER = './content/posts';
 const POST_EXTENSION = 'mdx-raw';
@@ -30,7 +30,7 @@ const getPostInfo = (filePath: string) => {
 const generateNovelaImage = (filePath: string, line: string) => {
   const dir = path.dirname(filePath);
   const [alt, src] = line.replace(/!\[|\)/g, '').split(`](`);
-  const { width } = sizeOf(path.join(dir, src));
+  const { width = 0 } = imageSize(path.join(dir, src));
   const size =
     (width > 2000 && 'Large') || (width > 1000 && 'Medium') || 'Small';
 

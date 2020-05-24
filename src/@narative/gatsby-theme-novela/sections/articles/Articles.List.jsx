@@ -84,11 +84,7 @@ const ListItem = ({ article, narrow }) => {
           <Title dark hasOverflow={hasOverflow} gridLayout={gridLayout}>
             {article.title}
           </Title>
-          <Excerpt
-            narrow={narrow}
-            hasOverflow={hasOverflow}
-            gridLayout={gridLayout}
-          >
+          <Excerpt narrow={narrow} gridLayout={gridLayout}>
             {article.excerpt}
           </Excerpt>
           <MetaData>{footer}</MetaData>
@@ -249,8 +245,7 @@ const ImageContainer = styled.div`
 const Title = styled(Headings.h2)`
   font-size: 21px;
   font-family: ${p => p.theme.fonts.serif};
-  margin-bottom: ${p =>
-    p.hasOverflow && p.gridLayout === 'tiles' ? '35px' : '10px'};
+  margin-bottom: ${p => (p.gridLayout === 'tiles' ? '35px' : '10px')};
   transition: color 0.3s ease-in-out;
   ${limitToTwoLines};
 

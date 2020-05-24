@@ -11,7 +11,7 @@ const Section = ({ children, title }: Props) => (
     css={css`
       margin-bottom: 100px;
     `}
-    id="projects"
+    id={title}
   >
     <Headings.h2
       css={css`

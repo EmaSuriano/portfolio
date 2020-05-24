@@ -5,7 +5,7 @@ export default {
 
   primary: '#000',
   secondary: '#73737D',
-  grey: '#73737D',
+  grey: '#70707A',
   background: '#fafafa',
   accent: '#7c37ad',
   hover: 'rgba(0, 0, 0, 0.07)',
@@ -22,7 +22,7 @@ export default {
 
   modes: {
     dark: {
-      grey: '#73737D',
+      grey: '#70707A',
       primary: '#fff',
       secondary: '#fff',
       accent: '#ff79b0',
