@@ -9,11 +9,13 @@
     "build": "yarn transpile-blog && gatsby build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn build --log-pages",
     "start": "yarn transpile-blog --watch & gatsby develop",
-    "transpile-blog": "node transpile-blog",
+    "transpile-blog": "ts-node transpile-blog.ts",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-and-serve": "yarn clean && yarn build && yarn serve",
-    "test": "echo test",
+    "test": "cypress run & test:markdown",
+    "test:cypress": "cypress open",
+    "test:markdown": "ts-node check-markdown.ts",
     "test:ci": "start-server-and-test 8000",
     "lint": "eslint --cache --ext .ts,.tsx src"
   },
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "@types/react-dom": "^16.9.8",
+    "cypress": "^4.6.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
@@ -44,7 +47,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "image-size": "^0.8.3",
     "js-yaml": "^3.13.1",
+    "markdown-link-check": "^3.8.1",
     "start-server-and-test": "^1.11.0",
+    "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },
   "husky": {
