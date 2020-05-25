@@ -37,34 +37,40 @@ export const writeSmartPreview = (filePath: string, line: string) => {
     return '';
   }
 
-  let size = 'Medium';
-  if (type === 'Image') {
-    const imagePath = path.join(path.dirname(filePath), src);
-    const { width = 0 } = imageSize(imagePath);
-
-    size = (width > 2000 && 'Large') || (width > 1000 && 'Medium') || 'Small';
-  }
-
-  const result = [`<div class="Image__${size}">`];
+  const result = [];
 
   switch (type) {
     case 'Image': {
-      result.push(`  <img src="${src}" alt="${alt}" />`);
+      const imagePath = path.join(path.dirname(filePath), src);
+      const { width = 0 } = imageSize(imagePath);
+
+      const size =
+        (width > 2000 && 'Large') || (width > 1000 && 'Medium') || 'Small';
+      result.push(
+        `<div class="Image__${size}">`,
+        `  <img src="${src}" alt="${alt}" />`,
+      );
       break;
     }
     case 'YouTube': {
       const videoId = src.split('watch?v=').pop();
-      result.push(`    <YouTube videoId="${videoId}" />`);
+      result.push(
+        '<div class="Image__Medium">',
+        `    <YouTube videoId="${videoId}" />`,
+      );
       break;
     }
     case 'Twitter': {
       const tweetId = src.split('/').pop();
-      result.push(`  <Tweet tweetId="${tweetId}" />`);
+      result.push(
+        '<div class="Image__Small">',
+        `  <Tweet tweetId="${tweetId}" />`,
+      );
       break;
     }
     case 'Gist': {
       const id = src.split('/').pop();
-      result.push(`  <Gist id="${id}" />`);
+      result.push('<div class="Image__Medium">', `  <Gist id="${id}" />`);
       break;
     }
     default:
