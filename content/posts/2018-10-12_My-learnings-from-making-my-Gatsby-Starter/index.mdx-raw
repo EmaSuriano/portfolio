@@ -1,0 +1,118 @@
+A few weeks ago I published my first starter for Gatsby and I want to share some tips I learn along the whole experience.
+
+As many starters in Gatsby, it began as a Personal portfolio. After I published it and share it on Twitter, people asked me if it was Open Source or published somewhere. My reaction at the beginning was saying **No**, but after more inquires came I changed my answer to a _Maybe it will!_.
+
+![Release tweet](https://twitter.com/emasuriano/status/1033837348881137665)
+
+Technically the project was “Open-source” because it was hosted in Github, but it was not configurable at all. All the data was hardcoded with information about me …
+
+Instead of helping developers, I was providing an awful experience for anyone who doesn’t know about the project and had to *guess *where \*\*to change the code.
+
+It was at this point when I considered creating a Gatsby Starter, and simplify the setup of the portfolio for anyone. My goal was to achieve a **2 minutes Setup** with defined steps!
+
+## #1. Make it attractive for developers 💅
+
+![Excited](./images/excited.gif)
+
+You should see your starter as a page you are selling to developers or someone with at least some technical. So you have to make it **attractive ✨** For that, I follow these 3 rules:
+
+> Make it work.
+>
+> Make it fast.
+>
+> Make it pretty.
+
+**Make it work** is for making your app actually functional and without any bugs or exceptions. Fortunately, I had this rule almost covered because my page was already working without any issues.
+
+A good tip is to write down a list with all the features your starter has. So developers can take a quick glance at what it’s inside without reading any codebase. 👍
+
+**Make it fast** remains for building an application with overall good performance. Achieving this point with Gatsby it’s not that hard, because Static Sites are already fast out of the box.
+
+For measuring the overall performance of my applications I like to use [Google Lighthouse](https://developers.google.com/web/tools/lighthouse), which gives you a report with statistics of different aspects of your application, like performance, accessibility, PWA, and more 👍
+
+**Make it pretty**, this rule can be explained with this phrase:
+
+> If an application looks bad or if it doesn’t support my screen then I won’t use it.
+
+Yes, it’s that simple! You have to provide something that looks attractive to others and also responsive, which in my opinion is a **MUST** in the current web development state.
+
+I strongly recommend using any design system with built-in components. They will allow you to move faster and also ensure that your application has some sort of _design concept_ behind. Behind every design system, a whole team took the time to think about how the Spacing should be, Color Palette, Font, Responsiveness, and many many more.
+
+In case you don’t know where to find a good Design System, I recommend the website [Design System Repo](https://designsystemsrepo.com/design-systems). It’s a curated list of design systems, in which most of them provide also a component library to use too 👍
+
+## #2. Avoid hardcoding Personal Information 🤷‍♂️
+
+When I looked into the codebase of my pages it was easy to detect a mix between component structure and information about me. A quick example was the About Me page, which looked like this:
+
+![The old snippet of About Me](images/old-snippet.png)
+
+The solution was “_easy_”, all the information has to come from other resources, and fortunately doing that with Gatsby is incredibly easy, thanks to [Source Plugins](https://www.gatsbyjs.org/tutorial/part-five/). You can _connect_ your application with an _external resource_ and then your components can directly access the data from them.
+
+I decided to go for [Contentful](http://contentful.com) as my CMS (Content Management System), mainly because the Free Plan allows you to have up to 2 _Contentful Spaces_ for free!
+
+The first step is to create a _Content Model_ where you can declare the structure of the data about the owner of the portfolio.
+
+![Content Model for About me](images/content-model.png)
+
+After that, I created a new _Content_ for the _About Content Model_ with some pre-existing values. I did this to provide an example of how it should look when you fill all your information, and also because without data the Section is completely empty …
+
+The code of About Me section will look something like:
+
+![The snippet of About me](images/new-snippet.png)
+
+By doing this, the person who wants to change information about himself doesn’t have to look into the component structure, just change the information stored inside _Contentful_ ✨
+
+## #3. Provide a Quick Setup 🚀
+
+This is a crucial step if you want to encourage people to start using it. As a maintainer, you have to provide simple steps to get up and run the starter.
+
+Inside the official documentation of Gatsby, they recommend bootstrapping starters by running the gatsby new command. It will create a new folder, copy the Starter codebase, and install all the dependencies.
+
+The setup might change depending on the tools you picked to build your starter. In my case, as I used _Contentful_ as the data provider I had to how to create your own _Space_ with the same _Content Model_ and _Content_.
+
+These are the steps for my starter:
+
+```bash
+# Create new folder with the content of the starter
+> gatsby new mate-portfolio https://github.com/EmaSuriano/gatsby-starter-mate
+
+# Setup for the CMS
+> yarn setup
+
+# Start local server
+> yarn develop
+```
+
+## #4. Add it to the official Gatsby starters list 📦
+
+This might be the easiest but most gratifying step, which is basically sharing with the community!
+
+For any who doesn’t know, Gatsby has a [list of all the starters](https://www.gatsbyjs.org/starters/) inside its website, and people (me included) go there looking for the starters. This step is like registering a domain of your website so it can be discoverable by users in Google.
+
+The way to add your starter is just by opening a pull request to the Gatsby repository and editing the file [starters.yml](https://github.com/gatsbyjs/gatsby/blob/master/docs/starters.yml) where you write a brief description and the URL for the starter.
+
+```yaml
+- url: Link to a demo of your starter
+  repo: Link to GitHub repo
+  description: Your starter description
+
+  # These correspond to the category filters in the library
+  # Make an effort to use the existing tags, and add more if needed!
+  tags:
+    - Redux
+
+  # Add your site features
+  # These will be included on your starter's detail page.
+  features:
+    - Blog post listing with previews (image + summary) for each blog post
+```
+
+After your pull request is merged, you’ll be able to see as a new entry of the showcase. Here you can see mine!
+
+[Gatsby Starter Mate in Gatsby](https://www.gatsbyjs.org/starters/gatsby-starter-mate)
+
+**PRO TIP:** Gatsby gives “free swag” to any contributor (they have a shop where you can pick for free some stuff and deliver it to your home), which is the best way to show gratitude to developers, thank you so much Gatsby 🎉
+
+## Last words 👋
+
+In the beginning, I found the process very annoying because basically my website was still the “same”, but I have to admit that I learned a lot. And finally, I can give something back to the community that helped so much 😄

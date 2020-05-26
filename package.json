@@ -6,10 +6,10 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc -p . --noEmit",
-    "build": "yarn transpile-blog && gatsby build",
+    "build": "yarn transpile-posts && gatsby build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn build --log-pages",
-    "start": "yarn transpile-blog --watch & gatsby develop",
-    "transpile-blog": "ts-node transpile-blog.ts",
+    "start": "yarn transpile-posts --watch & gatsby develop",
+    "transpile-posts": "ts-node utils/transpile-posts.ts",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-and-serve": "yarn clean && yarn build && yarn serve",
@@ -20,6 +20,7 @@
     "lint": "eslint --cache --ext .ts,.tsx src"
   },
   "dependencies": {
+    "@blocks/kit": "^0.0.28",
     "@narative/gatsby-theme-novela": "^0.15.5",
     "gatsby": "^2.21.33",
     "gatsby-plugin-google-analytics": "^2.3.1",
