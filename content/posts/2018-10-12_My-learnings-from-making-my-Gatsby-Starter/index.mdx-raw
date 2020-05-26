@@ -74,7 +74,7 @@ These are the steps for my starter:
 
 ```bash
 # Create new folder with the content of the starter
-> gatsby new mate-portfolio [https://github.com/EmaSuriano/gatsby-starter-mate](https://github.com/EmaSuriano/gatsby-starter-mate)
+> gatsby new mate-portfolio https://github.com/EmaSuriano/gatsby-starter-mate
 
 # Setup for the CMS
 > yarn setup

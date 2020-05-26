@@ -71,7 +71,6 @@ export const writeSmartPreview = (filePath: string, line: string) => {
     default:
       break;
   }
-  console.log(result);
   result.push(`  <figcaption>${alt}</figcaption>`, `</div>`);
 
   return result.join('\n');
