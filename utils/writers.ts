@@ -19,23 +19,18 @@ const getPostInfo = (filePath: string) => {
 
 type PreviewType = 'Image' | 'Twitter' | 'YouTube' | 'Gist';
 
-const getPreviewType = (src: string): PreviewType | null => {
+const getPreviewType = (src: string): PreviewType => {
   if (src.startsWith('./images/') || src.startsWith('images/')) return 'Image';
   if (src.includes('twitter.com')) return 'Twitter';
   if (src.includes('youtube.com')) return 'YouTube';
   if (src.includes('gist.github.com')) return 'Gist';
 
-  return null;
+  throw Error(`Type not found! ${src}`);
 };
 
 export const writeSmartPreview = (filePath: string, line: string) => {
   const [alt, src] = line.replace(/!\[|\)/g, '').split(`](`);
   const type = getPreviewType(src);
-
-  if (!type) {
-    console.error(`Type not found! ${src}`);
-    return '';
-  }
 
   const result = [];
 
@@ -76,7 +71,7 @@ export const writeSmartPreview = (filePath: string, line: string) => {
     default:
       break;
   }
-
+  console.log(result);
   result.push(`  <figcaption>${alt}</figcaption>`, `</div>`);
 
   return result.join('\n');
