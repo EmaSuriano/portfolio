@@ -77,7 +77,6 @@ const plugins = [
       },
     },
   },
-  'gatsby-plugin-offline',
 ];
 
 module.exports = {
