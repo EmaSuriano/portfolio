@@ -29,9 +29,7 @@ const AUTHOR_QUERY = `{
   }
 }`;
 
-module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
-  const { pageLength = 6 } = themeOptions;
-
+module.exports = async ({ actions: { createPage }, graphql }) => {
   const rawAuthor = await graphql(AUTHOR_QUERY);
   const author = {
     ...rawAuthor.data.author,
@@ -42,7 +40,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const articles = localArticles.data.articles.edges
     .map(normalize.local.articles)
     .filter(article => !article.secret)
-    .filter((_, i) => i < pageLength)
+    .slice(0, 4)
     .sort(byDate);
 
   const localProjects = await graphql(project.query);
@@ -55,7 +53,6 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     edges: [{}],
     pathPrefix: '/',
     createPage,
-    pageLength,
     pageTemplate: path.resolve(`./src/templates/Landing.tsx`),
     buildPath: '/',
     context: {
