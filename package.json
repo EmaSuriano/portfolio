@@ -51,7 +51,7 @@
     "link-check": "^4.5.0",
     "markdown-link-check": "^3.8.1",
     "start-server-and-test": "^1.11.0",
-    "ts-node": "^8.10.1",
+    "ts-node": "^8.10.2",
     "typescript": "^3.8.3"
   },
   "husky": {
