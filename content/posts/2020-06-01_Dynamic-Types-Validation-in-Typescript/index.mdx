@@ -1,0 +1,84 @@
+## Establish context
+
+Here I want to talk about the discussion I always have with the people regarding if they have to do validation if they are using Typescript. Most of the people think that by having Typescript they are "covered"
+
+In order to illustrate just show a simple example of the communication with an external entity, where we type the shape of the object we expect but then the object it's actually different of what we expected :/
+
+While I was working in a migration of a project from JS to Typescript I encounter the issue of checking the structure of the incoming objects.
+
+> Incoming objects == APIs Responses, undocumented/untypes Libraries or components, Javascript snippets, content coming from file content, etc.
+
+## Fixing the problem
+
+Here I want to show the different approaches people use when they deal with validation.
+
+### Manual Validation
+
+So they basically have the types define for the APIs, and then on top of that they build functions that will check the **core** properties in order to avoid failing in run-time.
+
+This approach is totally valid and most probably it will work. Also, you can make this validators part of your business logic and create mappers around in order to depurate them.
+
+The main drawback is that they require manual work, from the creation of the validation and also in case the Types change, then this functions will throw an error in build time too.
+
+### Using a Library to create validators
+
+There are several libraries out there that allows us to create composable function which will validate the object given a criteria, not just evaluate that the value belongs to a specific type: string, array, object, etc.
+
+These libraries standarize the creation of the validators functions, they provide only one way to check the amount of elements inside an array or if an string is capitalized.
+
+Another good benefit is that some libraries will also return a type that will be already in sync with the validator!
+
+So what's the problem? Well you normally have to go and check the documentation of these validators libraries because all of them have a different way to create a new validator and set restrictions for the types.
+
+This may sound trivial, but adding one more "Language" or syntax to your project increase the complexity of it!
+
+## Introducing a new approach of doing things!
+
+Dynamic validators based on your definition types.
+
+The idea of this approach is that Types and Interfaces are the source to generate your validators.
+
+Show a simple example:
+
+```typescript
+type ExampleType {
+  name: string:
+  age?: number:
+  pets: {
+    name: string;
+    legs: number
+  }[]
+}
+```
+
+I actually didn't create this idea, it was made by this amazing guy in Github. So huge shout out to him, and I want more people to know his great project!
+
+```javascript
+// Show output of validator
+```
+
+```javascript
+// Show
+```
+
+## Example of the approach in action
+
+A couple of weeks ago, I released a new open source project which is a Gatsby Starter that will take care the annoying task of keep up to date your CV.
+
+The project will read the information you have inside your LinkedIn profile and then create a Resume in PDF and HMTL using another tool. So it's basically two libraries together.
+
+This is the workflow of the library.
+
+Currently there is a big discussion about how to get the data coming from LinkedIn, therefore I decided to use a crawler in order to get the data. The crawler will generate a `.json` file with all the data from your profile, after that I'm running a validation based on that information.
+
+The information inside this file is crucial to have a proper structure because it will be used later to generate the resume.
+
+This is the type definition of the LinkedIn Information, and then
+
+## Comparison with the other approaches
+
+| Approach                 | No additional Syntax | Validators and Types Sync |
+| ------------------------ | -------------------- | ------------------------- |
+| Manual Validator         | ✅                   | ❌                        |
+| Validator builders       | ❌                   | ✅                        |
+| Dynamic Types Validators | ✅                   | ✅                        |
