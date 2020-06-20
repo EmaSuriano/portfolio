@@ -1,12 +1,599 @@
-## Establish context
+There is no doubt that Typescript has gained a huge adoption on the Javascript eco-system, and one of the great benefits it provides is the type checking of all the variables inside our code. It will check if performing any operation on a variable is possible given its type.
 
-Here I want to talk about the discussion I always have with the people regarding if they have to do validation if they are using Typescript. Most of the people think that by having Typescript they are "covered"
+I gave a talk about the same topic in the Typescript Meetup of Berlin. This article and the talk cover the same content, so you pick any of them to learn about this topic! [Link to the talk](https://youtu.be/cn6i5Av-B8Q?t=1884).
 
-In order to illustrate just show a simple example of the communication with an external entity, where we type the shape of the object we expect but then the object it's actually different of what we expected :/
+Most of the people think that by using Typescript as their application language, they are "covered" from any emptiness error, like the classic _"undefined is not a function"_ or my favorite _"can't read property X of undefined"_. 
 
-While I was working in a migration of a project from JS to Typescript I encounter the issue of checking the structure of the incoming objects.
+This assumption is wrong, and the best way to demonstrate it is with code! 
 
-> Incoming objects == APIs Responses, undocumented/untypes Libraries or components, Javascript snippets, content coming from file content, etc.
+## Why won't Typescript always cover you? 🕵
+
+The following example does **not** present any Typescript error.
+
+``` javascript
+// Typescript definition
+type ExampleType = {
+  name: string;
+  age?: number;
+  pets: {
+    name: string;
+    legs: number;
+  }[];
+};
+
+// communicates with external API
+const fetchData = (): Promise<ExampleType> => { };
+
+const getBiped = async () => {
+  const data = await fetchData();
+  console.log(data);
+  // { name: 'John' }
+  return data.pets.find((pet) => pet.legs === 2); // Boom!
+};
+```
+
+The snippet contains: 
+
+- `ExampleType`: A type definition with two properties required `name` and `pets`, and one optional `age`. The property `pets` is an array of object with `name` and `legs`, both required.
+- `fetchData`: A function to retrieve data from an external endpoint.
+- `getBiped`: Another function that will call `fetchData` and then iterate over the `pets`, and return only the `pets` with two `legs`.
+
+So, why my script will fail when I execute it? The reasons is, the external API is returning an object which doesn't contain `pets` inside, and then when you try to execute `data.pets.find()`, you will receive the error of `Uncaught ReferenceError: Cannot read property 'find' of undefined`.
+
+Inside the React official Documentation you can find a very nice definition of what Typescript is:
+
+> TypeScript is a programming language developed by Microsoft. It is a typed superset of JavaScript, and includes its own compiler. Being a typed language, TypeScript can catch errors and bugs at build time, long before your app goes live - [React Official Doc](https://reactjs.org/docs/static-type-checking.html)
+
+Given that definition, it's possible to formulate a new assumption: 
+
+> Typescript performs static type validation. Developers should take of dynamic validations.
+
+## Do you need to validate everything? 🤔
+
+Simply, **No** 🎉
+
+It's clear that checking all the variables of our application is time consuming from a development and performance perspective. A nice rule of thumb you can follow is:
+
+> Validate all the **external** sources of your application.
+
+External sources are basically everything that it's external or doesn't have access to your application. Some examples: 
+
+- APIs responses
+- Content inside files
+- Input from the user
+- Untyped Libraries
+
+An application will always present at least one external source, otherwise it will be very useless. Therefore let's take a look on how you can write validations for your object in Typescript.
+
+To keep things simple, the original snippet will be consider the _base_ and on top I will show how to implement each of the Validation Method.
+
+## Manual Validation
+
+Most basic and used validation. It's a set of conditions that check if the structure is the expected.
+
+```typescript
+const validate = (data: ExampleType) => {
+  if (!data.pets) return false;
+  // perform more checks
+
+  return true;
+};
+
+const getBiped = async () => {
+  const data = await fetchData();
+  if (!validate(data)) throw Error('Validation error: data is not complete ...');
+
+  return data.pets.find((pet) => pet.legs === 2);
+};
+```
+
+As you can see a new function has been defined, called `validate`, which receives as a parameter an `ExampleType` object, with which is going to check if the property `pets` is define or not. In case not, it will return `false`, which will end up throwing an Error with a description message. Otherwise, it will continue the execution and now when evaluating `data.pets.find`, it won't throw an error.
+
+Be aware that the implementation that the `validate` function is quite simple, and there is room for many more checks, such as:
+- `name` should exists
+- `name` should be a `string`
+- if `age` exists, it should be a `number`.
+- `pets` should be an `array` of `object`.
+- each `pets` `object` should have a property `name` and `legs`.
+
+The more checks you add, the more robust your application will be, but the more time you need to invest too.
+
+The advantages of this method are:
+
+- No external library required.
+- Business centric: you can add any business logic inside this validators, for example you can check that `propertyA` shouldn't exists if `propertyB` is present. 
+
+
+Obviously it has disadvantages:
+
+- Manual work: every validation has to be manually coded and this can be quite time consuming.
+- Duplication of code: in the example `ExampleType` already defines that there is a `pets` property and that it is a required, but again inside the validation code you should still check that it's true.
+
+## Using of a validation library
+
+Why re inventing the wheel, right? This method consist on using any validation library to assert the structure of the objects. To name some of the most used libraries: 
+
+- [`ajv`](https://github.com/ajv-validator/ajv)
+- [`joi`](https://github.com/hapijs/joi)
+- [`v8n`](https://github.com/imbrn/v8n)
+- [`validate.js`](https://github.com/ansman/validate.js)
+
+The validation library used for this article is `ajv`, nevertheless all the conclusions may also apply to the other libraries.
+
+```typescript
+const Ajv = require('ajv');
+const ajv = new Ajv();
+
+const validate = ajv.compile({
+  properties: {
+    name: {
+      type: 'string',
+      minLength: 3,
+    },
+    age: { type: 'number' },
+    pets: {
+      type: 'array',
+      items: {
+        name: {
+          type: 'string',
+          minLength: 3,
+        },
+        legs: { type: 'number' },
+      },
+    },
+  },
+  required: ['name', 'pets'],
+  type: 'object',
+});
+
+const getBiped = async () => {
+  const data = await fetchData();
+  // { name: 'John' }
+  if (!validate(data)) {
+    throw Error('Validation failed: ' + ajv.errorsText(validate.errors));
+    // Error: Validation failed: data should have required property 'pets'
+  }
+
+  return data.pets.find((pet) => pet.legs === 2);
+};
+```
+
+
+## Pros
+
+- ✅ A standardized way to create validators and checks
+- ✅ Improvement of Error Reporting
+
+
+## Cons
+
+- ❌ Introduction of new Syntax
+- ❌ Validators and Types are not in Sync\*
+
+---
+
+## Dynamic Types Validator
+
+Create validators from your types.
+
+---
+
+<Split>
+
+<div>
+
+### Before
+
+<Mermaid
+  chart={`
+graph TB;
+  Validator --> Object;
+  Type --> Object;
+  Object --> wq[Validated Typed Object]
+  `}
+/>
+
+</div>
+
+<Appear>
+
+<div>
+
+### Now
+
+<Mermaid
+  chart={`
+graph TB;
+  Type --> Validator;
+  Validator --> Object;
+  Object --> wq[Validated Typed Object]
+  `}
+/>
+
+</div>
+
+</Appear>
+
+</Split>
+
+---
+
+## Introducing
+
+# [`typescript-json-validator`](https://github.com/ForbesLindesay/typescript-json-validator)
+
+<Appear>
+
+> Automatically generate a validator using JSON Schema and AJV for any TypeScript type.
+
+Made by [@ForbesLindesay](https://twitter.com/ForbesLindesay) 👏
+
+</Appear>
+
+---
+
+## Usage
+
+<Split>
+
+```typescript
+// src/types/ExampleType.ts
+
+type ExampleType = {
+  name: string;
+  age?: number;
+  pets: {
+    name: string;
+    legs: number;
+  }[];
+};
+```
+
+```bash
+> npx typescript-json-validator
+  src/types/ExampleType.ts ExampleType
+
+# ExampleType.validator.ts created!
+```
+
+</Split>
+
+---
+
+```javascript
+/* tslint:disable */
+// generated by typescript-json-validator
+import { inspect } from "util";
+import Ajv = require("ajv");
+import ExampleType from "./ExampleType";
+
+// Instance of Ajv
+export const ajv = new Ajv({
+  allErrors: true,
+  coerceTypes: false,
+  format: "fast",
+  nullable: true,
+  unicode: true,
+  uniqueItems: true,
+  useDefaults: true,
+});
+
+ajv.addMetaSchema(require("ajv/lib/refs/json-schema-draft-06.json"));
+
+export { ExampleType };
+
+// Definition of Schema
+export const ExampleTypeSchema = {
+  $schema: "http://json-schema.org/draft-07/schema#",
+  defaultProperties: [],
+  properties: {
+    age: {
+      type: "number",
+    },
+    name: {
+      type: "string",
+    },
+    pets: {
+      items: {
+        defaultProperties: [],
+        properties: {
+          legs: {
+            type: "number",
+          },
+          name: {
+            type: "string",
+          },
+        },
+        required: ["legs", "name"],
+        type: "object",
+      },
+      type: "array",
+    },
+  },
+  required: ["name", "pets"],
+  type: "object",
+};
+export type ValidateFunction<T> = ((data: unknown) => data is T) &
+  Pick<Ajv.ValidateFunction, "errors">;
+export const isExampleType = ajv.compile(ExampleTypeSchema) as ValidateFunction<
+  ExampleType
+>;
+
+// Expose validate function
+export default function validate(value: unknown): ExampleType {
+  if (isExampleType(value)) {
+    return value;
+  } else {
+    throw new Error(
+      ajv.errorsText(
+        isExampleType.errors!.filter((e: any) => e.keyword !== "if"),
+        { dataVar: "ExampleType" }
+      ) +
+        "\n\n" +
+        inspect(value)
+    );
+  }
+}
+```
+
+---
+
+```typescript
+import validate from 'src/types/ExampleType.validator';
+
+const getBiped = async () => {
+  const data = validate(await fetchData());
+
+  return data.pets.find((pet) => pet.legs === 2);
+};
+```
+
+---
+
+## Typescript ❤️ Ajv
+
+<Split>
+
+```typescript
+interface ExampleType {
+  /**
+   * @format email
+   */
+  email?: string;
+  /**
+   * @minimum 0
+   * @maximum 100
+   */
+  answer: number;
+}
+```
+
+```typescript
+export const ExampleTypeSchema = {
+  $schema: 'http://json-schema.org/draft-07/schema#',
+  defaultProperties: [],
+  properties: {
+    answer: {
+      maximum: 100,
+      minimum: 0,
+      type: 'number',
+    },
+    email: {
+      format: 'email',
+      type: 'string',
+    },
+  },
+  required: ['answer'],
+  type: 'object',
+};
+```
+
+</Split>
+
+---
+
+# But wait for a second ...
+
+<CustomizableImage
+  src={require('../assets/wait.gif')}
+  alt="Wait"
+  width="700px"
+  maxWidth="700px"
+/>
+
+<Appear>
+
+# `pre-build 🎉`
+
+</Appear>
+
+---
+
+# Adding pre-build step
+
+```json
+{
+  "scripts": {
+    "prebuild": "typescript-json-validator src/types/ExampleType.ts ExampleType",
+    "start": "yarn prebuild && ts-node start.ts",
+    "build": "yarn prebuild && tsc"
+  }
+}
+```
+
+---
+
+# My experience with this approach
+
+# [`gatsby-starter-linkedin-resume`](https://github.com/EmaSuriano/gatsby-starter-linkedin-resume)
+
+<Appear>
+
+> Generate your resume (HTML, PDF) from your Linked information with Gatsby.
+
+<div>
+  <Flex>
+    <Logo name="Gatsby" />
+    <Logo name="Json-resume" />
+    <Logo name="Linked-in" />
+  </Flex>
+</div>
+
+</Appear>
+
+---
+
+<img
+  src={require('../assets/how-it-works.svg')}
+  alt="Photo by Brendan Church on Unsplash"
+/>
+
+---
+
+# External sources for the App
+
+<Steps>
+
+1. Data coming from the Linked-in crawler
+2. Local file with the resume information.
+
+</Steps>
+
+---
+
+# Relevant Types
+
+<Split>
+
+```typescript
+interface LinkedInSchema {
+  contact: ContactItem[];
+  profile: ProfileData;
+  positions: LinkedInPosition[];
+  educations: LinkedInEducation[];
+  skills: Skill[];
+  courses: Course[];
+  languages: LinkedInLanguage[];
+  projects: LinkedInProject[];
+}
+```
+
+```typescript
+interface JsonResumeSchema {
+  basics: JsonResumeBasics;
+  work: JsonResumeWork[];
+  volunteer?: JsonResumeVolunteer[];
+  education: JsonResumeEducation[];
+  awards?: JsonResumeAward[];
+  publications?: JsonResumePublication[];
+  skills?: JsonResumeSkill[];
+  languages?: JsonResumeLanguage[];
+  interests?: JsonResumeInterest[];
+  references?: JsonResumeReference[];
+  projects?: JsonResumeProject[];
+}
+```
+
+</Split>
+
+---
+
+## 1. Crawler result validation
+
+```typescript
+// src/index.ts
+import { RESUME_PATH, LINKED_IN_PATH } from './utils/path';
+import mapLinkedInToJSONResume from './utils/mapLinkedInToJSONResume';
+import validateLinkedInSchema from './types/LinkedInSchema.validator';
+import { saveJson, readJson } from './utils/file';
+import { inquireLoginData, getLinkedInData } from './utils/linkedin';
+
+export const main = async ({ renew }) => {
+  if (renew || !readJson(LINKED_IN_PATH)) {
+    const credentials = await inquireLoginData();
+    const linkedInData = await getLinkedInData(credentials);
+
+    saveJson(LINKED_IN_PATH, linkedInData);
+  }
+
+  // VALIDATION IN ACTION ❗️
+  const linkedInParsed = validateLinkedInSchema(readJson(LINKED_IN_PATH));
+
+  const jsonResumeData = mapLinkedInToJSONResume(linkedInParsed);
+  saveJson(RESUME_PATH, jsonResumeData);
+};
+```
+
+---
+
+## 2. Resume content validation
+
+```javascript
+// gatsby-config.js
+const { existsSync } = require('fs');
+const {
+  default: validateJsonResume,
+} = require('./lib/types/JsonResumeSchema.validator');
+
+if (!existsSync('./resume.json')) {
+  throw new Error(
+    'Please run "yarn generate-resume" to generate your resume information.',
+  );
+}
+
+// VALIDATION IN ACTION ❗️
+const resumeJson = validateJsonResume(require('./resume.json'));
+
+module.exports = {
+  plugins: [
+    {
+      resolve: 'gatsby-theme-jsonresume',
+      options: {
+        resumeJson,
+      },
+    },
+    'gatsby-plugin-meta-redirect',
+  ],
+};
+```
+
+---
+
+# Summary 🧳
+
+| Approach      | No additional Syntax | Validators and Types Sync | Standardization |
+| ------------- | -------------------- | ------------------------- | --------------- |
+| Manual        | ✅                   | ❌                        | ❌              |
+| Library       | ❌                   | ❓                        | ✅              |
+| Dynamic Types | ✅                   | ✅                        | ✅              |
+
+---
+
+<Invert>
+
+> Validate **more**, with **less**
+
+</Invert>
+
+---
+
+# Thanks for listening! 🙌
+
+[emasuriano.com/talks](https://emasuriano.com/talks)
+
+---
+
+# References 📖
+
+- [Documentation of `ajv`](https://ajv.js.org/)
+- [`typescript-json-validator`](https://github.com/ForbesLindesay/typescript-json-validator)
+- [`gatsby-starter-linkedin-resume`](https://github.com/EmaSuriano/gatsby-starter-linkedin-resume)
+
+---
+
+# Questions? 🗣
+
+
 
 ## Fixing the problem
 
@@ -74,11 +661,3 @@ Currently there is a big discussion about how to get the data coming from Linked
 The information inside this file is crucial to have a proper structure because it will be used later to generate the resume.
 
 This is the type definition of the LinkedIn Information, and then
-
-## Comparison with the other approaches
-
-| Approach                 | No additional Syntax | Validators and Types Sync |
-| ------------------------ | -------------------- | ------------------------- |
-| Manual Validator         | ✅                   | ❌                        |
-| Validator builders       | ❌                   | ✅                        |
-| Dynamic Types Validators | ✅                   | ✅                        |
