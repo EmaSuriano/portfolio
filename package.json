@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/react-dom": "^16.9.8",
-    "cypress": "^4.8.0",
+    "cypress": "^4.9.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
