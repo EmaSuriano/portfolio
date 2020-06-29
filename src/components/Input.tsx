@@ -10,11 +10,11 @@ const Field = styled.div<{ active: boolean }>`
   width: 100%;
   border-radius: 4px;
   position: relative;
-  background-color: ${p => p.theme.colors.background};
+  background-color: ${(p) => p.theme.colors.background};
   transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out;
 
   &:hover {
-    background: ${p => p.theme.colors.hover};
+    background: ${(p) => p.theme.colors.hover};
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
   }
 
@@ -26,7 +26,7 @@ const Field = styled.div<{ active: boolean }>`
     border: none;
     border-radius: 4px;
     background-color: transparent;
-    color: ${p => p.theme.colors.grey};
+    color: ${(p) => p.theme.colors.grey};
     outline: none;
     box-shadow: 0px 4px 20px 0px transparent;
     transition: 0.3s background-color ease, 0.3s box-shadow ease,
@@ -34,11 +34,11 @@ const Field = styled.div<{ active: boolean }>`
     -webkit-appearance: none;
     resize: none;
 
-    ${p => p.active && `padding: 24px 16px 8px 16px;`}
+    ${(p) => p.active && `padding: 24px 16px 8px 16px;`}
   }
 
   input::placeholder {
-    color: ${p => (p.active ? 'transparent' : p.theme.colors.grey)};
+    color: ${(p) => (p.active ? 'transparent' : p.theme.colors.grey)};
   }
 
   .wrapper + label {
@@ -53,7 +53,7 @@ const Field = styled.div<{ active: boolean }>`
     pointer-events: none;
     transition: 0.1s all ease-in-out;
 
-    ${p =>
+    ${(p) =>
       p.active &&
       `
       top: 4px;
