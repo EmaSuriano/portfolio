@@ -22,7 +22,7 @@ const HeroHeading = styled.h1`
   font-weight: 600;
   font-size: 52px;
   line-height: 1.15;
-  color: ${p => p.theme.colors.primary};
+  color: ${(p) => p.theme.colors.primary};
 
   ${mediaqueries.desktop`
     font-size: 38px
@@ -39,7 +39,7 @@ const HeroSubheading = styled.h2`
   font-size: 38px;
   margin-top: 20px;
   line-height: 1.15;
-  color: ${p => p.theme.colors.accent};
+  color: ${(p) => p.theme.colors.accent};
 
   ${mediaqueries.desktop`
     font-size: 32px

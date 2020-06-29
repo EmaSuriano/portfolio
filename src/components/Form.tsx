@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 64px 0 55px;
   margin: 10px auto 100px;
-  background: ${p => p.theme.colors.card};
+  background: ${(p) => p.theme.colors.card};
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.05);
   z-index: 1;
 
@@ -42,7 +42,7 @@ export const Content = styled.div`
 
 export const Text = styled.p`
   margin: 0 auto 30px;
-  color: ${p => p.theme.colors.grey};
+  color: ${(p) => p.theme.colors.grey};
   line-height: 1.75;
 
   ${mediaqueries.tablet`
@@ -97,16 +97,16 @@ export const ConfirmButton = styled.button`
   border-bottom: 2px solid transparent;
   background-color: transparent;
   transition: 0.3s border ease;
-  color: ${p => p.theme.colors.accent};
+  color: ${(p) => p.theme.colors.accent};
 
   &[disabled] {
     cursor: not-allowed;
-    color: ${p => p.theme.colors.secondary};
-    border-bottom-color: ${p => p.theme.colors.secondary};
+    color: ${(p) => p.theme.colors.secondary};
+    border-bottom-color: ${(p) => p.theme.colors.secondary};
   }
 
   &:focus,
   &:hover {
-    border-bottom-color: ${p => p.theme.colors.accent};
+    border-bottom-color: ${(p) => p.theme.colors.accent};
   }
 `;
