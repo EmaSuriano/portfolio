@@ -46,11 +46,12 @@ export const writeSmartPreview = (filePath: string, line: string) => {
     }
     case 'YouTube': {
       const params = src.split('watch?').pop();
-      const { v: id, t: start } = queryString.parse(params!);
-      console.log(id, start);
+      const { v: id, t: start = 0 } = queryString.parse(params!);
+      const options = { start };
+
       result.push(
         '<div class="Image__Medium">',
-        `    <YouTube videoId="${id}" opts={{ start: ${start} }} />`,
+        `    <YouTube videoId="${id}" opts={${JSON.stringify(options)}} />`,
       );
       break;
     }
