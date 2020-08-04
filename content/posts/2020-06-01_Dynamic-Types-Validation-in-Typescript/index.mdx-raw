@@ -8,7 +8,7 @@ Most of the people think that by using Typescript as their application language,
 
 This assumption is wrong, and the best way to demonstrate it is with code!
 
-## Why won't Typescript always cover you? 🕵
+# Why will Typescript NOT always cover you? 🕵
 
 The following example does **not** present any Typescript error.
 
@@ -42,15 +42,15 @@ The snippet contains:
 
 So, why my script will fail when I execute it? The reason is, the external API is returning an object which doesn't contain `pets` inside, and then when you try to execute `data.pets.find()`, you will receive the error of `Uncaught ReferenceError: Cannot read property 'find' of undefined`.
 
-Inside the React official Documentation you can find a very nice definition of what Typescript is:
+Inside the [React official Documentation](https://reactjs.org/docs/static-type-checking.html) you can find a very nice definition of what Typescript is:
 
-> TypeScript is a programming language developed by Microsoft. It is a typed superset of JavaScript and includes its compiler. Being a typed language, TypeScript can catch errors and bugs at build time, long before your app goes live - [React Official Doc](https://reactjs.org/docs/static-type-checking.html)
+> TypeScript is a programming language developed by Microsoft. It is a typed superset of JavaScript and includes its compiler. Being a typed language, TypeScript can catch errors and bugs at build time, long before your app goes live.
 
 Given that definition, it's possible to formulate a new assumption:
 
 > Typescript performs static type validation. Developers should take of dynamic validations.
 
-## Do you need to validate everything? 🤔
+So then: _Do you need to validate everything? 🤔_
 
 Simply, **No** 🎉
 
@@ -69,7 +69,9 @@ An application will always present at least one external source, otherwise, it w
 
 To keep things simple, the original snippet will be considered the _base_ and on top, I will show how to implement each of the Validation Methods.
 
-## Manual Validation
+---
+
+## Manual Validation 👷‍♂️
 
 Most basic validation, it's a set of conditions that check if the structure is the expected one.
 
@@ -116,7 +118,9 @@ It also presents some disadvantages:
 - **Duplication of code**: in the example, `ExampleType` already defines that there is a `pets` property and that it is required, but again inside the validation code you should still check that it's true.
 - **Room for bugs**: in the previous code, there were many "bugs" or places for improvement.
 
-## Using a validation library
+---
+
+## Using a Validation Library ✨
 
 Why re-inventing the wheel, right? This method consists of using any validation library to assert the structure of the objects. To name some of the most used libraries:
 
@@ -182,7 +186,9 @@ This new way of creating validations present the following drawbacks:
 
 One small comment regarding keeping in Sync Validators and Types, some open-source projects address this issue, such as [json-schema-to-typescript](https://www.npmjs.com/package/json-schema-to-typescript), which can generate a Type definition from an existing Schema. Then this won't be considered a problem.
 
-## Dynamic Types Validator
+---
+
+## Dynamic Types Validator 🔌
 
 This is the method I want to talk about, and it presents a change of paradigm regarding how to create Validators and keep Types in sync.
 
@@ -194,7 +200,9 @@ The method of Dynamic Types Validator allows a Type to generate a validator from
 
 ![Now](./images/now.svg)
 
-### Generation of Validators
+---
+
+### Generation of Validators 🤖
 
 To generate these Validators, I found an amazing Open Source project called [`typescript-json-validator`](https://github.com/ForbesLindesay/typescript-json-validator), made by [@ForbesLindesay](https://twitter.com/ForbesLindesay). The description of the repository is:
 
@@ -333,8 +341,6 @@ This library uses `ajv` under the hood to create the Validator function, which m
 
 Let's create a new definition type for `ExampleType`.
 
-<Split>
-
 ```typescript
 interface ExampleType {
   /**
@@ -392,6 +398,8 @@ Fixing this issue is quite easy, you have to simply add a script that will be ex
 ```
 
 One last recommendation, I recommend ignoring any `validator.ts` file from your project, because there is no point in committing these files to your repository as they are going to be generated every time you start your project.
+
+---
 
 ## My experience with this approach 🙋‍♂️
 
@@ -470,8 +478,6 @@ export const main = async ({ renew }) => {
 };
 ```
 
----
-
 ## Validation of the Resume Information
 
 ```javascript
@@ -505,14 +511,16 @@ module.exports = {
 };
 ```
 
+---
+
 ## Closing Words 🗣
 
 To sump up, I created this table comparing the three methods, in which the Dynamic Types approach shows that it grabs the best of the other methods, making it the recommended approach to validate your object.
 
-| Approach      | No additional Syntax | Validators and Types Sync | Standardization |
-| ------------- | -------------------- | ------------------------- | --------------- |
-| Manual        | ✅                   | ❌                        | ❌              |
-| Library       | ❌                   | ❓                        | ✅              |
-| Dynamic Types | ✅                   | ✅                        | ✅              |
+| Approach                  | Manual | Library | Dynamic Types |
+| ------------------------- | ------ | ------- | ------------- |
+| No additional Syntax      | ✅     | ❌      | ✅            |
+| Validators and Types Sync | ❌     | ❓      | ✅            |
+| Standardization           | ❌     | ✅      | ✅            |
 
 In case you are working in a Typescript codebase, I recommend you to give a try to this new of validating your object. It's very easy to make the set up for it, and in case you don't find it useful removing from the codebase is as easy as removing an `import` from your files.
