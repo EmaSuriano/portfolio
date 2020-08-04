@@ -9,8 +9,8 @@ import styled from '../helpers/styled';
 import NotFound from '../assets/not-found.svg';
 
 const NotFoundThemed = styled(NotFound)`
-  color: ${p => p.theme.colors.primary};
-  width: ${p => p.theme.colors.primary};
+  color: ${(p) => p.theme.colors.primary};
+  width: ${(p) => p.theme.colors.primary};
   width: 350px;
 
   ${mediaqueries.desktop`

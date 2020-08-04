@@ -10,8 +10,8 @@
   to = "https://talks.emasuriano.com/:splat"
 
 [[redirects]]
-  from="/resume/*"
-  to="https://resume.emasuriano.com/:splat"
+  from="/resume"
+  to="https://standardresume.co/r/emasuriano"
 
 [[redirects]]
   from="/oss/*"

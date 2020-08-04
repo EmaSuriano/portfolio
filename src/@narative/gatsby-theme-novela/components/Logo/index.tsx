@@ -5,7 +5,7 @@ import styled from '../../../../helpers/styled';
 const Hologram = styled.h1`
   display: inline-block;
   padding: 1em 1.7em;
-  color: ${p => p.color};
+  color: ${(p) => p.color};
   position: relative;
   transition: translate 250ms ease;
 
@@ -33,7 +33,7 @@ const Hologram = styled.h1`
   }
 
   &:hover {
-    color: ${p => p.theme.colors.accent};
+    color: ${(p) => p.theme.colors.accent};
 
     &:before,
     &:after {
