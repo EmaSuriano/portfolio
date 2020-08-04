@@ -1,20 +1,8 @@
----
-title: Dynamic Types Validation in Typescript
-author: Ema Suriano
-date: 2020-06-01
-hero: ./images/hero.jpg
-excerpt: There is no doubt that Typescript has gained a huge adoption on the JavaScript ecosystem, and one of the great benefits it provides is the type checking of all the variables inside our code. It will check if performing any operation on a variable is possible given its type.
-secret: false
----
-
 There is no doubt that Typescript has gained a huge adoption on the JavaScript ecosystem, and one of the great benefits it provides is the type checking of all the variables inside our code. It will check if performing any operation on a variable is possible given its type.
 
 I gave a talk about the same topic in the Typescript Meetup of Berlin. This article and the talk cover the same content, so you pick any of them to learn about this topic!
 
-<div class="Image__Medium">
-    <YouTube videoId="cn6i5Av-B8Q" opts={{ start: 1884 }} />
-  <figcaption>Link to the talk</figcaption>
-</div>
+![Link to the talk](https://youtube.com/watch?v=cn6i5Av-B8Q&t=1884)
 
 Most of the people think that by using Typescript as their application language, they are "covered" from any emptiness error, like the classic _"undefined is not a function"_ or my favorite _"can't read property X of undefined"_.
 
@@ -200,17 +188,11 @@ This is the method I want to talk about, and it presents a change of paradigm re
 
 In the two other methods, the Validator and the Type can be seen as different entities. The Validator will take the incoming Object and check its properties, and the Type statically belongs to the Object. Combining both entities, the result is a **Validated Types Object**.
 
-<div class="Image__Small">
-  <img src="./images/before.svg" alt="Before" />
-  <figcaption>Before</figcaption>
-</div>
+![Before](./images/before.svg)
 
 The method of Dynamic Types Validator allows a Type to generate a validator from his definition. Now they have are related, where a Validator depends entirely on a Type, preventing any mismatch between structures.
 
-<div class="Image__Small">
-  <img src="./images/now.svg" alt="Now" />
-  <figcaption>Now</figcaption>
-</div>
+![Now](./images/now.svg)
 
 ### Generation of Validators
 

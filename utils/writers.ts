@@ -1,15 +1,12 @@
 import { imageSize } from 'image-size';
 import path from 'path';
 import { NAME_SEPARATOR } from './constants';
+import queryString from 'query-string';
 
 const DEFAULT_POST_NAME = '1999-01-01_Wrong-folder-name';
 
 const getPostInfo = (filePath: string) => {
-  const folder =
-    path
-      .dirname(filePath)
-      .split('/')
-      .pop() || DEFAULT_POST_NAME;
+  const folder = path.dirname(filePath).split('/').pop() || DEFAULT_POST_NAME;
 
   const [date, rawTitle] = folder.split(NAME_SEPARATOR);
   const title = rawTitle.split('-').join(' ');
@@ -48,10 +45,12 @@ export const writeSmartPreview = (filePath: string, line: string) => {
       break;
     }
     case 'YouTube': {
-      const videoId = src.split('watch?v=').pop();
+      const params = src.split('watch?').pop();
+      const { v: id, t: start } = queryString.parse(params!);
+      console.log(id, start);
       result.push(
         '<div class="Image__Medium">',
-        `    <YouTube videoId="${videoId}" />`,
+        `    <YouTube videoId="${id}" opts={{ start: ${start} }} />`,
       );
       break;
     }
