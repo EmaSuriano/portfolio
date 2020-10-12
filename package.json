@@ -27,7 +27,7 @@
     "gatsby-plugin-manifest": "^2.4.34",
     "gatsby-plugin-offline": "^3.2.30",
     "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-plugin-typescript": "^2.4.20",
+    "gatsby-plugin-typescript": "^2.4.21",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-typed": "^1.2.0"
