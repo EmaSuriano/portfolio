@@ -23,6 +23,7 @@ const siteMetadata = {
 
 const plugins = [
   `gatsby-plugin-typescript`,
+  'gatsby-plugin-remove-serviceworker',
   {
     resolve: '@narative/gatsby-theme-novela',
     options: {
@@ -49,6 +50,13 @@ const plugins = [
     options: {
       path: 'content/projects',
       name: 'content/projects',
+    },
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      path: 'content/talks',
+      name: 'content/talks',
     },
   },
   {

@@ -9,14 +9,14 @@ const gatsbyFluid = `
 `;
 
 const query = `{
-  projects: allProjectsYaml(sort: { fields: publishedDate, order: DESC }) {
+  projects: allProjectsYaml(sort: { fields: date, order: DESC }) {
     edges {
       node {
         name
         description
         type
         link
-        publishedDate(formatString: "MMMM, YYYY")
+        date(formatString: "MMMM, YYYY")
         hero {
           regular: childImageSharp {
             fluid(maxWidth: 653, quality: 100) {
@@ -35,7 +35,7 @@ const query = `{
 }`;
 
 const normalize = ({ node }) => {
-  const { name, description, type, link, publishedDate, hero } = node;
+  const { name, description, type, link, date, hero } = node;
 
   return {
     node: {
@@ -47,7 +47,7 @@ const normalize = ({ node }) => {
       },
       slug: link,
       excerpt: description,
-      date: publishedDate,
+      date,
       type,
     },
   };

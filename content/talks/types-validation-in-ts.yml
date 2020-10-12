@@ -1,0 +1,11 @@
+name: Runtime Types Validation in Typescript
+description: |
+  Sometimes using types inside our application, it's not enough to make sure that
+  it won't break on runtime. Because of that, we see ourselves forced to write
+  validation for our entities manually. In this talk, I want to present a way that
+  you can generate validators for all your types in your application automatically,
+  and how to integrate this into your development workflow.
+hero: ./cover/types-validation-in-ts.png
+type: React Global Online Summit
+date: 2020-09-15
+link: https://slides.com/emasuriano/runtime-types-validation-in-typescript

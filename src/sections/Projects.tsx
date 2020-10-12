@@ -4,7 +4,7 @@ import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
 
 const Projects = ({ projects = [] }: { projects: IProject[] }) => (
-  <Section title="Open Source Projects">
+  <Section title="Open Source Projects 👨‍💻">
     <GridLayoutProviderMock layout="rows">
       <ArticlesList articles={projects} />
     </GridLayoutProviderMock>

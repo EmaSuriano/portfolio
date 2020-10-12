@@ -48,9 +48,8 @@ const AboutContainer = styled.div`
 
 const About = ({ author }: { author: IAuthor }) => {
   const { about } = useStaticQuery(siteQuery);
-  console.log(author.avatar);
   return (
-    <Section title="About me">
+    <Section title="About me 👋">
       <InfoWrapper>
         <AboutContainer>
           <MDXRenderer content={about.body} />

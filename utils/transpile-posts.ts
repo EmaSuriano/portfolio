@@ -31,7 +31,6 @@ const transpilePost = async (filePath: string, draft: boolean) => {
     index++;
   }
 
-  console.log(`Blog "${filePath}" transpiled!`);
   writeSteam.close();
   fileStream.close();
 };
@@ -47,8 +46,8 @@ const main = async ({ watch }: { watch: boolean }) => {
     return;
   }
 
-  glob.sync(GLOB_PATTERN).map(file => transpilePost(file, false));
-  glob.sync(GLOB_PATTERN_DRAFT).map(file => transpilePost(file, true));
+  glob.sync(GLOB_PATTERN).map((file) => transpilePost(file, false));
+  glob.sync(GLOB_PATTERN_DRAFT).map((file) => transpilePost(file, true));
   return;
 };
 

@@ -3,5 +3,5 @@ description: |
   A Gatsby Starter to display information about events from Google Spreadsheets with Calendars.
 hero: ./logos/gatsby-starter-event-calendar.png
 type: Gatsby Starter
-publishedDate: 2018-10-01
+date: 2018-10-01
 link: https://github.com/EmaSuriano/gatsby-starter-event-calendar

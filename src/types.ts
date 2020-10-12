@@ -75,3 +75,7 @@ type Layout = 'tiles' | 'rows';
 type IProject = {
   name: string;
 };
+
+type ITalk = {
+  name: string;
+};

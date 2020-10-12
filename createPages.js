@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const createPaginatedPages = require('gatsby-paginate');
 const path = require('path');
 const query = require('@narative/gatsby-theme-novela/src/gatsby/data/data.query');
 const normalize = require('@narative/gatsby-theme-novela/src/gatsby/data/data.normalize');
 const project = require('./src/data/project');
+const talk = require('./src/data/talk');
 
 // ///////////////// Utility functions ///////////////////
 const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
@@ -36,16 +39,21 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
     avatar: rawAuthor.data.author.avatar.childImageSharp.fluid.src,
   };
 
-  const localArticles = await graphql(query.local.articles);
-  const articles = localArticles.data.articles.edges
+  const rawArticles = await graphql(query.local.articles);
+  const articles = rawArticles.data.articles.edges
     .map(normalize.local.articles)
-    .filter(article => !article.secret)
+    .filter((article) => !article.secret)
     .slice(0, 4)
     .sort(byDate);
 
-  const localProjects = await graphql(project.query);
-  const projects = localProjects.data.projects.edges
+  const rawProjects = await graphql(project.query);
+  const projects = rawProjects.data.projects.edges
     .map(project.normalize)
+    .map(normalize.local.articles);
+
+  const rawTalks = await graphql(talk.query);
+  const talks = rawTalks.data.talks.edges
+    .map(talk.normalize)
     .map(normalize.local.articles);
 
   log('Creating', 'Landing page');
@@ -59,6 +67,7 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
       articles,
       author,
       projects,
+      talks,
     },
   });
 };
