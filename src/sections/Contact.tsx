@@ -33,6 +33,7 @@ const About = () => (
           and I will go back to as soon as I can 🙏
         </Text>
         <form
+          encType="application/x-www-form-urlencoded"
           name="contact"
           method="post"
           data-netlify="true"
