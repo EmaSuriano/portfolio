@@ -2,6 +2,7 @@ import { imageSize } from 'image-size';
 import path from 'path';
 import { NAME_SEPARATOR } from './constants';
 import queryString from 'query-string';
+import removeMd from 'remove-markdown';
 
 const DEFAULT_POST_NAME = '1999-01-01_Wrong-folder-name';
 
@@ -89,7 +90,7 @@ export const writeHeader = (
     `author: Ema Suriano`,
     `date: ${date}`,
     `hero: ./images/hero.jpg`,
-    `excerpt: ${firstLine}`,
+    `excerpt: ${removeMd(firstLine)}`,
     `secret: ${!!draft}`,
     `---`,
     '',

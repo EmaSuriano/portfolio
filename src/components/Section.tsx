@@ -7,7 +7,7 @@ type Props = { children: ReactNode; title: string };
 
 const Section = ({ children, title }: Props) => (
   <NovelaSection
-    relative
+    narrow
     css={css`
       margin-bottom: 100px;
     `}
