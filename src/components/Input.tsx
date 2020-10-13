@@ -90,6 +90,7 @@ const Input = ({
       <div className="wrapper">
         <input
           id={id}
+          name={id}
           type={type}
           value={controlledValue || internalValue}
           placeholder={label}

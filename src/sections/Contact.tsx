@@ -24,16 +24,13 @@ const About = () => (
         </Heading>
         <Text>
           You can always contact me via any of the social platform at the bottom
-          of the page. But I also know that a solid contact form will never fail
-          you!{' '}
-          <span role="img" aria-label="muscle">
-            💪
-          </span>
+          of the page. Nevertheless, if you prefer email communication you can
+          use this contact form.
         </Text>
         <Text>
           Just drop me a message of whatever you feel like, a cool project idea,
           technical questions or maybe you just want to get in contact with me,
-          and I will go back to as soon as I can.
+          and I will go back to as soon as I can 🙏
         </Text>
         <form
           name="contact"
