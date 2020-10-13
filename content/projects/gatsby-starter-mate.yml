@@ -1,7 +1,7 @@
 name: Mate
 description: |
   A good looking portfolio starter for Gatsby integrated with Contentful CMS for developer and writers.
-hero: ./logos/gatsby-starter-mate.png
+hero: ./logos/gatsby-starter-mate.jpg
 type: Gatsby Starter
 date: 2018-09-01
 link: https://github.com/EmaSuriano/gatsby-starter-mate

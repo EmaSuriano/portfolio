@@ -3,7 +3,7 @@ description: |
   Same company, lots of teams, different technologies, developers
   battling outdated dependencies and copying scripts and configuration
   files all over multiple projects? Does this sound familiar to you?
-hero: ./cover/from-CRA-to-CAA.png
-type: Byteconf React 2020
+hero: ./cover/from-CRA-to-CAA.jpg
+type: Byteconf React
 date: 2020-05-01
 link: https://talks.emasuriano.com/from-CRA-to-CAA

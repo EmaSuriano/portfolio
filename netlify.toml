@@ -6,10 +6,6 @@
   package = "netlify-plugin-gatsby-cache"
 
 [[redirects]]
-  from = "/talks/*"
-  to = "https://talks.emasuriano.com/:splat"
-
-[[redirects]]
   from="/resume"
   to="https://standardresume.co/r/emasuriano"
 

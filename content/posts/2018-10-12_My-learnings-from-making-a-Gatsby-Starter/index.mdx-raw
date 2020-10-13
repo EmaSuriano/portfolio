@@ -44,7 +44,7 @@ In case you don’t know where to find a good Design System, I recommend the web
 
 When I looked into the codebase of my pages it was easy to detect a mix between component structure and information about me. A quick example was the About Me page, which looked like this:
 
-![The old snippet of About Me](images/old-snippet.png)
+![The old snippet of About Me](images/old-snippet.jpg)
 
 The solution was “_easy_”, all the information has to come from other resources, and fortunately doing that with Gatsby is incredibly easy, thanks to [Source Plugins](https://www.gatsbyjs.org/tutorial/part-five/). You can _connect_ your application with an _external resource_ and then your components can directly access the data from them.
 
@@ -52,13 +52,13 @@ I decided to go for [Contentful](http://contentful.com) as my CMS (Content Manag
 
 The first step is to create a _Content Model_ where you can declare the structure of the data about the owner of the portfolio.
 
-![Content Model for About me](images/content-model.png)
+![Content Model for About me](images/content-model.jpg)
 
 After that, I created a new _Content_ for the _About Content Model_ with some pre-existing values. I did this to provide an example of how it should look when you fill all your information, and also because without data the Section is completely empty …
 
 The code of About Me section will look something like:
 
-![The snippet of About me](images/new-snippet.png)
+![The snippet of About me](images/new-snippet.jpg)
 
 By doing this, the person who wants to change information about himself doesn’t have to look into the component structure, just change the information stored inside _Contentful_ ✨
 

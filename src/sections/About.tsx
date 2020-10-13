@@ -48,6 +48,7 @@ const AboutContainer = styled.div`
 
 const About = ({ author }: { author: IAuthor }) => {
   const { about } = useStaticQuery(siteQuery);
+  console.log(author.avatar.large);
   return (
     <Section title="About me 👋">
       <InfoWrapper>
@@ -55,7 +56,7 @@ const About = ({ author }: { author: IAuthor }) => {
           <MDXRenderer content={about.body} />
         </AboutContainer>
         <AvatarContainer>
-          <RoundedImage src={author.avatar} alt="Profile Picture" />
+          <RoundedImage src={author.avatar.large.src} alt="Profile Picture" />
         </AvatarContainer>
       </InfoWrapper>
     </Section>

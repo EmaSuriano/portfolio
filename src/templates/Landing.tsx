@@ -5,7 +5,7 @@ import LastArticles from '../sections/LastArticles';
 import Hero from '../sections/Hero';
 import Contact from '../sections/Contact';
 import About from '../sections/About';
-import Talks from '../sections/Talks';
+import LastTalks from '../sections/LastTalks';
 import Projects from '../sections/Projects';
 
 type Props = {
@@ -26,9 +26,9 @@ const Landing = ({ location, pageContext }: Props) => {
       <SEO pathname={location.pathname} />
       <Hero />
       <About author={author} />
-      <Talks talks={talks} />
       <Projects projects={projects} />
       <LastArticles articles={articles} />
+      <LastTalks talks={talks} />
       <Contact />
     </Layout>
   );

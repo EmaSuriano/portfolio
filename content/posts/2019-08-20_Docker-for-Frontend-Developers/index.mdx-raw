@@ -16,7 +16,7 @@ The key benefit of using containers is that they package up code and all its dep
 
 This decoupling allows container-based applications to be deployed easily and consistently regardless of where the application will be deployed: a cloud server, an internal company server, or your personal computer.
 
-![Docker Architecture](images/docker-architecture.png)
+![Docker Architecture](images/docker-architecture.jpg)
 
 ## Terminology 📖
 
@@ -61,7 +61,7 @@ The “Hello, World!” demo was quick and easy, but the truth is we were not us
 
 So, as you might guess, we need to somehow set up a Node environment in Docker. Luckily, the Docker team has created an amazing marketplace where you can search for Docker images inside their public Docker Hub. To look for a Node.js image, you just need to type “node” in the search bar, and you most probably will [find this one](https://hub.docker.com/_/node).
 
-![Official Node Images](images/official-node-images.png)
+![Official Node Images](images/official-node-images.jpg)
 
 So the first step is to pull the image from the Docker Hub, as shown below:
 
@@ -75,10 +75,10 @@ Then you need to set up a basic Node app. Create a file called `node-test.js`, a
 const https = require('https');
 
 https
-  .get('https://jsonplaceholder.typicode.com/todos/1', response => {
+  .get('https://jsonplaceholder.typicode.com/todos/1', (response) => {
     let todo = '';
 
-    response.on('data', chunk => {
+    response.on('data', (chunk) => {
       todo += chunk;
     });
 
@@ -86,7 +86,7 @@ https
       console.log(`The title is "${JSON.parse(todo).title}"`);
     });
   })
-  .on('error', error => {
+  .on('error', (error) => {
     console.error('Error: ' + error.message);
   });
 ```

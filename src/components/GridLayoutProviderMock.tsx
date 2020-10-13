@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GridLayoutContext } from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List.Context';
 
 const GridLayoutProviderMock = ({
@@ -8,11 +8,11 @@ const GridLayoutProviderMock = ({
   children: React.ReactNode;
   layout: Layout;
 }) => {
-  const [gridLayout, setGridLayout] = React.useState(layout);
+  const [gridLayout, setGridLayout] = useState(layout);
 
-  function setGridLayoutAndSave(tile: string) {
+  const setGridLayoutAndSave = (tile: string) => {
     setGridLayout(tile as Layout);
-  }
+  };
 
   return (
     <GridLayoutContext.Provider

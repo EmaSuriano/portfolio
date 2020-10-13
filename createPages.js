@@ -5,6 +5,7 @@ const path = require('path');
 const query = require('@narative/gatsby-theme-novela/src/gatsby/data/data.query');
 const normalize = require('@narative/gatsby-theme-novela/src/gatsby/data/data.normalize');
 const project = require('./src/data/project');
+const authorData = require('./src/data/author');
 const talk = require('./src/data/talk');
 
 // ///////////////// Utility functions ///////////////////
@@ -14,30 +15,9 @@ const log = (message, section) =>
   console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`);
 // ///////////////////////////////////////////////////////
 
-const AUTHOR_QUERY = `{
-  author {
-    bio
-    id
-    name
-    social {
-      url
-    }
-    avatar {
-      childImageSharp {
-        fluid(maxWidth: 1024, quality: 100) {
-          src
-        }
-      }
-    }
-  }
-}`;
-
 module.exports = async ({ actions: { createPage }, graphql }) => {
-  const rawAuthor = await graphql(AUTHOR_QUERY);
-  const author = {
-    ...rawAuthor.data.author,
-    avatar: rawAuthor.data.author.avatar.childImageSharp.fluid.src,
-  };
+  const rawAuthor = await graphql(authorData.query);
+  const author = authorData.normalize(rawAuthor.data.author);
 
   const rawArticles = await graphql(query.local.articles);
   const articles = rawArticles.data.articles.edges
@@ -54,9 +34,11 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
   const rawTalks = await graphql(talk.query);
   const talks = rawTalks.data.talks.edges
     .map(talk.normalize)
+    .slice(0, 4)
     .map(normalize.local.articles);
 
   log('Creating', 'Landing page');
+
   createPaginatedPages({
     edges: [{}],
     pathPrefix: '/',
@@ -67,6 +49,20 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
       articles,
       author,
       projects,
+      talks,
+    },
+  });
+
+  log('Creating', 'Talks page');
+
+  createPaginatedPages({
+    edges: [{}],
+    pathPrefix: '/talks',
+    createPage,
+    pageTemplate: path.resolve(`./src/templates/Talks.tsx`),
+    buildPath: '/talks',
+    context: {
+      author,
       talks,
     },
   });

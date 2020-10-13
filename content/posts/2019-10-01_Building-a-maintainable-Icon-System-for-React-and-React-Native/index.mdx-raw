@@ -85,12 +85,12 @@ In summary this step should:
 const { readdirSync } = require('fs');
 
 // some helpful functions
-const isSVG = file => /.svg$/.test(file);
-const removeExtension = file => file.split('.')[0];
-const toPascalCase = string =>
+const isSVG = (file) => /.svg$/.test(file);
+const removeExtension = (file) => file.split('.')[0];
+const toPascalCase = (string) =>
   string
     .match(/[a-z]+/gi)
-    .map(word => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase())
     .join('');
 
 // getting all the icons
@@ -104,7 +104,7 @@ const indexContent = [
   '',
   icons
     .map(
-      icon =>
+      (icon) =>
         `export const ${toPascalCase(
           icon,
         )} = props => <Icon {...props} name="${icon}" />;`,
@@ -122,11 +122,11 @@ The result of this script should be an `index.js` file located inside `src/compo
 import React from 'react';
 import Icon from './Icon';
 
-export const Louvre = props => <Icon {...props} name="001-louvre" />;
-export const LeaningTowerOfPisa = props => (
+export const Louvre = (props) => <Icon {...props} name="001-louvre" />;
+export const LeaningTowerOfPisa = (props) => (
   <Icon {...props} name="002-leaning tower of pisa" />
 );
-export const Coliseum = props => <Icon {...props} name="003-coliseum" />;
+export const Coliseum = (props) => <Icon {...props} name="003-coliseum" />;
 // and the rest of the icons
 ```
 
@@ -153,7 +153,7 @@ So for this step, the only task you need to do is to aggregate all the icons ins
 const iconMapContent = [
   icons
     .map(
-      icon =>
+      (icon) =>
         `import { ReactComponent as ${toPascalCase(
           icon,
         )} } from './${icon}.svg';`,
@@ -161,7 +161,7 @@ const iconMapContent = [
     .join('\n'),
   '',
   'export default {',
-  icons.map(icon => `"${icon}": ${toPascalCase(icon)}, `).join('\n'),
+  icons.map((icon) => `"${icon}": ${toPascalCase(icon)}, `).join('\n'),
   '};',
 ].join('\n');
 
@@ -243,7 +243,7 @@ const glyphMap = JSON.parse(
 const customFontContent = [
   '{',
   icons
-    .map(value => `"${value}": ${parseInt(glyphMap[value].substr(1), 16)}`)
+    .map((value) => `"${value}": ${parseInt(glyphMap[value].substr(1), 16)}`)
     .join(',\n'),
   '}',
 ].join('\n');
@@ -319,7 +319,7 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-![Demo React](./images/web-demo.png)
+![Demo React](./images/web-demo.jpg)
 
 ### React Native implementation
 
@@ -338,7 +338,7 @@ const App = () => (
 export default App;
 ```
 
-![Demo React Native](./images/rn-demo.png)
+![Demo React Native](./images/rn-demo.jpg)
 
 ## Last words 👋
 

@@ -5,7 +5,7 @@ description: |
   validation for our entities manually. In this talk, I want to present a way that
   you can generate validators for all your types in your application automatically,
   and how to integrate this into your development workflow.
-hero: ./cover/types-validation-in-ts.png
+hero: ./cover/types-validation-in-ts.jpg
 type: React Global Online Summit
 date: 2020-09-15
 link: https://slides.com/emasuriano/runtime-types-validation-in-typescript

@@ -14,7 +14,7 @@ const siteMetadata = {
   name,
   description: bio,
   hero: {
-    heading: `${name}'s Blog`,
+    heading: `Hello, I'm ${name}`,
     maxWidth: 652,
   },
   social,

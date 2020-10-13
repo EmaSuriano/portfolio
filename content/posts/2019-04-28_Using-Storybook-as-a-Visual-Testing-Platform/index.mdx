@@ -25,7 +25,7 @@ Regarding **visual testing**, it’s a testing approach that consists of taking 
 In case you already understand the concept of [Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing), this is the same. The difference is you compare a picture and not some resulting code.
 
 <div class="Image__Medium">
-  <img src="./images/visual-diff.png" alt="Example of Visual Testing Diff" />
+  <img src="./images/visual-diff.jpg" alt="Example of Visual Testing Diff" />
   <figcaption>Example of Visual Testing Diff</figcaption>
 </div>
 
@@ -49,7 +49,7 @@ $ npx -p @storybook/cli sb init
 When the installation is finished you can check if everything was set up properly by running yarn storybook , and you should see the Homepage with two stories that were created by default.
 
 <div class="Image__Large">
-  <img src="./images/storybook-homepage.png" alt="Storybook Homepage" />
+  <img src="./images/storybook-homepage.jpg" alt="Storybook Homepage" />
   <figcaption>Storybook Homepage</figcaption>
 </div>
 
@@ -129,7 +129,7 @@ initStoryshots({ */* configuration options */* });
 In order to run it, execute yarn test. Now for each story, there is a test with a _snapshot_ where you can check what is the output (component rendered) of the story. These _snapshots_ are going to be automatically generated every time we run our tests, and in case they have a difference with the previous one the test will fail.
 
 <div class="Image__Medium">
-  <img src="./images/result-storyshots.png" alt="Test result with storyshots" />
+  <img src="./images/result-storyshots.jpg" alt="Test result with storyshots" />
   <figcaption>Test result with storyshots</figcaption>
 </div>
 
@@ -163,7 +163,7 @@ initStoryshots({
 One thing to mention is that now our tests depends on having an instance of storybook running. I recommend managing two terminals at the same time for this kind of scenarios: in one terminal you run yarn storybook and in another yarn test .
 
 <div class="Image__Large">
-  <img src="./images/visual-testing-storyshots.png" alt="Running visual testing along with Storybook" />
+  <img src="./images/visual-testing-storyshots.jpg" alt="Running visual testing along with Storybook" />
   <figcaption>Running visual testing along with Storybook</figcaption>
 </div>
 
@@ -172,7 +172,7 @@ The old snapshots are obsolete (you can safely delete them) because now we have 
 In the following diffing I changed the border-color of the button from pink to blue. The original image will be on the left, the new on the right and in the middle the difference between both with the changes in red color.
 
 <div class="Image__Large">
-  <img src="./images/visual-testing-storyshots.png" alt="Visual diffing in action" />
+  <img src="./images/visual-testing-storyshots.jpg" alt="Visual diffing in action" />
   <figcaption>Visual diffing in action</figcaption>
 </div>
 
@@ -197,7 +197,7 @@ Inside package.json , you need to create a new script which will start storybook
 ```
 
 <div class="Image__Medium">
-  <img src="./images/ci-output.png" alt="Test CI output" />
+  <img src="./images/ci-output.jpg" alt="Test CI output" />
   <figcaption>Test CI output</figcaption>
 </div>
 
@@ -252,7 +252,7 @@ describe('<DuplicationButton />', () => {
 In order to run this test, we need to start Storybook or you can directly use yarn test:ci which will do it for you! This is how the screenshot looks like:
 
 <div class="Image__Small">
-  <img src="./images/interactive-testing.png" alt="Interactive visual testing" />
+  <img src="./images/interactive-testing.jpg" alt="Interactive visual testing" />
   <figcaption>Interactive visual testing</figcaption>
 </div>
 
@@ -274,7 +274,7 @@ After I made all the changes inside the code, all my tests were broken due to I 
 So I made the decision to give a try to Visual Testing because it seemed the most suitable testing strategy for my situation, where I want to check exactly how the icons and them variations looked like. I followed the same steps that I already explained above and I ended up having a better suite of tests with way less code. This is the difference of lines of the merged Pull Request!
 
 <div class="Image__Medium">
-  <img src="./images/pr-diff.png" alt="Visual testing lines diff weather-styled-icon" />
+  <img src="./images/pr-diff.jpg" alt="Visual testing lines diff weather-styled-icon" />
   <figcaption>Visual testing lines diff weather-styled-icon</figcaption>
 </div>
 
