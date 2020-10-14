@@ -33,15 +33,14 @@ const About = () => (
           and I will go back to as soon as I can 🙏
         </Text>
         <form
-          encType="application/x-www-form-urlencoded"
-          name="contact"
+          name="new-contact"
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
-          <input type="hidden" name="form-name" value="contact" />
-
           <input type="hidden" name="bot-field" />
+
+          <input type="hidden" name="form-name" value="new-contact" />
 
           <Row>
             <Input id="name" label="Name" pattern="name" />

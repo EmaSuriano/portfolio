@@ -2,10 +2,11 @@ import React, { ReactNode } from 'react';
 import NovelaSection from '@narative/gatsby-theme-novela/src/components/Section';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
-type Props = { children: ReactNode; title: string };
+type Props = { children: ReactNode; title: string; right?: ReactNode };
 
-const Section = ({ children, title }: Props) => (
+const Section = ({ children, title, right }: Props) => (
   <NovelaSection
     narrow
     css={css`
@@ -13,15 +14,19 @@ const Section = ({ children, title }: Props) => (
     `}
     id={title}
   >
-    <Headings.h2
-      css={css`
-        margin-bottom: 50px;
-      `}
-    >
-      {title}
-    </Headings.h2>
+    <HeadingContainer>
+      <Headings.h2>{title}</Headings.h2>
+      {right && <Headings.h3>{right}</Headings.h3>}
+    </HeadingContainer>
     {children}
   </NovelaSection>
 );
+
+const HeadingContainer = styled.div`
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export default Section;
