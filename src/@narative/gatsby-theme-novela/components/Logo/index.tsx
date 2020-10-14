@@ -4,10 +4,11 @@ import styled from '../../../../helpers/styled';
 
 const Hologram = styled.h1`
   display: inline-block;
-  padding: 1em 1.7em;
+  padding: 0.8em 1.4em;
   color: ${(p) => p.color};
   position: relative;
   transition: translate 250ms ease;
+  font-size: 1.2em;
 
   ${mediaqueries.tablet`
     font-size: 0.8em;
@@ -21,7 +22,7 @@ const Hologram = styled.h1`
     top: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid;
+    border: 0.15em solid;
     transition: 0.25s;
   }
 
