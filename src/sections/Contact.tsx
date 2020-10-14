@@ -37,7 +37,7 @@ const About = () => (
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/success"
+          action="/success-form"
         >
           <input type="hidden" name="bot-field" />
 
