@@ -2827,6 +2827,13 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/line-reader@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@types/line-reader/-/line-reader-0.0.30.tgz#e6a9f944d535116890b92a25f3568fb7c7c5efae"
+  integrity sha512-A5D6HEBtCkgptKOqDoDkzJHjD1DBWN9EppsNlKYOz5Fd/Ioz2Pd7lI5wEwTVpHSuoIS361Pw1eoGD5msy0av0g==
+  dependencies:
+    "@types/node" "*"
+
 "@types/lodash.sample@^4.2.6":
   version "4.2.6"
   resolved "https://registry.yarnpkg.com/@types/lodash.sample/-/lodash.sample-4.2.6.tgz#ec7f6a6dbd0401c4a1e5f5b3c85fa5a85a42a84a"
@@ -11634,6 +11641,11 @@ levn@^0.4.1:
   dependencies:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
+
+line-reader@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/line-reader/-/line-reader-0.4.0.tgz#17e44818da0ac335675ba300954f94ef670e66fd"
+  integrity sha1-F+RIGNoKwzVnW6MAlU+U72cOZv0=
 
 lines-and-columns@^1.1.6:
   version "1.1.6"

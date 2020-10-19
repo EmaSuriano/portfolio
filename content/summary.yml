@@ -1,0 +1,104 @@
+talks:
+  - name: From create-react-app to create-any-app
+    description: |
+      Same company, lots of teams, different technologies, developers
+      battling outdated dependencies and copying scripts and configuration
+      files all over multiple projects? Does this sound familiar to you?
+    hero: ./cover/from-CRA-to-CAA.jpg
+    type: Byteconf React
+    date: 2020-05-01
+    link: https://from-cra-to-caa.netlify.app
+
+  - name: Runtime Types Validation in Typescript
+    description: |
+      Sometimes using types inside our application, it's not enough to make sure that
+      it won't break on runtime. Because of that, we see ourselves forced to write
+      validation for our entities manually. In this talk, I want to present a way that
+      you can generate validators for all your types in your application automatically,
+      and how to integrate this into your development workflow.
+    hero: ./cover/types-validation-in-ts.jpg
+    type: React Global Online Summit
+    date: 2020-09-15
+    link: https://slides.com/emasuriano/runtime-types-validation-in-typescript
+
+projects:
+  - name: Blindle
+    description: |
+      An Open Source device focused on teaching Braille. Built using python, Arduino and electronic pieces.
+    hero: ./logos/blindle.jpg
+    type: Device
+    date: 2017-04-30
+    link: https://blindle.github.io/page1.html#menu1-2c
+
+  - name: Event Calendar
+    description: |
+      A Gatsby Starter to display information about events from Google Spreadsheets with Calendars.
+    hero: ./logos/gatsby-starter-event-calendar.jpg
+    type: Gatsby Starter
+    date: 2018-10-01
+    link: https://github.com/EmaSuriano/gatsby-starter-event-calendar
+
+  - name: Mate
+    description: |
+      A good looking portfolio starter for Gatsby integrated with Contentful CMS for developer and writers.
+    hero: ./logos/gatsby-starter-mate.jpg
+    type: Gatsby Starter
+    date: 2018-09-01
+    link: https://github.com/EmaSuriano/gatsby-starter-mate
+
+  - name: React Hotkey Tooltip
+    description: A global Hotkey provider with built in tooltip for React.
+    hero: ./logos/react-hotkey-tooltip.jpg
+    type: Library
+    date: 2018-07-01
+    link: https://github.com/EmaSuriano/react-hotkey-tooltip
+
+posts:
+  - title: My learnings from making a Gatsby Starter
+    author: Ema Suriano
+    date: 2018-10-12
+    hero: ./images/hero.jpg
+    excerpt: A few weeks ago I published my first starter for Gatsby and I want to share some tips I learn along the whole experience.
+    secret: false
+  - title: Building a collaborative Calendar with Google and Gatsby
+    author: Ema Suriano
+    date: 2018-12-26
+    hero: ./images/hero.jpg
+    excerpt: About one week ago a friend of mine came to me for help, he wanted to create an online calendar for cultural events around the city. The idea was to create an application with a calendar showing all the upcoming events with the possibility that any person can add or edit new events.
+    secret: false
+  - title: Make any Static Site Dynamic with Zapier
+    author: Ema Suriano
+    date: 2019-03-19
+    hero: ./images/hero.jpg
+    excerpt: Without any doubt, there has been a huge adoption for Static Site Generators in these past 2 years, and one of the main reasons was the huge growth of Gatsby and its community.
+    secret: false
+  - title: Using Storybook as a Visual Testing Platform
+    author: Ema Suriano
+    date: 2019-04-28
+    hero: ./images/hero.jpg
+    excerpt: My experience working with this strategy of testing (which does not replace the others) and the integration with my current development tool.
+    secret: false
+  - title: Docker for Frontend Developers
+    author: Ema Suriano
+    date: 2019-08-20
+    hero: ./images/hero.jpg
+    excerpt: Since Dockers’s release in 2013, the use of containers has been on the rise, and it’s now become a part of the stack in most tech companies out there. Sadly, when it comes to front-end development, this concept is rarely touched.
+    secret: false
+  - title: Building a maintainable Icon System for React and React Native
+    author: Ema Suriano
+    date: 2019-10-01
+    hero: ./images/hero.jpg
+    excerpt: Implementing a maintainable icon system for a React and React Native project can be a hard task, especially when it comes to achieving the same workflow to add/remove/use an icon in all the platform (Web, Android, and iOS). In this post, I will share how we implemented a consistent icon system inside our component library at Omio.
+    secret: false
+  - title: End to end testing in React Native with Detox
+    author: Ema Suriano
+    date: 2019-10-09
+    hero: ./images/hero.jpg
+    excerpt: End-to-end testing is a technique that is widely performed in the web ecosystem with frameworks like Cypress, Puppeteer, or maybe with your own custom implementation.
+    secret: false
+  - title: Dynamic Types Validation in Typescript
+    author: Ema Suriano
+    date: 2020-06-01
+    hero: ./images/hero.jpg
+    excerpt: There is no doubt that Typescript has gained a huge adoption on the JavaScript ecosystem, and one of the great benefits it provides is the type checking of all the variables inside our code. It will check if performing any operation on a variable is possible given its type.
+    secret: false
