@@ -8,7 +8,7 @@ talks:
     type: Byteconf React
     date: 2020-05-01
     link: https://from-cra-to-caa.netlify.app
-
+    
   - name: Runtime Types Validation in Typescript
     description: |
       Sometimes using types inside our application, it's not enough to make sure that
@@ -20,7 +20,7 @@ talks:
     type: React Global Online Summit
     date: 2020-09-15
     link: https://slides.com/emasuriano/runtime-types-validation-in-typescript
-
+    
 projects:
   - name: Blindle
     description: |
@@ -29,7 +29,7 @@ projects:
     type: Device
     date: 2017-04-30
     link: https://blindle.github.io/page1.html#menu1-2c
-
+    
   - name: Event Calendar
     description: |
       A Gatsby Starter to display information about events from Google Spreadsheets with Calendars.
@@ -37,7 +37,7 @@ projects:
     type: Gatsby Starter
     date: 2018-10-01
     link: https://github.com/EmaSuriano/gatsby-starter-event-calendar
-
+    
   - name: Mate
     description: |
       A good looking portfolio starter for Gatsby integrated with Contentful CMS for developer and writers.
@@ -45,14 +45,14 @@ projects:
     type: Gatsby Starter
     date: 2018-09-01
     link: https://github.com/EmaSuriano/gatsby-starter-mate
-
+    
   - name: React Hotkey Tooltip
     description: A global Hotkey provider with built in tooltip for React.
     hero: ./logos/react-hotkey-tooltip.jpg
     type: Library
     date: 2018-07-01
     link: https://github.com/EmaSuriano/react-hotkey-tooltip
-
+    
 posts:
   - title: My learnings from making a Gatsby Starter
     author: Ema Suriano
