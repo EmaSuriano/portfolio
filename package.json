@@ -51,7 +51,7 @@
     "@types/remove-markdown": "^0.1.1",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.10.1",
-    "cypress": "^4.12.1",
+    "cypress": "^5.4.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
