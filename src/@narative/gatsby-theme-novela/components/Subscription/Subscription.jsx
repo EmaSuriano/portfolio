@@ -14,11 +14,11 @@ import {
 import Input from '../../../../components/Input';
 
 const Error = styled.div`
-  color: ${p => p.theme.colors.error};
+  color: ${(p) => p.theme.colors.error};
   font-size: 12px;
 
   a {
-    color: ${p => p.theme.colors.error};
+    color: ${(p) => p.theme.colors.error};
     text-decoration: underline;
   }
 
@@ -31,7 +31,7 @@ const Error = styled.div`
 const compose = (...fns) =>
   fns.reduceRight(
     (prevFn, nextFn) => (...args) => nextFn(prevFn(...args)),
-    value => value,
+    (value) => value,
   );
 
 const Subscription = () => {
@@ -47,7 +47,7 @@ const Subscription = () => {
       PATHNAME: '/blog',
       FNAME: name,
     })
-      .then(data => {
+      .then((data) => {
         if (data.result === 'error') {
           throw data;
         }
@@ -60,7 +60,7 @@ const Subscription = () => {
           setSubscribed(false);
         }, 6000);
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.msg);
       });
   }
@@ -73,28 +73,18 @@ const Subscription = () => {
     <Section narrow>
       <Container>
         <Content>
-          <Heading>
-            <span role="img" aria-label="alert">
-              🚨
-            </span>{' '}
-            Get notified for my next article!
-          </Heading>
+          <Heading>{`Newsletter Subscription 🚨`}</Heading>
           <Text>
-            I tend to write about my challenges inside the weird, fast and hot
-            Frontend world The challenges can be from learning a specific tool
-            or framework to building a project from scratch.{' '}
-            <span role="img" aria-label="sparkles">
-              ✨
-            </span>
+            {`Gets notified in case I published a new article.
+            I tend to write about my challenges inside the weird and fast
+            Frontend world, from learning a specific tool or framework to
+            building a project from scratch ✨`}
           </Text>
           <Text>
-            I try to publish one article per month, but yeah sometimes life gets
-            in the middle ...{' '}
+            I try to publish one article per month, if life does not get in the
+            middle ...{' '}
             <b>
-              No SPAM, no hiring, no application marketing, just tech posts{' '}
-              <span role="img" aria-label="ok">
-                👌
-              </span>
+              No SPAM, no hiring, no application marketing, just tech posts.
             </b>
           </Text>
           <form onSubmit={handleSubmit} hasError={error}>

@@ -16,12 +16,7 @@ const About = () => (
   <NovelaSection narrow>
     <Container>
       <Content>
-        <Heading>
-          <span role="img" aria-label="mail">
-            ✉️
-          </span>{' '}
-          Contact me
-        </Heading>
+        <Heading>{`Contact ✉️`}</Heading>
         <Text>
           You can always contact me via any of the social platform at the bottom
           of the page. Nevertheless, if you prefer email communication you can
@@ -30,7 +25,7 @@ const About = () => (
         <Text>
           Just drop me a message of whatever you feel like, a cool project idea,
           technical questions or maybe you just want to get in contact with me,
-          and I will go back to as soon as I can 🙏
+          and I will answer ASAP 🙏
         </Text>
         <form
           name="new-contact"
