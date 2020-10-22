@@ -2,13 +2,13 @@ import chokidar from 'chokidar';
 import glob from 'glob';
 import readline from 'readline';
 import fs from 'fs';
-import { POSTS_GLOB_PATTERN, POSTS_GLOB_PATTERN_DRAFT } from './constants';
+import { POSTS_GLOB_PATTERN } from './constants';
 import { writeSmartPreview, writeHeader } from './writers';
 
 const removePostExtension = (filePath: string) =>
   filePath.replace(/-raw$|-draft$/, '');
 
-const transpilePost = async (filePath: string, draft: boolean) => {
+const transpilePost = async (filePath: string) => {
   const fileStream = fs.createReadStream(filePath);
   const writeSteam = fs.createWriteStream(removePostExtension(filePath));
 
@@ -24,7 +24,7 @@ const transpilePost = async (filePath: string, draft: boolean) => {
 
     const line =
       (isPreviewLine && writeSmartPreview(filePath, rawLine)) ||
-      (isFirstLine && writeHeader(filePath, rawLine, draft)) ||
+      (isFirstLine && writeHeader(filePath, rawLine)) ||
       rawLine;
 
     writeSteam.write(`${line}\n`);
@@ -39,15 +39,14 @@ const main = async ({ watch }: { watch: boolean }) => {
   if (watch) {
     chokidar
       .watch(POSTS_GLOB_PATTERN)
-      .on('all', (_, file) => transpilePost(file, false));
-    chokidar
-      .watch(POSTS_GLOB_PATTERN_DRAFT)
-      .on('all', (_, file) => transpilePost(file, true));
+      .on('all', (_, file) => transpilePost(file));
+
+    console.log(`Watching posts 👀`);
     return;
   }
 
-  glob.sync(POSTS_GLOB_PATTERN).map((file) => transpilePost(file, false));
-  glob.sync(POSTS_GLOB_PATTERN_DRAFT).map((file) => transpilePost(file, true));
+  const count = glob.sync(POSTS_GLOB_PATTERN).map(transpilePost).length;
+  console.log(`Posts transpiled: ${count} 🔥`);
   return;
 };
 
