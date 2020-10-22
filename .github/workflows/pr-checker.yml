@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  update-readme:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,4 +18,12 @@ jobs:
         uses: actions/setup-node@v1
       - run: yarn install --frozen-lockfile
       - run: yarn build
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Manual deploy
+        uses: actions/setup-node@v1
+      - run: yarn install --frozen-lockfile
       - run: yarn lint
