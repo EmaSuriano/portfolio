@@ -1,7 +1,0 @@
-name: Blindle
-description: |
-  An Open Source device focused on teaching Braille. Built using python, Arduino and electronic pieces.
-hero: ./logos/blindle.jpg
-type: Device
-date: 2017-04-30
-link: https://blindle.github.io/page1.html#menu1-2c
