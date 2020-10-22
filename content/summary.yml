@@ -22,29 +22,26 @@ talks:
     link: https://slides.com/emasuriano/runtime-types-validation-in-typescript
     
 projects:
-  - name: Blindle
-    description: |
-      An Open Source device focused on teaching Braille. Built using python, Arduino and electronic pieces.
-    hero: ./logos/blindle.jpg
-    type: Device
-    date: 2017-04-30
-    link: https://blindle.github.io/page1.html#menu1-2c
-    
   - name: Event Calendar
-    description: |
-      A Gatsby Starter to display information about events from Google Spreadsheets with Calendars.
+    description: A Gatsby Starter to display information about events from Google Spreadsheets with Calendars.
     hero: ./logos/gatsby-starter-event-calendar.jpg
     type: Gatsby Starter
     date: 2018-10-01
     link: https://github.com/EmaSuriano/gatsby-starter-event-calendar
     
   - name: Mate
-    description: |
-      A good looking portfolio starter for Gatsby integrated with Contentful CMS for developer and writers.
+    description: A good looking portfolio starter for Gatsby integrated with Contentful CMS for developer and writers.
     hero: ./logos/gatsby-starter-mate.jpg
     type: Gatsby Starter
     date: 2018-09-01
     link: https://github.com/EmaSuriano/gatsby-starter-mate
+    
+  - name: Open Source Dashboard
+    description: A Dashboard to have a quick overview of Open Sources projects in your Github account.
+    hero: ./logos/oss-project-dashboard.jpg
+    type: Developer Tool
+    date: 2020-08-01
+    link: https://github.com/EmaSuriano/oss-project-dashboard
     
   - name: React Hotkey Tooltip
     description: A global Hotkey provider with built in tooltip for React.
