@@ -3,6 +3,7 @@ name: Manual workflow
 on:
   push:
     branches: master
+  pull_request:
 
 jobs:
   update-readme:
