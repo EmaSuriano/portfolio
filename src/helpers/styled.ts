@@ -1,4 +1,4 @@
-import styled, { CreateStyled } from '@emotion/styled';
+import styled from '@emotion/styled';
 
 type ColorPalette = {
   primary: string;

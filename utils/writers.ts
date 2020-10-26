@@ -77,11 +77,7 @@ export const writeSmartPreview = (filePath: string, line: string) => {
   return result.join('\n');
 };
 
-export const writeHeader = (
-  filePath: string,
-  firstLine: string,
-  draft: boolean,
-) => {
+export const writeHeader = (filePath: string, firstLine: string) => {
   const { date, title } = getPostInfo(filePath);
 
   return [
@@ -91,7 +87,7 @@ export const writeHeader = (
     `date: ${date}`,
     `hero: ./images/hero.jpg`,
     `excerpt: ${removeMd(firstLine)}`,
-    `secret: ${!!draft}`,
+    `secret: false`,
     `---`,
     '',
     firstLine,
