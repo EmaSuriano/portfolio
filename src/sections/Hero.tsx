@@ -66,7 +66,6 @@ const Hero = () => {
     >
       <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
       <HeroSubheading>
-        $
         {deterministic ? (
           roles[0]
         ) : (
