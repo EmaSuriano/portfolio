@@ -54,7 +54,7 @@ const randomSort = () => Math.random() - 0.5;
 
 const Hero = () => {
   const results = useStaticQuery(siteQuery);
-  const { name, roles } = results.site.siteMetadata;
+  const { name, roles, deterministic } = results.site.siteMetadata;
 
   return (
     <Section
@@ -66,14 +66,19 @@ const Hero = () => {
     >
       <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
       <HeroSubheading>
-        <Typed
-          strings={roles.sort(randomSort)}
-          backSpeed={40}
-          typeSpeed={40}
-          backDelay={2000}
-          loop
-          smartBackspace
-        />
+        $
+        {deterministic ? (
+          roles[0]
+        ) : (
+          <Typed
+            strings={roles.sort(randomSort)}
+            backSpeed={40}
+            typeSpeed={40}
+            backDelay={2000}
+            loop
+            smartBackspace
+          />
+        )}
       </HeroSubheading>
     </Section>
   );

@@ -2,7 +2,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 require('dotenv').config();
 
-const { ANALYTICS_ID } = process.env;
+const { ANALYTICS_ID, DETERMINISTIC } = process.env;
 
 const [{ name, bio, website, social, roles }] = yaml.safeLoad(
   fs.readFileSync('./content/about/authors.yml', 'utf8'),
@@ -19,6 +19,7 @@ const siteMetadata = {
   },
   social,
   roles,
+  deterministic: !!DETERMINISTIC,
 };
 
 const plugins = [
