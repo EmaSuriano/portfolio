@@ -126,9 +126,9 @@ posts:
     hero: ./images/hero.jpg
     excerpt: There is no doubt that Typescript has gained a huge adoption on the JavaScript ecosystem, and one of the great benefits it provides is the type checking of all the variables inside our code. It will check if performing any operation on a variable is possible given its type.
     secret: false
-  - title: Keep your Documentation updated with Cypress and Github Actions
+  - title: Keep your Documentation updated with Cypress and GitHub Actions
     author: Ema Suriano
     date: 2020-10-26
     hero: ./images/hero.jpg
-    excerpt: One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated and I was being forced to manually update them ... In this post, I want to share the workaround I came up, to make this process autonomous by using Cypress and Github Actions.
-    secret: false
+    excerpt: Keep your Documentation updated with Cypress and GitHub Actions
+    secret: true
