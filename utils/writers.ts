@@ -1,12 +1,12 @@
 import { imageSize } from 'image-size';
 import path from 'path';
-import { NAME_SEPARATOR } from './constants';
+import { NAME_SEPARATOR, POST_SECRET_EXTENSION } from './constants';
 import queryString from 'query-string';
 import removeMd from 'remove-markdown';
 
 const DEFAULT_POST_NAME = '1999-01-01_Wrong-folder-name';
 
-const getPostInfo = (filePath: string) => {
+export const getPostInfo = (filePath: string) => {
   const folder = path.dirname(filePath).split('/').pop() || DEFAULT_POST_NAME;
 
   const [date, rawTitle] = folder.split(NAME_SEPARATOR);
@@ -79,6 +79,7 @@ export const writeSmartPreview = (filePath: string, line: string) => {
 
 export const writeHeader = (filePath: string, firstLine: string) => {
   const { date, title } = getPostInfo(filePath);
+  const secret = filePath.endsWith(POST_SECRET_EXTENSION);
 
   return [
     '---',
@@ -87,7 +88,7 @@ export const writeHeader = (filePath: string, firstLine: string) => {
     `date: ${date}`,
     `hero: ./images/hero.jpg`,
     `excerpt: ${removeMd(firstLine)}`,
-    `secret: false`,
+    `secret: ${secret ? 'true' : 'false'}`,
     `---`,
     '',
     firstLine,

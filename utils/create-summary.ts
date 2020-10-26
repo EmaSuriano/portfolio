@@ -1,5 +1,5 @@
-import glob from 'glob';
-import fs from 'fs';
+import { sync } from 'glob';
+import { writeFileSync, readFileSync } from 'fs';
 import {
   POSTS_GLOB_PATTERN_FINAL,
   PROJECTS_GLOB_PATTERN,
@@ -8,7 +8,7 @@ import {
   TALKS_GLOB_PATTERN,
 } from './constants';
 
-const getContent = (path: string) => fs.readFileSync(path, 'utf8');
+const getContent = (path: string) => readFileSync(path, 'utf8');
 
 const getPostContent = (path: string) => {
   let header = true;
@@ -31,30 +31,23 @@ const addPadding = (text: string) => {
     .join('\n');
 };
 
-const main = async () => {
-  const about = glob.sync(ABOUT_GLOB_PATTERN).map(getContent);
-  const talks = glob.sync(TALKS_GLOB_PATTERN).map(getContent).map(addPadding);
-  const projects = glob
-    .sync(PROJECTS_GLOB_PATTERN)
-    .map(getContent)
-    .map(addPadding);
-  const posts = glob
-    .sync(POSTS_GLOB_PATTERN_FINAL)
-    .map(getPostContent)
-    .map(addPadding);
+const about = sync(ABOUT_GLOB_PATTERN).map(getContent);
+const talks = sync(TALKS_GLOB_PATTERN).map(getContent).map(addPadding);
+const projects = sync(PROJECTS_GLOB_PATTERN).map(getContent).map(addPadding);
+const posts = sync(POSTS_GLOB_PATTERN_FINAL)
+  .map(getPostContent)
+  .map(addPadding);
 
-  const content = [
-    'about:',
-    ...about,
-    'talks:',
-    ...talks,
-    'projects:',
-    ...projects,
-    'posts:',
-    ...posts,
-  ];
+const content = [
+  'about:',
+  ...about,
+  'talks:',
+  ...talks,
+  'projects:',
+  ...projects,
+  'posts:',
+  ...posts,
+];
 
-  fs.writeFileSync(SUMMARY_PATH, content.join('\n'));
-};
-
-main();
+writeFileSync(SUMMARY_PATH, content.join('\n'));
+console.log('info: Summary updated!');

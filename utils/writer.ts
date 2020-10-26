@@ -1,9 +1,10 @@
 import chokidar from 'chokidar';
+import { dirname } from 'path';
 import glob from 'glob';
 import readline from 'readline';
 import fs from 'fs';
 import { POSTS_GLOB_PATTERN } from './constants';
-import { writeSmartPreview, writeHeader } from './writers';
+import { writeSmartPreview, writeHeader, getPostInfo } from './writers';
 
 const removePostExtension = (filePath: string) =>
   filePath.replace(/-raw$|-draft$/, '');
@@ -35,18 +36,20 @@ const transpilePost = async (filePath: string) => {
   fileStream.close();
 };
 
-const main = async ({ watch }: { watch: boolean }) => {
+const init = async ({ watch }: { watch: boolean }) => {
   if (watch) {
-    chokidar
-      .watch(POSTS_GLOB_PATTERN)
-      .on('all', (_, file) => transpilePost(file));
+    chokidar.watch(POSTS_GLOB_PATTERN).on('change', (file) => {
+      transpilePost(file);
+      const { title } = getPostInfo(file);
+      console.log(`info: "${title}" transpiled!`);
+    });
 
-    console.log(`Watching posts 👀`);
+    console.log(`info: Watching posts 👀`);
     return;
   }
 
   const count = glob.sync(POSTS_GLOB_PATTERN).map(transpilePost).length;
-  console.log(`Posts transpiled: ${count} 🔥`);
+  console.log(`info: Posts transpiled: ${count} 🔥`);
   return;
 };
 
@@ -54,4 +57,4 @@ const parseParams = (params: string[]) => ({
   watch: params.includes('--watch'),
 });
 
-main(parseParams(process.argv.slice(2)));
+init(parseParams(process.argv.slice(2)));
