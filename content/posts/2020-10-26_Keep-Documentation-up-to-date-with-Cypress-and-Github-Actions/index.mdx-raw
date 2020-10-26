@@ -1,0 +1,32 @@
+# Keep your Documentation up to date with Cypress and Github Actions
+
+I've been trying to document all my projects by adding screenshots of the pages, in order to provide a quick overview of everything the project provides to the people who find it for the first time. But every time I had to make to change on the UI, these screenshots were out-dated ... In this post, I want to share the workaround I came up, to make this process autonomous by using Cypress and Github Actions.
+
+## Use Case
+
+Talk about Mate and how the section of the README looks like.
+
+## Setting up Cypress
+
+- how to add cypress
+- the configuration file
+- basic test of how to take a screeenshot
+- how to make unique screenshots
+
+## Setting up Github Actions
+
+- how to enable github actions
+- explanation of the configuration:
+  - when the action is going to be triggered
+  - how to checkout the project and execute scripts
+- how to commit my changes into the repository
+
+## Next Step: automatic readme generation
+
+- Talk about the idea of checking all the routes registered, then generate the tests based on them and finally generate a markdown table showing thee images.
+
+## Closing
+
+- you can check the example in the repository
+- thanks
+- references
