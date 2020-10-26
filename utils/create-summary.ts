@@ -3,6 +3,7 @@ import fs from 'fs';
 import {
   POSTS_GLOB_PATTERN_FINAL,
   PROJECTS_GLOB_PATTERN,
+  ABOUT_GLOB_PATTERN,
   SUMMARY_PATH,
   TALKS_GLOB_PATTERN,
 } from './constants';
@@ -31,17 +32,26 @@ const addPadding = (text: string) => {
 };
 
 const main = async () => {
-  const talks = glob.sync(TALKS_GLOB_PATTERN).map(getContent);
-  const projects = glob.sync(PROJECTS_GLOB_PATTERN).map(getContent);
-  const posts = glob.sync(POSTS_GLOB_PATTERN_FINAL).map(getPostContent);
+  const about = glob.sync(ABOUT_GLOB_PATTERN).map(getContent);
+  const talks = glob.sync(TALKS_GLOB_PATTERN).map(getContent).map(addPadding);
+  const projects = glob
+    .sync(PROJECTS_GLOB_PATTERN)
+    .map(getContent)
+    .map(addPadding);
+  const posts = glob
+    .sync(POSTS_GLOB_PATTERN_FINAL)
+    .map(getPostContent)
+    .map(addPadding);
 
   const content = [
+    'about:',
+    ...about,
     'talks:',
-    ...talks.map(addPadding),
+    ...talks,
     'projects:',
-    ...projects.map(addPadding),
+    ...projects,
     'posts:',
-    ...posts.map(addPadding),
+    ...posts,
   ];
 
   fs.writeFileSync(SUMMARY_PATH, content.join('\n'));

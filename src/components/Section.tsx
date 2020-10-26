@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import NovelaSection from '@narative/gatsby-theme-novela/src/components/Section';
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import { css } from '@emotion/core';

@@ -1,3 +1,30 @@
+about:
+- name: Ema Suriano
+  bio: |
+    Passionate Engineer driven by all the Javascript ecosystem. Once a month I write an article.
+    Sharing is the best way to learn!
+  avatar: ./avatar.jpg
+  featured: true
+  website: https://emasuriano.com/
+  roles:
+    - Open Source Enthusiast
+    - Speaker
+    - Web Developer
+    - Writer
+  social:
+    - name: github
+      url: https://github.com/EmaSuriano
+    - name: twitter
+      url: https://twitter.com/EmaSuriano
+    - name: linkedin
+      url: https://linkedin.com/EmaSuriano
+    - name: devto
+      url: https://dev.to/emasuriano
+    - name: medium
+      url: https://medium.com/@emasuriano
+    - name: youtube
+      url: https://www.youtube.com/c/EmaSuriano
+
 talks:
   - name: From create-react-app to create-any-app
     description: |
