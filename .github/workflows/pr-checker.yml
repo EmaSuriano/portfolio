@@ -1,9 +1,6 @@
-name: Pull Request Checker
+name: Pr Checker
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master

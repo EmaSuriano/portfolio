@@ -1,11 +1,11 @@
-name: Manual workflow
+name: Update Summary
 
 on:
   push:
     branches: master
 
 jobs:
-  update-readme:
+  update-summary:
     runs-on: ubuntu-latest
 
     steps:
