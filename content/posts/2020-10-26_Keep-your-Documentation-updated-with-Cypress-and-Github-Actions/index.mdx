@@ -1,13 +1,11 @@
 ---
-title: Keep your Documentation updated with Cypress and GitHub Actions
+title: Keep your Documentation updated with Cypress and Github Actions
 author: Ema Suriano
 date: 2020-10-26
 hero: ./images/hero.jpg
-excerpt: Keep your Documentation updated with Cypress and GitHub Actions
-secret: true
+excerpt: One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated, and I was being forced to manually update them ... In this post, how I automatize this task by using Cypress and GitHub Actions.
+secret: false
 ---
-
-# Keep your Documentation updated with Cypress and GitHub Actions
 
 One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated, and I was being forced to manually update them ... In this post, how I automatize this task by using Cypress and GitHub Actions.
 
@@ -151,7 +149,9 @@ describe('Photographer', () => {
 
   it('About Section', () => {
     cy.visit('/');
-    cy.get('#about').scrollIntoView().screenshot('About');
+    cy.get('#about')
+      .scrollIntoView()
+      .screenshot('About');
   });
 
   // Taking screenshots of the whole page
@@ -310,7 +310,7 @@ describe('Dynamic Photographer', () => {
     cy.viewport('macbook-15'); // Desktop viewport
   });
 
-  routes.forEach((route) => {
+  routes.forEach(route => {
     it(`${route}`, () => {
       cy.visit('/');
       cy.get('#shared-section-id').screenshot(route);
@@ -326,7 +326,7 @@ Finally, you have to generate the table based on the `routes.json` file or from 
 const fs = require('fs');
 const routes = require('./cypress/fixtures/routes.json');
 
-const routeToTable = (route) =>
+const routeToTable = route =>
   `| ${route} | ![${route}](screenshots/photographer.test.js/${route}.png) |`;
 
 const content = [
