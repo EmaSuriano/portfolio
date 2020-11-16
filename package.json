@@ -27,7 +27,7 @@
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
-    "gatsby-plugin-typescript": "^2.5.0",
+    "gatsby-plugin-typescript": "^2.6.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-typed": "^1.2.0"
