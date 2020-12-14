@@ -11351,7 +11351,7 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-link-check@^4.5.3, link-check@^4.5.4:
+link-check@^4.5.4:
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/link-check/-/link-check-4.5.4.tgz#2b0bf46db1647f84abfbb5837147af4ff01c31a7"
   integrity sha512-VdjiYrIBNHtqH7NEvIlF/4i0V9xQWkoBry+65DtmmyKyD5qBZ2U9fCJYx75SI5Ms4ILJzGlNNojPKbPMpg5Spg==
@@ -11976,15 +11976,15 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
-markdown-link-check@^3.8.4:
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.8.4.tgz#35f87c9e6df93bf567948f01025a8c754566fcd9"
-  integrity sha512-7uIEdppB5S8A/Wla+lUm40HJUg2qvZD7UPx2bSWgChe/my487whvNMf19M1T/j9LQXzRvIIDTYrec7+diJyKqg==
+markdown-link-check@^3.8.5:
+  version "3.8.5"
+  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.8.5.tgz#11cae8a2d84b17005bfeb652b43f9a41e8ceb5f6"
+  integrity sha512-raCr1YMrIqCUFrBTp90UHDsar/79TPgzlVHA7gSi1DnhM2/BC1lm49V+PGzBd1ZpIYwkmzQ6TYm0AfK7A82/Dw==
   dependencies:
     async "^3.2.0"
     chalk "^4.1.0"
     commander "^6.2.0"
-    link-check "^4.5.3"
+    link-check "^4.5.4"
     lodash "^4.17.20"
     markdown-link-extractor "^1.2.6"
     progress "^2.0.3"
