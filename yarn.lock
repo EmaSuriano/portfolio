@@ -11989,10 +11989,10 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
-markdown-link-check@^3.8.5:
-  version "3.8.5"
-  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.8.5.tgz#11cae8a2d84b17005bfeb652b43f9a41e8ceb5f6"
-  integrity sha512-raCr1YMrIqCUFrBTp90UHDsar/79TPgzlVHA7gSi1DnhM2/BC1lm49V+PGzBd1ZpIYwkmzQ6TYm0AfK7A82/Dw==
+markdown-link-check@^3.8.6:
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.8.6.tgz#66db97416df41b6ba71486fec97b95d9c728af3d"
+  integrity sha512-GWzd54hNol2Zwf6fFEhUYqi9wbib1BMdcphvGCZqhinaAKhiILDaQkX7sn2u9GMoItmZ1jQK0f8wULOK/M+M4w==
   dependencies:
     async "^3.2.0"
     chalk "^4.1.0"
