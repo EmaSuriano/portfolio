@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "remove-markdown": "^0.3.0",
-    "@types/line-reader": "^0.0.30",
+    "@types/line-reader": "^0.0.32",
     "@types/react-dom": "^16.9.9",
     "@types/remove-markdown": "^0.1.1",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
