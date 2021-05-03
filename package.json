@@ -57,7 +57,7 @@
     "query-string": "^6.14.1",
     "start-server-and-test": "^1.12.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   },
   "husky": {
     "hooks": {
