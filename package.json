@@ -51,7 +51,7 @@
     "eslint-plugin-react": "^7.24.0",
     "image-size": "^0.9.3",
     "js-yaml": "^3.14.1",
-    "link-check": "^4.5.4",
+    "link-check": "^5.0.0",
     "markdown-link-check": "^3.8.7",
     "prettier": "^2.2.1",
     "query-string": "^6.14.1",
