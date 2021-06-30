@@ -4,9 +4,11 @@ require('dotenv').config();
 
 const { ANALYTICS_ID, DETERMINISTIC } = process.env;
 
-const [{ name, bio, website, social, roles }] = yaml.safeLoad(
+const [{ name, bio, website, social, roles }] = yaml.load(
   fs.readFileSync('./content/about/authors.yml', 'utf8'),
 );
+
+console.log(name, bio, website);
 
 const siteMetadata = {
   title: `${name} Portfolio`,
