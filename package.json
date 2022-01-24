@@ -63,5 +63,9 @@
     "hooks": {
       "pre-commit": "yarn lint --fix"
     }
+  },
+  "resolutions": {
+    "sharp": "0.25.4",
+    "@babel/preset-env": "7.9.6"
   }
 }
