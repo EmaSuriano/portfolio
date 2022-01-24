@@ -48,7 +48,7 @@
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
-    "image-size": "^0.9.3",
+    "image-size": "^1.0.1",
     "js-yaml": "^3.14.1",
     "link-check": "^5.0.2",
     "markdown-link-check": "^3.9.0",
