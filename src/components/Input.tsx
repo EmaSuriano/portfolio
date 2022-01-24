@@ -66,6 +66,9 @@ const Field = styled.div<{ active: boolean }>`
 type InputProps = {
   onChange?: (value: string) => void;
   label?: string;
+  id?: string;
+  type?: string;
+  value?: string;
   pattern?: 'name' | 'email';
 } & React.HTMLProps<HTMLInputElement>;
 
@@ -80,7 +83,7 @@ const Input = ({
   const [internalValue, setInternalValue] = useState('');
   const [active, setActive] = useState(false);
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     controlledOnChange
       ? controlledOnChange(e.currentTarget.value)
       : setInternalValue(e.currentTarget.value);
