@@ -13,6 +13,7 @@ const getContent = (path: string) => readFileSync(path, 'utf8');
 const getPostContent = (path: string) => {
   let header = true;
   const rawContent = getContent(path);
+
   return rawContent
     .split('\n')
     .filter((line, i) => {
@@ -21,6 +22,7 @@ const getPostContent = (path: string) => {
 
       return header;
     })
+    .concat('')
     .join('\n');
 };
 
@@ -38,15 +40,17 @@ const posts = sync(POSTS_GLOB_PATTERN_FINAL)
   .map(getPostContent)
   .map(addPadding);
 
+console.log(posts);
+
 const content = [
   'about:',
   ...about,
-  'talks:',
-  ...talks,
   'projects:',
   ...projects,
   'posts:',
   ...posts,
+  'talks:',
+  ...talks,
 ];
 
 writeFileSync(SUMMARY_PATH, content.join('\n'));
