@@ -41,7 +41,7 @@
     "@types/line-reader": "^0.0.34",
     "@types/react-dom": "^17.0.13",
     "@types/remove-markdown": "^0.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^3.10.1",
     "dotenv": "^16.0.0",
     "eslint": "^7.32.0",
