@@ -1,27 +1,19 @@
 about:
 - name: Ema Suriano
-  bio: |
-    Passionate Engineer driven by all the Javascript ecosystem. Once a month I write an article.
-    Sharing is the best way to learn!
+  bio: Passionate Engineer driven by all the Javascript ecosystem. On my spare time I like to write and speak publicly
   avatar: ./avatar.jpg
   featured: true
   website: https://emasuriano.com/
   roles:
+    - Web Developer
     - Open Source Enthusiast
     - Speaker
-    - Web Developer
-    - Writer
+    - Tech Writer
   social:
     - name: github
       url: https://github.com/EmaSuriano
     - name: twitter
       url: https://twitter.com/EmaSuriano
-    - name: linkedin
-      url: https://www.linkedin.com/in/emanuel-suriano/
-    - name: devto
-      url: https://dev.to/emasuriano
-    - name: medium
-      url: https://medium.com/@emasuriano
     - name: youtube
       url: https://www.youtube.com/c/EmaSuriano
 
@@ -30,15 +22,15 @@ projects:
     description: A responsive website to display information about events taking from Google Spreadsheets submitted by users.
     hero: ./logos/gatsby-starter-event-calendar.jpg
     type: Gatsby Starter
-    date: 2018-10-01
+    date: 2020-06-20
     link: https://github.com/EmaSuriano/gatsby-starter-event-calendar
     
-  - name: Gatsby Theme Mate
+  - name: Gatsby Starter Mate
     description: A good looking portfolio starter for Gatsby integrated with Contentful CMS for developer and writers.
     hero: ./logos/gatsby-starter-mate.jpg
     type: Gatsby Starter
     date: 2018-09-01
-    link: https://github.com/EmaSuriano/gatsby-theme-mate
+    link: https://github.com/EmaSuriano/gatsby-starter-mate
     
   - name: React Hotkey Tooltip
     description: A global Hotkey provider with built in tooltip for React.
@@ -46,6 +38,13 @@ projects:
     type: Library
     date: 2018-07-01
     link: https://github.com/EmaSuriano/react-hotkey-tooltip
+    
+  - name: React Section Scroll
+    description: A declarative solution to vertically navigate your React App.
+    hero: ./logos/react-section-scroll.png
+    type: Library
+    date: 2018-04-08
+    link: https://github.com/EmaSuriano/react-section-scroll
     
 posts:
   - title: My learnings from making a Gatsby Starter
