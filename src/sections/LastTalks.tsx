@@ -4,8 +4,10 @@ import ArticlesList from '@narative/gatsby-theme-novela/src/sections/articles/Ar
 import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
 
-const LastTalks = ({ talks = [] }: { talks: ITalk[] }) => (
-  <Section title="Last Talks 🗣" right={<Anchor href="/talks">See all</Anchor>}>
+type Props = { talks: ITalk[] };
+
+const LastTalks = ({ talks }: Props) => (
+  <Section title="Last Talks" right={<Anchor href="/talks">See all</Anchor>}>
     <GridLayoutProviderMock layout="tiles">
       <ArticlesList articles={talks} />
     </GridLayoutProviderMock>

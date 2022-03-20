@@ -1,25 +1,17 @@
 - name: Ema Suriano
-  bio: |
-    Passionate Engineer driven by all the Javascript ecosystem. Once a month I write an article.
-    Sharing is the best way to learn!
+  bio: Passionate Engineer driven by all the Javascript ecosystem. On my spare time I like to write and speak publicly
   avatar: ./avatar.jpg
   featured: true
   website: https://emasuriano.com/
   roles:
+    - Web Developer
     - Open Source Enthusiast
     - Speaker
-    - Web Developer
-    - Writer
+    - Tech Writer
   social:
     - name: github
       url: https://github.com/EmaSuriano
     - name: twitter
       url: https://twitter.com/EmaSuriano
-    - name: linkedin
-      url: https://www.linkedin.com/in/emanuel-suriano/
-    - name: devto
-      url: https://dev.to/emasuriano
-    - name: medium
-      url: https://medium.com/@emasuriano
     - name: youtube
       url: https://www.youtube.com/c/EmaSuriano

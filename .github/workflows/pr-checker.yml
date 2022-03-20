@@ -38,3 +38,4 @@ jobs:
           node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
       - run: yarn install --frozen-lockfile
       - run: yarn lint
+      # - run: yarn check-types

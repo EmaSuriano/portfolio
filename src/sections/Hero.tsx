@@ -17,6 +17,37 @@ const siteQuery = graphql`
   }
 `;
 
+const Hero = () => {
+  const results = useStaticQuery(siteQuery);
+  const { name, roles } = results.site.siteMetadata;
+
+  const randomRoles = roles.sort(() => Math.random() - 0.5);
+
+  return (
+    <Section
+      relative
+      css={css`
+        margin-top: 100px;
+        margin-bottom: 100px;
+      `}
+    >
+      <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
+      <HeroSubheading>
+        <Typed
+          strings={randomRoles}
+          backSpeed={40}
+          typeSpeed={40}
+          backDelay={2000}
+          loop
+          smartBackspace
+        />
+      </HeroSubheading>
+    </Section>
+  );
+};
+
+export default Hero;
+
 const HeroHeading = styled.h1`
   font-style: normal;
   font-weight: 600;
@@ -49,38 +80,3 @@ const HeroSubheading = styled.h2`
     font-size: 28px;
   `}
 `;
-
-const randomSort = () => Math.random() - 0.5;
-
-const Hero = () => {
-  const results = useStaticQuery(siteQuery);
-  const { name, roles, deterministic } = results.site.siteMetadata;
-
-  return (
-    <Section
-      relative
-      css={css`
-        margin-top: 100px;
-        margin-bottom: 100px;
-      `}
-    >
-      <HeroHeading>{`Hello, I'm ${name}`}</HeroHeading>
-      <HeroSubheading>
-        {deterministic ? (
-          roles[0]
-        ) : (
-          <Typed
-            strings={roles.sort(randomSort)}
-            backSpeed={40}
-            typeSpeed={40}
-            backDelay={2000}
-            loop
-            smartBackspace
-          />
-        )}
-      </HeroSubheading>
-    </Section>
-  );
-};
-
-export default Hero;

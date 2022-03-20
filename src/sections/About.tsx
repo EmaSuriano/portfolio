@@ -26,6 +26,7 @@ const InfoWrapper = styled.div`
 
 const AvatarContainer = styled.div`
   width: 300px;
+  height: 300px;
   overflow: hidden;
   border-radius: 50%;
   margin-left: 16px;
@@ -36,7 +37,7 @@ const AvatarContainer = styled.div`
   `}
 `;
 
-const RoundedImage = styled(ImageZoom)`
+const RoundedImage = styled(ImageZoom)<{ src: string; alt: string }>`
   border-radius: 50%;
 `;
 
@@ -48,8 +49,9 @@ const AboutContainer = styled.div`
 
 const About = ({ author }: { author: IAuthor }) => {
   const { about } = useStaticQuery(siteQuery);
+
   return (
-    <Section title="About me 👋">
+    <Section title="About me">
       <InfoWrapper>
         <AboutContainer>
           <MDXRenderer content={about.body} />

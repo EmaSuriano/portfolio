@@ -3,7 +3,6 @@ import Layout from '@narative/gatsby-theme-novela/src/components/Layout';
 import SEO from '@narative/gatsby-theme-novela/src/components/SEO';
 import LastArticles from '../sections/LastArticles';
 import Hero from '../sections/Hero';
-import Contact from '../sections/Contact';
 import About from '../sections/About';
 import LastTalks from '../sections/LastTalks';
 import Projects from '../sections/Projects';
@@ -29,7 +28,6 @@ const Landing = ({ location, pageContext }: Props) => {
       <Projects projects={projects} />
       <LastArticles articles={articles} />
       <LastTalks talks={talks} />
-      <Contact />
     </Layout>
   );
 };

@@ -4,7 +4,11 @@ import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-type Props = { children: ReactNode; title: string; right?: ReactNode };
+type Props = {
+  children: React.ReactNode;
+  title: string;
+  right?: React.ReactNode;
+};
 
 const Section = ({ children, title, right }: Props) => (
   <NovelaSection
