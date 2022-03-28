@@ -51,7 +51,7 @@
     "js-yaml": "^3.14.1",
     "link-check": "^5.0.2",
     "markdown-link-check": "^3.9.3",
-    "prettier": "^2.5.1",
+    "prettier": "^2.6.1",
     "query-string": "^7.1.1",
     "remove-markdown": "^0.3.0",
     "start-server-and-test": "^1.14.0",
