@@ -40,7 +40,7 @@
     "@types/line-reader": "^0.0.34",
     "@types/react-dom": "^17.0.13",
     "@types/remove-markdown": "^0.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "dotenv": "^16.0.1",
     "eslint": "^8.17.0",
