@@ -1,16 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "CommonJS",
-    "declaration": true,
-    "outDir": "lib",
-    "strict": true,
-    "esModuleInterop": true,
+    // Enable top-level await, and other modern ESM features.
+    "target": "ESNext",
+    "module": "ESNext",
+    // Enable node-style module resolution, for things like npm package imports.
     "moduleResolution": "node",
-    "jsx": "react",
-    "skipLibCheck": true,
-    "types": []
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public", ".cache"]
+    // Enable JSON imports.
+    "resolveJsonModule": true,
+    // Enable stricter transpilation for better output.
+    "isolatedModules": true,
+    // Astro will directly run your TypeScript code, no transpilation needed.
+    "noEmit": true,
+    // Enable strict type checking.
+    "strict": true,
+    // Error when a value import is only used as a type.
+    "importsNotUsedAsValues": "error",
+    "types": ["@astrojs/image/client"],
+    "baseUrl": "./src"
+  }
 }
