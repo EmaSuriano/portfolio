@@ -1,0 +1,29 @@
+{
+  "name": "Ema Suriano",
+  "bio": "Passionate Engineer driven by all the Javascript ecosystem. On my spare time I like to write and speak publicly",
+  "avatar": "./avatar.jpg",
+  "website": "https://emasuriano.com/",
+  "role": "Software Engineer",
+  "company": {
+    "name": "Revolut",
+    "url": "https://revolut.com/"
+  },
+  "social": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/EmaSuriano"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/EmaSuriano"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/c/EmaSuriano"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/emanuel-suriano"
+    }
+  ]
+}

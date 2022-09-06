@@ -17,23 +17,23 @@
     "check": "astro check",
     "preview": "pnpm build && astro preview"
   },
-  "dependencies": {
-    "svelte": "^3.49.0"
-  },
   "devDependencies": {
     "@astrojs/image": "^0.3.6",
     "@astrojs/markdown-remark": "^1.0.0",
     "@astrojs/mdx": "^0.10.1",
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@tailwindcss/typography": "^0.5.4",
+    "@types/glob": "^8.0.0",
     "astro": "1.0.9",
     "astro-compress": "^1.0.5",
     "cloudflare": "^2.9.1",
     "date-fns": "^2.29.2",
+    "glob": "^8.0.3",
     "image-size": "^1.0.2",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.4",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.1.0",
@@ -41,11 +41,16 @@
     "rehype-slug": "^5.0.1",
     "sharp": "^0.30.7",
     "tailwindcss": "^3.1.8",
+    "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint --fix"
     }
+  },
+  "dependencies": {
+    "astro-icon": "^0.7.3",
+    "zod": "^3.18.0"
   }
 }

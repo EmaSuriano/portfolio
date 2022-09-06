@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<span
+  class="text-slate-500 dark:text-slate-300 hover:text-slate-700 transition-colors duration-200 flex"
+>
+  <button
+    data-set-theme="dark"
+    data-act-class="toggle-light"
+    aria-label="Toggle theme"
+    class="toggle-light"
+  >
+    <Icon name="ri:sun-line" class="w-6 h-6" />
+  </button>
+  <button
+    data-set-theme="light"
+    data-act-class="toggle-dark"
+    aria-label="Toggle theme"
+    class="toggle-dark"
+  >
+    <Icon name="ri:moon-line" class="w-6 h-6" />
+  </button>
+</span>
+
+<style>
+  .toggle-dark,
+  .toggle-light {
+    display: none;
+  }
+
+  html[data-theme='light'] .toggle-dark,
+  html[data-theme='dark'] .toggle-light {
+    display: none;
+  }
+</style>

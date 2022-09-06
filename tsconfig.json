@@ -11,7 +11,7 @@
     "isolatedModules": true,
     // Astro will directly run your TypeScript code, no transpilation needed.
     "noEmit": true,
-    // Enable strict type checking.
+    // Enable strict type checking.m
     "strict": true,
     // Error when a value import is only used as a type.
     "importsNotUsedAsValues": "error",
