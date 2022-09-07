@@ -10,13 +10,13 @@ const title = `${about.name} - ${about.role}`;
 <Layout title={title}>
   <article class="my-auto pb-8">
     <div class="flex mb-3 flex-col-reverse sm:flex-row">
-      <h1 class="title text-slate-800">
+      <h1 class="text-slate-800">
         <div
-          class="relative inline-block text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight"
+          class="relative inline-block text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight"
         >
           <span class="title-gradient">{about.name}</span>
           <span
-            class="title-cover absolute inset-0 transition-opacity duration-500 print:hidden"
+            class="absolute inset-0 transition-opacity duration-500 hover:opacity-0"
             aria-hidden="true"
           >
             {about.name}
@@ -25,7 +25,7 @@ const title = `${about.name} - ${about.role}`;
       </h1>
 
       <div
-        class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all hover:ring hover:ring-offset-4 hover:scale-105"
+        class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 hover:scale-110"
       >
         <Image
           src={avatar}
@@ -38,35 +38,54 @@ const title = `${about.name} - ${about.role}`;
     </div>
 
     <p
-      class="block text-md w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 transition-color duration-300 hover:text-slate-600 dark:hover:text-slate-200"
+      class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
     >
       I'm a {about.role} at
       <a
         href={about.company.url}
-        class="border-b dark:border-slate-600 dark:hover:border-slate-400"
+        class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
       >
         {about.company.name}
       </a>
     </p>
 
     <p
-      class="block text-md w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 transition-color duration-300 hover:text-slate-600 dark:hover:text-slate-200"
+      class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
     >
-      I like to contribute to{' '}
+      I like to contribute to
       <a
         href="/about#projects"
-        class="border-b dark:border-slate-600 dark:hover:border-slate-400"
+        class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
       >
-        open-source
-      </a>{' '}
-      and{' '}
+        open-source</a
+      >
+      and
       <a
         href="/blog"
-        class="border-b dark:border-slate-600 dark:hover:border-slate-400"
+        class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
       >
-        write
-      </a>{' '}
+        write</a
+      >
       about web development.
     </p>
   </article>
 </Layout>
+
+<style>
+  .title-gradient {
+    /* bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 */
+    background-image: linear-gradient(
+      to right,
+      #fb7185 0%,
+      #d946ef 33%,
+      #6366f1 66%,
+      #fb7185 100%
+    );
+    background-size: 400% 0;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: slide 10s linear infinite;
+  }
+</style>

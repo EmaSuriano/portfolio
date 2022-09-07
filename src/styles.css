@@ -40,39 +40,6 @@ img {
   transition: none !important;
 }
 
-.nav-link::after {
-  @apply pointer-events-none invisible h-0 select-none overflow-hidden font-bold;
-  content: attr(data-text);
-  content: attr(data-text) / '';
-}
-
-@media speech {
-  .nav-link::after {
-    display: none;
-  }
-}
-
-.title-gradient {
-  background-image: linear-gradient(
-    to right,
-    #2dd2dd 0%,
-    #9a47f3 25%,
-    #fcb26d 50%,
-    #ff61e6 75%,
-    #2dd2dd 100%
-  );
-  background-size: 400% 0;
-  background-clip: text;
-  text-fill-color: transparent;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: slide 10s linear infinite;
-}
-
-.title:hover .title-cover {
-  @apply opacity-0;
-}
-
 .track-link:hover > *:first-child {
   @apply scale-110 transform opacity-100;
 }
@@ -105,6 +72,11 @@ img {
   @apply invisible ml-1 align-middle no-underline;
   color: inherit;
   font-size: 0.8em;
+}
+
+.prose a {
+  @apply text-slate-500 dark:text-slate-300 transition-colors duration-200 border-b dark:border-slate-700 dark:hover:border-current hover:border-current hover:text-slate-900 dark:hover:text-slate-100;
+  text-decoration: none;
 }
 
 .prose *:hover > a {

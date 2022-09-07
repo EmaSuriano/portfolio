@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { remarkReadingTime } from './remark-reading-time.mjs';
 
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
@@ -17,6 +18,7 @@ export default defineConfig({
   ],
   markdown: {
     syntaxHighlight: false,
+    remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
       'rehype-slug',
       'rehype-autolink-headings',
@@ -25,7 +27,6 @@ export default defineConfig({
     ],
   },
   vite: {
-    assetsInclude: ['**/*.yml'],
     server: {
       proxy: {
         '/api': 'http://localhost:8787',

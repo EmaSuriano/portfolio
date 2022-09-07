@@ -1,0 +1,28 @@
+---
+import { talks } from '../../content/about/author.json';
+import LangBadge from './LangBadge.astro';
+---
+
+{
+  talks.map(({ title, description, places, url }) => (
+    <section>
+      <h3 class="flex text-lg">
+        <span class="order-2 self-start ml-auto sm:order-none sm:ml-0 sm:mr-2">
+          <LangBadge>en</LangBadge>
+        </span>
+        <a href={url}>{title}</a>
+      </h3>
+      {places && (
+        <ul>
+          {places.map(({ name, year }) => (
+            <li class="text-slate-700 dark:text-slate-300">
+              {name},
+              <span class="text-slate-500 dark:text-slate-400">{year}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <p>{description}</p>
+    </section>
+  ))
+}
