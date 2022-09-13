@@ -16,7 +16,7 @@ const title = `${about.name} - ${about.role}`;
         >
           <span class="title-gradient">{about.name}</span>
           <span
-            class="absolute inset-0 transition-opacity duration-500 hover:opacity-0"
+            class="absolute inset-0 transition-opacity duration-500 hover:opacity-0 cursor-default"
             aria-hidden="true"
           >
             {about.name}
@@ -25,7 +25,7 @@ const title = `${about.name} - ${about.role}`;
       </h1>
 
       <div
-        class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 hover:scale-110"
+        class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
       >
         <Image
           src={avatar}

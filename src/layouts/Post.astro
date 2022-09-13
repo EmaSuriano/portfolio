@@ -7,24 +7,26 @@ import Image from 'components/Image.astro';
 import { name } from '../../content/about/author.json';
 import avatar from '../../content/about/avatar.jpg';
 
-const { title, publishedAt, original } = Astro.props.content;
+const { title, publishedAt, original, ...rest } = Astro.props.content;
+
 const publishDate = format(
   parse(publishedAt, 'yyyy-MM-dd', new Date()),
   'MMMM d, yyyy',
 );
 const { minutesRead: readingTime } = Astro.props.frontmatter;
 
-console.log(readingTime);
-// const { text: readingTime } = calcReadingTime(Astro.props.rawContent());
-const { pathname } = Astro.url;
-const slug = pathname.split('/').splice(-1)[0];
-const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(
-  /\/$/,
-  '',
-)}.md`;
+const file = rest.file.split('/').pop().replace('.mdx', '.jpg');
+const cover = `src/assets/cover/${file}`;
 ---
 
 <Layout title={title} canonical={original?.url}>
+  <Image
+    src={cover}
+    alt={title}
+    width={1400}
+    height={600}
+    class="rounded-xl sm:rounded-3xl"
+  />
   <article
     class="my-6"
     item-prop="blogPost"

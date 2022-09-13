@@ -1,46 +1,35 @@
 ---
-import BlogItem from 'components/BlogItem.astro';
-import ViewsCounterScript from 'components/ViewsCounter.script.astro';
+import { Icon } from 'astro-icon';
 import Layout from 'layouts/Layout.astro';
+import { format } from 'date-fns';
 
-type PostFrontMatter = {
-  title: string;
-  summary: string;
-  original?: {
-    url: string;
-    external?: boolean;
+type Post = {
+  frontmatter: {
+    title: string;
+    summary: string;
+    original?: {
+      url: string;
+      external?: boolean;
+    };
+    minutesRead: string;
+    publishedAt: string;
   };
-  publishedAt: string;
+  url: string;
 };
 
 const title = 'Blog';
 const description =
   'Here is my blog. I started to write not so long ago and trying my best';
-const posts = await Astro.glob<PostFrontMatter>('./blog/*.{md,mdx}');
+let posts = await Astro.glob<Post>('./blog/*.{md,mdx}');
 
-posts.sort(
+posts = posts.sort(
   (a, b) =>
-    Date.parse(a.frontmatter.publishedAt) -
-    Date.parse(b.frontmatter.publishedAt),
+    Date.parse(b.frontmatter.publishedAt) -
+    Date.parse(a.frontmatter.publishedAt),
 );
 ---
 
-<Layout {title} {description}>
-  <svg class="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <symbol
-      id="external-link-icon"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-      ></path>
-    </symbol>
-  </svg>
+<Layout title={title} description={description}>
   <h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">
     Blog
   </h1>
@@ -48,10 +37,36 @@ posts.sort(
     {
       posts.map(({ frontmatter, url }) => (
         <li>
-          <BlogItem {url} {...frontmatter} />
+          <article class="relative">
+            <div class="flex flex-col sm:flex-row justify-between mb-2">
+              <h3 class="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold  text-slate-900 dark:text-slate-100">
+                <a
+                  href={
+                    frontmatter.original?.external
+                      ? frontmatter.original?.url
+                      : url
+                  }
+                  class="block-link transition-opacity opacity-80 hover:opacity-100"
+                >
+                  {frontmatter.title}
+                  {frontmatter.original?.external && (
+                    <Icon
+                      name="ri:external-link-line"
+                      class="w-4 h-4 ml-2 align-baseline inline"
+                    />
+                  )}
+                </a>
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400">
+                {format(Date.parse(frontmatter.publishedAt), 'MMM yyyy')}
+              </p>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl">
+              {frontmatter.summary}
+            </p>
+          </article>
         </li>
       ))
     }
   </ul>
-  <ViewsCounterScript />
 </Layout>

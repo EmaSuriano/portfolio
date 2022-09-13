@@ -5,16 +5,15 @@ summary: A few weeks ago I published my first starter for Gatsby and I want to s
 publishedAt: '2018-10-12'
 ---
 
-import Tweet from 'components/Tweet.astro';
+import Embed from 'components/Embed.astro';
 
 A few weeks ago I published my first starter for Gatsby and I want to share some tips I learn along the whole experience.
 
-As many starters in Gatsby, it began as a Personal portfolio. After I published it and share it on Twitter, people asked me if it was Open Source or published somewhere. My reaction at the beginning was saying **No**, but after more inquires came I changed my answer to a _Maybe it will!_.
+As many starters in Gatsby, it began as a Personal portfolio. After I published it and share it on Twitter, people asked me if it was Open Source or published somewhere. My reaction at the beginning was saying **No**, but after more inquires came I changed my answer to a: _"Maybe it will!"_.
 
-<div class="Image__Small">
-  <Tweet id="1033837348881137665" />
-  <div>Release tweet</div>
-</div>
+<Embed href="https://twitter.com/emasuriano/status/1033837348881137665">
+  Release tweet
+</Embed>
 
 Technically the project was “Open-source” because it was hosted in Github, but it was not configurable at all. All the data was hardcoded with information about me …
 
@@ -23,11 +22,6 @@ Instead of helping developers, I was providing an awful experience for anyone wh
 It was at this point when I considered creating a Gatsby Starter, and simplify the setup of the portfolio for anyone. My goal was to achieve a **2 minutes Setup** with defined steps!
 
 ## #1. Make it attractive for developers 💅
-
-<div class="Image__Small">
-  <img src="./images/excited.gif" alt="Excited" />
-  <div>Excited</div>
-</div>
 
 You should see your starter as a page you are selling to developers or someone with at least some technical. So you have to make it **attractive ✨** For that, I follow these 3 rules:
 
@@ -55,14 +49,42 @@ I strongly recommend using any design system with built-in components. They will
 
 In case you don’t know where to find a good Design System, I recommend the website [Design System Repo](https://designsystemsrepo.com/design-systems). It’s a curated list of design systems, in which most of them provide also a component library to use too 👍
 
-## #2. Avoid hardcoding Personal Information 🤷‍♂️
+## #2. Avoid hardcoding personal information 🤷‍♂️
 
 When I looked into the codebase of my pages it was easy to detect a mix between component structure and information about me. A quick example was the About Me page, which looked like this:
 
-<div class="Image__Medium">
-  <img src="images/old-snippet.jpg" alt="The old snippet of About Me" />
-  <div>The old snippet of About Me</div>
-</div>
+```jsx
+const AboutMe = () => (
+  <Section name="about">
+    <Heading>About</Heading>
+    <Text lineHeight={2}>
+      I'm in love with <Highlight>Javascript</Highlight> and all the ecosystem
+      that has grown around it: frameworks, dev tools, the community. Because of
+      that passion of mine, I built <Highlight>all sort of projects</Highlight>
+      with this language:
+    </Text>
+    <ul>
+      <ListItem>Web Applications</ListItem> <ListItem>IoT</ListItem>
+      <ListItem>Mobile applications</ListItem>
+      <ListItem>Libraries</ListItem>
+    </ul>
+    <Text lineHeight={2} pb={3}>
+      I learn that the best way to learn is to
+      <Highlight>share knowledge</Highlight> with others. For that reason, I start
+      <Highlight>writing post</Highlight> about the latest technologies in
+      Medium and also <Highlight>do talks</Highlight> in local meetups.
+    </Text>
+    <Text lineHeight={2} pb={3}>
+      For me the <Highlight>Open Source</Highlight> philosophy was a
+      <Highlight>mind changing</Highlight> when I was learning to code. Now, I
+      tried to <Highlight>share</Highlight> any project or piece of code I find
+      it helpful, so everyone could avoid doing the same I did. Also,
+      <Highlight>contributing</Highlight> to another projects is a thing I love to
+      do, I learned so much from reading a new codebase.
+    </Text>
+  </Section>
+);
+```
 
 The solution was “_easy_”, all the information has to come from other resources, and fortunately doing that with Gatsby is incredibly easy, thanks to [Source Plugins](https://www.gatsbyjs.org/tutorial/part-five/). You can _connect_ your application with an _external resource_ and then your components can directly access the data from them.
 
@@ -70,19 +92,39 @@ I decided to go for [Contentful](http://contentful.com) as my CMS (Content Manag
 
 The first step is to create a _Content Model_ where you can declare the structure of the data about the owner of the portfolio.
 
-<div class="Image__Medium">
-  <img src="images/content-model.jpg" alt="Content Model for About me" />
-  <div>Content Model for About me</div>
-</div>
+![Content model](/assets/content-model.jpg)
 
 After that, I created a new _Content_ for the _About Content Model_ with some pre-existing values. I did this to provide an example of how it should look when you fill all your information, and also because without data the Section is completely empty …
 
 The code of About Me section will look something like:
 
-<div class="Image__Medium">
-  <img src="images/new-snippet.jpg" alt="The snippet of About me" />
-  <div>The snippet of About me</div>
-</div>
+```jsx
+const AboutMe = () => (
+  <Section id="about">
+    <Heading>About</Heading>
+    <StaticQuery
+      query={graphql`
+        query AboutMeQuery {
+          contentfulAbout {
+            aboutMe {
+              childMarkdownRemark {
+                html
+              }
+            }
+          }
+        }
+      `}
+      render={({ contentfulAbout: { aboutMe } }) => (
+        <AboutText
+          dangerouslySetInnerHTML={{
+            _html: aboutMe.childMarkdownRemark.html,
+          }}
+        />
+      )}
+    />
+  </Section>
+);
+```
 
 By doing this, the person who wants to change information about himself doesn’t have to look into the component structure, just change the information stored inside _Contentful_ ✨
 
@@ -135,7 +177,7 @@ After your pull request is merged, you’ll be able to see as a new entry of the
 
 [Gatsby Starter Mate in Gatsby](https://www.gatsbyjs.org/starters/gatsby-starter-mate)
 
-**PRO TIP:** Gatsby gives “free swag” to any contributor (they have a shop where you can pick for free some stuff and deliver it to your home), which is the best way to show gratitude to developers, thank you so much Gatsby 🎉
+> PRO TIP: Gatsby gives “free swag” to any contributor (they have a shop where you can pick for free some stuff and deliver it to your home), which is the best way to show gratitude to developers, thank you so much Gatsby 🎉
 
 ## Last words 👋
 
