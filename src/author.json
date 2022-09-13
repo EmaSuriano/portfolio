@@ -52,7 +52,8 @@
       "places": [
         {
           "name": "Byteconf React",
-          "year": 2020
+          "year": 2020,
+          "recording": "https://www.youtube.com/watch?v=ilgM9RmaUGg"
         }
       ]
     },
@@ -63,7 +64,8 @@
       "places": [
         {
           "name": "React Global Online Summit",
-          "year": 2020
+          "year": 2020,
+          "recording": "https://www.youtube.com/watch?v=VI-HhBTB7cc"
         },
         {
           "name": "Typescript Meetup Berlin",

@@ -1,41 +1,33 @@
 ---
 import { Icon } from 'astro-icon';
 import Layout from 'layouts/Layout.astro';
-import { format } from 'date-fns';
+import { format, parse, differenceInDays } from 'date-fns';
+import type { Post } from 'types';
+import { DATE_FORMAT } from 'const';
 
-type Post = {
-  frontmatter: {
-    title: string;
-    summary: string;
-    original?: {
-      url: string;
-      external?: boolean;
-    };
-    minutesRead: string;
-    publishedAt: string;
-  };
-  url: string;
+const posts = await Astro.glob<Post>('./blog/*.{md,mdx}');
+
+const sortPostByDate = (a: Post, b: Post) =>
+  differenceInDays(
+    parse(b.frontmatter.publishedAt, DATE_FORMAT, new Date()),
+    parse(a.frontmatter.publishedAt, DATE_FORMAT, new Date()),
+  );
+
+const formatDate = (date: string) => {
+  return format(parse(date, DATE_FORMAT, new Date()), 'MMM yyyy');
 };
-
-const title = 'Blog';
-const description =
-  'Here is my blog. I started to write not so long ago and trying my best';
-let posts = await Astro.glob<Post>('./blog/*.{md,mdx}');
-
-posts = posts.sort(
-  (a, b) =>
-    Date.parse(b.frontmatter.publishedAt) -
-    Date.parse(a.frontmatter.publishedAt),
-);
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title="Blog"
+  description="Here is my blog. I started to write not so long ago and trying my best"
+>
   <h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">
     Blog
   </h1>
   <ul class="space-y-8 sm:space-y-12">
     {
-      posts.map(({ frontmatter, url }) => (
+      posts.sort(sortPostByDate).map(({ frontmatter, url }) => (
         <li>
           <article class="relative">
             <div class="flex flex-col sm:flex-row justify-between mb-2">
@@ -58,7 +50,7 @@ posts = posts.sort(
                 </a>
               </h3>
               <p class="text-slate-600 dark:text-slate-400">
-                {format(Date.parse(frontmatter.publishedAt), 'MMM yyyy')}
+                {formatDate(frontmatter.publishedAt)}
               </p>
             </div>
             <p class="text-slate-600 dark:text-slate-400 max-w-2xl">
