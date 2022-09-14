@@ -1,5 +1,5 @@
 ---
-import { format, parse } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
 import Image from 'components/Image.astro';
 
@@ -7,10 +7,7 @@ import { name } from '../author.json';
 
 const { title, publishedAt, original, ...rest } = Astro.props.content;
 
-const publishDate = format(
-  parse(publishedAt, 'yyyy-MM-dd', new Date()),
-  'MMMM d, yyyy',
-);
+const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
 const { minutesRead: readingTime } = Astro.props.frontmatter;
 
 const file = rest.file.split('/').pop().replace('.mdx', '.jpg');

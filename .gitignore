@@ -65,4 +65,4 @@ yarn-error.log
 .yarn-integrity
 
 .netlify/
-.cache
+.cache/

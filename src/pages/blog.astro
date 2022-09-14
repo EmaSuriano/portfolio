@@ -1,21 +1,11 @@
 ---
 import { Icon } from 'astro-icon';
 import Layout from 'layouts/Layout.astro';
-import { format, parse, differenceInDays } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import type { Post } from 'types';
-import { DATE_FORMAT } from 'const';
+import { sortPostByDate } from 'helpers';
 
 const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
-
-const sortPostByDate = (a: Post, b: Post) =>
-  differenceInDays(
-    parse(b.frontmatter.publishedAt, DATE_FORMAT, new Date()),
-    parse(a.frontmatter.publishedAt, DATE_FORMAT, new Date()),
-  );
-
-const formatDate = (date: string) => {
-  return format(parse(date, DATE_FORMAT, new Date()), 'MMM yyyy');
-};
 ---
 
 <Layout
@@ -50,7 +40,7 @@ const formatDate = (date: string) => {
                 </a>
               </h3>
               <p class="text-slate-600 dark:text-slate-400">
-                {formatDate(frontmatter.publishedAt)}
+                {format(parseISO(frontmatter.publishedAt), 'MMM yyyy')}
               </p>
             </div>
             <p class="text-slate-600 dark:text-slate-400 max-w-2xl">

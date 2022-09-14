@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://pavel.mineev.me/sitemap.xml
+Sitemap: https://emasuriano.com/sitemap.xml

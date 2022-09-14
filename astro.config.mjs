@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import compress from 'astro-compress';
+import remarkFigureCaption from '@microflash/remark-figure-caption';
 
 export default defineConfig({
   site: 'https://emasuriano.com',
@@ -14,7 +15,7 @@ export default defineConfig({
     sitemap(),
     image(),
     mdx({
-      remarkPlugins: [remarkReadingTime],
+      remarkPlugins: [remarkReadingTime, remarkFigureCaption],
     }),
     compress(),
   ],

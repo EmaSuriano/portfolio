@@ -16,6 +16,7 @@
     // Error when a value import is only used as a type.
     "importsNotUsedAsValues": "error",
     "types": ["@astrojs/image/client"],
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "skipLibCheck": true
   }
 }

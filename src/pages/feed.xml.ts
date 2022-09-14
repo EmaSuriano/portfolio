@@ -1,17 +1,22 @@
 import rss from '@astrojs/rss';
+import { parseISO } from 'date-fns';
+import { sortPostByDate } from 'helpers';
+import type { Post } from 'types';
 
-const postImportResult = import.meta.globEager('./blog/**/*.md');
+const postImportResult = import.meta.globEager<Post>('./blog/**/*.{md,mdx}');
 const posts = Object.values(postImportResult);
 
 export function get() {
   return rss({
     title: `Ema Suriano's Blog`,
-    description: 'A humble Astronaut’s guide to the stars',
+    description:
+      'Passionate Engineer driven by all the Javascript ecosystem. On my spare time I like to write and speak publicly',
     site: import.meta.env.SITE,
-    items: posts.map((post) => ({
+    items: posts.sort(sortPostByDate).map((post) => ({
       link: post.url,
       title: post.frontmatter.title,
-      pubDate: post.frontmatter.publishedAt,
+      pubDate: parseISO(post.frontmatter.publishedAt),
+      description: post.frontmatter.summary,
     })),
   });
 }

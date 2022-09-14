@@ -19,8 +19,6 @@ const isHome = pathname === '/';
 
 let {
   title = about.name,
-  // TODO: replace this here
-  sharingImageUrl = '/sharing.png',
   type = 'website',
   description = about.bio,
   canonical,
@@ -30,8 +28,6 @@ let {
 if (!isHome) {
   title = `${title} - ${about.name}`;
 }
-
-sharingImageUrl = `${about.website}${sharingImageUrl}`;
 ---
 
 <!DOCTYPE html>
@@ -43,18 +39,16 @@ sharingImageUrl = `${about.website}${sharingImageUrl}`;
     <meta property="og:url" content={url} />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
-    <meta property="og:image" content={sharingImageUrl} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={about.name} />
     <meta name="author" content={about.name} />
     <link href={canonical} rel="canonical" />
     {date && <meta property="article:published_time" content={date} />}
     <link href="/favicon.ico" rel="icon" />
-    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-    <link href="/favicon-mask.svg" rel="mask-icon" color="#ce6fea" />
+    <link href="/favicon.png" rel="icon" type="image/png" />
     <link href="/touch-180x180.png" rel="apple-touch-icon" />
     <link href="/manifest.json" rel="manifest" />
-    <meta content="#ce6fea" name="theme-color" />
+    <meta content="#fff" name="theme-color" />
   </head>
 
   <body

@@ -58,8 +58,9 @@ img {
   text-decoration: none;
 }
 
-.prose img {
-  @apply m-auto;
+.prose img,
+.prose figcaption {
+  @apply mx-auto w-fit;
 }
 
 .prose .project a {
