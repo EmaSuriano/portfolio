@@ -1,6 +1,7 @@
 ---
 import Layout from 'layouts/Layout.astro';
-import Image from 'components/Image.astro';
+import { Image } from '@astrojs/image/components';
+import avatar from '../assets/avatar.jpg';
 import about from '../author.json';
 
 const title = `${about.name} - ${about.role}`;
@@ -26,13 +27,7 @@ const title = `${about.name} - ${about.role}`;
       <div
         class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
       >
-        <Image
-          src="src/assets/images/avatar.jpg"
-          width={128}
-          height={128}
-          loading="lazy"
-          alt={about.name}
-        />
+        <Image src={avatar} width={128} height={128} alt={about.name} />
       </div>
     </div>
 

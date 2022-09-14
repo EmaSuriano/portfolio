@@ -7,6 +7,8 @@ import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import compress from 'astro-compress';
 import remarkFigureCaption from '@microflash/remark-figure-caption';
+import remarkSlug from 'remark-slug';
+import remarkAutolinkHeadings from 'remark-autolink-headings';
 
 export default defineConfig({
   site: 'https://emasuriano.com',
@@ -15,7 +17,12 @@ export default defineConfig({
     sitemap(),
     image(),
     mdx({
-      remarkPlugins: [remarkReadingTime, remarkFigureCaption],
+      remarkPlugins: [
+        remarkReadingTime,
+        remarkFigureCaption,
+        remarkSlug,
+        remarkAutolinkHeadings,
+      ],
     }),
     compress(),
   ],

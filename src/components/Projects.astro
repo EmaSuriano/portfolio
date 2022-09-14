@@ -12,7 +12,7 @@ const parsed = projects.map((project) => ({
 <div class="grid gap-6 sm:grid-cols-2">
   {
     parsed.map(({ url, title, description }) => (
-      <section class="project relative block px-4 py-3 -mx-3 sm:mx-0 sm:px-6 sm:py-5 border border-slate-100 dark:border-slate-700 rounded-lg transition-shadow duration-200 hover:shadow-lg dark:transform dark:transition-transform dark:hover:-translate-y-1">
+      <section class="project relative block px-4 py-3 -mx-3 sm:mx-0 sm:px-6 sm:py-5 border border-slate-200 dark:border-slate-700 rounded-lg transition-shadow duration-200 hover:shadow-lg dark:transform dark:transition-transform dark:hover:-translate-y-1">
         <h3 class="flex items-center justify-between mb-2 text-xl font-bold">
           <a href={url} class="block-link truncate">
             {title}

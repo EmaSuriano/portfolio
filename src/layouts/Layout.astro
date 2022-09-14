@@ -33,6 +33,11 @@ if (!isHome) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script is:inline>
+      const theme = localStorage.getItem('theme');
+      document.querySelector('html').setAttribute('data-theme', theme);
+    </script>
+
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -102,6 +107,8 @@ if (!isHome) {
         </ul>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"
+    ></script>
     <script is:inline>
       setTimeout(() => {
         if (
@@ -110,9 +117,16 @@ if (!isHome) {
         ) {
           document.body.classList.remove('preload-transitions');
         }
+
+        if (window.location.hash) {
+          const article = document.querySelector(
+            `[href='${window.location.hash}']`,
+          );
+          if (article) {
+            article.scrollIntoView();
+          }
+        }
       }, 0);
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"
-    ></script>
   </body>
 </html>

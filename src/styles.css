@@ -150,3 +150,16 @@ img {
     background-position: 200% center;
   }
 }
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  @apply mr-2;
+}
+
+.icon-link::before {
+  content: '#';
+}
