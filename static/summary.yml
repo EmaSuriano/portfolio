@@ -41,12 +41,12 @@ projects:
     date: 2018-07-01
     link: https://github.com/EmaSuriano/react-hotkey-tooltip
     
-  - name: React Section Scroll
+  - name: React Scroll Section
     description: A declarative solution to vertically navigate your React App.
-    hero: ./logos/react-section-scroll.png
+    hero: ./logos/react-scroll-section.png
     type: Library
     date: 2018-04-08
-    link: https://github.com/EmaSuriano/react-section-scroll
+    link: https://github.com/EmaSuriano/react-scroll-section
     
 posts:
   - title: My learnings from making a Gatsby Starter
@@ -121,7 +121,7 @@ talks:
     hero: ./cover/from-CRA-to-CAA.jpg
     type: Byteconf React
     date: 2020-05-01
-    link: https://from-cra-to-caa.netlify.app
+    link: https://youtu.be/ilgM9RmaUGg
     
   - name: Runtime Types Validation in Typescript
     description: |
@@ -133,5 +133,5 @@ talks:
     hero: ./cover/types-validation-in-ts.jpg
     type: React Global Online Summit
     date: 2020-09-15
-    link: https://slides.com/emasuriano/runtime-types-validation-in-typescript
+    link: https://youtu.be/VI-HhBTB7cc?t=66
     
