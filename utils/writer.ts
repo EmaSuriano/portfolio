@@ -1,5 +1,4 @@
 import chokidar from 'chokidar';
-import { dirname } from 'path';
 import glob from 'glob';
 import readline from 'readline';
 import fs from 'fs';
