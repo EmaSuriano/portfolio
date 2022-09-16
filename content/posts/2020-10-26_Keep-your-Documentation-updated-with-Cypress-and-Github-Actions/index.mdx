@@ -15,13 +15,13 @@ I am the owner and maintainer of the [Gatsby Starter Mate](https://github.com/Em
 
 Although one can always open the [Demo website](https://gatsby-starter-mate.netlify.app/) and navigate through it to see how the project is, I decided to create a simple Table where I show how each of the sections looks like. Here is the table extracted from the [README.md](https://github.com/EmaSuriano/gatsby-starter-mate/blob/master/README.md#screenshot-and-design-).
 
-| Section  |                      Screenshot                       |
-| -------- | :---------------------------------------------------: |
-| Home     |   ![Home](images/photographer.test.js/Landing.png)    |
-| About me |  ![About me](images/photographer.test.js/About.png)   |
-| Projects | ![Projects](images/photographer.test.js/Projects.png) |
-| Writing  |  ![Writing](images/photographer.test.js/Writing.png)  |
-| 404      |      ![404](images/photographer.test.js/404.png)      |
+| Section  |                       Screenshot                        |
+| -------- | :-----------------------------------------------------: |
+| Home     |   ![Home](./images/photographer.test.js/Landing.png)    |
+| About me |  ![About me](./images/photographer.test.js/About.png)   |
+| Projects | ![Projects](./images/photographer.test.js/Projects.png) |
+| Writing  |  ![Writing](./images/photographer.test.js/Writing.png)  |
+| 404      |      ![404](./images/photographer.test.js/404.png)      |
 
 As I highlighted at the beginning of this post, in case I made a change in the UI: CSS change, content change, add/remove new components, etc. I had to regenerate these screenshots ... The process was as follows:
 
@@ -33,7 +33,7 @@ As I highlighted at the beginning of this post, in case I made a change in the U
 Besides the process was not hard to follow, I had to repeat it for each of the sections and in many times I forgot to do it after I made any change ... It was time to bring the machines to the play! 🦾
 
 <div class="Image__Small">
-  <img src="images/automate.gif" alt="Time to automate" />
+  <img src="./images/automate.gif" alt="Time to automate" />
   <figcaption>Time to automate</figcaption>
 </div>
 
@@ -149,9 +149,7 @@ describe('Photographer', () => {
 
   it('About Section', () => {
     cy.visit('/');
-    cy.get('#about')
-      .scrollIntoView()
-      .screenshot('About');
+    cy.get('#about').scrollIntoView().screenshot('About');
   });
 
   // Taking screenshots of the whole page
@@ -310,7 +308,7 @@ describe('Dynamic Photographer', () => {
     cy.viewport('macbook-15'); // Desktop viewport
   });
 
-  routes.forEach(route => {
+  routes.forEach((route) => {
     it(`${route}`, () => {
       cy.visit('/');
       cy.get('#shared-section-id').screenshot(route);
@@ -326,7 +324,7 @@ Finally, you have to generate the table based on the `routes.json` file or from 
 const fs = require('fs');
 const routes = require('./cypress/fixtures/routes.json');
 
-const routeToTable = route =>
+const routeToTable = (route) =>
   `| ${route} | ![${route}](screenshots/photographer.test.js/${route}.png) |`;
 
 const content = [
