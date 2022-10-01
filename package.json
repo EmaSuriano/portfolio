@@ -44,7 +44,7 @@
     "@typescript-eslint/parser": "^5.38.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.24.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "image-size": "^1.0.2",
