@@ -41,7 +41,7 @@
     "@types/react-dom": "^17.0.13",
     "@types/remove-markdown": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.36.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "dotenv": "^16.0.2",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^6.15.0",
