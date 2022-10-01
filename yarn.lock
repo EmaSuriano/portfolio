@@ -10137,6 +10137,11 @@ is-absolute-url@^3.0.0, is-absolute-url@^3.0.3:
   resolved "https://registry.yarnpkg.com/is-absolute-url/-/is-absolute-url-3.0.3.tgz#96c6a22b6a23929b11ea0afb1836c36ad4a5d698"
   integrity sha512-opmNIX7uFnS96NtPmhWQgQx6/NYFgsUXYMllcfzwWKUMwfo8kku1TvE6hkNcH+Q1ts5cMVrsY7j0bxXQDciu9Q==
 
+is-absolute-url@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/is-absolute-url/-/is-absolute-url-4.0.1.tgz#16e4d487d4fded05cfe0685e53ec86804a5e94dc"
+  integrity sha512-/51/TKE88Lmm7Gc4/8btclNXWS+g50wXhYJq8HWIBAGUBnoAdRu1aXeh364t/O7wXDAcTJDP8PNuNKWUDWie+A==
+
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-accessor-descriptor/-/is-accessor-descriptor-0.1.6.tgz#a9e12cb3ae8d876727eeef3843f8a0897b5c98d6"
@@ -10613,6 +10618,13 @@ is-relative-url@^3.0.0:
   integrity sha512-U1iSYRlY2GIMGuZx7gezlB5dp1Kheaym7zKzO1PV06mOihiWTXejLwm4poEJysPyXF+HtK/BEd0DVlcCh30pEA==
   dependencies:
     is-absolute-url "^3.0.0"
+
+is-relative-url@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/is-relative-url/-/is-relative-url-4.0.0.tgz#4d8371999ff6033b76e4d9972fb5bf496fddfa97"
+  integrity sha512-PkzoL1qKAYXNFct5IKdKRH/iBQou/oCC85QhXj6WKtUQBliZ4Yfd3Zk27RHu9KQG8r6zgvAA2AQKC9p+rqTszg==
+  dependencies:
+    is-absolute-url "^4.0.1"
 
 is-relative@^1.0.0:
   version "1.0.0"
@@ -11244,15 +11256,15 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-link-check@^5.0.2, link-check@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/link-check/-/link-check-5.1.0.tgz#2e61363124db32484d6ef5b00eb7eda15e60ba7c"
-  integrity sha512-FHq/9tVnIE/3EVEPb91GcbD+K/Pv5K5DYqb7vXi3TTKIViMYPOWxYFVVENZ0rq63zfaGXGvLgPT9U6jOFc5JBw==
+link-check@^5.1.0, link-check@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/link-check/-/link-check-5.2.0.tgz#595a339d305900bed8c1302f4342a29c366bf478"
+  integrity sha512-xRbhYLaGDw7eRDTibTAcl6fXtmUQ13vkezQiTqshHHdGueQeumgxxmQMIOmJYsh2p8BF08t8thhDQ++EAOOq3w==
   dependencies:
-    is-relative-url "^3.0.0"
+    is-relative-url "^4.0.0"
     isemail "^3.2.0"
     ms "^2.1.3"
-    needle "^3.0.0"
+    needle "^3.1.0"
 
 listr-silent-renderer@^1.1.1:
   version "1.1.1"
@@ -12578,7 +12590,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-needle@^3.0.0, needle@^3.1.0:
+needle@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/needle/-/needle-3.1.0.tgz#3bf5cd090c28eb15644181ab6699e027bd6c53c9"
   integrity sha512-gCE9weDhjVGCRqS8dwDR/D3GTAeyXLXuqp7I8EzH6DllZGXSUyxuqqLh+YX9rMAWaaTFyVAg6rHGL25dqvczKw==
