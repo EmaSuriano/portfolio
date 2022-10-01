@@ -50,7 +50,7 @@
     "image-size": "^1.0.2",
     "js-yaml": "^3.14.1",
     "link-check": "^5.2.0",
-    "markdown-link-check": "^3.10.2",
+    "markdown-link-check": "^3.10.3",
     "prettier": "^2.7.1",
     "query-string": "^7.1.1",
     "remove-markdown": "^0.5.0",
