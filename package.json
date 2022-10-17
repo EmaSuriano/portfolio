@@ -15,7 +15,7 @@
     "png-to-jpg": "ls -1 ./content/**/*.png | xargs -n 1 bash -c 'convert \"$0\" \"${0%.png}.jpg\"'",
     "optimize-images": "imageoptim './content/**/*.jpg'",
     "lint": "eslint --cache --ext .ts,.tsx src",
-    "check-types": "tsc -p . --noEmit"
+    "check-types": "tsc -p . --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@blocks/kit": "^0.0.28",
@@ -30,11 +30,6 @@
     "react-dom": "^16.14.0",
     "react-typed": "^1.2.0"
   },
-  "peerDependencies": {
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
-    "gatsby-paginate": "^1.1.1"
-  },
   "devDependencies": {
     "@types/line-reader": "^0.0.34",
     "@types/react-dom": "^17.0.13",
@@ -43,7 +38,7 @@
     "@typescript-eslint/parser": "^5.38.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.24.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "image-size": "^1.0.2",
@@ -56,11 +51,6 @@
     "start-server-and-test": "^1.14.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint --fix"
-    }
   },
   "resolutions": {
     "sharp": "0.25.4",

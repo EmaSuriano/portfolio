@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import { GridLayoutContext } from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List.Context';
 
-const GridLayoutProviderMock = ({
-  children,
-  layout,
-}: {
+type Layout = 'tiles' | 'rows';
+
+type Props = {
   children: React.ReactNode;
   layout: Layout;
-}) => {
-  const [gridLayout, setGridLayout] = useState(layout);
+};
 
-  const setGridLayoutAndSave = (tile: string) => {
-    setGridLayout(tile as Layout);
-  };
+const GridLayoutProviderMock = ({ children, layout }: Props) => {
+  const [gridLayout, setGridLayout] = useState(layout);
 
   return (
     <GridLayoutContext.Provider
       value={{
         gridLayout: layout,
         hasSetGridLayout: true,
-        setGridLayout: setGridLayoutAndSave,
+        setGridLayout: (tile) => setGridLayout(tile as Layout),
         getGridLayout: () => gridLayout,
       }}
     >

@@ -4,6 +4,7 @@ import SEO from '@narative/gatsby-theme-novela/src/components/SEO';
 import Layout from '@narative/gatsby-theme-novela/src/components/Layout';
 import ArticlesList from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List';
 import ArticlesHero from '@narative/gatsby-theme-novela/src/sections/articles/Articles.Hero';
+import { IAuthor, ITalk } from '../types';
 
 type Props = {
   pageContext: {

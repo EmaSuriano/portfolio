@@ -1,9 +1,3 @@
-type IPaginator = {
-  pageCount: number;
-  index: number;
-  pathPrefix: string;
-};
-
 type IGatsbyImage = {
   src: string;
   base64?: string;
@@ -18,12 +12,7 @@ type IGatsbyImageFluid = IGatsbyImage & {
   maxWidth: number;
 };
 
-type IGatsbyImageFixed = IGatsbyImage & {
-  height: number;
-  width: number;
-};
-
-type IAuthor = {
+export type IAuthor = {
   authorsPage?: boolean;
   featured?: boolean;
   name: string;
@@ -36,7 +25,7 @@ type IAuthor = {
   };
 };
 
-type IArticle = {
+export type IArticle = {
   slug: string;
   authors: IAuthor[];
   excerpt: string;
@@ -52,30 +41,10 @@ type IArticle = {
   date: string;
 };
 
-type IArticleQuery = {
-  edges: {
-    node: IArticle;
-  }[];
-};
-
-type IProgress = {
-  height: number;
-  offset: number;
-  title: string;
-  mode: string;
-  onClose?: () => void;
-};
-
-type Icon = {
-  fill: string;
-};
-
-type Layout = 'tiles' | 'rows';
-
-type IProject = {
+export type IProject = {
   name: string;
 };
 
-type ITalk = {
+export type ITalk = {
   name: string;
 };

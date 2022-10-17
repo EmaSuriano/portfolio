@@ -1,7 +1,9 @@
 import React from 'react';
 import ArticlesList from '@narative/gatsby-theme-novela/src/sections/articles/Articles.List';
+
 import Section from '../components/Section';
 import GridLayoutProviderMock from '../components/GridLayoutProviderMock';
+import { IProject } from '../types';
 
 type Props = { projects: IProject[] };
 

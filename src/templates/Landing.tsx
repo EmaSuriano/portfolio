@@ -6,6 +6,7 @@ import Hero from '../sections/Hero';
 import About from '../sections/About';
 import LastTalks from '../sections/LastTalks';
 import Projects from '../sections/Projects';
+import { IArticle, IAuthor, IProject, ITalk } from '../types';
 
 type Props = {
   pageContext: {

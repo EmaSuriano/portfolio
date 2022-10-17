@@ -5,6 +5,7 @@ import { ImageZoom } from '@narative/gatsby-theme-novela/src/components/Image';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from '../helpers/styled';
 import Section from '../components/Section';
+import { IAuthor } from '../types';
 
 const siteQuery = graphql`
   {
@@ -47,7 +48,9 @@ const AboutContainer = styled.div`
   }
 `;
 
-const About = ({ author }: { author: IAuthor }) => {
+type Props = { author: IAuthor };
+
+const About = ({ author }: Props) => {
   const { about } = useStaticQuery(siteQuery);
 
   return (

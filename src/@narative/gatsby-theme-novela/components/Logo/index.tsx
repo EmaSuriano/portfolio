@@ -1,5 +1,6 @@
 import React from 'react';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
+
 import styled from '../../../../helpers/styled';
 
 const Hologram = styled.h1`
@@ -43,6 +44,12 @@ const Hologram = styled.h1`
   }
 `;
 
-const Logo = ({ fill = 'white' }: Icon) => <Hologram color={fill}>ES</Hologram>;
+type Props = {
+  fill?: string;
+};
+
+const Logo = ({ fill = 'white' }: Props) => (
+  <Hologram color={fill}>ES</Hologram>
+);
 
 export default Logo;
