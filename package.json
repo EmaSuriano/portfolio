@@ -9,13 +9,14 @@
     "writer": "ts-node utils/writer.ts",
     "writer:watch": "ts-node utils/writer.ts --watch",
     "prebuild": "yarn writer",
-    "build": "gatsby build",
+    "build": "yarn check-types && gatsby build",
     "prestart": "yarn writer",
     "start": "gatsby develop",
     "png-to-jpg": "ls -1 ./content/**/*.png | xargs -n 1 bash -c 'convert \"$0\" \"${0%.png}.jpg\"'",
     "optimize-images": "imageoptim './content/**/*.jpg'",
     "lint": "eslint --cache --ext .ts,.tsx src",
-    "check-types": "tsc -p . --noEmit --skipLibCheck"
+    "check-types": "tsc -p . --noEmit",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@blocks/kit": "^0.0.28",
@@ -26,6 +27,8 @@
     "gatsby-plugin-react-svg": "^3.1.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-typescript": "^2.12.1",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-typed": "^1.2.0"
