@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const yaml = require('js-yaml');
 const fs = require('fs');
 require('dotenv').config();
+const resume = require('./content/resume.json');
 
 const { ANALYTICS_ID } = process.env;
 
@@ -70,6 +73,13 @@ const plugins = [
       rule: {
         include: /assets/,
       },
+    },
+  },
+  {
+    resolve: 'gatsby-theme-jsonresume',
+    options: {
+      resumeJson: resume,
+      theme: 'jsonresume-theme-standard-resume',
     },
   },
 ];
