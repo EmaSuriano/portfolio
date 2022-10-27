@@ -70,6 +70,7 @@ const HeroSubheading = styled.h2`
   font-size: 38px;
   margin-top: 20px;
   line-height: 1.15;
+  height: 1.15em;
   color: ${(p) => p.theme.colors.accent};
 
   ${mediaqueries.desktop`

@@ -1,6 +1,6 @@
 import React from 'react';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
-import MDXRenderer from '@narative/gatsby-theme-novela/src/components/MDX';
+import MDX from '@narative/gatsby-theme-novela/src/components/MDX';
 import { ImageZoom } from '@narative/gatsby-theme-novela/src/components/Image';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from '../helpers/styled';
@@ -26,15 +26,19 @@ const InfoWrapper = styled.div`
 `;
 
 const AvatarContainer = styled.div`
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
   overflow: hidden;
   border-radius: 50%;
-  margin-left: 16px;
+
+  ${mediaqueries.desktop`
+    max-width: 200px;
+    max-height: 200px;
+  `}
 
   ${mediaqueries.tablet`
-    margin-left: 0;
-    margin-top: 16px;
+    max-width: 300px;
+    max-height: 300px;
   `}
 `;
 
@@ -45,6 +49,10 @@ const RoundedImage = styled(ImageZoom)<{ src: string; alt: string }>`
 const AboutContainer = styled.div`
   p {
     padding: 0;
+  }
+
+  [data-emotion-css] {
+    display: none;
   }
 `;
 
@@ -57,7 +65,7 @@ const About = ({ author }: Props) => {
     <Section title="About me">
       <InfoWrapper>
         <AboutContainer>
-          <MDXRenderer content={about.body} />
+          <MDX content={about.body} />
         </AboutContainer>
         <AvatarContainer>
           <RoundedImage src={author.avatar.large.src} alt="Profile Picture" />
