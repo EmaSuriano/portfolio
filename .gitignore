@@ -68,7 +68,4 @@ yarn-error.log
 .yarn-integrity
 
 .netlify/
-
-# Generated in build time by resume-cli
-/static/resume.html
-/static/resume.pdf
+content/posts/**/*/index.mdx

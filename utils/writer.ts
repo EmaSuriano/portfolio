@@ -6,7 +6,7 @@ import { POSTS_GLOB_PATTERN } from './constants';
 import { writeSmartPreview, writeHeader, getPostInfo } from './writers';
 
 const removePostExtension = (filePath: string) =>
-  filePath.replace(/-raw$|-draft$/, '');
+  filePath.replace(/-raw$|-secret$/, '');
 
 const transpilePost = async (filePath: string) => {
   const fileStream = fs.createReadStream(filePath);

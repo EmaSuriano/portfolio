@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+	<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+	
+	<title>Emanuel Suriano</title>
+
+	<style>
+	html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1.5;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+html,
+button,
+input,
+textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --text: #333333;
+  --headline: #c9cccf;
+  --sub-headline: #96999b;
+  --primary: rgb(207, 214, 255);
+  --secondary: rgb(238, 245, 255);
+}
+
+body {
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  max-width: 600px;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--headline);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+h3 {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  margin-top: 0.5rem;
+}
+
+h4 {
+  font-size: 14px;
+  color: var(--sub-headline);
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+p,
+li {
+  margin-bottom: 0.25rem;
+  font-size: 14px;
+}
+
+a {
+  transition: box-shadow 160ms ease 0s;
+  box-shadow: var(--secondary) 0px -9px 0px inset;
+  border-bottom: 2px solid var(--primary);
+  text-decoration: none;
+  color: var(--text);
+}
+
+a:hover {
+  box-shadow: var(--primary) 0px -1.2em 0px inset;
+}
+
+section ul {
+  margin-top: 0.5rem;
+  margin-left: 2.5rem;
+  list-style: disc;
+}
+
+.contact {
+  padding-top: 2rem;
+}
+
+.contact span {
+  width: 100px;
+  display: inline-block;
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.skills li {
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.25rem 1rem;
+  background-color: var(--secondary);
+  white-space: nowrap;
+}
+
+.position {
+  margin-bottom: 1.5rem;
+}
+
+.grey {
+  color: var(--sub-headline);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pdf {
+  color: var(--headline);
+  transition: color ease 160ms;
+  border: none;
+  box-shadow: none;
+}
+
+.pdf:hover {
+  box-shadow: none;
+  color: var(--sub-headline);
+}
+
+@media print {
+  body {
+    padding: 0rem;
+  }
+
+  section,
+  div {
+    page-break-inside: avoid;
+  }
+
+  .pdf {
+    display: none;
+  }
+}
+
+	</style>
+	
+	</head>
+	<body>
+	
+	<div id="resume">
+		  <div class="header">
+		    <h1>Emanuel Suriano</h1>
+		      <a class="pdf" title="Download PDF" href=https://emasuriano.com/resume.pdf>
+		        <svg
+		          width='26px'
+		          height='26px'
+		          fill='none'
+		          stroke='currentColor'
+		          viewBox='0 0 24 24'
+		          xmlns='http://www.w3.org/2000/svg'
+		        ><path
+		            stroke-linecap='round'
+		            stroke-linejoin='round'
+		            stroke-width='2'
+		            d='M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'
+		          ></path></svg>      </a>
+		  </div>
+		  
+		  <p>Senior Software Engineer</p>
+		
+		    <p class="grey">Berlin, GE</p>
+		
+		    <p class="grey">A senior software engineer experienced in Frontend development, mentoring engineers, and software architecture. Open Source enthusiast, speaker, and writer.</p>
+		
+				<section class="position">
+						<h2>Work Experience</h2>
+					<h3>
+							<a target="_blank" rel="noopener" href="https://www.revolut.com/">Revolut</a>
+					</h3>
+		
+						<h4>
+						    Senior Software Engineer - Integrations
+						
+						      | Oct, 2020
+						  
+						    - Oct, 2022
+						</h4>
+						
+						  <div class="summary">
+						    <p>Member of the Integrations team. The main goal of the team is to develop and integrate payments methods into the website of providers, where providers can be from an external website, as well as inside Revolut flows.</p>
+						  </div>
+						
+				</section>
+				<section class="position">
+					<h3>
+							<a target="_blank" rel="noopener" href="https://www.omio.com/">Omio</a>
+					</h3>
+		
+						<h4>
+						    Senior Software Engineer - UI Platform
+						
+						      | Aug, 2018
+						  
+						    - Sep, 2020
+						</h4>
+						
+						  <div class="summary">
+						    <p>Member of UI Platform team. The goal of this is team was to empower teams by providing technical solutions to improve their speed and ensure the quality of the projects inside the company. The communication and feedback with the teams played a big role.</p>
+						  </div>
+						
+						  <ul class="highlights">
+						      <li>Decision-making on technologies and tools to be used across the organization</li>
+						      <li>Build a development framework for all teams working in React and React Native projects</li>
+						      <li>Design and Implementation of Omio&#x27;s Web and React Native architecture</li>
+						  </ul>
+				</section>
+				<section class="position">
+					<h3>
+							<a target="_blank" rel="noopener" href="https://www.revolut.com/">intive</a>
+					</h3>
+		
+						<h4>
+						    Web Development Team Lead
+						
+						      | Oct, 2020
+						  
+						    - Oct, 2022
+						</h4>
+						
+						  <div class="summary">
+						    <p>Member of the Integrations team. The main goal of the team is to develop and integrate payments methods into the website of providers, where providers can be from an external website, as well as inside Revolut flows.</p>
+						  </div>
+						
+				</section>
+				<section class="position">
+						<h2>Education</h2>
+					<h3>University of Oklahoma</h3>
+					<h4>
+							Bachelor
+		
+								-
+							Information Technology
+						
+						    | Jun, 2011
+						
+						  - Jan, 2014
+					</h4>
+				</section>
+				<section class="position">
+						<h2>Projects</h2>
+					<h3>
+							<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)">Video compression for 3d media</a>
+					</h3>
+		
+						<h4>
+							Oct, 2014
+						</h4>
+		
+						<p>Innovative middle-out compression algorithm that changes the way we store data.</p>
+				</section>
+			<h2>Contact Information</h2>
+			<section class="contact">
+				<p>
+					<span>Website:</span>
+					<a href="http://emasuriano.com/" target="_blank" rel="noopener">http://emasuriano.com/</a>
+				</p>
+		
+					<p>
+						<span>Email:</span>
+						<a href="mailto:emanuel.suriano@gmail.com" target="_blank" rel="noopener noreferrer">emanuel.suriano@gmail.com</a>
+					</p>
+		
+		
+			</section>
+	</body>
+</html>
