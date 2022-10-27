@@ -1,13 +1,9 @@
-[build]
-  publish = "public"
-  command = "yarn build"
-
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
 
 [[redirects]]
   from="/resume"
-  to="https://standardresume.co/r/emanuel-suriano"
+  to="https://resume.emasuriano.com"
 
 [[redirects]]
   from="/avatar"
