@@ -1,7 +1,7 @@
 import React from 'react';
 import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
 
-import styled from '../../../../helpers/styled';
+import styled from '../../../helpers/styled';
 
 const Hologram = styled.h1`
   display: inline-block;
