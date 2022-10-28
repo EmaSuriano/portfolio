@@ -12,6 +12,8 @@ import {
   EmailIcon,
   LinkedinShareButton,
   LinkedinIcon,
+  RedditShareButton,
+  RedditIcon,
 } from 'react-share';
 import styled from '../../../helpers/styled';
 
@@ -56,6 +58,10 @@ const Subscription = () => {
             <EmailShareButton url={shareUrl} subject={title} body="body">
               <EmailIcon size={32} round />
             </EmailShareButton>
+
+            <RedditShareButton url={shareUrl} title={title}>
+              <RedditIcon size={32} round />
+            </RedditShareButton>
           </IconContainer>
 
           <Headings.h4>Or copy link</Headings.h4>
@@ -119,11 +125,14 @@ const IconContainer = styled.div`
     border: 1px solid ${(p) => p.theme.colors.track} !important;
     border-radius: 50%;
     transition: border-color 0.2s var(--ease-in-out-quad),
-      background 0.2s var(--ease-in-out-quad);
+      background 0.2s var(--ease-in-out-quad),
+      opacity 0.2s var(--ease-in-out-quad);
+    opacity: 0.7;
 
     &:hover {
       background: ${(p) => p.theme.colors.inputBackground} !important;
       border: 1px solid ${(p) => p.theme.colors.accent} !important;
+      opacity: 1;
     }
   }
 `;
@@ -135,20 +144,7 @@ const Input = styled.input`
   border: none;
   padding: 13px 21px;
   width: 100%;
-  color: ${(p) => p.theme.colors.primary};
-
-  ::placeholder {
-    color: ${(p) => p.theme.colors.track};
-    opacity: 1;
-  }
-
-  :-ms-input-placeholder {
-    color: ${(p) => p.theme.colors.track};
-  }
-
-  ::-ms-input-placeholder {
-    color: ${(p) => p.theme.colors.track};
-  }
+  color: ${(p) => p.theme.colors.grey};
 
   ${mediaqueries.tablet`
     width: calc(100% - 36px);
@@ -175,10 +171,15 @@ const Button = styled.button`
   letter-spacing: 0.42px;
   transition: border-color 0.2s var(--ease-in-out-quad),
     background 0.2s var(--ease-in-out-quad), color 0.2s var(--ease-in-out-quad);
+  opacity: 1;
 
   &:hover {
     background: ${(p) => p.theme.colors.accent};
     color: ${(p) => p.theme.colors.background};
+  }
+
+  &:disabled {
+    opacity: 0.7;
   }
 
   svg * {

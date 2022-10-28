@@ -12,6 +12,7 @@
     "start:watch": "yarn writer:watch & gatsby develop",
     "start": "yarn writer && gatsby develop",
     "preview": "gatsby serve",
+    "optimize-images": "imageoptim './content/**/*.jpg' './content/**/*.gif' './content/**/*.png'",
     "lint": "eslint --cache --ext .ts,.tsx src",
     "check-types": "tsc -p . --noEmit",
     "postinstall": "patch-package"
@@ -42,6 +43,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "image-size": "^1.0.2",
+    "imageoptim-cli": "^3.0.7",
     "js-yaml": "^4.1.0",
     "link-check": "^5.2.0",
     "markdown-link-check": "^3.10.3",
