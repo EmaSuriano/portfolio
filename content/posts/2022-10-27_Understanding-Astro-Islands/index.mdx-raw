@@ -1,5 +1,25 @@
 One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated, and I was being forced to manually update them ... In this post, how I automatize this task by using Cypress and GitHub Actions.
 
-## My Case in Particular
+## Introduction to Astro
 
-I am the owner and maintainer of the [Gatsby Starter Mate](https://github.com/EmaSuriano/gatsby-starter-mate), which allows developers or tech writers to bootstrap their portfolio and manage its content with a CMS.
+Description of astro.
+
+v1 release recently.
+
+Key difference with other frameworks
+
+## What is the Island Architecture?
+
+Link to the original post.
+
+How does Astro inte
+
+## What are Astro Islands?
+
+## Islands Hydration via Client directives
+
+## Building an application using multiple frameworks
+
+Thanks to the idea that each Island can be consider as a _stand-alone_ project itself, we can easily combine different frameworks into one project! In case you want to skip th explanation and jump directly into the code, you can find the code available in [Github](https://github.com/EmaSuriano/astro-multi-framework-dashboard).
+
+![Multi framework dashboard](images/2022-10-30-20-34-07.png)
