@@ -1,25 +1,176 @@
-One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated, and I was being forced to manually update them ... In this post, how I automatize this task by using Cypress and GitHub Actions.
+Nowadays we are all used to see new frameworks emerging, with the promise of revolutionazing the way we build for web. Something that, it's shared between them is that they rely on a specific UI library to achieve (React, Vue, Svelte, etc.).
+
+This time the story is different! Using the power of [Vite.js](https://vite.js), we received Astro: an agnostic framework SSG (Server site generated). Using their plugin system, we can build and enhance our website the way that we want and possible combine UI libraries into a single project.
 
 ## Introduction to Astro
 
-Description of astro.
+When you look at the definition in their [official website](https://astro.build) you will find that:
 
-v1 release recently.
+> Astro is an all-in-one web framework for building fast, content-focused websites.
 
-Key difference with other frameworks
+Recently they released the first stable release, marking the framework as _ready for production_, which is huge milestone for emerging frameworks. The web community has reacted very positive and we are seeing every day more and more projects being shipped with Astro.
 
-## What is the Island Architecture?
+Astro ships many cool feature to make the developer and user experience great! I recommend checking this (article)[LINK_TO_THE_ARTICLE] written by NAME_OF_THE_PERSON covered also in the LogRocket Blog, for a complete overview of Astro.
 
-Link to the original post.
+In my personal opinion the main differentiator between Astro and other frameworks, relays on his architecture: Island Architecture. They didn't create the concept, actually this concept was covered in 2019 by [Katie Sylor-Miller](https://twitter.com/ksylor), and expanded on in [this post](https://jasonformat.com/islands-architecture/) by Preact creator Jason Miller.
 
-How does Astro inte
+![Island architecture](images/2022-10-31-14-04-14.png)
 
 ## What are Astro Islands?
 
+The term “Astro Island” refers to an interactive UI component on an otherwise static page of HTML. Multiple islands can exist on a page, and an island always renders in isolation, which means that every island can use any UI Framework or even just plain Astro code.
+
+Something quite important to highlight is that Astro generates every website with **zero client-side JavaScript**, by default. Every time we render an island in a page, Astro will automatically render it to HTML ahead of time and then strip out all of the JavaScript. This keeps every site fast by default by removing all unused JavaScript from the page.
+
+```jsx
+// src/components/Counter.tsx
+
+import { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCounter] = useState(0);
+  return (
+    <button onClick={() => setCounter((a) => a + 1)}>Counter: {count}</button>
+  );
+};
+
+export default Counter;
+```
+
+```js
+// src/pages/index.astro
+---
+import Counter from '../components/Counter';
+---
+
+<Counter />
+```
+
+This code will render the button, but because the Javascript is not being shipped the user won't be able to increment the counter. In case we want to give interactivity to our application, we have to be **explicit** by using _client directives_ (we are going to cover them later). This process is called _partial_ or _selective hydration_, you can read more about this is in this [great article](https://www.patterns.dev/posts/react-selective-hydration/) by patterns.dev.
+
+```js
+// src/pages/index.astro
+---
+import Counter from '../components/Counter.jsx';
+--
+
+<Counter client:load />
+```
+
+One of the benefits of having Astro Islands, besides a heavy focused on making your app as lightest as it can be, is that every island is loaded in parallel, and the developer can even specify the strategy to load each island individually using client directives. We are in control of how and when the assets will be loaded for the client, to provide the best experience that we can!
+
 ## Islands Hydration via Client directives
+
+At the moment of writing this article, we can in total 5 different directives. This number might change as the framework might add new features or not. You can take a look at [the official documentation](https://docs.astro.build/en/reference/directives-reference/#client-directives) inside their site.
+
+- `client:load`: Load and hydrate the component JavaScript immediately on page load.
+- `client:idle`: Load and hydrate the component JavaScript once the page is done with its initial load and the [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) event has fired.
+- `client:visible`: oad and hydrate the component JavaScript once the component has entered the user’s viewport. This uses an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) internally to keep track of visibility.
+- `client:media={string}`: loads and hydrates the component JavaScript once a certain CSS [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) is met.
+- `client:only={string}`: skips HTML server-rendering, and renders only on the client. You must pass the component’s correct framework as a value.
+
+In order to illustrate it, I made a small example using [Stackblitz](https://stackblitz.com/) testing the different directives in a single page.
+
+![Astro client directive test](images/2022-10-31-16-12-07.png)
+
+Feel free to take a look at the code [here](https://stackblitz.com/edit/github-qaw3wz?file=src/pages/index.astro). I highly recommend to enter and interactive with each instance of the `Counter` to fully understand how the client directive affect the UX/UI.
 
 ## Building an application using multiple frameworks
 
-Thanks to the idea that each Island can be consider as a _stand-alone_ project itself, we can easily combine different frameworks into one project! In case you want to skip th explanation and jump directly into the code, you can find the code available in [Github](https://github.com/EmaSuriano/astro-multi-framework-dashboard).
+I would say that we cover most of the theory part that we need to know in order to build something meaningful. Thanks to the idea that each Island can be consider as a _stand-alone_ container, we can easily combine different frameworks into one project. I came up with the idea of building a fully functional Dashboard using 3 different framework: React, Vue and Svelte.
 
-![Multi framework dashboard](images/2022-10-30-20-34-07.png)
+This means that I can take the best of each framework and put it inside the project. In the demo, I installed the following libraries per frameworks:
+
+- React: [MUI Core](https://mui.com/core/) and [recharts](https://recharts.org/)
+- Svelte: [Svelte Material UI](https://sveltematerialui.com/)
+- Vue: [Vuetify](https://vuetifyjs.com/en/)
+
+I built a framework highlighter to visually show which components are rendered under which framework. This function can be activated by clicking on the eye icon at the bottom part of the page. This is how it looks! You can also check the application deployed [here](https://astro-multi-framework-dashboard.netlify.app/).
+
+| Mode                  | Screenshot                                                    |
+| --------------------- | ------------------------------------------------------------- |
+| Default               | ![Dashboard screenshot](images/2022-10-31-16-14-20.png)       |
+| Framework highlighted | ![Dashboard with highlighter](images/2022-10-31-16-14-30.png) |
+
+When checking the code for the main page, you will find the power of composition several framework into one Astro component, and the real usage of _client directives_.
+
+I also used [Tailwind CSS](https://tailwindcss.com/) to setup most of the layout of the page, that's why there are some additional classes starting with `tw-`.
+
+```jsx
+// src/pages/index.astro
+---
+import type { Product } from 'types';
+
+// Astro
+import Layout from 'layouts/Layout.astro';
+
+// React
+import { HighlighterWrapper, HighlighterToggle } from 'components/Highlighter';
+import CategoryChart from 'components/CategoryChart';
+
+// Svelte
+import Tags from 'components/Tags.svelte';
+import ProductTable from 'components/ProductTable.svelte';
+
+// Vue
+import Banner from 'components/Banner.vue';
+import Overview from 'components/Overview.vue';
+
+// fetch data
+const products = await fetch('https://dummyjson.com/products')
+  .then((res) => res.json())
+  .then((res) => res.products as Product[]);
+---
+
+<Layout page="Home">
+  <div class="tw-grid tw-grid-cols-1 tw-gap-4 md:tw-grid-cols-5 md:tw-gap-10">
+    <HighlighterWrapper
+      client:idle
+      framework="vue"
+      className="tw-col-span-full"
+    >
+      <Banner client:load />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper client:idle framework="svelte">
+      <Tags client:load products={products} />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper client:idle framework="vue">
+      <Overview client:load products={products} />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper client:idle framework="react" className="tw-col-span-3">
+      <CategoryChart client:only="react" products={products} />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper
+      client:idle
+      framework="svelte"
+      className="tw-col-span-full"
+    >
+      <ProductTable client:load products={products} />
+    </HighlighterWrapper>
+  </div>
+
+  <HighlighterToggle client:visible />
+</Layout>
+```
+
+Let's understand what's going on here:
+
+1. There are several imports some of them importing `Typescript` types, Astro components, React, Vue and lastly Svelte components.
+2. We are calling the API of `https://dummyjson.com/products` to get the list of `Product`. Astro will first resolve the promise, and later on pass into the next step: rendering.
+3. On rendering we can see that all the components imported from above are treated in the same way and the API to render them also stays the same. We are passing down the information of the products that we previously fetched.
+
+Remember that in order to make our components interactive, we **have to** set manually the _client directives_, by using the `client:` property as props of the components. Allowing the user to toggle the different categories in the dashboard.
+
+![Dashboard interaction](./images/2022-10-31-16-14-40.gif)
+
+One of the problem to solve when having a cross platform codebase is **state management**: How do we share information between my components?
+
+- Talk about nanostores
+- Explain the logic for the hidden categories
+- Close up with my own thoughts about this experiment.
+
+You can find all the code of the dashboard available in [Github](https://github.com/EmaSuriano/astro-multi-framework-dashboard).
