@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/line-reader": "^0.0.34",
     "postinstall-postinstall": "^2.1.0",
-    "patch-package": "^6.4.7",
+    "patch-package": "^6.5.0",
     "@types/react-dom": "^17.0.13",
     "@types/remove-markdown": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
