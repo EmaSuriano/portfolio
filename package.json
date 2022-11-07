@@ -11,6 +11,7 @@
     "build": "yarn writer && yarn check-types && gatsby build",
     "start:watch": "yarn writer:watch & gatsby develop",
     "start": "yarn writer && gatsby develop",
+    "clean": "gatsby clean",
     "preview": "gatsby serve",
     "optimize-images": "imageoptim './content/**/*.jpg' './content/**/*.gif' './content/**/*.png'",
     "lint": "eslint --cache --ext .ts,.tsx src",
