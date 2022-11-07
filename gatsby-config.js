@@ -34,10 +34,7 @@ const plugins = [
       rootPath: '/',
       basePath: '/blog',
       authorsPage: false,
-      mailchimp: true,
-      sources: {
-        local: true,
-      },
+      sources: { local: true },
     },
   },
   {

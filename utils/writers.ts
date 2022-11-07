@@ -30,7 +30,7 @@ export const writeSmartPreview = (filePath: string, line: string) => {
   const [alt, src] = line.replace(/!\[|\)/g, '').split(`](`);
   const type = getPreviewType(src);
 
-  const result = [];
+  const result: string[] = [];
 
   switch (type) {
     case 'Image': {

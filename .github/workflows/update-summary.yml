@@ -1,9 +1,6 @@
 name: Update Summary
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   update-summary:
