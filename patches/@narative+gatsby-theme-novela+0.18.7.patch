@@ -82,6 +82,25 @@ index 7b20089..67b43eb 100644
  import React from 'react';
  
  import { MDXRenderer } from 'gatsby-plugin-mdx';
+diff --git a/node_modules/@narative/gatsby-theme-novela/src/components/Navigation/Navigation.Footer.tsx b/node_modules/@narative/gatsby-theme-novela/src/components/Navigation/Navigation.Footer.tsx
+index d03bd8f..a43c8d4 100644
+--- a/node_modules/@narative/gatsby-theme-novela/src/components/Navigation/Navigation.Footer.tsx
++++ b/node_modules/@narative/gatsby-theme-novela/src/components/Navigation/Navigation.Footer.tsx
+@@ -41,13 +41,7 @@ const Footer: React.FC<{}> = () => {
+   const results = useStaticQuery(siteQuery);
+   const { name, social } = results.allSite.edges[0].node.siteMetadata;
+ 
+-  const copyrightDate = (() => {
+-    const { edges } = results.allMdx;
+-    const years = [0, edges.length - 1].map((edge) =>
+-      new Date(edges[edge].node.frontmatter.date).getUTCFullYear()
+-    );
+-    return years[0] === years[1] ? `${years[0]}` : `${years[0]}–${years[1]}`;
+-  })();
++  const copyrightDate = new Date().getUTCFullYear()
+ 
+   return (
+     <>
 diff --git a/node_modules/@narative/gatsby-theme-novela/src/components/SEO/index.ts b/node_modules/@narative/gatsby-theme-novela/src/components/SEO/index.ts
 index 2200f83..7a6a2dc 100644
 --- a/node_modules/@narative/gatsby-theme-novela/src/components/SEO/index.ts
