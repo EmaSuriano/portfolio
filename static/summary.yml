@@ -20,6 +20,13 @@ about:
       url: https://www.linkedin.com/in/emanuel-suriano
 
 projects:
+  - name: Astro Art Portfolio
+    description: Minimalist art portfolio built with Astro and connected with Notion API
+    hero: ./logos/astro-art-portfolio.png
+    type: Astro Theme
+    date: 2022-10-01
+    link: https://github.com/EmaSuriano/astro-art-portfolio
+    
   - name: Gatsby Starter Event Calendar
     description: A responsive website to display information about events taking from Google Spreadsheets submitted by users.
     hero: ./logos/gatsby-starter-event-calendar.jpg
@@ -33,13 +40,6 @@ projects:
     type: Gatsby Starter
     date: 2018-09-01
     link: https://github.com/EmaSuriano/gatsby-starter-mate
-    
-  - name: React Hotkey Tooltip
-    description: A global Hotkey provider with built in tooltip for React.
-    hero: ./logos/react-hotkey-tooltip.jpg
-    type: Library
-    date: 2018-07-01
-    link: https://github.com/EmaSuriano/react-hotkey-tooltip
     
   - name: React Scroll Section
     description: A declarative solution to vertically navigate your React App.
