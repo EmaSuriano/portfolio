@@ -1,0 +1,6 @@
+name: Astro Art Portfolio
+description: Minimalist art portfolio built with Astro and connected with Notion API
+hero: ./logos/astro-art-portfolio.png
+type: Astro Theme
+date: 2022-10-01
+link: https://github.com/EmaSuriano/astro-art-portfolio
