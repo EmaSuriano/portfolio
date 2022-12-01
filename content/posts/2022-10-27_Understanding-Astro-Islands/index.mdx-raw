@@ -70,9 +70,11 @@ import Counter from '../components/Counter.jsx';
 
 One of the benefits of having Astro Islands, besides a heavy focus on making your app as light as it can be, is that every island is loaded in **parallel**, and the developer can even specify the _loading strategy_ for each island individually using _client directives_. We are in control of how and when the assets will be loaded for the client, to provide the best experience that we can!
 
-## Islands Hydration via Client directives
+## Astro Client directives
 
 At the moment of writing this article, we count a total of **5 different directives**. This number might change as the framework might add new features or not. A directive is a component attribute that tells Astro how your component should be rendered.
+
+Assuming we want to render our component, called `MyComponent`, depending on the _client directive_ that we use, we can **modify** the way the user can interact with it:
 
 - `<MyComponent client:load/>`: Hydrate the component JavaScript immediately on **page load**.
 - `<MyComponent client:idle/>`: Hydrate the component JavaScript once the page is done with its initial load and **the [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) event has fired**.
@@ -84,7 +86,21 @@ At the moment of writing this article, we count a total of **5 different directi
 
 As I mentioned at the beginning of this post, the Astro team is not the creator of the Island Architecture. Therefore, we can see the same technique implemented in many frameworks or even shipped as individual libraries. I found this great resource in GitHub [`awesome-islands`](https://github.com/lxsmnsyc/awesome-islands) that groups all the content related to the Island's Architecture.
 
-A great example is [`is-land`](https://is-land.11ty.dev/) (from [`11ty`](https://www.11ty.dev/) team) provides additional conditions when to hydrate the component (_client directives_) such as: `on:interaction`, `on:save-data`. It also allows specifying a fallback while the component has not been hydrated yet, a great example for embedding a web video player and avoiding loading the whole player before the user has interacted with it.
+A great example is [`is-land`](https://is-land.11ty.dev/) (from [`11ty`](https://www.11ty.dev/) team) provides additional conditions when to hydrate the component (_client directives_) such as: `on:interaction`, `on:save-data`. It also allows specifying a fallback while the component has not been hydrated yet:
+
+```html
+<is-land on:interaction>
+  <form>
+    <button type="button">Hydrate the island</button>
+  </form>
+
+  <p>This content is pre-JS.</p>
+
+  <template data-island="replace">
+    <vanilla-web-component>My component</vanilla-web-component>
+  </template>
+</is-land>
+```
 
 Despite some differences in syntax between the framework, the main idea is that each framework implements its way of doing _Partial Hydration_. The way that Astro composes the UI, **demands always define the strategy** for the hydration, which is optional in other Island frameworks (such as `is-land`).
 
@@ -94,7 +110,7 @@ To illustrate it, I created a small Astro project where I render the same `Count
 
 ![Astro client directive test](images/2022-11-29-10-09-34.png)
 
-And here is the whole code for this page. In general, it's more of the same section a total of 6 times, each describing the scenario that we are testing and is relatively short and can be found here
+Below is the whole code for the page in the above screenshot. The content of the page is basically the same component `Counter` rendered a total of 6 times, first without specifying any client directive (the component is not interactive at all), and then the rest using all the different _client directives_ that we saw.
 
 ```jsx
 // src/pages/index.astro
