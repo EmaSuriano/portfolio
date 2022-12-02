@@ -1,7 +1,6 @@
 ---
 import Layout from 'layouts/Layout.astro';
 import { Image } from '@astrojs/image/components';
-import avatar from '../assets/avatar.jpg';
 import about from '../author.json';
 
 const title = `${about.name} - ${about.role}`;
@@ -10,11 +9,11 @@ const title = `${about.name} - ${about.role}`;
 <Layout title={title}>
   <article class="my-auto pb-8">
     <div class="flex mb-3 flex-col-reverse sm:flex-row">
-      <h1 class="text-slate-800">
+      <h1 class="text-slate-800 dark:text-slate-200">
         <div
           class="relative inline-block text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight"
         >
-          <span class="title-gradient">{about.name}</span>
+          <span class="gradient">{about.name}</span>
           <span
             class="absolute inset-0 transition-opacity duration-500 hover:opacity-0 cursor-default"
             aria-hidden="true"
@@ -27,7 +26,7 @@ const title = `${about.name} - ${about.role}`;
       <div
         class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
       >
-        <Image src={avatar} width={128} height={128} alt={about.name} />
+        <img src={about.avatar} width={128} height={128} alt={about.name} />
       </div>
     </div>
 
@@ -46,14 +45,13 @@ const title = `${about.name} - ${about.role}`;
     <p
       class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
     >
-      I like to contribute to
+      I contribute to
       <a
         href="/about#projects"
         class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
       >
         open-source</a
-      >
-      and
+      >, give talks, and
       <a
         href="/blog"
         class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
@@ -66,7 +64,7 @@ const title = `${about.name} - ${about.role}`;
 </Layout>
 
 <style>
-  .title-gradient {
+  .gradient {
     background-image: linear-gradient(
       to right,
       #fb7185 0%,

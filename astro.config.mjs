@@ -5,7 +5,6 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
-import compress from 'astro-compress';
 import remarkFigureCaption from '@microflash/remark-figure-caption';
 import remarkSlug from 'remark-slug';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
@@ -24,7 +23,6 @@ export default defineConfig({
         remarkAutolinkHeadings,
       ],
     }),
-    compress(),
   ],
   markdown: {
     syntaxHighlight: 'prism',
