@@ -1,0 +1,182 @@
+# Understanding Astro Islands
+
+Nowadays we are all used to seeing new frameworks emerging, with the promise of revolutionizing the way we build for the web. Nevertheless, we are most of the time tight to a specific UI library (React, Vue, Svelte, etc.) to define our components and build the experiences for the users.
+
+This time the story is different! Using the power of [Vite.js](https://vite.js), we received **Astro**: an agnostic framework that can work as SSG (Static Site Generator) and SSR (Server Side Rendering). Using their plugin system, we can build and enhance our website the way that we want and possibly combine different UI libraries into a single project.
+
+## Astro 101: A brief introduction
+
+When you look at the definition on their [official website](https://astro.build), you will find that:
+
+> Astro is an all-in-one web framework for building fast, content-focused websites.
+
+Recently they released the [first stable release](https://astro.build/blog/astro-1/), marking the framework as _ready for production_, which is a huge milestone for emerging frameworks. The web community has reacted very positively, and we are seeing every day more and more projects being shipped with Astro.
+
+Astro ships many cool features to make the developer and user experience great! I recommend checking [this article](https://blog.logrocket.com/astro-build-faster-apps-less-javascript/), written in the [LogRocket Blog](https://blog.logrocket.com/), for an overview of Astro.
+
+In my personal opinion, the **key differentiator** between Astro and other frameworks relays on his architecture: Island Architecture. This concept was covered in 2019 by [Katie Sylor-Miller](https://twitter.com/ksylor) and expanded on later in [this post](https://jasonformat.com/islands-architecture/) by the Preact creator [Jason Miller](https://twitter.com/_developit).
+
+![Island architecture](images/2022-11-28-22-35-32.png)
+
+## What are Astro Islands?
+
+The term “Astro Island” refers to an interactive UI component on an otherwise static page of HTML. Multiple islands can exist on a page, and an island always renders in isolation, which means that every island can use any UI Framework or even just plain Astro code.
+
+Something quite important to highlight is that Astro generates every website with **zero client-side JavaScript**, by default. Every time we render an island on a page, Astro will automatically render it to HTML ahead of time and then strip out all the JavaScript. This keeps every site **fast by default** by removing all unused JavaScript from the page.
+
+Let's take as an example, the implementation of a `Counter` component made in React. When rendering the first time, it will show a button with the text "Counter: 0", and every time the user clicks on it, the counter will increase by 1.
+
+```jsx
+// src/components/Counter.tsx
+import { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCounter] = useState(0);
+  return (
+    <button onClick={() => setCounter((number) => number + 1)}>
+      Counter: {count}
+    </button>
+  );
+};
+
+export default Counter;
+```
+
+Then let's render this component in Astro.
+
+**Friendly reminder**: to use React components in your Astro project, you have to add the [`@astrojs/react`](https://docs.astro.build/en/guides/integrations-guide/react/) integration into your project.
+
+```js
+// src/pages/index.astro
+---
+import Counter from '../components/Counter';
+---
+
+<Counter />
+```
+
+This code will render the button, but because JavaScript is getting removed by Astro at build time the user won't be able to increment the counter. In case we want to give interactivity to our application, we have to be **explicit** by using _client directives_ (we are going to cover them later).
+
+This process is called _partial_ or _selective hydration_. Essentially, it means shipping any framework code or runtime that is needed to support a component’s dynamic runtime requirements. Things like state changes and interactivity are prime examples. You can read more about this in this [great article](https://www.patterns.dev/posts/react-selective-hydration/) by [patterns.dev](https://www.patterns.dev/).
+
+```js
+// src/pages/index.astro
+---
+import Counter from '../components/Counter.jsx';
+--
+
+<Counter client:load />
+```
+
+One of the benefits of having Astro Islands, besides a heavy focus on making your app as light as it can be, is that every island is loaded in **parallel**, and the developer can even specify the _loading strategy_ for each island individually using _client directives_. We are in control of how and when the assets will be loaded for the client, to provide the best experience that we can!
+
+## Astro Client directives
+
+At the moment of writing this article, we count a total of **5 different directives**. This number might change as the framework might add new features or not. A directive is a component attribute that tells Astro how your component should be rendered.
+
+Assuming we want to render our component, called `MyComponent`, depending on the _client directive_ that we use, we can **modify** the way the user can interact with it:
+
+- `<MyComponent client:load/>`: Hydrate the component JavaScript immediately on **page load**.
+- `<MyComponent client:idle/>`: Hydrate the component JavaScript once the page is done with its initial load and **the [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) event has fired**.
+- `<MyComponent client:visible/>`: Hydrate the component JavaScript once **the component has entered the user’s viewport**. This uses an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) internally to keep track of visibility.
+- `<MyComponent client:media={string}/>`: Hydrates the component JavaScript once a **certain CSS [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) is met**.
+- `<MyComponent client:only={string}/>`: **skips HTML server rendering**, and renders only on the client. The component will be skipped at build time, useful for components that are entirely dependent on client-side APIs.
+
+## How does Astro Island compare to the rest?
+
+As I mentioned at the beginning of this post, the Astro team is not the creator of the Island Architecture. Therefore, we can see the same technique implemented in many frameworks or even shipped as individual libraries. I found this great resource in GitHub [`awesome-islands`](https://github.com/lxsmnsyc/awesome-islands) that groups all the content related to the Island's Architecture.
+
+A great example is [`is-land`](https://is-land.11ty.dev/) (from [`11ty`](https://www.11ty.dev/) team) provides additional conditions when to hydrate the component (_client directives_) such as: `on:interaction`, `on:save-data`. It also allows specifying a fallback while the component has not been hydrated yet:
+
+```html
+<is-land on:interaction>
+  <form>
+    <button type="button">Hydrate the island</button>
+  </form>
+
+  <p>This content is pre-JS.</p>
+
+  <template data-island="replace">
+    <vanilla-web-component>My component</vanilla-web-component>
+  </template>
+</is-land>
+```
+
+Despite some differences in syntax between the framework, the main idea is that each framework implements its way of doing _Partial Hydration_. The way that Astro composes the UI, **demands always define the strategy** for the hydration, which is optional in other Island frameworks (such as `is-land`).
+
+## Client Directives test
+
+To illustrate it, I created a small Astro project where I render the same `Counter` component that I showed above, using different client directives for anyone to try them all in one place. Feel free to take a look at the live application using the following [Netlify link](https://astro-client-directives-test.netlify.app/).
+
+![Astro client directive test](images/2022-11-29-10-09-34.png)
+
+Below is the whole code for the page in the above screenshot. The content of the page is basically the same component `Counter` rendered a total of 6 times, first without specifying any client directive (the component is not interactive at all), and then the rest using all the different _client directives_ that we saw.
+
+```jsx
+// src/pages/index.astro
+---
+import Layout from '../layouts/Layout.astro';
+import Counter from '../components/Counter';
+---
+
+<Layout title="Welcome to Astro">
+  <main>
+    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
+
+    <h2><pre>no directive</pre></h2>
+    <p class="instructions">
+      <code>No JS, no interactive</code>
+      <Counter />
+    </p>
+
+    <h2><pre>client:load</pre></h2>
+    <p class="instructions">
+      <code>Loads JS as soon as possible</code>
+      <Counter client:load />
+    </p>
+
+    <h2><pre>client:idle</pre></h2>
+    <p class="instructions">
+      <code>Loads JS when rendering is over</code>
+      <Counter client:idle />
+    </p>
+
+    <h2><pre>client:visible</pre></h2>
+    <p class="instructions">
+      <code>Loads JS when the button is visible to the user</code>
+      <Counter client:visible />
+    </p>
+
+    <h2><pre>client:media</pre></h2>
+    <p class="instructions">
+      <code>Loads JS when the media query (min-width: 680px) is valid</code>
+      <Counter client:media="(min-width: 680px)" />
+    </p>
+
+    <h2><pre>client:only</pre></h2>
+    <p class="instructions">
+      <code>Loads JS only in client (No SSR)</code>
+      <Counter client:only="react" />
+    </p>
+  </main>
+</Layout>
+```
+
+The whole source code can be found in [this GitHub Repository](https://github.com/EmaSuriano/astro-client-directives-test). I highly recommend forking the project and running the project locally to fully understand how the _client directives_ can modify our application behaviour.
+
+## Last words
+
+I see Astro as a new fresh framework to build a website with the power to ship super-light websites using **zero JavaScript code** and make us aware when we do we need JavaScript in this heavy ecosystem shipping more and more Kb to our clients.
+
+Another great advantage of Astro is that it's UI-agnostic, meaning you can **Bring Your Own UI Framework** (BYOF). React, Preact, Solid, Svelte, Vue, and Lit are all [officially supported in Astro](https://docs.astro.build/en/guides/integrations-guide/#official-integrations). You can even mix and match different frameworks on the same page, making future migrations easier and preventing project lock-in to a single framework.
+
+Thanks for reading, and let's keep building stuff together! 👷‍♂️
+
+### References
+
+- [Astro docs](https://astro.build/)
+- [Islands Architecture](https://jasonformat.com/islands-architecture/)
+- [`is-land`](https://is-land.11ty.dev/)
+- [Partial/Selective Hydration](https://www.patterns.dev/posts/react-selective-hydration/)
+- [Astro client directive test - GitHub Repository](https://github.com/EmaSuriano/astro-client-directives-test)
+- [Astro client directive test - Demo](https://astro-client-directives-test.netlify.app/)
