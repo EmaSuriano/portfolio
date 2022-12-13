@@ -1,0 +1,503 @@
+# Building a multi framework Dashboard with Astro
+
+In this article, we will be exploring the process of building a website in [Astro](https://astro.build/) using three different frameworks: React, Svelte, and Vue.js. In a previous article, we discussed the architecture behind Astro the fundamentals of website building and the importance of choosing the right framework for your project. If you are new to website building, we recommend checking out that article here: [Understanding Astro islands architecture](https://blog.logrocket.com/understanding-astro-islands-architecture/).
+
+Each of these frameworks has its own strengths and weaknesses, and in this article, we will be providing a step-by-step guide on how to build a website using each of them. By the end of this article, you will have a clear understanding of the different approaches and tools needed for building a website in Astro using these popular frameworks.
+
+I would say that we cover most of the theory parts that we need to know to build something meaningful. Thanks to the idea that each Island can be considered as a _stand-alone_ container, we can easily combine different frameworks into one project. I came up with the idea of building a fully functional Dashboard using 3 different frameworks: React, Vue and Svelte.
+
+This means that I can take the best of each framework and put it into the project. In the demo, I installed the following libraries per frameworks:
+
+- React: [MUI Core](https://mui.com/core/) and [recharts](https://recharts.org/)
+- Svelte: [Svelte Material UI](https://sveltematerialui.com/)
+- Vue: [Vuetify](https://vuetifyjs.com/en/)
+
+I built a framework highlighter to visually show which components are rendered under which framework. This function can be activated by clicking on the eye icon at the bottom part of the page. This is how it looks! You can also check the application deployed [here](https://astro-multi-framework-dashboard.netlify.app/).
+
+| Mode                  | Screenshot                                                    |
+| --------------------- | ------------------------------------------------------------- |
+| Default               | ![Dashboard screenshot](images/2022-10-31-16-14-20.png)       |
+| Framework highlighted | ![Dashboard with highlighter](images/2022-10-31-16-14-30.png) |
+
+When checking the code for the main page, you will find the power of the composition of several frameworks into one Astro component, and the real usage of _client directives_.
+
+I also used [Tailwind CSS](https://tailwindcss.com/) to set up most of the layout of the page, that's why some additional classes are starting with `tw-`.
+
+```jsx
+// src/pages/index.astro
+---
+import type { Product } from 'types';
+
+// Astro
+import Layout from 'layouts/Layout.astro';
+
+// React
+import { HighlighterWrapper, HighlighterToggle } from 'components/Highlighter';
+import CategoryChart from 'components/CategoryChart';
+
+// Svelte
+import Tags from 'components/Tags.svelte';
+import ProductTable from 'components/ProductTable.svelte';
+
+// Vue
+import Banner from 'components/Banner.vue';
+import Overview from 'components/Overview.vue';
+
+// fetch data
+const products = await fetch('https://dummyjson.com/products')
+  .then((res) => res.json())
+  .then((res) => res.products as Product[]);
+---
+
+<Layout page="Home">
+  <div class="tw-grid tw-grid-cols-1 tw-gap-4 md:tw-grid-cols-5 md:tw-gap-10">
+    <HighlighterWrapper
+      client:idle
+      framework="vue"
+      className="tw-col-span-full"
+    >
+      <Banner client:load />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper client:idle framework="svelte">
+      <Tags client:load products={products} />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper client:idle framework="vue">
+      <Overview client:load products={products} />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper client:idle framework="react" className="tw-col-span-3">
+      <CategoryChart client:only="react" products={products} />
+    </HighlighterWrapper>
+
+    <HighlighterWrapper
+      client:idle
+      framework="svelte"
+      className="tw-col-span-full"
+    >
+      <ProductTable client:load products={products} />
+    </HighlighterWrapper>
+  </div>
+
+  <HighlighterToggle client:visible />
+</Layout>
+```
+
+Let's understand what's going on here:
+
+1. There are several imports some of them importing `Typescript` types, Astro components, React, Vue, and lastly Svelte components.
+2. We are calling the API of `https://dummyjson.com/products` to get the list of `Product`. Astro will first resolve the promise, and later on pass into the next step: rendering.
+3. On rendering we can see that all the components imported from above are treated in the same way and the API to render them also stays the same. We are passing down the information about the products that we previously fetched.
+
+| Remember that to make our components interactive, we **have to** set manually the _client directives_, by using the `client:` property as props of the components.
+
+A big to issue to face when having a cross-framework codebase is **state management**: How do we share information between my components, given that each library has different ways of achieving that:
+
+- React has the [Context API](https://reactjs.org/docs/context.html), with a `Provider` / `Consumer` pattern.
+- Vue provides a [reactive API](https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api), following the conventions of `Actions --> State --> View` (similar style to Redux).
+- Svelte recommends using [Stores](https://svelte.dev/docs#run-time-svelte-store), providing `readable`, `writable`, and `derived` containers.
+
+Besides, all these are valid ways of fixing the state management issue, it's clear that we need to find a common solution that works for all the UI libraries. This is where [`nanostores`](https://github.com/nanostores/nanostores) comes into play! The description they provided in their GitHub page is simply perfect:
+
+> A tiny state manager for React, React Native, Preact, Vue, Svelte, and vanilla JS. It uses many atomic stores and direct manipulation.
+
+The API is simple as:
+
+```js
+import { atom } from 'nanostores';
+
+// definition of state for primitive values
+export const counter = atom(0);
+
+// read and write state
+counter.set(counter.get() + 1);
+
+// definition of state for objects
+export const car = map({
+  brand: 'Tesla',
+  km: 0,
+});
+
+// update property inside object
+car.setKey('km', car.get().km + 1000);
+```
+
+The library provides more APIs to have more control over the state updates and notifications, so I highly recommend checking their documentation in case you will like to dig deeper. Nevertheless, an important part to cover is the integration with the different UI Libraries.
+
+For each framework they provide a separate package that will also follow the coding standard of it:
+
+- React([`@nanostores/react`](https://github.com/nanostores/react)): provides `useStore()` hook to get the store’s value and re-render the component on store’s changes.
+- Vue([`@nanostores/vue`](https://github.com/nanostores/vue)) `useStore()` composable function to get store’s value and re-render component on store’s changes.
+- Svelte: `nanostores` implements Svelte's store contract, we just need to put `$` before the store variable to get the value and subscribe for changes.
+
+With all that in mind, we can have a centralized place where all our components share information. In the case of this dashboard, I built the feature that allows the user to show/hide Categories, by clicking on the _Pills_ (written in Svelte) components. This change should also be reflected inside:
+
+- Overview Cards (written in Vue)
+- Stock/Rating chart (written in React)
+- Products Table (written in Svelte)
+
+This is a demo of how it looks!
+
+<div class="Image__Large">
+  <img src="./images/2022-10-31-16-14-40.gif" alt="Dashboard interaction" />
+  <figcaption>Dashboard interaction</figcaption>
+</div>
+
+To start, we should look at the definition of `nanostores`. I use a simple `atom` holding the list of _hidden_ categories.
+
+```js
+import { atom } from 'nanostores';
+
+export const hiddenCategories = atom<string[]>([]);
+```
+
+I also wrote a helper file for all the product value calculations, they are going to be used across the following components, and it can be also considered a way to share logic between your cross-platform application.
+
+```ts
+// utils/product.ts
+import type { Product } from 'types';
+
+export const groupByCategory = (
+  products: Product[],
+): Record<string, Product[]> => {
+  return products.reduce((acc, curr) => {
+    const existingCategory = acc[curr.category];
+
+    acc[curr.category] = existingCategory
+      ? existingCategory.concat(curr)
+      : [curr];
+    return acc;
+  }, {} as Record<string, Product[]>);
+};
+
+export const getCategories = (products: Product[]): string[] => {
+  const categoriesMap = products.reduce((acc, curr) => {
+    acc[curr.category] = true;
+    return acc;
+  }, {} as Record<string, boolean>);
+
+  return Object.keys(categoriesMap);
+};
+
+export const getTotalStock = (products: Product[]) => {
+  return products.reduce((acc, curr) => acc + curr.stock, 0);
+};
+
+export const getRating = (products: Product[]) => {
+  const avg =
+    products.reduce((acc, curr) => acc + curr.rating, 0) / products.length;
+  return Math.round(avg * 100) / 100;
+};
+
+export const getBrands = (products: Product[]) => {
+  const brandsMap = products.reduce((acc, curr) => {
+    acc[curr.brand] = true;
+    return acc;
+  }, {} as Record<string, boolean>);
+
+  return Object.keys(brandsMap);
+};
+```
+
+Let's take a look at the `Tags` component, written in Svelte. This component holds the internal value of the selected categories and displays them using [`Chip`](https://sveltematerialui.com/demo/chips/). Finally, it updates the store after the user clicks on it with the unselected categories.
+
+<div class="Image__Small">
+  <img src="images/2022-11-03-14-40-05.png" alt="Tags component" />
+  <figcaption>Tags component</figcaption>
+</div>
+
+```ts
+// 'components/Tags.svelte';
+<script lang="ts">
+  import Chip, { Set, Text } from '@smui/chips';
+  import type { Product } from 'types';
+
+  import { getCategories } from 'utils/product';
+  import { humanize } from 'utils/string';
+  import { hiddenCategories } from 'utils/state';
+
+  // 1. Props definitions
+  export let products: Product[];
+
+  // 2. Definition of categories
+  const categories = getCategories(products);
+
+  // 3. Definition of local state for all the selected categories.
+  // At the beginning all the categories are selected
+  let selected: string[] = Array.from(categories);
+
+  // 4. Update handler + store update
+  function updateSelection() {
+    hiddenCategories.set(
+      categories.filter((category) => !selected.includes(category)),
+    );
+  }
+</script>
+
+<h1>Categories</h1>
+
+<Set
+  chips={categories}
+  let:chip
+  filter
+  bind:selected
+  on:click={updateSelection}
+>
+  <Chip {chip} touch>
+    <Text>{humanize(chip)}</Text>
+  </Chip>
+</Set>
+```
+
+Then we have the Overview cards, written in Vue. It reads the value from the store and based on the categories calculated the value for _Total Stock_ and _Total Brands_, using some of the helpers from `product`, and displays them using [`v-card`](https://mui.com/material-ui/react-toggle-button/).
+
+<div class="Image__Small">
+  <img src="images/2022-11-03-14-40-54.png" alt="Overview cards" />
+  <figcaption>Overview cards</figcaption>
+</div>
+
+```ts
+// components/Overview.vue
+<script setup lang="ts">
+import { useStore } from '@nanostores/vue';
+import type { Product } from 'types';
+
+import { hiddenCategories } from 'utils/state';
+import { getBrands, getTotalStock } from 'utils/product';
+
+type Props = {
+  products: Product[];
+};
+// 1. Props definition
+const props = defineProps<Props>();
+
+// 2. Reading the value from the store
+const $hiddenCategories = useStore(hiddenCategories);
+</script>
+
+<template>
+  <h1>Overview</h1>
+
+  <v-container>
+    <v-row dense>
+      <v-col cols="12">
+        <v-card>
+          <v-card-text>
+            <div>Total stock</div>
+            <p class="text-h4 text--primary">
+              <!-- Calculating stock with value from store -->
+              {{
+                getTotalStock(
+                  props.products.filter(
+                    (product) => !$hiddenCategories.includes(product.category),
+                  ),
+                )
+              }}
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12">
+        <v-card>
+          <v-card-text>
+            <div>Total brands</div>
+            <p class="text-h4 text--primary">
+              <!-- Calculating brand amount with value from store -->
+              {{
+                getBrands(
+                  props.products.filter(
+                    (product) => !$hiddenCategories.includes(product.category),
+                  ),
+                ).length
+              }}
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+```
+
+Next, we have the Category Radial Graph, written in React.js. This component reads the value of the store, and based on the selected Item of the [`ToggleButton`](https://mui.com/material-ui/react-toggle-button/) it calculates the _Total Stock_ or the _Rating average_ by Category and passes it down to the [`RadialBarChart`](https://recharts.org/en-US/api/RadialBarChart).
+
+<div class="Image__Medium">
+  <img src="images/2022-11-03-15-18-08.png" alt="Category Radial Graph" />
+  <figcaption>Category Radial Graph</figcaption>
+</div>
+
+```tsx
+import { useStore } from '@nanostores/react';
+import React from 'react';
+import {
+  RadialBarChart,
+  RadialBar,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
+import type { Product } from 'types';
+import {
+  getCategories,
+  getTotalStock,
+  groupByCategory,
+  getRating,
+} from 'utils/product';
+import { hiddenCategories } from 'utils/state';
+import randomColor from 'randomcolor';
+import { humanize } from 'utils/string';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
+
+const style = {
+  top: '50%',
+  right: 0,
+  transform: 'translate(0, -50%)',
+  lineHeight: '30px',
+};
+
+type Props = {
+  products: Product[];
+};
+
+type View = 'stock' | 'rating';
+
+const CategoryChart = (props: Props) => {
+  // 1. State to know which view to show: Stock or Rating average
+  const [view, setView] = React.useState<View>('stock');
+
+  // 2. Read value from the store
+  const disabledCategories = useStore(hiddenCategories);
+
+  const categories = getCategories(props.products);
+  const groupedByCategory = groupByCategory(props.products);
+
+  // 3. Generate data for the graph based on the store
+  const data = categories
+    .filter((category) => !disabledCategories.includes(category))
+    .map((category) => ({
+      name: humanize(category),
+      stock: getTotalStock(groupedByCategory[category]!),
+      rating: getRating(groupedByCategory[category]!),
+      fill: randomColor({ seed: category, luminosity: 'dark' }),
+    }));
+
+  return (
+    <>
+      <div style={{ width: '100%', height: 400, position: 'relative' }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <RadialBarChart
+            cx="50%"
+            cy="50%"
+            innerRadius="20%"
+            outerRadius="80%"
+            barSize={15}
+            data={data}
+          >
+            <RadialBar
+              minAngle={15}
+              label={{ position: 'insideStart', fill: '#fff' }}
+              background
+              {/* 4. dataKey defines which property the graph is going to use for the RadialBar */}
+              dataKey={view}
+            />
+
+            <Legend
+              iconSize={20}
+              layout="vertical"
+              verticalAlign="middle"
+              wrapperStyle={style}
+            />
+          </RadialBarChart>
+        </ResponsiveContainer>
+
+        <ToggleButtonGroup
+          style={{ position: 'absolute', top: 0 }}
+          color="primary"
+          value={view}
+          exclusive
+          {/* 5. Change between different view mode */}
+          onChange={(_, val) => val && setView(val)}
+        >
+          <ToggleButton value="stock">Stock</ToggleButton>
+          <ToggleButton value="rating">Rating</ToggleButton>
+        </ToggleButtonGroup>
+      </div>
+    </>
+  );
+};
+
+export default CategoryChart;
+```
+
+Finally, we have the Product Table, written in Svelte. This component reads the value from the store, and filters the list of `Product` to be displayed inside the Table.
+
+<div class="Image__Medium">
+  <img src="images/2022-11-03-15-26-48.png" alt="Product Table" />
+  <figcaption>Product Table</figcaption>
+</div>
+
+```ts
+<script lang="ts">
+  import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+  import type { Product } from 'types';
+
+  import { hiddenCategories } from 'utils/state';
+  import { humanize } from 'utils/string';
+
+  // 1. Received products from props
+  export let products: Product[];
+</script>
+
+<DataTable style="width: 100%;">
+  <Head>
+    <Row>
+      <Cell style="width: 100%;">Title</Cell>
+      <Cell>Category</Cell>
+      <Cell>Description</Cell>
+      <Cell>Price</Cell>
+      <Cell>Stock</Cell>
+    </Row>
+  </Head>
+  <Body>
+    // 2. Read value from the store using $, filter the products, and create a Row with each item inside the list
+    {#each products.filter((product) => !$hiddenCategories.includes(product.category)) as item (item.id)}
+      <Row>
+        <Cell>{item.title}</Cell>
+        <Cell>{humanize(item.category)}</Cell>
+        <Cell>{item.description}</Cell>
+        <Cell numeric>{item.price}</Cell>
+        <Cell numeric>{item.stock}</Cell>
+      </Row>
+    {/each}
+  </Body>
+</DataTable>
+```
+
+With this, we covered the main logic of the dashboard. Nevertheless, there are some configuration files and additional helpers that are used as well, but to keep this article as short as possible I decided to not include them. You can find all the code of the dashboard available on [Github](https://github.com/EmaSuriano/astro-multi-framework-dashboard). Feel free to fork the project, and play around with the different combinations of components in the framework.
+
+## Last words
+
+I see Astro.js as a new fresh framework to build a website with the power to ship super-light websites using zero Javascript code or even add the UI libraries that you want to create a unique user-experience. The main idea of building a dashboard using several UI libraries was to showcase the flexibility of Astro and its plugin system. Adding one or even two UI libraries into a project increases the complexity of it sustainably because it requires that each developer in the team should know how to read, understand and modify the code written in completely different syntaxes.
+
+Nevertheless, I do think this is an incredible idea for codebase migration! Let's say that you have an application written in Vue.js, and you would like to migrate it into React. The migrations steps would like:
+
+1. Create an Astro project, and install the plugin of [`@astro/vue`](https://docs.astro.build/en/guides/integrations-guide/vue/) and [`@astro/react`](https://docs.astro.build/en/guides/integrations-guide/react/).
+2. Create individual files for all the routes of your Vue.js application.
+3. Add the components using the different _client directives_ to make them interactive.
+4. Now you can start replacing each `.vue` component with `.tsx` or `.jsx`, converting the Vue syntax into React code.
+5. Once you replaced all your `.vue` files, you can safely remove `@astro/vue` from your Astro config file.
+
+Thanks for reading and let's keep building stuff together! 👷‍♂️
+
+### References
+
+- [Astro docs](https://astro.build/)
+- [Islands Architecture](https://jasonformat.com/islands-architecture/)
+- [Multi Framework Dashboard - Github Repository](https://github.com/EmaSuriano/astro-multi-framework-dashboard)
+- [Multi Framework Dashboard - Demo](https://astro-multi-framework-dashboard.netlify.app/)
+- [nanostores - Github Repository](https://github.com/nanostores/nanostores)
+- [MUI docs](https://mui.com/)
+- [Vuetify docs](https://next.vuetifyjs.com/en/)
+- [SMUI docs](https://sveltematerialui.com/demo/chips/)
