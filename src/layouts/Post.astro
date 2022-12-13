@@ -1,7 +1,6 @@
 ---
 import { format, parseISO } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
-import { Image } from '@astrojs/image/components';
 import author from '../author.json';
 
 const { title, publishedAt, original, ...rest } = Astro.props.content;
@@ -14,13 +13,13 @@ const cover = import(`../assets/cover/${file}.jpg`);
 ---
 
 <Layout title={title} canonical={original?.url}>
-  <Image
+  <!-- <img
     src={cover}
     alt={title}
     width={1400}
     height={600}
     class="rounded-xl sm:rounded-3xl"
-  />
+  /> -->
   <article
     class="my-6"
     item-prop="blogPost"
@@ -37,13 +36,7 @@ const cover = import(`../assets/cover/${file}.jpg`);
       <figure
         class="bg-slate-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-slate-200 dark:ring-slate-800"
       >
-        <Image
-          src={author.avatar}
-          format="jpeg"
-          height={48}
-          width={48}
-          alt={author.name}
-        />
+        <img src={author.avatar} height={48} width={48} alt={author.name} />
       </figure>
       <div
         class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm"
