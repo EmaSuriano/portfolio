@@ -1,23 +1,342 @@
 # Building a multi framework Dashboard with Astro
 
-In this article, we will be exploring the process of building a website in [Astro](https://astro.build/) using three different frameworks: React, Svelte, and Vue.js. In a previous article, we discussed the architecture behind Astro the fundamentals of website building and the importance of choosing the right framework for your project. If you are new to website building, we recommend checking out that article here: [Understanding Astro islands architecture](https://blog.logrocket.com/understanding-astro-islands-architecture/).
+In a previous article, we discussed the architecture behind Astro which makes it possible to build this kind of applications. I highly recommend checking out that article in case you are not familiar with the Islands Architecture: [Understanding Astro islands architecture](https://blog.logrocket.com/understanding-astro-islands-architecture/). In this article, we will be exploring the process of building a website in [Astro](https://astro.build/) using three of the most popular frameworks: React, Svelte, and Vue.js.
 
-Each of these frameworks has its own strengths and weaknesses, and in this article, we will be providing a step-by-step guide on how to build a website using each of them. By the end of this article, you will have a clear understanding of the different approaches and tools needed for building a website in Astro using these popular frameworks.
+Each of these frameworks has its own strengths and weaknesses, and in this article, we will be providing a step-by-step guide on how to build a website using each of them **all together**. This means that I can take the best of each community and put it into the project.
 
-I would say that we cover most of the theory parts that we need to know to build something meaningful. Thanks to the idea that each Island can be considered as a _stand-alone_ container, we can easily combine different frameworks into one project. I came up with the idea of building a fully functional Dashboard using 3 different frameworks: React, Vue and Svelte.
+## Project characteristics
 
-This means that I can take the best of each framework and put it into the project. In the demo, I installed the following libraries per frameworks:
+For this demo, we are going to use the following libraries to build the dashboard:
 
 - React: [MUI Core](https://mui.com/core/) and [recharts](https://recharts.org/)
 - Svelte: [Svelte Material UI](https://sveltematerialui.com/)
 - Vue: [Vuetify](https://vuetifyjs.com/en/)
 
-I built a framework highlighter to visually show which components are rendered under which framework. This function can be activated by clicking on the eye icon at the bottom part of the page. This is how it looks! You can also check the application deployed [here](https://astro-multi-framework-dashboard.netlify.app/).
+I also installed [Tailwind CSS](https://tailwindcss.com/) to create most of the layout for the page, with the prefix option of `tw-` (this is to prevent clashing classes between [Tailwind and Vuetify](https://github.com/tailwindlabs/tailwindcss/issues/465#issuecomment-388496395))
 
-| Mode                  | Screenshot                                                    |
-| --------------------- | ------------------------------------------------------------- |
-| Default               | ![Dashboard screenshot](images/2022-10-31-16-14-20.png)       |
-| Framework highlighted | ![Dashboard with highlighter](images/2022-10-31-16-14-30.png) |
+Our end goal is to build the following dashboard:
+
+![Dashboard screenshot](images/2022-10-31-16-14-20.png)
+
+Something important to highlight is that all the components are connected between them and the interaction in one, can trigger a change into the other. This is possible by using `nanostores` (we are going to cover it later on the article).
+
+![Dashboard integration](images/2022-12-13-19-00-41.gif)
+
+Finally for demo's purposes, I built a _framework highlighter_ to visually displayed the UI framework (React, Vue or Svelte) responsible to render a component. This function can be activated by clicking on the eye icon at the bottom part of the page.
+
+![Dashboard with highlighter](images/2022-12-13-19-00-40.png)
+
+You can also check the application deployed [here](https://astro-multi-framework-dashboard.netlify.app/)
+
+## Setting up a fresh Astro project
+
+The easiest way to create a [new project with Astro](https://docs.astro.build/en/getting-started/), is by using their CLI: `create-astro`. Which comes with maybe one of the friendliest coding assistance ever: Houston!
+
+```sh
+# create a new project with npm
+> yarn create astro
+
+╭─────╮  Houston:
+│ ◠ ◡ ◠  Let's make the web weird!
+╰─────╯
+
+ astro   v1.6.15 Launch sequence initiated.
+
+✔ Where would you like to create your new project? … astro-dashboard
+✔ How would you like to setup your new project? › a few best practices (recommended)
+✔ Template copied!
+✔ Would you like to install yarn dependencies? (recommended) … yes
+✔ Packages installed!
+✔ Would you like to initialize a new git repository? (optional) … yes
+✔ Git repository created!
+✔ How would you like to setup TypeScript? › Strict
+✔ TypeScript settings applied!
+
+  next   Liftoff confirmed. Explore your project!
+
+         Enter your project directory using cd ./astro-dashboard
+         Run yarn dev to start the dev server. CTRL+C to stop.
+         Add frameworks like react or tailwind using astro add.
+
+         Stuck? Join us at https://astro.build/chat
+
+╭─────╮  Houston:
+│ ◠ ◡ ◠  Good luck out there, astronaut!
+╰─────╯
+```
+
+After that you should end up with folder that looks similar to this structure:
+
+```tree
+/astro-dashboard
+├── README.md
+├── astro.config.mjs
+├── output.txt
+├── package.json
+├── public
+|  └── favicon.svg
+├── node_modules # sub folders ignored to keep the directory tree short
+├── src
+|  ├── components
+|  |  └── Card.astro
+|  ├── env.d.ts
+|  ├── layouts
+|  |  └── Layout.astro
+|  └── pages
+|     └── index.astro
+├── tsconfig.json
+└── yarn.lock
+```
+
+Let's start our development server, by running:
+
+```bash
+> yarn dev
+
+yarn run v1.22.19
+$ astro dev
+  🚀  astro  v1.6.15 started in 57ms
+
+  ┃ Local    http://127.0.0.1:3000/
+  ┃ Network  use --host to expose
+```
+
+By opening the `localhost` URL, you should see the following screen in your browser:
+
+![Fresh Astro project](images/2022-12-13-18-48-16.png)
+
+## Adding the UI frameworks
+
+The official Astro documentation has a summary of all their [official integrations](https://docs.astro.build/en/guides/integrations-guide/#official-integrations), covering the topics of: **UI Frameworks**, SSR Adapters and others (such as **Tailwind**).
+
+Similar to previous scenario, the Astro team made it simple for everybody and shipped the command `astro add`, which we can use to install any of the **official integrations**. This command is already available in our fresh project, so we need to simply execute:
+
+```bash
+> yarn astro add react vue svelte tailwind
+
+✔ Resolving packages...
+
+  Astro will run the following command:
+  If you skip this step, you can always run it yourself later
+
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ yarn add @astrojs/react @astrojs/svelte @astrojs/tailwind @astrojs/vue @types/react-dom@^18.0.6     │
+│ @types/react@^18.0.21 react-dom@^18.0.0 react@^18.0.0 svelte@^3.46.4 tailwindcss@^3.0.24            │
+│ vue@^3.2.30                                                                                         │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+✔ Continue? … yes
+✔ Installing dependencies...
+
+  Astro will generate a minimal ./tailwind.config.cjs file.
+
+✔ Continue? … yes
+
+  Astro will make the following changes to your config file:
+
+ ╭ astro.config.mjs ───────────────────────────────────────╮
+ │ import { defineConfig } from 'astro/config';            │
+ │                                                         │
+ │ // https://astro.build/config                           │
+ │ import react from "@astrojs/react";                     │
+ │ import vue from "@astrojs/vue";                         │
+ │ import svelte from "@astrojs/svelte";                   │
+ │ import tailwind from "@astrojs/tailwind";               │
+ │                                                         │
+ │ // https://astro.build/config                           │
+ │ export default defineConfig({                           │
+ │   integrations: [react(), vue(), svelte(), tailwind()]  │
+ │ });                                                     │
+ ╰─────────────────────────────────────────────────────────╯
+
+✔ Continue? … yes
+
+   success  Added the following integrations to your project:
+  - @astrojs/react
+  - @astrojs/vue
+  - @astrojs/svelte
+  - @astrojs/tailwind
+
+  Astro will make the following changes to your tsconfig.json:
+
+ ╭ tsconfig.json ──────────────────────────╮
+ │ {                                       │
+ │   "extends": "astro/tsconfigs/strict",  │
+ │   "compilerOptions": {                  │
+ │     "jsx": "react-jsx",                 │
+ │     "jsxImportSource": "react"          │
+ │   }                                     │
+ │ }                                       │
+ ╰─────────────────────────────────────────╯
+
+✔ Continue? … yes
+
+   success  Successfully updated TypeScript settings
+```
+
+As you can see, Astro took over all the manual tasks of installing the integrations, adding them into our Astro configuration file and even update our `tsconfig.json` to make React work nicely with Typescript. Great job Houston!
+
+## Setting up our Layout
+
+Let's start by setting up our `Layout` for the page, which consists of a `Header`, `Footer`, and the container for our page content. In order to avoid several changes when we introduce vuetify is better to change the `prefix` inside our `tailwind.config.cjs` file.
+
+```diff
+# tailwind.config.cjs
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
++  prefix: 'tw-',
+};
+```
+
+Let's apply the modification to our `Layout`:
+
+```jsx
+// src/layouts/Layout.astro
+---
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="tw-flex tw-h-screen tw-overflow-hidden">
+      <main
+        class="tw-relative tw-bg-white tw-flex tw-flex-col tw-flex-1 tw-overflow-y-auto tw-overflow-x-hidden"
+      >
+        <!-- Header -->
+        <nav class="tw-bg-white tw-shadow-sm tw-px-2 sm:tw-px-4 tw-py-2.5">
+          <div
+            class="container tw-flex tw-flex-wrap tw-justify-between tw-items-center tw-mx-auto"
+          >
+            <a href="/" class="tw-flex tw-items-center">
+              <img
+                src="/favicon.svg"
+                class="tw-mr-3 tw-h-6 sm:tw-h-9"
+                alt="Astro Logo"
+              />
+              <span
+                class="tw-self-center tw-text-xl tw-font-semibold tw-whitespace-nowrap"
+                >{title}
+              </span>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Content container -->
+        <div class="tw-container tw-mx-auto tw-my-10 tw-flex-grow">
+          <slot />
+        </div>
+
+        <!-- Footer -->
+        <footer
+          class="tw-p-4 tw-bg-white tw-rounded-lg tw-shadow md:tw-flex md:tw-items-center md:tw-justify-between md:tw-p-6"
+        >
+          <span class="tw-text-sm tw-text-gray-500 sm:tw-text-center">
+            Built with
+            <a href="https://astro.build/" class="hover:tw-underline">Astro</a>
+          </span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
+```
+
+Without making any changes into our initial page (`src/pages/index.astro`) and applying these changes, you should see the following screen:
+
+![Demo with Footer and Header](images/2022-12-15-10-23-04.png)
+
+## Fetching the dashboard data
+
+For the purpose of this demo, I decided to use [`https://dummyjson.com/`](https://dummyjson.com/) which provides several public REST APIs that we can use to simulate a real scenario of getting data from our servers in the future. To be more specific I used the [Products list endpoint](https://dummyjson.com/docs/products).
+
+When we call the API, the output has the following structure:
+
+```json
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "iPhone 9",
+      "description": "An apple mobile which is nothing like apple",
+      "price": 549,
+      "discountPercentage": 12.96,
+      "rating": 4.69,
+      "stock": 94,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "...",
+      "images": ["...", "...", "..."]
+    },
+    {...},
+    {...},
+    {...}
+    // 30 items
+  ],
+
+  "total": 100,
+  "skip": 0,
+  "limit": 30
+}
+```
+
+Given that we are working in a Typescript project, it's always recommended to type our API responses. For that, we can have the following type for this response:
+
+```ts
+// src/types.ts
+export type Product = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+};
+```
+
+In order to fetch data using Astro, we can simply use the `fetch` function and it will call the endpoint before rendering our component, with the benefit that we don't need to handle loading states in our application. This way of loading data the one for _Static sites_, where the endpoints are being called on build time. At the same time, Astro also supports [Server-side rendering](https://docs.astro.build/en/guides/server-side-rendering/#enabling-ssr-in-your-project). It's always important to understand what kind of application is better to implement given your needs.
+
+Given that the data source that we are going to use can be considered _static_ (the list of products doesn't change over the time), running our queries is the best fit to improve the performance and UX of the application. Let's make the following modification into our initial page.
+
+```diff
+// src/pages/index.astro
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
++ import type { Product } from '../types';
+
+// fetch data
++ const products: Product[] = await fetch('https://dummyjson.com/products')
++   .then((res) => res.json())
++   .then((res) => res.products);
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
+```
+
+## Svelte integration: Categories + Table
 
 When checking the code for the main page, you will find the power of the composition of several frameworks into one Astro component, and the real usage of _client directives_.
 
