@@ -4,9 +4,12 @@ import { talks } from '../author.json';
 ---
 
 {
-  talks.map(({ title, description, places, url }) => (
+  talks.map(({ title, description, places, url, language }) => (
     <section>
       <h3 class="flex text-lg">
+        <span class="text-xs rounded uppercase p-1.5 mr-2 bg-slate-200 dark:bg-slate-800">
+          {language}
+        </span>
         <a href={url}>{title}</a>
       </h3>
       {places && (
