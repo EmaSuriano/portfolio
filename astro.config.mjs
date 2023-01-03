@@ -15,6 +15,7 @@ export default defineConfig({
     tailwind(),
     sitemap(),
     astroImageTools,
+    compress(),
     mdx({
       remarkPlugins: [remarkFigureCaption, remarkSlug, remarkAutolinkHeadings],
     }),

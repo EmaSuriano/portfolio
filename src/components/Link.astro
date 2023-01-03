@@ -12,8 +12,8 @@ const isActive = href !== '/' && pathname.startsWith(href);
   href={href}
   class={`inline-block ${
     isActive
-      ? 'text-slate-600 dark:text-slate-100 font-bold'
-      : 'text-slate-500 dark:text-slate-300 transition-colors duration-200 border-b dark:border-slate-700 dark:hover:border-current hover:border-current'
+      ? 'font-bold'
+      : 'border-b dark:border-slate-700 dark:hover:border-current hover:border-current'
   }`}
 >
   <slot />

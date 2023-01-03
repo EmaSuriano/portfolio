@@ -1,43 +1,35 @@
 ---
 import { Icon } from 'astro-icon';
 import { talks } from '../author.json';
+import LangBadge from './LangBadge.astro';
+import Link from './Link.astro';
 ---
 
 {
   talks.map(({ title, description, places, url, language }) => (
     <section>
-      <h3 class="flex text-lg">
-        <span class="text-xs rounded uppercase p-1.5 mr-2 bg-slate-200 dark:bg-slate-800">
-          {language}
-        </span>
-        <a href={url}>{title}</a>
+      <h3 class="flex text-lg items-center gap-2">
+        <LangBadge>{language}</LangBadge>
+        <Link href={url}>{title}</Link>
       </h3>
+
       {places && (
         <ul>
-          {places.map(({ name, year, recording }) =>
-            recording ? (
-              <li class="text-slate-700 dark:text-slate-300">
-                <a
-                  href={recording}
-                  class="transition-opacity opacity-80 hover:opacity-100"
-                >
-                  <Icon
-                    name="ri:video-fill"
-                    class="w-4 h-4 align-text-bottom inline"
-                  />
-                  {name},
-                  <span class="text-slate-500 dark:text-slate-400">{year}</span>
-                </a>
-              </li>
-            ) : (
-              <li class="text-slate-700 dark:text-slate-300">
+          {places.map(({ name, year, recording }) => (
+            <li class="text-slate-700 dark:text-slate-300 list-none">
+              <Icon
+                name="ri:video-fill"
+                class="w-4 h-4 align-text-bottom inline text-red-500 mr-2 -ml-6"
+              />
+              <Link href={recording}>
                 {name},
                 <span class="text-slate-500 dark:text-slate-400">{year}</span>
-              </li>
-            ),
-          )}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
+
       <p>{description}</p>
     </section>
   ))

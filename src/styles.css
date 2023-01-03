@@ -32,10 +32,6 @@ img {
   content-visibility: auto;
 }
 
-.preload-transitions * {
-  transition: none !important;
-}
-
 .track-link:hover > *:first-child {
   @apply scale-110 transform opacity-100;
 }

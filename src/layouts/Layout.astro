@@ -1,6 +1,6 @@
 ---
 import 'styles.css';
-import ActiveLink from 'components/ActiveLink.astro';
+import Link from 'components/Link.astro';
 import about from '../author.json';
 
 export type Props = {
@@ -51,8 +51,8 @@ if (!isHome) {
   </head>
 
   <body
-    class={`preload-transitions bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem]
-	antialiased${isHome ? ' flex items-center' : ''}`}
+    class={`bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased
+    ${isHome ? ' flex items-center' : ''}`}
   >
     <div
       class={`w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl ${
@@ -66,15 +66,15 @@ if (!isHome) {
             {
               !isHome && (
                 <li>
-                  <ActiveLink href="/">Home</ActiveLink>
+                  <Link href="/">Home</Link>
                 </li>
               )
             }
             <li>
-              <ActiveLink href="/about">About</ActiveLink>
+              <Link href="/about">About</Link>
             </li>
             <li>
-              <ActiveLink href="/blog">Blog</ActiveLink>
+              <Link href="/blog">Blog</Link>
             </li>
             <li class="absolute right-2">
               <button
@@ -96,7 +96,7 @@ if (!isHome) {
           {
             about.social.map(({ name, url }) => (
               <li class="mr-4 mt-2">
-                <ActiveLink href={url}>{name}</ActiveLink>
+                <Link href={url}>{name}</Link>
               </li>
             ))
           }
@@ -106,13 +106,6 @@ if (!isHome) {
 
     <script is:inline>
       setTimeout(() => {
-        if (
-          typeof window !== 'undefined' &&
-          document.body.classList.contains('preload-transitions')
-        ) {
-          document.body.classList.remove('preload-transitions');
-        }
-
         if (window.location.hash) {
           const article = document.querySelector(
             `[href='${window.location.hash}']`,

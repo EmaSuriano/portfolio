@@ -1,0 +1,34 @@
+---
+layout: layouts/Post.astro
+title: New Year, new Website!
+summary: A few weeks ago I published my first starter for Gatsby and I want to share some tips I learn along the whole experience.
+publishedAt: 2023-01-03
+cover: https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2652&q=80
+---
+
+One of my goals for this year is to come back to the times when I was contributing more, which was around the time that I launched my previous website with the blog included. It was a huge improvement over the other one that I had, and made me realized the importance of having a presentable website for anyone who is looking for you over the web.
+
+## What was the problem before?
+
+The story is a bit longer, I will try to make it shorter. Back in the days, I was writing most of my projects using Gatbsy v1, and I loved it! The paradigm of moving from SPA to website that are generated in build time, improving the UX of the users drastically. I loved the project so much that I made some contribution to the open source project in Github, and released a couple of **Gatsby Starters** (which you can find in the official website).
+
+Everything was great with building new websites with gatsby and the community was very active and responsive when someone faced an issue. But there was a big issue with Gatsby starters (that even I faced as a maintainer of several starters):
+
+> Once you clone/fork a Gatsby starter, it's up to you to maintain it.
+
+This means that, let's say that you liked a specific starter, and would like to use it for a future project. You clone/fork it, then follow all the setup instructions and lastly start the project locally. Everything looks nice, but you discovered a bug in the app (can be visual, functional, or even accessibility). Then immediately, you fix the issue and push the change into your repo. Nice, you solve the issue! But only for you ... There absolutely no collaboration between your project and the open source project.
+
+It didn't take too much time for the Gatsby community to come up with a solution, and they called it **Gatsby Theme**. The idea was very interesting, instead of cloning or forking you have your own Gatsby project and you can **install** a theme (the same way you install an npm dependency). In case the theme will receive an update inside the repository, the only thing you have to do is to install the latest version of theme and done!
+
+For me this idea was great! I don't have to re-invent the wheel, spending hours making a website, when instead I can already
+
+Topics that I want to cover:
+
+- Close this topic, saying that the Gatsby novela got discontinued, and therefore the project became harder and harder to maintain. At the end was a big cluttered project with old technology. Yes 2 years, it's a lot.
+- What is this new website about?
+  - Why Astro? Still a static website
+  - Focus on less JS, and more UX. Making as lightest as possible
+  - MOving away from CSS-in-JS to Tailwind.
+  - Fully framework agnostic: no React, no Angular, no Vue. Only Astro.
+  - Adopting Large Media setup for images https://docs.netlify.com/large-media/setup/
+  - Closing with the idea of: the more control you have over your project, the better it can scaled.

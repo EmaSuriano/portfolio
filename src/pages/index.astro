@@ -1,4 +1,7 @@
 ---
+import { Img } from 'astro-imagetools/components';
+import Link from 'components/Link.astro';
+import Title from 'components/Title.astro';
 import Layout from 'layouts/Layout.astro';
 import about from '../author.json';
 
@@ -8,24 +11,18 @@ const title = `${about.name} - ${about.role}`;
 <Layout title={title}>
   <article class="my-auto pb-8">
     <div class="flex mb-3 flex-col-reverse sm:flex-row">
-      <h1 class="text-slate-800 dark:text-slate-200">
-        <div
-          class="relative inline-block text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight"
-        >
-          <span class="gradient">{about.name}</span>
-          <span
-            class="absolute inset-0 transition-opacity duration-500 hover:opacity-0 cursor-default"
-            aria-hidden="true"
-          >
-            {about.name}
-          </span>
-        </div>
-      </h1>
+      <Title name={about.name} />
 
       <div
         class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
       >
-        <img src={about.avatar} width={128} height={128} alt={about.name} />
+        <Img
+          src={about.avatar}
+          format="webp"
+          width={256}
+          height={256}
+          alt={about.name}
+        />
       </div>
     </div>
 
@@ -33,49 +30,14 @@ const title = `${about.name} - ${about.role}`;
       class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
     >
       I'm a {about.role} at
-      <a
-        href={about.company.url}
-        class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
-      >
-        {about.company.name}
-      </a>
+      <Link href={about.company.url}>{about.company.name}</Link>
     </p>
 
     <p
       class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
     >
-      I contribute to
-      <a
-        href="/about#projects"
-        class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
-      >
-        open-source</a
-      >, and
-      <a
-        href="/blog"
-        class="border-b dark:border-slate-700 hover:border-current dark:hover:border-current"
-      >
-        write</a
-      >
-      about web development.
+      I contribute to <Link href="/about#projects">open-source</Link>, and
+      <Link href="/blog">write</Link> about web development.
     </p>
   </article>
 </Layout>
-
-<style>
-  .gradient {
-    background-image: linear-gradient(
-      to right,
-      #fb7185 0%,
-      #d946ef 33%,
-      #6366f1 66%,
-      #fb7185 100%
-    );
-    background-size: 400% 0;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: slide 10s linear infinite;
-  }
-</style>

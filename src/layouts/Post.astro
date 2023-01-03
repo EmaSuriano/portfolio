@@ -2,24 +2,19 @@
 import { format, parseISO } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
 import author from '../author.json';
+import { Img } from 'astro-imagetools/components';
 
 const { title, publishedAt, original, ...rest } = Astro.props.content;
 
 const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
-const { minutesRead: readingTime } = Astro.props.frontmatter;
-
-const file = rest.file.split('/').pop().replace('.mdx', '');
-const cover = import(`../assets/cover/${file}.jpg`);
+const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
 ---
 
 <Layout title={title} canonical={original?.url}>
-  <!-- <img
-    src={cover}
-    alt={title}
-    width={1400}
-    height={600}
-    class="rounded-xl sm:rounded-3xl"
-  /> -->
+  <div class="rounded-xl sm:rounded-3xl overflow-hidden">
+    <Img format="webp" src={cover} alt={title} width={1400} height={600} />
+  </div>
+
   <article
     class="my-6"
     item-prop="blogPost"
@@ -34,9 +29,15 @@ const cover = import(`../assets/cover/${file}.jpg`);
     </h1>
     <header class="flex items-center mb-8 sm:mb-10">
       <figure
-        class="bg-slate-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-slate-200 dark:ring-slate-800"
+        class="w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0"
       >
-        <img src={author.avatar} height={48} width={48} alt={author.name} />
+        <Img
+          format="webp"
+          src={author.avatar}
+          height={48}
+          width={48}
+          alt={author.name}
+        />
       </figure>
       <div
         class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm"
