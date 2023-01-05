@@ -3,12 +3,12 @@ layout: layouts/About.astro
 title: About Me
 ---
 
-import Projects from 'components/Projects.astro';
-import Talks from 'components/Talks.astro';
+import Project from 'components/Project.astro';
+import Talk from 'components/Talk.astro';
+import Title from 'components/Title.astro';
+import { projects, talks } from '../author.json';
 
-<h1>About Me</h1>
-
-Hi there, my name is Emanuel (Ema) Suriano.
+<h1>About me</h1>
 
 I'm an Open Source Developer, sharing with the community some of my personal work so then others can use them as a base for their ideas or as a a future inspiration, as well as, contributing to several Open Source Projects.
 
@@ -18,8 +18,12 @@ While I’m not coding I tend to share my thoughts in my [Non-Tech Blog](https:/
 
 ## Projects
 
-<Projects />
+<div class="grid gap-6 sm:grid-cols-2">
+  {projects.map((project) => (
+    <Project {...project} />
+  ))}
+</div>
 
 ## Talks
 
-<Talks />
+{talks.map((talk) => <Talk {...talk} />)}

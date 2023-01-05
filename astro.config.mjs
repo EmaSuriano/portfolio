@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-// import pkg from './remark-reading-time.js';
+import { remarkReadingTime } from './remark-reading-time.js';
 import compress from 'astro-compress';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
@@ -17,7 +17,12 @@ export default defineConfig({
     astroImageTools,
     compress(),
     mdx({
-      remarkPlugins: [remarkFigureCaption, remarkSlug, remarkAutolinkHeadings],
+      remarkPlugins: [
+        remarkFigureCaption,
+        remarkSlug,
+        remarkAutolinkHeadings,
+        remarkReadingTime,
+      ],
     }),
   ],
   markdown: {

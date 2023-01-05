@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
 ::selection {
   @apply bg-indigo-400 bg-opacity-50 text-white;
 }
@@ -57,18 +66,6 @@ img {
 .prose img,
 .prose figcaption {
   @apply mx-auto w-fit;
-}
-
-.prose .project a {
-  @apply text-slate-800 dark:text-slate-200 inline-block font-bold no-underline border-none;
-}
-
-.prose .project a:hover {
-  @apply dark:text-slate-200;
-}
-
-.prose .project h3 {
-  @apply m-0 mb-2 text-xl no-underline sm:text-2xl;
 }
 
 .prose .anchor {
@@ -139,12 +136,6 @@ img {
 .token.function,
 .token.class-name {
   @apply text-pink-500 dark:text-pink-400;
-}
-
-@keyframes slide {
-  to {
-    background-position: 200% center;
-  }
 }
 
 h1 a,

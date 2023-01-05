@@ -1,16 +1,22 @@
 ---
 import { format, parseISO } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
-import author from '../author.json';
 import { Img } from 'astro-imagetools/components';
+import author from '../author.json';
+import type { Post } from 'types';
 
-const { title, publishedAt, original, ...rest } = Astro.props.content;
+type Props = Post;
+
+const { title, publishedAt, external, minutesRead, cover } =
+  Astro.props.frontmatter;
+
+console.log(Astro.props);
 
 const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
-const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
+// const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
 ---
 
-<Layout title={title} canonical={original?.url}>
+<Layout title={title} canonical={external} date={publishedAt}>
   <div class="rounded-xl sm:rounded-3xl overflow-hidden">
     <Img format="webp" src={cover} alt={title} width={1400} height={600} />
   </div>
@@ -31,13 +37,7 @@ const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
       <figure
         class="w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0"
       >
-        <Img
-          format="webp"
-          src={author.avatar}
-          height={48}
-          width={48}
-          alt={author.name}
-        />
+        <img src={author.avatar} alt={author.name} />
       </figure>
       <div
         class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm"
@@ -50,30 +50,13 @@ const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
           >
             <span item-prop="name">{author.name}</span>
           </span>
-          &nbsp;at&nbsp;
+          at
           <time item-prop="datePublished" date-time={publishedAt}>
             {publishDate}
           </time>
         </div>
         <div class="text-slate-500">
-          {
-            original && (
-              <>
-                Originally posted on{' '}
-                <a
-                  class="transition inline-block border-b border-transparent hover:border-slate-600"
-                  href={original.url}
-                >
-                  {original.name}
-                </a>
-                <span class="inline-block mx-2" role="separator">
-                  {' '}
-                  &bull;
-                </span>
-              </>
-            )
-          }
-          {readingTime}
+          {minutesRead}
         </div>
       </div>
     </header>

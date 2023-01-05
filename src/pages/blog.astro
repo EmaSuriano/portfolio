@@ -23,15 +23,11 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
             <div class="flex flex-col sm:flex-row justify-between mb-2">
               <h3 class="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold  text-slate-900 dark:text-slate-100">
                 <a
-                  href={
-                    frontmatter.original?.external
-                      ? frontmatter.original?.url
-                      : url
-                  }
+                  href={frontmatter.external ? frontmatter.external : url}
                   class="block-link transition-opacity opacity-80 hover:opacity-100"
                 >
                   {frontmatter.title}
-                  {frontmatter.original?.external && (
+                  {frontmatter.external && (
                     <Icon
                       name="ri:external-link-line"
                       class="w-4 h-4 ml-2 align-baseline inline"

@@ -1,5 +1,4 @@
 ---
-import { Img } from 'astro-imagetools/components';
 import Link from 'components/Link.astro';
 import Title from 'components/Title.astro';
 import Layout from 'layouts/Layout.astro';
@@ -16,13 +15,8 @@ const title = `${about.name} - ${about.role}`;
       <div
         class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
       >
-        <Img
-          src={about.avatar}
-          format="webp"
-          width={256}
-          height={256}
-          alt={about.name}
-        />
+        <!-- Do not use Img here because Gravatar already does this convertion  -->
+        <img src={about.avatar} alt={about.name} />
       </div>
     </div>
 

@@ -5,11 +5,9 @@ import about from '../author.json';
 
 export type Props = {
   title: string;
-  type?: string;
   description?: string;
   canonical?: string;
   date?: string;
-  sharingImageUrl?: string;
 };
 
 const { pathname } = Astro.url;
@@ -18,11 +16,10 @@ const isHome = pathname === '/';
 
 let {
   title = about.name,
-  type = 'website',
   description = about.bio,
   canonical,
   date,
-} = Astro.props as Props;
+} = Astro.props;
 
 if (!isHome) {
   title = `${title} - ${about.name}`;
@@ -36,7 +33,7 @@ if (!isHome) {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:url" content={url} />
-    <meta property="og:type" content={type} />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={about.name} />
@@ -80,7 +77,7 @@ if (!isHome) {
               <button
                 aria-label="Toggle theme"
                 id="theme-button"
-                class="p-0.5 text-slate-500 dark:text-slate-300 transition-colors duration-200 border-b dark:border-slate-700 dark:hover:border-current hover:border-current"
+                class="p-0.5 text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
               ></button>
             </li>
           </ul>

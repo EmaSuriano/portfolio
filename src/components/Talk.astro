@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon';
+import type { Talk } from 'types';
+import LangBadge from './LangBadge.astro';
+import Link from './Link.astro';
+
+type Props = Talk;
+
+const { title, description, places, url, language } = Astro.props;
+---
+
+<section>
+  <h3 class="flex text-lg items-center gap-2">
+    <LangBadge>{language}</LangBadge>
+    <Link href={url}>{title}</Link>
+  </h3>
+
+  <ul>
+    {
+      places.map(({ name, year, recording }) => (
+        <li class="text-slate-700 dark:text-slate-300 list-none">
+          <Icon
+            name="ri:video-fill"
+            class="w-4 h-4 align-text-bottom inline text-red-500 mr-2 -ml-4"
+          />
+          <Link href={recording}>
+            {name},
+            <span class="text-slate-500 dark:text-slate-400">{year}</span>
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p>{description}</p>
+</section>
