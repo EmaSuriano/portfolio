@@ -10,14 +10,14 @@ type Props = Post;
 const { title, publishedAt, external, minutesRead, cover } =
   Astro.props.frontmatter;
 
-console.log(Astro.props);
-
 const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
-// const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
 ---
 
 <Layout title={title} canonical={external} date={publishedAt}>
-  <div class="rounded-xl sm:rounded-3xl overflow-hidden">
+  <div
+    class="rounded-xl sm:rounded-3xl overflow-hidden shadow-lg drop-shadow-lg transition-all hover:scale-105"
+    data-zoomable
+  >
     <Img format="webp" src={cover} alt={title} width={1400} height={600} />
   </div>
 
@@ -68,3 +68,18 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
     </section>
   </article>
 </Layout>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+
+  const zoom = mediumZoom(document.querySelectorAll('[data-zoomable] img'), {
+    margin: 24,
+    background: 'inherit',
+  });
+</script>
+
+<style is:global>
+  .medium-zoom-overlay {
+    @apply bg-white dark:bg-neutral-900 !important;
+  }
+</style>
