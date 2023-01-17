@@ -3,17 +3,17 @@ import { format, parseISO } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
 import { Img } from 'astro-imagetools/components';
 import author from '../author.json';
-import type { Post } from 'types';
+import type { InternalPost } from 'types';
 
-type Props = Post;
+type Props = InternalPost;
 
-const { title, publishedAt, external, minutesRead, cover } =
+const { title, publishedAt, summary, minutesRead, cover } =
   Astro.props.frontmatter;
 
 const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
 ---
 
-<Layout title={title} canonical={external} date={publishedAt}>
+<Layout title={title} description={summary} date={publishedAt}>
   <div
     class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg transition-all hover:shadow-xl hover:scale-105"
     data-zoomable
@@ -60,10 +60,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
         </div>
       </div>
     </header>
-    <section
-      class="prose dark:prose-dark w-full mb-6 mx-auto"
-      item-prop="articleBody"
-    >
+    <section class="prose dark:prose-dark w-full mb-6 mx-auto">
       <slot />
     </section>
   </article>

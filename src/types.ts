@@ -22,10 +22,7 @@ export type ExternalPost = {
   url: string;
 };
 
-export type Post = {
-  frontmatter: InternalPost | ExternalPost;
-  url: string;
-};
+export type Post = InternalPost | ExternalPost;
 
 export type Config = typeof config;
 

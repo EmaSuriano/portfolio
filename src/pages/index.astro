@@ -14,9 +14,10 @@ const title = `${about.name} - ${about.role}`;
 
       <div
         class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
+        data-zoomable
       >
         <!-- Do not use Img here because Gravatar already does this convertion  -->
-        <img src={about.avatar} alt={about.name} />
+        <img src={`${about.avatar}?s=128`} alt={about.name} />
       </div>
     </div>
 

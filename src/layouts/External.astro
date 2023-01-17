@@ -1,15 +1,9 @@
 ---
-import { format, parseISO } from 'date-fns';
-import Layout from 'layouts/Layout.astro';
-import { Img } from 'astro-imagetools/components';
-import author from '../author.json';
 import type { ExternalPost } from 'types';
 
 type Props = ExternalPost;
 
 const { external: href } = Astro.props.frontmatter;
-
-// const { minutesRead: readingTime, cover } = Astro.props.frontmatter;
 ---
 
 <!DOCTYPE html>

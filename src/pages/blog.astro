@@ -19,15 +19,14 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
     {
       posts.sort(sortPostByDate).map(({ frontmatter, url }) => (
         <li>
-          <article class="relative">
-            <div class="flex flex-col sm:flex-row justify-between mb-2">
-              <h3 class="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold  text-slate-900 dark:text-slate-100">
+          <article class="relative prose dark:prose-dark">
+            <div class="flex flex-col sm:flex-row justify-between">
+              <h3 class="flex font-bold m-0 w-fit">
                 <a
-                  href={frontmatter.external ? frontmatter.external : url}
-                  class="block-link transition-opacity opacity-80 hover:opacity-100"
+                  href={'external' in frontmatter ? frontmatter.external : url}
                 >
                   {frontmatter.title}
-                  {frontmatter.external && (
+                  {'external' in frontmatter && (
                     <Icon
                       name="ri:external-link-line"
                       class="w-4 h-4 ml-2 align-baseline inline"
@@ -35,13 +34,11 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
                   )}
                 </a>
               </h3>
-              <p class="text-slate-600 dark:text-slate-400">
+              <p class="m-0">
                 {format(parseISO(frontmatter.publishedAt), 'MMM yyyy')}
               </p>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 max-w-2xl">
-              {frontmatter.summary}
-            </p>
+            <p class="max-w-2xl">{frontmatter.summary}</p>
           </article>
         </li>
       ))
