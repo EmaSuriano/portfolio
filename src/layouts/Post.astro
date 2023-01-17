@@ -15,7 +15,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
 
 <Layout title={title} canonical={external} date={publishedAt}>
   <div
-    class="rounded-xl sm:rounded-3xl overflow-hidden shadow-lg drop-shadow-lg transition-all hover:scale-105"
+    class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg transition-all hover:shadow-xl hover:scale-105"
     data-zoomable
   >
     <Img format="webp" src={cover} alt={title} width={1400} height={600} />
@@ -72,7 +72,11 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
 <script>
   import mediumZoom from 'medium-zoom';
 
-  const zoom = mediumZoom(document.querySelectorAll('[data-zoomable] img'), {
+  const target = document.querySelectorAll(
+    '[data-zoomable] img, article section img',
+  );
+
+  const zoom = mediumZoom(target, {
     margin: 24,
     background: 'inherit',
   });
@@ -81,5 +85,9 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
 <style is:global>
   .medium-zoom-overlay {
     @apply bg-white dark:bg-neutral-900 !important;
+  }
+
+  article section img {
+    @apply rounded-xl shadow-lg;
   }
 </style>
