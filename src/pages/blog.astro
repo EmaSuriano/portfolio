@@ -12,19 +12,15 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
   title="Blog"
   description="Here is my blog. I started to write not so long ago and trying my best"
 >
-  <h1 class="mb-6 text-4xl font-bold tracking-tight sm:mb-10 sm:text-5xl">
-    Blog
-  </h1>
-  <ul class="space-y-8 sm:space-y-12">
-    {
-      posts.sort(sortPostByDate).map(({ frontmatter, url }) => (
-        <li>
-          <article class="prose dark:prose-dark relative">
-            <div class="flex flex-col justify-between sm:flex-row">
-              <h3 class="m-0 flex w-fit font-bold">
-                <a
-                  href={'external' in frontmatter ? frontmatter.external : url}
-                >
+  <section class="prose w-full dark:prose-dark">
+    <h1>Blog</h1>
+    <ul class="list-none space-y-8 pl-0">
+      {
+        posts.sort(sortPostByDate).map(({ frontmatter, url }) => (
+          <li>
+            <div class="flex flex-col justify-between space-y-2 sm:flex-row">
+              <a href={'external' in frontmatter ? frontmatter.external : url}>
+                <h3 class="m-0 flex w-fit font-bold">
                   {frontmatter.title}
                   {'external' in frontmatter && (
                     <Icon
@@ -32,16 +28,16 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
                       class="ml-2 inline h-4 w-4 align-baseline"
                     />
                   )}
-                </a>
-              </h3>
+                </h3>
+              </a>
               <p class="m-0">
                 {format(parseISO(frontmatter.publishedAt), 'MMM yyyy')}
               </p>
             </div>
             <p class="max-w-2xl">{frontmatter.summary}</p>
-          </article>
-        </li>
-      ))
-    }
-  </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </Layout>

@@ -1,5 +1,4 @@
 ---
-import Link from 'components/Link.astro';
 import Title from 'components/Title.astro';
 import Layout from 'layouts/Layout.astro';
 import about from '../author.json';
@@ -22,17 +21,24 @@ const title = `${about.name} - ${about.role}`;
     </div>
 
     <p
-      class="transition-color text-md block w-[80%] font-medium text-slate-400 duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
+      class="block w-[80%] font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
     >
       I'm a {about.role} at
-      <Link href={about.company.url}>{about.company.name}</Link>
+      <a href={about.company.url}>{about.company.name}</a>
     </p>
 
     <p
-      class="transition-color text-md block w-[80%] font-medium text-slate-400 duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
+      class="block w-[80%] font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
     >
-      I contribute to <Link href="/about#projects">open-source</Link>, and
-      <Link href="/blog">write</Link> about web development.
+      I contribute to <a href="/about#projects">open-source</a>, and
+      <a href="/blog">write</a> about web development.
     </p>
   </article>
 </Layout>
+
+<style>
+  a {
+    @apply border-b hover:border-current;
+    text-decoration: none;
+  }
+</style>
