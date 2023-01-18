@@ -1,4 +1,5 @@
 ---
+import Background from 'components/Background.astro';
 import Title from 'components/Title.astro';
 import Layout from 'layouts/Layout.astro';
 import about from '../author.json';
@@ -34,6 +35,7 @@ const title = `${about.name} - ${about.role}`;
       <a href="/blog">write</a> about web development.
     </p>
   </article>
+  <Background />
 </Layout>
 
 <style>

@@ -762,6 +762,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@justinribeiro/lite-youtube@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@justinribeiro/lite-youtube/-/lite-youtube-1.4.0.tgz#3ba21950213ffe0d2c69d9609819842d5cad4a4a"
+  integrity sha512-gBuSAPla3oPLV9i2K02/x95KQWlV9rMp42Cy74s6m0WldORSAL/YvRcdK0phwwpPMJJVNsiHZvzZFa1I62LoGQ==
+
 "@ljharb/has-package-exports-patterns@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@ljharb/has-package-exports-patterns/-/has-package-exports-patterns-0.0.2.tgz#c1718939b65efa1f45f53686c2fcfa992b9fb68f"

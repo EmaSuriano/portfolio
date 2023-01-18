@@ -76,12 +76,24 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
   });
 </script>
 
+<script>
+  import '@justinribeiro/lite-youtube';
+
+  const videos = document.querySelectorAll('lite-youtube');
+
+  videos.forEach((node) => {
+    const label = document.createElement('figcaption');
+    label.textContent = node.videoTitle;
+    node.parentNode?.insertBefore(label, node.nextSibling);
+  });
+</script>
+
 <style is:global>
   .medium-zoom-overlay {
     @apply bg-white dark:bg-neutral-900 !important;
   }
 
   .medium-zoom-image {
-    @apply rounded-2xl;
+    @apply rounded-md;
   }
 </style>

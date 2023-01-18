@@ -12,15 +12,15 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
   title="Blog"
   description="Here is my blog. I started to write not so long ago and trying my best"
 >
-  <section class="prose w-full dark:prose-dark">
+  <section class="prose max-w-full dark:prose-dark">
     <h1>Blog</h1>
     <ul class="list-none space-y-8 pl-0">
       {
         posts.sort(sortPostByDate).map(({ frontmatter, url }) => (
           <li>
-            <div class="flex flex-col justify-between space-y-2 sm:flex-row">
+            <div class="flex flex-col items-center justify-between space-y-2 sm:flex-row">
               <a href={'external' in frontmatter ? frontmatter.external : url}>
-                <h3 class="m-0 flex w-fit font-bold">
+                <h3 class="m-0 flex w-fit items-center ">
                   {frontmatter.title}
                   {'external' in frontmatter && (
                     <Icon

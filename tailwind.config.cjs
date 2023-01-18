@@ -4,41 +4,13 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
   theme: {
     extend: {
-      animation: {
-        blob: 'blob 7s infinite',
-      },
-      keyframes: {
-        blob: {
-          '0%': {
-            transform: 'translate(0px, 0px) scale(1)',
-          },
-          '33%': {
-            transform: 'translate(30px, -50px) scale(1.1)',
-          },
-          '66%': {
-            transform: 'translate(-20px, 20px) scale(0.9)',
-          },
-          '100%': {
-            transform: 'tranlate(0px, 0px) scale(1)',
-          },
-        },
-      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
             color: theme('colors.slate.700'),
-            a: {
-              color: theme('colors.sky.500'),
-              '&:hover': {
-                color: theme('colors.sky.700'),
-              },
-            },
             pre: {
               color: theme('colors.slate.600'),
               backgroundColor: theme('colors.slate.100'),
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
             },
             code: {
               color: theme('colors.teal.400'),
@@ -47,7 +19,7 @@ module.exports = {
               paddingRight: theme('spacing.2'),
               borderRadius: theme('spacing.1'),
               fontWeight: 600,
-              color: theme('colors.cyan.700'),
+              color: theme('colors.slate.600'),
               backgroundColor: theme('colors.slate.100'),
             },
             'code::before': false,
@@ -62,19 +34,12 @@ module.exports = {
         dark: {
           css: {
             color: theme('colors.slate.300'),
-            a: {
-              color: theme('colors.sky.400'),
-              transition: 'color 0.15s',
-              '&:hover': {
-                color: theme('colors.sky.500'),
-              },
-            },
             pre: {
               color: theme('colors.slate.200'),
               backgroundColor: theme('colors.slate.800'),
             },
             code: {
-              color: theme('colors.cyan.400'),
+              color: theme('colors.slate.400'),
               backgroundColor: theme('colors.slate.800'),
             },
             'h1,h2,h3,h4': {

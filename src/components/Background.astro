@@ -1,0 +1,76 @@
+---
+type Props = {
+  amount?: number;
+};
+
+const { amount = 16 } = Astro.props;
+
+function randomIntFromInterval(min: number, max: number) {
+  var rand = Math.random() * (max - min) + min;
+  var power = Math.pow(10, 2);
+  return Math.floor(rand * power) / power;
+}
+
+const squares = Array(amount)
+  .fill(null)
+  .map(() => ({
+    height: randomIntFromInterval(1, 4) + 'em',
+    width: randomIntFromInterval(1, 4) + 'em',
+    animationDelay: randomIntFromInterval(0, 10) + 's',
+    animationDuration: randomIntFromInterval(8, 16) + 's',
+    filter: 'blur(' + randomIntFromInterval(2, 6) + 'px)',
+  }));
+---
+
+<div class="background-squares">
+  <div class="squares">
+    {squares.map((style) => <div class="square" style={style} />)}
+  </div>
+</div>
+
+<style is:global>
+  .background-squares {
+    @apply absolute top-0 left-0 -z-10 h-screen w-screen;
+  }
+
+  .background-squares:before {
+    @apply absolute bg-gradient-to-b from-neutral-200 to-transparent transition dark:from-neutral-800;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60vh;
+  }
+
+  .background-squares:after {
+    @apply absolute bg-gradient-to-t from-neutral-200 to-transparent transition dark:from-neutral-800;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20vh;
+  }
+
+  .squares {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+
+  .square {
+    @apply rounded-2xl bg-neutral-200 dark:bg-neutral-800;
+    animation: squares 9.5s linear infinite;
+    align-self: flex-end;
+    transform: translateY(100%);
+  }
+
+  @keyframes squares {
+    from {
+      transform: translateY(100%) rotate(-50deg);
+    }
+    to {
+      transform: translateY(calc(-100vh + -100%)) rotate(150deg);
+    }
+  }
+</style>

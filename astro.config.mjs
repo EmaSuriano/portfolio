@@ -25,7 +25,7 @@ export default defineConfig({
     sitemap(),
     astroImageTools,
     compress(),
-    mdx({ remarkPlugins }),
+    mdx({ remarkPlugins, syntaxHighlight: 'prism' }),
   ],
   markdown: {
     syntaxHighlight: 'prism',

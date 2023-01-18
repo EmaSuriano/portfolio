@@ -1,5 +1,7 @@
 ---
 import 'styles.css';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs';
 import about from '../author.json';
 
 export type Props = {
@@ -48,7 +50,7 @@ if (!isHome) {
         isHome ? 'h-full max-h-[44rem]' : 'min-h-full'
       }`}
     >
-      <header>
+      <header class="relative">
         <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
         <nav class="prose text-sm dark:prose-dark sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
@@ -61,15 +63,13 @@ if (!isHome) {
             }
             <li><a href="/about">About</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li class="absolute right-2">
-              <button
-                aria-label="Toggle theme"
-                id="theme-button"
-                class="m-0 p-0.5 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
-              ></button>
-            </li>
           </ul>
         </nav>
+        <button
+          aria-label="Toggle theme"
+          id="theme-button"
+          class="absolute top-3 right-4 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
+        ></button>
       </header>
       <main id="skip" class="flex flex-grow flex-col py-12">
         <slot />
