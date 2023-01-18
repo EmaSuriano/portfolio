@@ -14,10 +14,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
 ---
 
 <Layout title={title} description={summary} date={publishedAt}>
-  <div
-    class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg transition-all hover:shadow-xl hover:scale-105"
-    data-zoomable
-  >
+  <div class="overflow-hidden rounded-2xl shadow-lg" data-zoomable>
     <Img format="webp" src={cover} alt={title} width={1400} height={600} />
   </div>
 
@@ -28,19 +25,19 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
     item-type="https://schema.org/BlogPosting"
   >
     <h1
-      class="text-3xl md:text-4xl font-bold tracking-tight mb-6"
-      item-prop="name headline"
+      class="mb-6 text-3xl font-bold tracking-tight md:text-4xl"
+      item-prop="title"
     >
       {title}
     </h1>
-    <header class="flex items-center mb-8 sm:mb-10">
+    <header class="mb-8 flex items-center sm:mb-10">
       <figure
-        class="w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0"
+        class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full sm:h-6 sm:w-6"
       >
         <img src={author.avatar} alt={author.name} />
       </figure>
       <div
-        class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm"
+        class="flex flex-col text-sm sm:w-full sm:flex-row sm:justify-between"
       >
         <div class="text-slate-600 dark:text-slate-400">
           <span
@@ -60,7 +57,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
         </div>
       </div>
     </header>
-    <section class="prose dark:prose-dark w-full mb-6 mx-auto">
+    <section class="prose mx-auto w-full dark:prose-dark">
       <slot />
     </section>
   </article>
@@ -73,7 +70,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
     '[data-zoomable] img, article section img',
   );
 
-  const zoom = mediumZoom(target, {
+  mediumZoom(target, {
     margin: 24,
     background: 'inherit',
   });
@@ -84,7 +81,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
     @apply bg-white dark:bg-neutral-900 !important;
   }
 
-  article section img {
-    @apply rounded-xl shadow-lg;
+  .medium-zoom-image {
+    @apply rounded-2xl;
   }
 </style>

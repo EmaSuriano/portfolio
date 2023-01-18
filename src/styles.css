@@ -63,7 +63,10 @@ img {
   text-decoration: none;
 }
 
-.prose img,
+.prose img {
+  @apply mx-auto w-fit rounded-xl shadow-lg;
+}
+
 .prose figcaption {
   @apply mx-auto w-fit;
 }

@@ -52,7 +52,7 @@ if (!isHome) {
       <header>
         <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
         <nav class="text-sm sm:text-base">
-          <ul class="flex w-full space-x-4 relative">
+          <ul class="relative flex w-full space-x-4">
             {
               !isHome && (
                 <li>
@@ -70,19 +70,19 @@ if (!isHome) {
               <button
                 aria-label="Toggle theme"
                 id="theme-button"
-                class="p-0.5 text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
+                class="p-0.5 text-slate-500 transition-colors hover:text-slate-600 dark:text-slate-300 hover:dark:text-slate-400"
               ></button>
             </li>
           </ul>
         </nav>
       </header>
-      <main id="skip" class="flex flex-col flex-grow py-12">
+      <main id="skip" class="flex flex-grow flex-col py-12">
         <slot />
       </main>
       <footer
-        class="flex mb-4 text-sm sm:text-base flex-col justify-end sm:flex-row sm:items-end"
+        class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"
       >
-        <ul class="flex flex-wrap flex-shrink-0 max-w-full prose">
+        <ul class="prose flex max-w-full flex-shrink-0 flex-wrap">
           {
             about.social.map(({ name, url }) => (
               <li class="mr-4 mt-2">

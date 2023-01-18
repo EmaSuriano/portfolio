@@ -7,11 +7,11 @@ const { name } = Astro.props;
 ---
 
 <h1
-  class="relative inline-block text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-slate-800 dark:text-slate-200"
+  class="relative inline-block text-5xl font-bold tracking-tight text-slate-800 dark:text-slate-200 sm:text-7xl md:text-8xl lg:text-9xl"
 >
   <span class="gradient">{name}</span>
   <span
-    class="absolute inset-0 transition-opacity duration-500 hover:opacity-0 cursor-default"
+    class="absolute inset-0 cursor-default transition-opacity duration-500 hover:opacity-0"
     aria-hidden="true"
   >
     {name}

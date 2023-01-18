@@ -9,7 +9,7 @@ const { title, description, places, url, language } = Astro.props;
 ---
 
 <section>
-  <h3 class="flex text-lg items-center gap-2">
+  <h3 class="flex items-center gap-2 text-lg">
     <LangBadge>{language}</LangBadge>
     <Link href={url}>{title}</Link>
   </h3>

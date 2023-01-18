@@ -9,11 +9,11 @@ const title = `${about.name} - ${about.role}`;
 
 <Layout title={title}>
   <article class="my-auto pb-8">
-    <div class="flex mb-3 flex-col-reverse sm:flex-row">
+    <div class="mb-3 flex flex-col-reverse sm:flex-row">
       <Title name={about.name} />
 
       <div
-        class="w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10 rounded-full overflow-hidden first:w-full first:h-width transition-all duration-200 sm:hover:scale-125"
+        class="first:h-width mb-2 h-10 w-10 overflow-hidden rounded-full transition-all duration-200 first:w-full sm:-mt-10 sm:h-16 sm:w-16 sm:hover:scale-125"
         data-zoomable
       >
         <!-- Do not use Img here because Gravatar already does this convertion  -->
@@ -22,14 +22,14 @@ const title = `${about.name} - ${about.role}`;
     </div>
 
     <p
-      class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
+      class="transition-color text-md block w-[80%] font-medium text-slate-400 duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
     >
       I'm a {about.role} at
       <Link href={about.company.url}>{about.company.name}</Link>
     </p>
 
     <p
-      class="block w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-color duration-200 text-md"
+      class="transition-color text-md block w-[80%] font-medium text-slate-400 duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
     >
       I contribute to <Link href="/about#projects">open-source</Link>, and
       <Link href="/blog">write</Link> about web development.
