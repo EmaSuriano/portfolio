@@ -906,12 +906,12 @@
     "@types/estree" "*"
 
 "@types/babel__core@^7.1.19":
-  version "7.1.20"
-  resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.20.tgz#e168cdd612c92a2d335029ed62ac94c95b362359"
-  integrity sha512-PVb6Bg2QuscZ30FvOU7z4guG6c926D9YRvOxEaelzndpMsvP+YM74Q/dAFASpg2l6+XLalxSGxcq/lrgYWZtyQ==
+  version "7.20.0"
+  resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.0.tgz#61bc5a4cae505ce98e1e36c5445e4bee060d8891"
+  integrity sha512-+n8dL/9GWblDO0iU6eZAwEIJVr5DWigtle+Q6HLOrh/pdbXOhOtqzq8VPPE2zvNJzSKY4vH/z3iT3tn0A3ypiQ==
   dependencies:
-    "@babel/parser" "^7.1.0"
-    "@babel/types" "^7.0.0"
+    "@babel/parser" "^7.20.7"
+    "@babel/types" "^7.20.7"
     "@types/babel__generator" "*"
     "@types/babel__template" "*"
     "@types/babel__traverse" "*"
@@ -1232,9 +1232,9 @@ astro-icon@^0.8.0:
     svgo "^2.8.0"
 
 astro-imagetools@^0.7.0:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/astro-imagetools/-/astro-imagetools-0.7.3.tgz#797f8dca876910822676172c768a3477b5a64577"
-  integrity sha512-9doMY6u+D8oSAetsz63DIwJ1vUsIQ/JNeOIcjfyHigywb2xFfaZ7fH7CVyPU0LV++5sXkM653bFp1+OmKEcnaw==
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/astro-imagetools/-/astro-imagetools-0.7.4.tgz#f7de488868b7ad0be929fb67db2229240fc1acfa"
+  integrity sha512-K3AtWzc7MFBQBnUKWNoPFhs4qWmrT4VWhG9OpD79a1f7p/eEcCpxWEAwx1mIPSLZZe16PSpcMRQoCsGasVe+dQ==
   dependencies:
     "@astropub/codecs" "0.4.4"
     file-type "17.1.1"
