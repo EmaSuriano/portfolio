@@ -38,9 +38,9 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
         <img src={author.avatar} alt={author.name} />
       </figure>
       <div
-        class="flex flex-col text-sm sm:w-full sm:flex-row sm:justify-between"
+        class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"
       >
-        <div class="text-slate-600 dark:text-slate-400">
+        <p>
           <span
             item-prop="author"
             item-scope
@@ -52,12 +52,11 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
           <time item-prop="datePublished" date-time={publishedAt}>
             {publishDate}
           </time>
-        </div>
-        <div class="text-slate-500">
-          {minutesRead}
-        </div>
+        </p>
+        <p>{minutesRead}</p>
       </div>
     </header>
+
     <section class="prose mx-auto w-full dark:prose-dark">
       <slot />
     </section>
@@ -68,7 +67,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
   import mediumZoom from 'medium-zoom';
 
   const target = document.querySelectorAll(
-    '[data-zoomable] img, article section img',
+    '[data-zoomable] > img, article figure > img',
   );
 
   mediumZoom(target, {
