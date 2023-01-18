@@ -1,6 +1,7 @@
 ---
 import { format, parseISO } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
+// @ts-expect-error ts issue here ...
 import { Img } from 'astro-imagetools/components';
 import author from '../author.json';
 import type { InternalPost } from 'types';
