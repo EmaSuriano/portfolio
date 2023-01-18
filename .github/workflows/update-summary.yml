@@ -1,0 +1,29 @@
+name: Update Summary
+
+on: [push]
+
+jobs:
+  update-summary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn create-summary
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Summary
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1.1.2
+        with:
+          token: ${{secrets.GH_TOKEN}}
+          repository: EmaSuriano/EmaSuriano
+          event-type: my-event
