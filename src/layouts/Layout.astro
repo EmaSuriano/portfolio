@@ -26,8 +26,9 @@ if (!isHome) {
 <html lang="en">
   <head>
     <script is:inline>
-      // prevent flickering when using dark/light mode
-      const theme = localStorage.getItem('theme');
+      import { LOCAL_STORAGE_KEY } from 'scripts/theme';
+
+      const theme = localStorage?.getItem(LOCAL_STORAGE_KEY);
       document.documentElement.setAttribute('data-theme', theme);
     </script>
 
