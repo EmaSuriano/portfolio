@@ -5,6 +5,7 @@ import Layout from 'layouts/Layout.astro';
 import { Img } from 'astro-imagetools/components';
 import author from '../author.json';
 import type { InternalPost } from 'types';
+import CommentBox from 'components/CommentBox.astro';
 
 type Props = InternalPost;
 
@@ -61,6 +62,8 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
       <slot />
     </section>
   </article>
+
+  <CommentBox />
 </Layout>
 
 <script>
