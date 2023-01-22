@@ -16,7 +16,7 @@ I kept in a separate branch the previous website, to have it as a memento and al
 
 ## What was the problem before?
 
-The previous version itself was a great website in terms of UI/UX and also performance-wise was quite competent, showing great results in Lighthouse. The main issue was maintaining the project. This was mainly related to the fact that the whole project was based on a non-maintained Gatsby Theme, called **Novela**.  It still exists in the [documentation of Gatsby](https://www.gatsbyjs.com/plugins/@narative/gatsby-theme-novela/), but when trying to access to source code of the project the repository doesn’t exist anymore ...
+The previous version itself was a great website in terms of UI/UX and also performance-wise was quite competent, showing great results in Lighthouse. The main issue was maintaining the project. This was mainly related to the fact that the whole project was based on a non-maintained Gatsby Theme, called **Novela**. It still exists in the [documentation of Gatsby](https://www.gatsbyjs.com/plugins/@narative/gatsby-theme-novela/), but when trying to access to source code of the project the repository doesn’t exist anymore ...
 
 A Gatsby Theme is basically a dependency of your project existing in your `package.json`, that has the power to hook into the Gatsby lifecycle of your project. Thanks to that, it can add new pages to the project, query information for your website or even install more plugins on top. Don’t take me wrong, the idea is great! But the issue comes when the theme itself is not getting up to date with the latest dependency, specially with the version of Gatbsy ...
 
@@ -67,7 +67,7 @@ const result = transform(data)
 
 ## Improvements over the previous version
 
-Let’s talk first about the main reason why I switched: **build time**. The current total time of this website is **6.64s**, counting as well optimization for images and compression for the website. With an incredible size of only **1MB**, thanks mostly to [`astro-compress`](https://github.com/astro-community/astro-compress). I highly recommend this plugin for anyone building websites with Astro! 
+Let’s talk first about the main reason why I switched: **build time**. The current total time of this website is **6.64s**, counting as well optimization for images and compression for the website. With an incredible size of only **1MB**, thanks mostly to [`astro-compress`](https://github.com/astro-community/astro-compress). I highly recommend this plugin for anyone building websites with Astro!
 
 In terms of performance, this website is actually much faster than the previous one, scoring a solid 100 in the Lighthouse report.
 
@@ -79,7 +79,7 @@ I opt-out for the solution of using [Git Large File Storage](https://git-lfs.com
 
 The way it works is you have to specify the patterns for the files that are going to be considered Large Media, after that you can commit and push in the same way you always do it, but at push time the committed files that match those patterns are going to be first uploaded and later only the reference of the file is going to be published to Git.
 
-As an example, the cover of this article in my repository contains the following information: 
+As an example, the cover of this article in my repository contains the following information:
 
 ```plain
 version https://git-lfs.github.com/spec/v1
@@ -91,12 +91,12 @@ size 1012361
 
 To close this post, I would like to recommend a new practice in the day to day of a developer which is asking the following questions:
 
-> - Do I really need this library? 
-> - How does it impact the user experience while using the app? 
-> - Can I accomplish this without using Javascript? 
+> - Do I really need this library?
+> - How does it impact the user experience while using the app?
+> - Can I accomplish this without using Javascript?
 
-Nowadays there is a library for mostly everything, but that doesn’t mean we should use it. The same applies to UI frameworks. There is an overhead of frameworks and just installing one dependency ends up installing many under the hood, filling our project with several packages that might be loaded when the user visits the site. 
+Nowadays there is a library for mostly everything, but that doesn’t mean we should use it. The same applies to UI frameworks. There is an overhead of frameworks and just installing one dependency ends up installing many under the hood, filling our project with several packages that might be loaded when the user visits the site.
 
-Less dependencies ➡️  Less maintainability ➡️ Less problems ➡️ **More time for you!**
+Less dependencies ➡️ Less maintainability ➡️ Less problems ➡️ **More time for you!**
 
 Thanks for reading.
