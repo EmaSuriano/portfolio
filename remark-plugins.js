@@ -1,10 +1,14 @@
+import remarkFigureCaption from '@microflash/remark-figure-caption';
+import remarkSlug from 'remark-slug';
+import remarkAutolinkHeadings from 'remark-autolink-headings';
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 import path from 'path';
 import fs from 'fs';
 
 const PUBLIC_FOLDER = 'public';
 const ASSETS = 'assets';
-
 export function remarkAstroLocalImages() {
   const transformer = async (tree, file) => {
     const reldirMD = path.relative(file.cwd, path.dirname(file.history[0]));
@@ -38,3 +42,19 @@ export function remarkAstroLocalImages() {
     return transformer;
   };
 }
+
+function remarkReadingTime() {
+  return function (tree, { data }) {
+    const textOnPage = toString(tree);
+    const readingTime = getReadingTime(textOnPage);
+    data.astro.frontmatter.minutesRead = readingTime.text;
+  };
+}
+
+export default [
+  remarkFigureCaption,
+  remarkSlug,
+  remarkAutolinkHeadings,
+  remarkReadingTime,
+  remarkAstroLocalImages(),
+];
