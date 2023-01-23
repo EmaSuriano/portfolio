@@ -8,20 +8,24 @@ import path from 'path';
 import fs from 'fs';
 
 const PUBLIC_FOLDER = 'public';
+const SRC_FOLDER = 'src';
 const ASSETS = 'assets';
 
-const ensureDir = (path) => {
-  if (fs.existsSync(path)) {
+const ensureDir = (dir) => {
+  if (fs.existsSync(dir)) {
     return;
   }
-  return fs.mkdirSync(path);
+  return fs.mkdirSync(dir);
 };
 
 export function remarkAstroLocalImages() {
+  ensureDir(path.join(PUBLIC_FOLDER, ASSETS));
+
   const transformer = async (tree, file) => {
     const reldirMD = path.relative(file.cwd, path.dirname(file.history[0]));
 
-    ensureDir(path.join(PUBLIC_FOLDER, ASSETS));
+    const targetFolder = path.join(ASSETS, path.basename(reldirMD));
+    ensureDir(path.join(PUBLIC_FOLDER, targetFolder));
 
     visit(tree, 'image', (img) => {
       const isLocalImg = img.url.startsWith('./');
@@ -32,10 +36,10 @@ export function remarkAstroLocalImages() {
             fs.copyFileSync(
               path.join(reldirMD, img.url).replaceAll('%20', ' '),
               path
-                .join(PUBLIC_FOLDER, ASSETS, path.basename(img.url))
+                .join(PUBLIC_FOLDER, targetFolder, path.basename(img.url))
                 .replaceAll('%20', ' '),
             );
-            img.url = path.join('/', ASSETS, path.basename(img.url));
+            img.url = path.join('/', targetFolder, path.basename(img.url));
             break;
           }
 
