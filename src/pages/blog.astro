@@ -3,9 +3,10 @@ import { Icon } from 'astro-icon';
 import Layout from 'layouts/Layout.astro';
 import { format, parseISO } from 'date-fns';
 import type { Post } from 'types';
-import { sortPostByDate } from 'helpers';
+import { groupPostsByDate } from 'helpers';
 
 const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
+const grouped = groupPostsByDate(posts);
 ---
 
 <Layout
@@ -14,35 +15,40 @@ const posts = await Astro.glob<Post>('./blog/**/*.{md,mdx}');
 >
   <section class="prose max-w-full dark:prose-dark">
     <h1>Blog</h1>
-    <ul class="list-none space-y-8 pl-0">
-      {
-        posts.sort(sortPostByDate).map(({ frontmatter, url }) => (
-          <li>
-            <div class="flex flex-col justify-between space-y-2 sm:flex-row">
-              <a
-                href={'external' in frontmatter ? frontmatter.external : url}
-                class="w-fit"
-              >
-                <h3 class="m-0 flex w-fit items-center">
-                  <span class="text-ellipsis sm:max-w-xl sm:truncate">
-                    {frontmatter.title}
-                  </span>
-                  {'external' in frontmatter && (
-                    <Icon
-                      name="ri:external-link-line"
-                      class="ml-2 inline h-4 w-4 align-baseline"
-                    />
-                  )}
-                </h3>
-              </a>
-              <p class="m-0">
-                {format(parseISO(frontmatter.publishedAt), 'MMM yyyy')}
-              </p>
-            </div>
-            <p class="max-w-2xl">{frontmatter.summary}</p>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      grouped.map((group) => (
+        <>
+          <h2>{group.year}</h2>
+          <ul class="list-none space-y-8 pl-0">
+            {group.posts.map(({ frontmatter, url }) => (
+              <li>
+                <div class="flex flex-col justify-between sm:flex-row">
+                  <a
+                    href={
+                      'external' in frontmatter ? frontmatter.external : url
+                    }
+                    class="w-fit"
+                  >
+                    <span class="text-ellipsis sm:max-w-xl sm:truncate">
+                      {frontmatter.title}
+                    </span>
+                    {'external' in frontmatter && (
+                      <Icon
+                        name="ri:external-link-line"
+                        class="ml-2 inline h-4 w-4 align-baseline"
+                      />
+                    )}
+                  </a>
+                  <p class="m-0">
+                    {format(parseISO(frontmatter.publishedAt), 'dd MMM')}
+                  </p>
+                </div>
+                <p class="max-w-2xl">{frontmatter.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+    }
   </section>
 </Layout>
