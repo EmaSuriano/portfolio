@@ -9,9 +9,19 @@ import fs from 'fs';
 
 const PUBLIC_FOLDER = 'public';
 const ASSETS = 'assets';
+
+const ensureDir = (path) => {
+  if (fs.existsSync(path)) {
+    return;
+  }
+  return fs.mkdirSync(path);
+};
+
 export function remarkAstroLocalImages() {
   const transformer = async (tree, file) => {
     const reldirMD = path.relative(file.cwd, path.dirname(file.history[0]));
+
+    ensureDir(path.join(PUBLIC_FOLDER, ASSETS));
 
     visit(tree, 'image', (img) => {
       const isLocalImg = img.url.startsWith('./');
