@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 const PUBLIC_FOLDER = 'public';
+const ASSETS = 'assets';
 
 export function remarkAstroLocalImages() {
   const transformer = async (tree, file) => {
@@ -15,10 +16,12 @@ export function remarkAstroLocalImages() {
         switch (process.env.NODE_ENV) {
           case 'production': {
             fs.copyFileSync(
-              path.join(reldirMD, img.url),
-              path.join(PUBLIC_FOLDER, path.basename(img.url)),
+              path.join(reldirMD, img.url).replaceAll('%20', ' '),
+              path
+                .join(PUBLIC_FOLDER, ASSETS, path.basename(img.url))
+                .replaceAll('%20', ' '),
             );
-            img.url = path.join('/', path.basename(img.url));
+            img.url = path.join('/', ASSETS, path.basename(img.url));
             break;
           }
 
