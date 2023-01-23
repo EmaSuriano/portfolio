@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  @apply bg-indigo-400 bg-opacity-50 text-white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  @apply h-full;
+}
+
+body {
+  @apply overflow-y-scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-slate-900 dark:text-slate-100;
+}
+
+img {
+  content-visibility: auto;
+}
+
+.track-link:hover > *:first-child {
+  @apply scale-110 transform opacity-100;
+}
+
+.block-link::after {
+  @apply absolute inset-0 block;
+  content: '';
+}
+
+.prose h1 {
+  @apply text-4xl font-bold sm:text-5xl;
+}
+
+.prose h2 {
+  @apply text-2xl sm:text-3xl;
+}
+
+.prose a {
+  @apply border-b border-b-slate-300 text-slate-500 transition-colors duration-200 hover:border-current hover:text-slate-700;
+  @apply dark:border-b-slate-500 dark:text-slate-400 dark:hover:text-slate-300;
+  text-decoration: none;
+}
+
+article .prose a {
+  @apply border-b border-b-indigo-300 text-indigo-500 transition-colors duration-200 hover:border-current hover:text-indigo-700;
+  @apply dark:border-b-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300;
+  text-decoration: none;
+}
+
+.prose img {
+  @apply mx-auto w-fit rounded-xl shadow-lg;
+}
+
+.prose pre,
+lite-youtube {
+  @apply rounded-xl shadow-lg;
+}
+
+.prose figcaption {
+  @apply mx-auto w-fit;
+}
+
+lite-youtube {
+  @apply mt-10 mb-4;
+}
+
+.prose .anchor {
+  @apply invisible ml-1 align-middle no-underline;
+  color: inherit;
+  font-size: 0.8em;
+}
+
+.prose *:hover > a {
+  @apply visible;
+}
+
+.prose :where(strong):not(:where([class~='not-prose'] *)),
+.prose :where(blockquote):not(:where([class~='not-prose'] *)) {
+  @apply text-inherit;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  @apply mr-2;
+}
+
+.icon-link::before {
+  content: '#';
+}

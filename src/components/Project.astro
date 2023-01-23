@@ -1,0 +1,28 @@
+---
+import { Icon } from 'astro-icon';
+import { humanize } from 'helpers';
+import type { Project } from 'types';
+
+type Props = Project;
+
+const { url, description } = Astro.props;
+
+const title = humanize(url.split('/').pop());
+---
+
+<a href={url} class="border-none">
+  <section
+    class="project hover:dark: -mx-3 h-full rounded-lg border-2 border-slate-200 px-4 py-3 transition hover:-translate-y-1 hover:border-indigo-300 hover:shadow-lg dark:border-slate-700 hover:dark:border-indigo-500 sm:mx-0 sm:px-6 sm:py-5"
+  >
+    <h3
+      class="text-l m-0 mb-2 flex items-center justify-between font-bold no-underline sm:text-xl"
+    >
+      {title}
+
+      <span class="ml-2">
+        <Icon name="ri:github-line" class="w-6 h-6 text-current" />
+      </span>
+    </h3>
+    <p>{description}</p>
+  </section>
+</a>

@@ -1,0 +1,101 @@
+---
+import { format, parseISO } from 'date-fns';
+import Layout from 'layouts/Layout.astro';
+// @ts-expect-error ts issue here ...
+import { Img } from 'astro-imagetools/components';
+import author from '../author.json';
+import type { InternalPost } from 'types';
+import CommentBox from 'components/CommentBox.astro';
+
+type Props = InternalPost;
+
+const { title, publishedAt, summary, minutesRead, cover } =
+  Astro.props.frontmatter;
+
+const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
+---
+
+<Layout title={title} description={summary} date={publishedAt}>
+  <div class="overflow-hidden rounded-2xl shadow-lg" data-zoomable>
+    <Img format="webp" src={cover} alt={title} width={1400} height={600} />
+  </div>
+
+  <article
+    class="my-6"
+    item-prop="blogPost"
+    item-scope
+    item-type="https://schema.org/BlogPosting"
+  >
+    <h1
+      class="mb-6 text-3xl font-bold tracking-tight md:text-4xl"
+      item-prop="title"
+    >
+      {title}
+    </h1>
+    <header class="mb-8 flex items-center sm:mb-10">
+      <figure
+        class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full sm:h-6 sm:w-6"
+      >
+        <img src={author.avatar} alt={author.name} />
+      </figure>
+      <div
+        class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"
+      >
+        <p>
+          <span
+            item-prop="author"
+            item-scope
+            item-type="https://schema.org/Person"
+          >
+            <span item-prop="name">{author.name}</span>
+          </span>
+          at
+          <time item-prop="datePublished" date-time={publishedAt}>
+            {publishDate}
+          </time>
+        </p>
+        <p>{minutesRead}</p>
+      </div>
+    </header>
+
+    <section class="prose mx-auto w-full dark:prose-dark">
+      <slot />
+    </section>
+  </article>
+
+  <CommentBox />
+</Layout>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+
+  const target = document.querySelectorAll(
+    '[data-zoomable] > img, article figure > img',
+  );
+
+  mediumZoom(target, {
+    margin: 24,
+  });
+</script>
+
+<script>
+  import '@justinribeiro/lite-youtube';
+
+  const videos = document.querySelectorAll('lite-youtube');
+
+  videos.forEach((node) => {
+    const label = document.createElement('figcaption');
+    label.textContent = node.videoTitle;
+    node.parentNode?.insertBefore(label, node.nextSibling);
+  });
+</script>
+
+<style is:global>
+  .medium-zoom-overlay {
+    @apply bg-white dark:bg-neutral-900 !important;
+  }
+
+  .medium-zoom-image {
+    @apply rounded-md;
+  }
+</style>

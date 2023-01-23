@@ -1,50 +1,33 @@
-type IGatsbyImage = {
-  src: string;
-  base64?: string;
-  srcWebp?: string;
-  srcSet?: string;
-  srcSetWebp?: string;
-  tracedSVG?: string;
-};
+// @ts-expect-error let me be
+import * as config from './author.json';
 
-type IGatsbyImageFluid = IGatsbyImage & {
-  maxHeight: number;
-  maxWidth: number;
-};
-
-export type IAuthor = {
-  authorsPage?: boolean;
-  featured?: boolean;
-  name: string;
-  slug: string;
-  bio: string;
-  avatar: {
-    large: IGatsbyImageFluid;
-    medium: IGatsbyImageFluid;
-    small: IGatsbyImageFluid;
+export type InternalPost = {
+  frontmatter: {
+    title: string;
+    summary: string;
+    publishedAt: string;
+    minutesRead: string;
+    cover: string;
   };
+  url: string;
 };
 
-export type IArticle = {
-  slug: string;
-  authors: IAuthor[];
-  excerpt: string;
-  body: string;
-  id: string;
-  hero: {
-    full: IGatsbyImageFluid;
-    preview: IGatsbyImageFluid;
-    regular: IGatsbyImageFluid;
-    seo: string;
+export type ExternalPost = {
+  frontmatter: {
+    title: string;
+    summary: string;
+    publishedAt: string;
+    external: string;
   };
-  timeToRead: number;
-  date: string;
+  url: string;
 };
 
-export type IProject = {
-  name: string;
-};
+export type Post = InternalPost | ExternalPost;
 
-export type ITalk = {
-  name: string;
-};
+export type Config = typeof config;
+
+export type Project = typeof config.projects[number];
+
+export type Social = typeof config.social[number];
+
+export type Talk = typeof config.talks[number];

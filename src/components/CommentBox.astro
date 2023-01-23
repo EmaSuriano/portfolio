@@ -1,0 +1,28 @@
+---
+---
+
+<section id="comments" class="-ml-6"></section>
+
+<script>
+  import { getTheme, THEME_CHANGED_EVENT } from 'scripts/theme';
+
+  function loadComment() {
+    const theme = `github-${getTheme()}`;
+
+    const s = document.createElement('script');
+    s.src = 'https://utteranc.es/client.js';
+    s.setAttribute('repo', 'EmaSuriano/portfolio');
+    s.setAttribute('issue-term', 'pathname');
+    s.setAttribute('theme', theme);
+    s.setAttribute('crossorigin', 'anonymous');
+    s.setAttribute('async', '');
+
+    const elem = document.getElementById('comments')!;
+    elem.innerHTML = '';
+    elem.appendChild(s);
+  }
+
+  loadComment();
+
+  window.addEventListener(THEME_CHANGED_EVENT, loadComment);
+</script>

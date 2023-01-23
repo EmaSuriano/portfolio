@@ -1,1 +1,0 @@
-exports.createPages = require('./createPages');

@@ -1,0 +1,42 @@
+---
+---
+
+<button
+  aria-label="Toggle theme"
+  id="theme-button"
+  class="absolute top-3 right-4 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
+></button>
+
+<script>
+  import {
+    Theme,
+    getTheme,
+    ICONS_THEME_MAP,
+    THEME_CHANGED_EVENT,
+  } from 'scripts/theme';
+
+  const themeButton = document.getElementById('theme-button')!;
+
+  let currTheme = getTheme();
+
+  const setTheme = (theme: Theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    currTheme = theme;
+    themeButton.innerHTML = ICONS_THEME_MAP[theme];
+  };
+
+  setTheme(currTheme);
+
+  const darkModeHandler = () => {
+    if (currTheme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+
+    window.localStorage.setItem('theme', currTheme);
+    window.dispatchEvent(new Event(THEME_CHANGED_EVENT));
+  };
+
+  themeButton.addEventListener('click', darkModeHandler);
+</script>

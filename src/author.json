@@ -1,0 +1,97 @@
+{
+  "name": "Ema Suriano",
+  "bio": "Passionate Engineer driven by all the Javascript ecosystem. On my spare time I like to write and speak publicly",
+  "website": "https://emasuriano.com/",
+  "role": "Software Engineer",
+  "avatar": "https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d",
+  "company": {
+    "name": "Revolut",
+    "url": "https://revolut.com/"
+  },
+  "social": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/EmaSuriano"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/EmaSuriano"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/c/EmaSuriano"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/emanuel-suriano"
+    }
+  ],
+  "projects": [
+    {
+      "url": "https://github.com/EmaSuriano/gatsby-starter-event-calendar",
+      "description": "A customisable calendar event starter for Gatsby integrated with Google Spreadsheet"
+    },
+    {
+      "url": "https://github.com/EmaSuriano/gatsby-starter-mate",
+      "description": "An accessible and fast portfolio starter for Gatsby integrated with Contentful CMS"
+    },
+    {
+      "url": "https://github.com/EmaSuriano/react-hotkey-tooltip",
+      "description": "A global Hotkey provider with built in tooltip for React"
+    },
+    {
+      "url": "https://github.com/EmaSuriano/react-scroll-section",
+      "description": "React library to provide a declarative scroll to between sections"
+    },
+    {
+      "url": "https://github.com/EmaSuriano/astro-art-portfolio",
+      "description": "Simple art portfolio built with Astro and connected with Notion API"
+    }
+  ],
+  "talks": [
+    {
+      "title": "Is it time for framework-agnostic apps?",
+      "description": "Time to talk about Astro: the new way to build framework agnostic applications. Explaining the concept of island architecture, along with the possibility of using any framework within the same app (react, angular, vue, etc.), or nothing!",
+      "url": "https://time-for-framework-agnostic-projects.netlify.app",
+      "language": "en",
+      "places": [
+        {
+          "name": "Typescript Meetup Berlin",
+          "year": 2022,
+          "recording": "https://www.youtube.com/watch?v=t28NaOgwVDg"
+        }
+      ]
+    },
+    {
+      "title": "From create-react-app to create-any-app",
+      "description": "Same company, lots of teams, different technologies, developers battling outdated dependencies and copying scripts and configuration files all over multiple projects? Does this sound familiar to you?",
+      "url": "https://from-cra-to-caa.netlify.app",
+      "language": "en",
+      "places": [
+        {
+          "name": "Byteconf React",
+          "year": 2020,
+          "recording": "https://www.youtube.com/watch?v=ilgM9RmaUGg"
+        }
+      ]
+    },
+    {
+      "title": "Runtime Types Validation in Typescript",
+      "description": "Sometimes using types inside our application, it's not enough to make sure that it won't break on runtime. Because of that, we see ourselves forced to write validation for our entities manually. In this talk, I want to present a way that you can generate validators for all your types in your application automatically, and how to integrate this into your development workflow.",
+      "url": "https://slides.com/emasuriano/runtime-types-validation-in-typescript",
+      "language": "en",
+      "places": [
+        {
+          "name": "React Global Online Summit",
+          "year": 2020,
+          "recording": "https://www.youtube.com/watch?v=VI-HhBTB7cc"
+        },
+        {
+          "name": "Typescript Meetup Berlin",
+          "year": 2020,
+          "recording": "https://www.youtube.com/watch?v=RxOAkrKglzQ"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+---
+import 'styles.css';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs';
+import about from '../author.json';
+import ThemeSwitch from 'components/ThemeSwitch.astro';
+
+export type Props = {
+  title: string;
+  description?: string;
+  date?: string;
+};
+
+const { pathname } = Astro.url;
+const url = Astro.url.toString();
+const isHome = pathname === '/';
+
+let { title = about.name, description = about.bio, date } = Astro.props;
+
+if (!isHome) {
+  title = `${title} - ${about.name}`;
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script is:inline>
+      import { LOCAL_STORAGE_KEY } from 'scripts/theme';
+
+      const theme = localStorage?.getItem(LOCAL_STORAGE_KEY);
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={about.name} />
+    <meta name="author" content={about.name} />
+    {date && <meta property="article:published_time" content={date} />}
+    <link href="/favicon.ico" rel="icon" />
+    <link href="/favicon.png" rel="icon" type="image/png" />
+    <link href="/touch-180x180.png" rel="apple-touch-icon" />
+    <link href="/manifest.json" rel="manifest" />
+    <meta content="#fff" name="theme-color" />
+  </head>
+
+  <body
+    class={`bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    ${isHome ? ' flex items-center' : ''}`}
+  >
+    <div
+      class={`w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl ${
+        isHome ? 'h-full max-h-[44rem]' : 'min-h-full'
+      }`}
+    >
+      <header class="relative">
+        <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
+        <nav class="prose text-sm dark:prose-dark sm:text-base">
+          <ul class="relative flex w-full list-none space-x-4 pl-0">
+            {
+              !isHome && (
+                <li>
+                  <a href="/">Home</a>
+                </li>
+              )
+            }
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </nav>
+        <ThemeSwitch />
+      </header>
+      <main id="skip" class="flex flex-grow flex-col py-12">
+        <slot />
+      </main>
+      <footer
+        class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"
+      >
+        <ul
+          class="prose flex max-w-full flex-shrink-0 flex-wrap dark:prose-dark"
+        >
+          {
+            about.social.map(({ name, url }) => (
+              <li class="mr-4 mt-2">
+                <a href={url}>{name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </footer>
+    </div>
+
+    <script is:inline>
+      setTimeout(() => {
+        if (window.location.hash) {
+          const article = document.querySelector(
+            `[href='${window.location.hash}']`,
+          );
+          if (article) {
+            article.scrollIntoView();
+          }
+        }
+      }, 0);
+    </script>
+  </body>
+</html>

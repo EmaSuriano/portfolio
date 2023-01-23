@@ -1,9 +1,0 @@
-name: Is it time for framework-agnostic apps?
-description: |
-  Time to talk about Astro: the new way to build framework agnostic applications.
-  Explaining the concept of island architecture, along with the possibility of
-  using any framework within the same app (react, angular, vue, etc.), or nothing!
-hero: ./cover/is-it-time-for-framework-agnostic-apps.jpg
-type: Typescript Berlin Meetup
-date: 2022-10-01
-link: https://www.youtube.com/watch?v=t28NaOgwVDg
