@@ -1,28 +1,41 @@
 ---
+type Props = {
+  repo: string;
+};
+
+const { repo } = Astro.props;
 ---
 
-<section id="comments" class="-ml-6"></section>
+<section id="comments-light" class="-ml-6">
+  <script
+    src="https://utteranc.es/client.js"
+    repo={repo}
+    issue-term="pathname"
+    theme="github-light"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>
 
-<script>
-  import { getTheme, THEME_CHANGED_EVENT } from 'scripts/theme';
+<section id="comments-dark" class="-ml-6">
+  <script
+    src="https://utteranc.es/client.js"
+    repo={repo}
+    issue-term="pathname"
+    theme="github-dark"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>
 
-  function loadComment() {
-    const theme = `github-${getTheme()}`;
-
-    const s = document.createElement('script');
-    s.src = 'https://utteranc.es/client.js';
-    s.setAttribute('repo', 'EmaSuriano/portfolio');
-    s.setAttribute('issue-term', 'pathname');
-    s.setAttribute('theme', theme);
-    s.setAttribute('crossorigin', 'anonymous');
-    s.setAttribute('async', '');
-
-    const elem = document.getElementById('comments')!;
-    elem.innerHTML = '';
-    elem.appendChild(s);
+<style is:global>
+  [data-theme='light'] #comments-dark,
+  [data-theme='dark'] #comments-light {
+    display: none;
   }
 
-  loadComment();
-
-  window.addEventListener(THEME_CHANGED_EVENT, loadComment);
-</script>
+  [data-theme='light'] #comments-light,
+  [data-theme='dark'] #comments-dark {
+    display: block;
+  }
+</style>
