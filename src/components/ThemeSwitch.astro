@@ -1,42 +1,30 @@
 ---
+import Icon from 'astro-icon';
 ---
 
 <button
-  aria-label="Toggle theme"
-  id="theme-button"
+  data-toggle-theme="dark,light"
+  data-act-class="dark"
   class="absolute top-3 right-4 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
-></button>
+>
+  <Icon name="ri:moon-line" class="w-6 h-6 text-current absolute" id="moon" />
+  <Icon name="ri:sun-line" class="w-6 h-6 text-current absolute" id="sun" />
+</button>
+
+<style is:global>
+  [data-theme='light'] #moon,
+  [data-theme='dark'] #sun {
+    @apply visible;
+  }
+
+  [data-theme='light'] #sun,
+  [data-theme='dark'] #moon {
+    @apply invisible;
+  }
+</style>
 
 <script>
-  import {
-    Theme,
-    getTheme,
-    ICONS_THEME_MAP,
-    THEME_CHANGED_EVENT,
-  } from 'scripts/theme';
+  import { themeChange } from 'theme-change';
 
-  const themeButton = document.getElementById('theme-button')!;
-
-  let currTheme = getTheme();
-
-  const setTheme = (theme: Theme) => {
-    document.documentElement.setAttribute('data-theme', theme);
-    currTheme = theme;
-    themeButton.innerHTML = ICONS_THEME_MAP[theme];
-  };
-
-  setTheme(currTheme);
-
-  const darkModeHandler = () => {
-    if (currTheme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-
-    window.localStorage.setItem('theme', currTheme);
-    window.dispatchEvent(new Event(THEME_CHANGED_EVENT));
-  };
-
-  themeButton.addEventListener('click', darkModeHandler);
+  themeChange();
 </script>
