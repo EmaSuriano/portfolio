@@ -26,10 +26,14 @@ if (!isHome) {
 <html lang="en">
   <head>
     <script is:inline>
-      document.documentElement.setAttribute(
-        'data-theme',
-        localStorage?.getItem('theme'),
-      );
+      const lsTheme = localStorage.getItem('theme');
+      const theme =
+        lsTheme ||
+        (!lsTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ? 'dark'
+          : 'light';
+
+      document.documentElement.setAttribute('data-theme', theme);
     </script>
 
     <meta name="viewport" content="width=device-width" />
