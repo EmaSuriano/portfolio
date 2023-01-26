@@ -3,7 +3,7 @@ import 'styles.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs';
 import about from '../author.json';
-// import ThemeSwitch from '../components/ThemeSwitch.astro';
+import ThemeSwitch from 'components/ThemeSwitch.astro';
 
 export type Props = {
   title: string;
@@ -77,7 +77,7 @@ if (!isHome) {
             <li><a href="/blog">Blog</a></li>
           </ul>
         </nav>
-        <!-- <ThemeSwitch /> -->
+        <ThemeSwitch />
       </header>
       <main id="skip" class="flex flex-grow flex-col py-12">
         <slot />
