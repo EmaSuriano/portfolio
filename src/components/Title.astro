@@ -9,7 +9,7 @@ const { name } = Astro.props;
 <h1
   class="relative inline-block text-5xl font-bold tracking-tight text-slate-800 dark:text-slate-200 sm:text-7xl md:text-8xl lg:text-9xl"
 >
-  <span class="gradient">{name}</span>
+  <span class="gradient text-transparent">{name}</span>
   <span
     class="absolute inset-0 cursor-default transition-opacity duration-500 hover:opacity-0"
     aria-hidden="true"
@@ -27,10 +27,7 @@ const { name } = Astro.props;
       #6366f1 66%,
       #fb7185 100%
     );
-    background-size: 400% 0;
     background-clip: text;
-    text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
     background-size: 200% auto;
     animation: slide 10s linear infinite;
   }
