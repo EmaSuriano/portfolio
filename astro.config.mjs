@@ -7,7 +7,7 @@ import mdx from '@astrojs/mdx';
 import remarkPlugins from './remark-plugins';
 
 export default defineConfig({
-  site: 'https://emasuriano.com',
+  site: 'https://emasuriano.com/',
   integrations: [
     tailwind(),
     sitemap(),

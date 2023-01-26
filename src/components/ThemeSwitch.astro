@@ -12,6 +12,11 @@ import { Icon } from 'astro-icon';
   <Icon name="ri:sun-line" class="w-6 h-6 text-current absolute" id="sun" />
 </button>
 
+<script>
+  import { themeChange } from 'theme-change';
+  themeChange();
+</script>
+
 <style is:global>
   [data-theme='light'] #moon,
   [data-theme='dark'] #sun {
@@ -23,9 +28,3 @@ import { Icon } from 'astro-icon';
     @apply invisible;
   }
 </style>
-
-<script>
-  import { themeChange } from 'theme-change';
-
-  themeChange();
-</script>

@@ -20,6 +20,7 @@
     "@microflash/remark-figure-caption": "^1.0.0",
     "@tailwindcss/typography": "^0.5.8",
     "@types/glob": "^8.0.0",
+    "@types/prismjs": "^1.26.0",
     "astro": "1.9.2",
     "astro-compress": "^1.1.24",
     "astro-icon": "^0.8.0",
@@ -31,9 +32,9 @@
     "reading-time": "^1.5.0",
     "remark-autolink-headings": "^7.0.1",
     "remark-slug": "^7.0.1",
+    "svgo": "2.8.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
-    "svgo": "2.8.0",
     "unist-util-visit": "^4.1.1"
   },
   "dependencies": {
