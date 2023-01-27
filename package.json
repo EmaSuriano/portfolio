@@ -41,7 +41,6 @@
   },
   "dependencies": {
     "@justinribeiro/lite-youtube": "^1.4.0",
-    "medium-zoom": "^1.0.8",
-    "theme-change": "^2.3.0"
+    "medium-zoom": "^1.0.8"
   }
 }

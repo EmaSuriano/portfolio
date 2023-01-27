@@ -3,19 +3,12 @@ import { Icon } from 'astro-icon';
 ---
 
 <button
-  id="toggle-theme"
-  data-toggle-theme="dark,light"
-  data-act-class="dark"
+  id="theme-btn"
   class="absolute top-3 right-4 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
 >
   <Icon name="ri:moon-line" class="w-6 h-6 text-current absolute" id="moon" />
   <Icon name="ri:sun-line" class="w-6 h-6 text-current absolute" id="sun" />
 </button>
-
-<script>
-  import { themeChange } from 'theme-change';
-  themeChange();
-</script>
 
 <style is:global>
   [data-theme='light'] #moon,
