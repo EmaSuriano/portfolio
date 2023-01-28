@@ -5,21 +5,3 @@
 [[redirects]]
   from="/avatar"
   to="https://emasuriano.com/avatar.jpg"
-
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-
-  [plugins.inputs.thresholds]
-    performance = 0.9
-
-  [[plugins.inputs.audits]]
-    path = "about"
-
-  [[plugins.inputs.audits]]
-    path = "blog"
-
-  [[plugins.inputs.audits]]
-    path = "404"
-
-  [[plugins.inputs.audits]]
-    path = ""
