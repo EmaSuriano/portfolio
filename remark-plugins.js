@@ -59,9 +59,11 @@ export function remarkAstroLocalImages() {
 
 function remarkReadingTime() {
   return function (tree, { data }) {
-    const textOnPage = toString(tree);
-    const readingTime = getReadingTime(textOnPage);
-    data.astro.frontmatter.minutesRead = readingTime.text;
+    if (!data.astro.frontmatter.minutesRead) {
+      const textOnPage = toString(tree);
+      const readingTime = getReadingTime(textOnPage);
+      data.astro.frontmatter.minutesRead = readingTime.text;
+    }
   };
 }
 

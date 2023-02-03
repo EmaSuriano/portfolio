@@ -22,28 +22,25 @@ const grouped = groupPostsByDate(posts);
           <ul class="list-none space-y-8 pl-0">
             {group.posts.map(({ frontmatter, url }) => (
               <li>
-                <div class="flex flex-col justify-between sm:flex-row">
-                  <a
-                    href={
-                      'external' in frontmatter ? frontmatter.external : url
-                    }
-                    class="w-fit"
-                  >
-                    <span class="text-ellipsis sm:max-w-xl sm:truncate">
-                      {frontmatter.title}
-                    </span>
-                    {'external' in frontmatter && (
-                      <Icon
-                        name="ri:external-link-line"
-                        class="ml-2 inline h-4 w-4 align-baseline"
-                      />
-                    )}
-                  </a>
-                  <p class="m-0">
-                    {format(parseISO(frontmatter.publishedAt), 'dd MMM')}
-                  </p>
-                </div>
-                <p class="my-1 max-w-2xl">{frontmatter.summary}</p>
+                <a
+                  href={'external' in frontmatter ? frontmatter.external : url}
+                  class="w-fit"
+                >
+                  <span class="text-ellipsis sm:max-w-xl sm:truncate">
+                    {frontmatter.title}
+                  </span>
+                  {'external' in frontmatter && (
+                    <Icon
+                      name="ri:external-link-line"
+                      class="ml-1 inline h-4 w-4 align-baseline"
+                    />
+                  )}
+                </a>
+                <small class="block">
+                  {format(parseISO(frontmatter.publishedAt), 'MMMM d')} -
+                  {frontmatter.minutesRead}
+                </small>
+                <p class="my-1">{frontmatter.summary}</p>
               </li>
             ))}
           </ul>

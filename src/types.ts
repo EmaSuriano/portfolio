@@ -1,24 +1,20 @@
 // @ts-expect-error let me be
 import * as config from './author.json';
 
+type SharedFrontmatter = {
+  title: string;
+  summary: string;
+  publishedAt: string;
+  minutesRead: string;
+};
+
 export type InternalPost = {
-  frontmatter: {
-    title: string;
-    summary: string;
-    publishedAt: string;
-    minutesRead: string;
-    cover: string;
-  };
+  frontmatter: SharedFrontmatter & { cover: string };
   url: string;
 };
 
 export type ExternalPost = {
-  frontmatter: {
-    title: string;
-    summary: string;
-    publishedAt: string;
-    external: string;
-  };
+  frontmatter: SharedFrontmatter & { external: string };
   url: string;
 };
 
@@ -26,8 +22,8 @@ export type Post = InternalPost | ExternalPost;
 
 export type Config = typeof config;
 
-export type Project = typeof config.projects[number];
+export type Project = (typeof config.projects)[number];
 
-export type Social = typeof config.social[number];
+export type Social = (typeof config.social)[number];
 
-export type Talk = typeof config.talks[number];
+export type Talk = (typeof config.talks)[number];
