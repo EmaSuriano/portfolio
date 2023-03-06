@@ -31,19 +31,19 @@ const grouped = groupPostsByDate([...allBlogPosts, ...allExternalPosts]);
                         ? post.data.external
                         : formatUrl('blog', post.slug)
                     }
-                    class="w-fit"
+                    class="truncate"
                   >
-                    <span class="text-ellipsis sm:max-w-xl sm:truncate">
-                      {post.data.title}
-                    </span>
                     {post.collection === 'external' && (
                       <Icon
                         name="ri:external-link-line"
                         class="ml-1 inline h-4 w-4 align-baseline"
                       />
                     )}
+                    {post.data.title}
                   </a>
-                  <span>{format(post.data.publishedAt, 'd MMM')}</span>
+                  <span class="w-20 text-right">
+                    {format(post.data.publishedAt, 'd MMM')}
+                  </span>
                 </div>
                 <p class="my-1">{post.data.summary}</p>
               </li>

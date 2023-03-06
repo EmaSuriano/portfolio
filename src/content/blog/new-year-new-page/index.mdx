@@ -37,15 +37,15 @@ A great example of this is all the visual responses that the user does with the 
 
 Following the Astro philosophy, I decided not to adopt any framework. The entire website is built upon [Astro components](https://docs.astro.build/en/core-concepts/astro-components/), which can be seen as stateless components in React. With the main difference that there is no hooks, and in case you want to perform some kind of fetching for data or operation before the rendering, it has be done before the HTML comes. This creates a great separation between the logic of the component and the render. Inside the component you can declare the styles for it, using `<style>` tag, and the client-side code, using `<script>` tag (here you can even use Typescript by specifying the language `ts`).
 
-```jsx
+```astro
 ---
-import { transform } from ‘dependency’
+import { transform } from 'dependency';
 
 // fetching logic
-const data = await fetch(URL)
+const data = await fetch(URL);
 
 // manipulating the data
-const result = transform(data)
+const result = transform(data);
 ---
 
 <h1>{result}</h1>
@@ -58,7 +58,7 @@ const result = transform(data)
 </style>
 
 <script>
-  import clientModule from ‘another-dep’;
+  import clientModule from 'another-dep';
 
   clientModule.start();
 </script>
@@ -66,11 +66,15 @@ const result = transform(data)
 
 ## Improvements over the previous version
 
-1. **Build time**: The current total time of this website is **6.64s**, counting as well optimization for images and compression for the website. With an incredible size of only **1MB**, thanks mostly to [`astro-compress`](https://github.com/astro-community/astro-compress). I highly recommend this plugin for anyone building websites with Astro!
+### Build time
+
+The current total time of this website is **6.64s**, counting as well optimization for images and compression for the website. With an incredible size of only **1MB**, thanks mostly to [`astro-compress`](https://github.com/astro-community/astro-compress). I highly recommend this plugin for anyone building websites with Astro!
 
 In terms of performance, this website is actually much faster than the previous one, scoring a solid 100 in the Lighthouse report.
 
 ![Lighthouse score](./_images/Lighthouse_score.png)
+
+### Managing Assets properly
 
 Finally, when building a blog or a rich-media website you have to decide where to store your images. For convenience and also fast iteration I was storing them inside the same repository, which was destroying the performance of my git repository and making it super slow when pulling and pushing changes containing images. Along the way I stumbled across [this great article](https://www.seancdavis.com/posts/should-i-add-images-to-my-git-repository/) from Sean. Where he explains different strategies on how to deal with these files. Short story: you should never store them inside the repo!
 
@@ -85,6 +89,29 @@ version https://git-lfs.github.com/spec/v1
 oid sha256:d53944f17b0e4082ba5da5396a849f6bb1eaae2942560446cf9dfe7eb35a0302
 size 1012361
 ```
+
+### Article comments are now available!
+
+In most of the places I published articles before, there was always a way of communicating with the writer. Before I used to engage into conversation inside Twitter of LinkedIn, but clearly not everybody has the time or wants to do that. Therefore I decided to finally add a comment box to the blog entries!
+
+Following the idea of Astro, I wanted to ship as less JavaScript as possible, and that's when I found out about [`utterances`](https://utteranc.es/)! In order to enable is as easy as adding the following script into your website, and the comment box will be immediately created:
+
+```html
+<script
+  src="https://utteranc.es/client.js"
+  repo="[ENTER REPO HERE]"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async
+></script>
+```
+
+One of the great things about Utterances is that it integrates seamlessly with your existing Github repository. All comments are stored as issues, making it easy to manage and organize conversations. Plus, since Github Issues can be edited and updated, it's possible to make changes and additions to comments even after they've been posted.
+
+You can check how they work by leaving a comment at the bottom of this article!
+
+In case you want to know more about the stack, features and developer tools that I'm using, you can checkout the [README.md](https://github.com/EmaSuriano/portfolio#readme) of this repository, where I specified everything that the project is using.
 
 ## Wrapping up
 

@@ -15,8 +15,13 @@ export const humanize = (text = '') => {
 export const sortPostByDate = (a: Post, b: Post) =>
   differenceInDays(b.data.publishedAt, a.data.publishedAt);
 
+export const getBaseUrl = () => {
+  return import.meta.env.DEV ? 'http://localhost:3000' : import.meta.env.SITE;
+};
+
 export const formatUrl = (...parts: string[]) => {
-  return new URL(parts.join('/'), import.meta.env.SITE).href;
+  const base = getBaseUrl();
+  return new URL(parts.join('/'), base).href;
 };
 
 export const groupPostsByDate = (posts: Post[]): Group[] => {
