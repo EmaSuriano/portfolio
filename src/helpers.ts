@@ -15,6 +15,10 @@ export const humanize = (text = '') => {
 export const sortPostByDate = (a: Post, b: Post) =>
   differenceInDays(b.data.publishedAt, a.data.publishedAt);
 
+export const formatUrl = (...parts: string[]) => {
+  return new URL(parts.join('/'), import.meta.env.SITE).href;
+};
+
 export const groupPostsByDate = (posts: Post[]): Group[] => {
   const grouped = posts.reduce((acc, curr) => {
     const year = curr.data.publishedAt.getFullYear();
