@@ -1,13 +1,18 @@
 ---
 import { Icon } from 'astro-icon';
 import { humanize } from 'helpers';
-import type { Project } from 'types';
+import { Octokit } from '@octokit/core';
 
-type Props = Project;
+const { url } = Astro.props;
 
-const { url, description } = Astro.props;
+const octokit = new Octokit({ auth: import.meta.env.GH_TOKEN });
 
-const title = humanize(url.split('/').pop());
+const [owner, repo] = url.split('/').slice(-2);
+
+const response = await octokit.request('GET /repos/{owner}/{repo}', {
+  owner,
+  repo,
+});
 ---
 
 <a href={url} class="border-none">
@@ -17,12 +22,12 @@ const title = humanize(url.split('/').pop());
     <h3
       class="text-l m-0 mb-2 flex items-center justify-between font-bold no-underline sm:text-xl"
     >
-      {title}
+      {humanize(repo)}
 
       <span class="ml-2">
         <Icon name="ri:github-line" class="w-6 h-6 text-current" />
       </span>
     </h3>
-    <p>{description}</p>
+    <p class="mb-0">{response.data.description}</p>
   </section>
 </a>

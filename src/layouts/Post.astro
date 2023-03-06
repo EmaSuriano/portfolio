@@ -1,21 +1,22 @@
 ---
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
 // @ts-expect-error ts issue here ...
 import { Img } from 'astro-imagetools/components';
 import author from '../author.json';
-import type { InternalPost } from 'types';
 import CommentBox from 'components/CommentBox.astro';
+import type { CollectionEntry } from 'astro:content';
+import getReadingTime from 'reading-time';
 
-type Props = InternalPost;
+type Props = { entry: CollectionEntry<'blog'> };
 
-const { title, publishedAt, summary, minutesRead, cover } =
-  Astro.props.frontmatter;
+const { title, publishedAt, summary, cover } = Astro.props.entry.data;
 
-const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
+const publishDate = format(publishedAt, 'MMMM d, yyyy');
+const minutesRead = getReadingTime(Astro.props.entry.body);
 ---
 
-<Layout title={title} description={summary} date={publishedAt}>
+<Layout title={title} description={summary} date={publishDate}>
   <div class="overflow-hidden rounded-2xl shadow-lg" data-zoomable>
     <Img format="webp" src={cover} alt={title} width={1400} height={600} />
   </div>
@@ -54,7 +55,7 @@ const publishDate = format(parseISO(publishedAt), 'MMMM d, yyyy');
             {publishDate}
           </time>
         </p>
-        <p>{minutesRead}</p>
+        <p>{minutesRead.text}</p>
       </div>
     </header>
 

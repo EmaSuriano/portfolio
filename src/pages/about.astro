@@ -1,0 +1,25 @@
+---
+import Project from 'components/Project.astro';
+import Talk from 'components/Talk.astro';
+import Layout from 'layouts/Layout.astro';
+import { projects, talks } from '../author.json';
+import { Content } from '../about.md';
+---
+
+<Layout title="About me">
+  <section class="prose max-w-full dark:prose-dark">
+    <h1>About me</h1>
+
+    <Content />
+
+    <h2>Projects</h2>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {projects.map((url) => <Project url={url} />)}
+    </div>
+
+    <h2>Talks</h2>
+
+    {talks.map((talk) => <Talk {...talk} />)}
+  </section>
+</Layout>

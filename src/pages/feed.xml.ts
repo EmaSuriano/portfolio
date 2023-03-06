@@ -1,22 +1,29 @@
 import rss from '@astrojs/rss';
-import { parseISO } from 'date-fns';
-import { sortPostByDate } from 'helpers';
-import type { Post } from 'types';
+import { getCollection } from 'astro:content';
+import about from '../author.json';
 
-const postImportResult = import.meta.globEager<Post>('./blog/**/*.{md,mdx}');
-const posts = Object.values(postImportResult);
+import { sortPostByDate } from 'helpers';
+
+const allBlogPosts = await getCollection('blog');
+const allExternalPosts = await getCollection('external');
+
+const posts = [...allBlogPosts, ...allExternalPosts];
 
 export function get() {
+  const site = import.meta.env.SITE;
+
   return rss({
-    title: `Ema Suriano's Blog`,
-    description:
-      'Passionate Engineer driven by all the Javascript ecosystem. On my spare time I like to write and speak publicly',
-    site: import.meta.env.SITE,
+    title: `${about.name}'s Blog`,
+    description: about.bio,
+    site,
     items: posts.sort(sortPostByDate).map((post) => ({
-      link: post.url,
-      title: post.frontmatter.title,
-      pubDate: parseISO(post.frontmatter.publishedAt),
-      description: post.frontmatter.summary,
+      link:
+        post.collection === 'blog'
+          ? `${site}/blog/${post.slug}`
+          : post.data.external,
+      title: post.data.title,
+      pubDate: post.data.publishedAt,
+      description: post.data.summary,
     })),
   });
 }

@@ -68,3 +68,4 @@ yarn-error.log
 .cache/
 dist/
 public/assets
+.astro/
