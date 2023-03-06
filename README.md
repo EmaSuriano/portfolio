@@ -28,7 +28,7 @@
 
 ## Dev Tools 👷
 
-- Prettier + Tailwind plugin
+- [Prettier](https://prettier.io/) + [Tailwind plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 - Integration of Lighthouse plugin in [Netlify](https://docs.netlify.com/monitor-sites/lighthouse/)
 - Weekly [Dependabot alerts](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/)
 - Auto merge Dependabot on CI pass using [Github Actions](https://github.com/marketplace/actions/dependabot-auto-merge)
