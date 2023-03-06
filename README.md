@@ -7,10 +7,11 @@
 
 ## Stack 🚀
 
-- [Astro](https://astro.build/)
-- Typescript
-- MDX
-- Tailwind
+- SSG with [Astro](https://astro.build/)
+- Support for [Typescript](https://www.typescriptlang.org/)
+- Powered by [MDX](https://mdxjs.com/)
+- Design system with [Tailwind](https://tailwindcss.com/)
+- CI/CD with [Netlify](https://netlify.com/)
 
 ## Features 🎁
 
@@ -20,6 +21,7 @@
 - CSS optimizations with [autoprefixer](https://github.com/postcss/autoprefixer) and [cssnano](https://github.com/cssnano/cssnano)
 - Blog comments integration with [utterances](https://github.com/utterance/utterances)
 - RSS generation using [@astro/rss](https://github.com/withastro/astro/tree/main/packages/astro-rss)
+- Automatic sitemap creation using [@astro/sitemap](https://github.com/withastro/astro/tree/main/packages/integrations/sitemap)
 - Improvements over MDX:
   - Reading time with [reading-time](https://github.com/ngryman/reading-time)
   - Automatic image caption using [remark-figure-caption](https://github.com/Microflash/remark-figure-caption)
@@ -27,7 +29,6 @@
 ## Dev Tools 👷
 
 - Prettier + Tailwind plugin
-- Netlify for deployment
-- Lighthouse plugin in CI
-- Weekly Dependabot alerts + Auto merge on CI pass
--
+- Integration of Lighthouse plugin in [Netlify](https://docs.netlify.com/monitor-sites/lighthouse/)
+- Weekly [Dependabot alerts](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/)
+- Auto merge Dependabot on CI pass using [Github Actions](https://github.com/marketplace/actions/dependabot-auto-merge)

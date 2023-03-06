@@ -11,7 +11,7 @@ My old website was powered by [Gatsby](https://www.gatsbyjs.com/), a very popula
 
 I kept in a separate branch the previous website, to have it as a memento and also to come back at any point if there was something that I didn’t migrate yet. You can access the older version by clicking the image below.
 
-[![Previous website](./images/Previous%20website.png)](https://63b5a8db12a7da186b68d5d9--emasuriano.netlify.app/)
+[![Previous website](./_images/Previous_website.png)](https://63b5a8db12a7da186b68d5d9--emasuriano.netlify.app/)
 
 ## What was the problem before?
 
@@ -70,7 +70,7 @@ const result = transform(data)
 
 In terms of performance, this website is actually much faster than the previous one, scoring a solid 100 in the Lighthouse report.
 
-![Lighthouse score](./images/Lighthouse%20score.png)
+![Lighthouse score](./_images/Lighthouse_score.png)
 
 Finally, when building a blog or a rich-media website you have to decide where to store your images. For convenience and also fast iteration I was storing them inside the same repository, which was destroying the performance of my git repository and making it super slow when pulling and pushing changes containing images. Along the way I stumbled across [this great article](https://www.seancdavis.com/posts/should-i-add-images-to-my-git-repository/) from Sean. Where he explains different strategies on how to deal with these files. Short story: you should never store them inside the repo!
 
