@@ -1,25 +1,25 @@
-import type { Post } from 'types';
-import { differenceInDays, parseISO } from 'date-fns';
+import { differenceInDays } from 'date-fns';
+import type { CollectionEntry } from 'astro:content';
+
+type Post = CollectionEntry<'blog'> | CollectionEntry<'external'>;
+
+type Group = { year: number; posts: Post[] };
 
 export const humanize = (text = '') => {
   return text
     .split('-')
-    .map((word) => word[0].toUpperCase() + word.slice(1 - word.length))
+    .map((word) => word[0]!.toUpperCase() + word.slice(1 - word.length))
     .join(' ');
 };
 
 export const sortPostByDate = (a: Post, b: Post) =>
-  differenceInDays(
-    parseISO(b.frontmatter.publishedAt),
-    parseISO(a.frontmatter.publishedAt),
-  );
-
-type Group = { year: number; posts: Post[] };
+  differenceInDays(b.data.publishedAt, a.data.publishedAt);
 
 export const groupPostsByDate = (posts: Post[]): Group[] => {
   const grouped = posts.reduce((acc, curr) => {
-    const year = parseISO(curr.frontmatter.publishedAt).getFullYear();
-    return { ...acc, [year]: acc[year] ? acc[year].concat(curr) : [curr] };
+    const year = curr.data.publishedAt.getFullYear();
+
+    return { ...acc, [year]: acc[year] ? acc[year]!.concat(curr) : [curr] };
   }, {} as Record<string, Post[]>);
 
   return Object.entries(grouped)

@@ -1,12 +1,13 @@
 ---
-import type { Talk } from 'types';
+// @ts-expect-error let me be
+import * as config from '../author.json';
 
-type Props = Talk;
+type Props = (typeof config.talks)[number];
 
 const { title, description, places, url, language } = Astro.props;
 ---
 
-<section class="prose mb-8 dark:prose-dark">
+<section class="prose mb-8 max-w-fit dark:prose-dark">
   <h3 class="flex items-center gap-2 text-lg">
     <span
       class="inline-flex select-none items-center rounded bg-slate-200 p-1 text-xs uppercase text-slate-600 dark:bg-slate-400 dark:text-slate-900"
