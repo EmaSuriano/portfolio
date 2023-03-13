@@ -6,7 +6,10 @@ import { getPostLink, sortPostByDate } from 'helpers';
 
 const BLOG_PATH = '/blog';
 const LOCAL_DEV = 'http://localhost:3000';
-const BASE_URL = import.meta.env.DEV ? LOCAL_DEV : import.meta.env.SITE;
+const BASE_URL = new URL(
+  BLOG_PATH,
+  import.meta.env.DEV ? LOCAL_DEV : import.meta.env.SITE,
+);
 
 const allBlogPosts = await getCollection('blog');
 const allExternalPosts = await getCollection('external');
@@ -22,7 +25,7 @@ export function get() {
     site,
     items: posts.sort(sortPostByDate).map((post) => {
       return {
-        link: getPostLink(post, BASE_URL.concat(BLOG_PATH)),
+        link: getPostLink(post, BASE_URL),
         title: post.data.title,
         pubDate: post.data.publishedAt,
         description: post.data.summary,

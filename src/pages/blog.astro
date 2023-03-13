@@ -25,10 +25,7 @@ const grouped = groupPostsByDate([...allBlogPosts, ...allExternalPosts]);
             {group.posts.map((post) => (
               <li>
                 <div class="flex justify-between">
-                  <a
-                    href={getPostLink(post, Astro.url.toString())}
-                    class="truncate"
-                  >
+                  <a href={getPostLink(post, Astro.url)} class="truncate">
                     {post.collection === 'external' && (
                       <Icon
                         name="ri:external-link-line"
