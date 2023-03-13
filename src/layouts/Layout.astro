@@ -15,7 +15,7 @@ export type Props = {
   image?: string;
 };
 
-const { pathname } = Astro.url;
+const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
 const isHome = pathname === '/';
 
@@ -23,7 +23,7 @@ const {
   title,
   article,
   description = about.bio,
-  image = url.concat('preview.png'),
+  image = origin.concat('/preview.png'),
 } = Astro.props;
 ---
 
