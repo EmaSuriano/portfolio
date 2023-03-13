@@ -29,3 +29,17 @@ export const groupPostsByDate = (posts: Post[]): Group[] => {
     }))
     .sort((a, b) => b.year - a.year);
 };
+
+export const getPostLink = (post: Post, baseUrl: string) => {
+  switch (post.collection) {
+    case 'blog':
+      return [baseUrl, post.slug].join('/');
+
+    case 'external':
+      return post.data.external;
+
+    /* istanbul ignore next */
+    default:
+      throw new Error('Collection not find');
+  }
+};

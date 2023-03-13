@@ -2,14 +2,13 @@
 import { Icon } from 'astro-icon';
 import Layout from 'layouts/Layout.astro';
 import { format } from 'date-fns';
-import { groupPostsByDate } from 'helpers';
+import { getPostLink, groupPostsByDate } from 'helpers';
 import { getCollection } from 'astro:content';
 
 const allBlogPosts = await getCollection('blog');
 const allExternalPosts = await getCollection('external');
 
 const grouped = groupPostsByDate([...allBlogPosts, ...allExternalPosts]);
-const url = Astro.url.toString();
 ---
 
 <Layout
@@ -27,11 +26,7 @@ const url = Astro.url.toString();
               <li>
                 <div class="flex justify-between">
                   <a
-                    href={
-                      post.collection === 'external'
-                        ? post.data.external
-                        : url.concat(post.slug)
-                    }
+                    href={getPostLink(post, Astro.url.toString())}
                     class="truncate"
                   >
                     {post.collection === 'external' && (
