@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon';
 import Layout from 'layouts/Layout.astro';
 import { format } from 'date-fns';
-import { formatUrl, groupPostsByDate } from 'helpers';
+import { getPostLink, groupPostsByDate } from 'helpers';
 import { getCollection } from 'astro:content';
 
 const allBlogPosts = await getCollection('blog');
@@ -25,14 +25,7 @@ const grouped = groupPostsByDate([...allBlogPosts, ...allExternalPosts]);
             {group.posts.map((post) => (
               <li>
                 <div class="flex justify-between">
-                  <a
-                    href={
-                      post.collection === 'external'
-                        ? post.data.external
-                        : formatUrl('blog', post.slug)
-                    }
-                    class="truncate"
-                  >
+                  <a href={getPostLink(post, Astro.url)} class="truncate">
                     {post.collection === 'external' && (
                       <Icon
                         name="ri:external-link-line"
