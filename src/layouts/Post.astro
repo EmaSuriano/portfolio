@@ -16,7 +16,12 @@ const publishDate = format(publishedAt, 'MMMM d, yyyy');
 const minutesRead = getReadingTime(Astro.props.entry.body);
 ---
 
-<Layout title={title} description={summary} date={publishDate}>
+<Layout
+  title={title}
+  description={summary}
+  article={{ date: publishDate }}
+  image={cover}
+>
   <div class="overflow-hidden rounded-2xl shadow-lg" data-zoomable>
     <Img format="webp" src={cover} alt={title} width={1400} height={600} />
   </div>
