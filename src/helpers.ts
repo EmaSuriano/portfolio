@@ -33,7 +33,10 @@ export const groupPostsByDate = (posts: Post[]): Group[] => {
 export const getPostLink = (post: Post, baseUrl: URL) => {
   switch (post.collection) {
     case 'blog':
-      return new URL(`/${post.slug}`, baseUrl).toString();
+      return new URL(
+        post.slug,
+        baseUrl.href.endsWith('/') ? baseUrl.href : baseUrl.href.concat('/'),
+      ).toString();
 
     case 'external':
       return post.data.external;
