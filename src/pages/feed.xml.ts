@@ -2,19 +2,12 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import about from '../author.json';
 
-import { getPostLink, sortPostByDate } from 'helpers';
-
-const BLOG_PATH = '/blog';
-const LOCAL_DEV = 'http://localhost:3000';
-const BASE_URL = new URL(
-  BLOG_PATH,
-  import.meta.env.DEV ? LOCAL_DEV : import.meta.env.SITE,
-);
+import { BLOG_PATH, getPostLink, sortPostByDate } from 'helpers';
 
 const allBlogPosts = await getCollection('blog');
 const allExternalPosts = await getCollection('external');
 
-const posts = [...allBlogPosts, ...allExternalPosts];
+const posts = [...allBlogPosts, ...allExternalPosts].sort(sortPostByDate);
 
 export function get() {
   const site = import.meta.env.SITE;
@@ -23,9 +16,9 @@ export function get() {
     title: `${about.name}'s Blog`,
     description: about.bio,
     site,
-    items: posts.sort(sortPostByDate).map((post) => {
+    items: posts.map((post) => {
       return {
-        link: getPostLink(post, BASE_URL),
+        link: getPostLink(post, BLOG_PATH),
         title: post.data.title,
         pubDate: post.data.publishedAt,
         description: post.data.summary,
