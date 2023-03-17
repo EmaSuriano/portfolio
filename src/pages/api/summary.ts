@@ -1,4 +1,4 @@
-import about from '../author.json';
+import about from 'author.json';
 import { BLOG_PATH, getPostLink, humanize, sortPostByDate } from 'helpers';
 import { getCollection } from 'astro:content';
 

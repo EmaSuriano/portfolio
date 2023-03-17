@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import about from '../author.json';
+import about from 'author.json';
 
 import { BLOG_PATH, getPostLink, sortPostByDate } from 'helpers';
 
