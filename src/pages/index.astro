@@ -35,11 +35,11 @@ const title = `${about.name} - ${about.role}`;
     <div>
       <!-- Do not use Img here because Gravatar already does this convertion  -->
       <div class="image-container">
-        <img
-          src={`${about.avatar}?s=512`}
-          alt={about.name}
-          class="h-fit w-fit rounded transition-all sm:rounded-3xl sm:hover:-translate-y-5 sm:hover:-translate-x-5 sm:hover:shadow-lg"
-        />
+        <div
+          class="h-full w-full overflow-hidden rounded-lg bg-white transition-all dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-y-5 sm:hover:-translate-x-5 sm:hover:shadow-lg"
+        >
+          <img src={`${about.avatar}?s=320`} alt={about.name} />
+        </div>
       </div>
     </div>
   </section>
@@ -47,7 +47,7 @@ const title = `${about.name} - ${about.role}`;
 
 <style>
   .image-container {
-    @apply relative h-20 w-20 rounded transition-all sm:h-60 sm:w-60 sm:rounded-3xl lg:h-80 lg:w-80;
+    @apply relative h-20 w-20 rounded-lg transition-all sm:h-60 sm:w-60 sm:rounded-3xl lg:h-80 lg:w-80;
 
     --r: 40px; /* control the size */
     --c1: #6366f1 /*color 1*/ 99%, #0000 101%;
