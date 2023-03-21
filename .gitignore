@@ -69,3 +69,5 @@ yarn-error.log
 dist/
 public/assets
 .astro/
+
+engine.bin
