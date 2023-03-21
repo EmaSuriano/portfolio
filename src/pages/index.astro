@@ -7,38 +7,58 @@ const title = `${about.name} - ${about.role}`;
 ---
 
 <Layout title={title}>
-  <article class="my-auto pb-8">
-    <div class="mb-3 flex flex-col-reverse sm:flex-row">
-      <Title name={about.name} />
+  <section
+    class="my-auto flex flex-col-reverse gap-4 pb-8 sm:flex-row sm:items-center"
+  >
+    <div class="flex flex-col gap-2">
+      <Title animation="line">{about.name}</Title>
 
-      <div
-        class="first:h-width mb-2 h-10 w-10 overflow-hidden rounded-full transition-all duration-200 first:w-full sm:-mt-10 sm:h-16 sm:w-16 sm:hover:scale-125"
-        data-zoomable
+      <p
+        class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
       >
-        <!-- Do not use Img here because Gravatar already does this convertion  -->
-        <img src={`${about.avatar}?s=128`} alt={about.name} />
-      </div>
+        I'm a {about.role} at
+        <a href={about.company.url} class="link-underline"
+          >{about.company.name}</a
+        >
+      </p>
+
+      <p
+        class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
+      >
+        I contribute to <a href="/about#projects" class="link-underline"
+          >open-source</a
+        >, and
+        <a href="/blog" class="link-underline">write</a> about web development.
+      </p>
     </div>
 
-    <p
-      class="block w-[80%] font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
-    >
-      I'm a {about.role} at
-      <a href={about.company.url}>{about.company.name}</a>
-    </p>
-
-    <p
-      class="block w-[80%] font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed md:w-[85%]"
-    >
-      I contribute to <a href="/about#projects">open-source</a>, and
-      <a href="/blog">write</a> about web development.
-    </p>
-  </article>
+    <div class="my-4">
+      <!-- Do not use Img here because Gravatar already does this convertion  -->
+      <div class="image-container">
+        <img
+          src={`${about.avatar}?s=512`}
+          alt={about.name}
+          class="h-fit w-fit rounded-xl transition-all sm:hover:-translate-y-5 sm:hover:-translate-x-5 sm:hover:shadow-lg"
+        />
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
   a {
-    @apply border-b hover:border-current;
-    text-decoration: none;
+    @apply font-bold;
+  }
+
+  .image-container {
+    @apply relative h-40 w-40 rounded-xl sm:h-80 sm:w-80;
+
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgb(226, 232, 240) 10px,
+      rgb(226, 232, 240) 11px
+    );
   }
 </style>

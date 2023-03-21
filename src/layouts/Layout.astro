@@ -87,17 +87,21 @@ const {
     >
       <header class="relative">
         <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
-        <nav class="prose text-sm dark:prose-dark sm:text-base">
+        <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
             {
               !isHome && (
                 <li>
-                  <a href="/">Home</a>
+                  <a class="link-underline" href="/">
+                    Home
+                  </a>
                 </li>
               )
             }
-            <li><a href="/about">About</a></li>
-            <li><a href="/blog">Blog</a></li>
+            <li>
+              <a href="/about" class="link-underline"> About</a>
+            </li>
+            <li><a href="/blog" class="link-underline">Blog</a></li>
           </ul>
         </nav>
         <ThemeSwitch />
@@ -108,13 +112,13 @@ const {
       <footer
         class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"
       >
-        <ul
-          class="prose flex max-w-full flex-shrink-0 flex-wrap dark:prose-dark"
-        >
+        <ul class="flex max-w-full flex-shrink-0 flex-wrap">
           {
             about.social.map(({ name, url }) => (
               <li class="mr-4 mt-2">
-                <a href={url}>{name}</a>
+                <a href={url} class="link-underline">
+                  {name}
+                </a>
               </li>
             ))
           }
@@ -134,5 +138,20 @@ const {
         }
       }, 0);
     </script>
+
+    <style is:global>
+      .link-underline {
+        @apply relative no-underline;
+      }
+
+      .link-underline::before {
+        @apply absolute -bottom-1 left-0 block h-0.5 w-full origin-top-left scale-x-0 bg-indigo-500 transition-transform;
+        content: '';
+      }
+
+      .link-underline:hover::before {
+        @apply scale-x-100;
+      }
+    </style>
   </body>
 </html>
