@@ -5,6 +5,7 @@ const blogSchema = z.object({
   summary: z.string(),
   cover: z.string(),
   publishedAt: z.date(),
+  draft: z.boolean().optional(),
 });
 
 const externalSchema = z.object({

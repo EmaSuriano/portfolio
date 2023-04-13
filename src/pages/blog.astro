@@ -8,7 +8,10 @@ import { getCollection } from 'astro:content';
 const allBlogPosts = await getCollection('blog');
 const allExternalPosts = await getCollection('external');
 
-const grouped = groupPostsByDate([...allBlogPosts, ...allExternalPosts]);
+const grouped = groupPostsByDate([
+  ...allBlogPosts.filter((post) => !post.data.draft),
+  ...allExternalPosts,
+]);
 ---
 
 <Layout
