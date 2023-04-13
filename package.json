@@ -31,7 +31,7 @@
     "astro-seo": "^0.7.1",
     "autoprefixer": "^10.4.13",
     "capture-website-cli": "^3.0.0",
-    "cssnano": "^5.1.14",
+    "cssnano": "^6.0.0",
     "date-fns": "^2.29.3",
     "prettier": "^2.8.4",
     "prettier-plugin-astro": "^0.8.0",
