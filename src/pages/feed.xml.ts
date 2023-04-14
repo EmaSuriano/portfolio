@@ -4,7 +4,9 @@ import about from 'author.json';
 
 import { BLOG_PATH, getPostLink, sortPostByDate } from 'helpers';
 
-const allBlogPosts = await getCollection('blog');
+const allBlogPosts = (await getCollection('blog')).filter(
+  (post) => !post.data.draft,
+);
 const allExternalPosts = await getCollection('external');
 
 const posts = [...allBlogPosts, ...allExternalPosts].sort(sortPostByDate);

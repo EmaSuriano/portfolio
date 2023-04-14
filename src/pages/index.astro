@@ -7,70 +7,24 @@ const title = `${about.name} - ${about.role}`;
 ---
 
 <Layout title={title}>
-  <section
-    class="my-auto flex flex-col-reverse gap-10 pb-8 sm:flex-row sm:items-center"
-  >
-    <div class="flex flex-col gap-2">
-      <Title animation="gradient">{about.name}</Title>
+  <section class="my-auto flex flex-col items-start pb-8 sm:gap-2">
+    <Title animation="gradient">{about.name}</Title>
 
-      <p
-        class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
-      >
-        I'm a {about.role} at
-        <a href={about.company.url} class="link-underline"
-          >{about.company.name}</a
-        >
-      </p>
+    <p
+      class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
+    >
+      I'm a {about.role} at
+      <a href={about.company.url} class="link-underline">{about.company.name}</a
+      >.
+    </p>
 
-      <p
-        class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
-      >
-        I contribute to <a href="/about#projects" class="link-underline"
-          >Open Source</a
-        >, and
-        <a href="/blog" class="link-underline">write</a> about web development.
-      </p>
-    </div>
-
-    <div>
-      <!-- Do not use Img here because Gravatar already does this convertion  -->
-      <div class="image-container">
-        <div
-          class="h-full w-full overflow-hidden rounded-lg bg-white transition-all dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-y-5 sm:hover:-translate-x-5 sm:hover:shadow-lg"
-        >
-          <img src={`${about.avatar}?s=320`} alt={about.name} />
-        </div>
-      </div>
-    </div>
+    <p
+      class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
+    >
+      I contribute to <a href="/about#projects" class="link-underline"
+        >Open Source</a
+      >, and
+      <a href="/blog" class="link-underline">write</a> about web development.
+    </p>
   </section>
 </Layout>
-
-<style>
-  .image-container {
-    @apply relative h-20 w-20 rounded-lg transition-all sm:h-60 sm:w-60 sm:rounded-3xl lg:h-80 lg:w-80;
-
-    --r: 40px; /* control the size */
-    --c1: #6366f1 /*color 1*/ 99%, #0000 101%;
-    --c2: #fb7185 /*color 2*/ 99%, #0000 101%;
-
-    --s: calc(var(--r) * 0.866); /* .866 = cos(30deg) */
-    --g0: radial-gradient(var(--r), var(--c1));
-    --g1: radial-gradient(var(--r), var(--c2));
-    --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
-    --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
-    background: var(--f) 0 calc(-5 * var(--r) / 2),
-      var(--f) calc(-2 * var(--s)) calc(var(--r) / 2),
-      var(--p) 0 calc(-2 * var(--r)), var(--g0) var(--s) calc(-5 * var(--r) / 2),
-      var(--g1) var(--s) calc(5 * var(--r) / 2),
-      radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),
-      radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)),
-      var(--g1) calc(-1 * var(--s)) calc(-7 * var(--r) / 2),
-      var(--g0) calc(-1 * var(--s)) calc(-5 * var(--r) / 2),
-      var(--p) calc(-2 * var(--s)) var(--r),
-      var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2),
-      var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2),
-      var(--g0) 0 calc(-1 * var(--r)), var(--g1) var(--s) calc(var(--r) / -2),
-      var(--g0) var(--s) calc(var(--r) / 2) #fb7185; /*color 2 again here */
-    background-size: calc(4 * var(--s)) calc(6 * var(--r));
-  }
-</style>

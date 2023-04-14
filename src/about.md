@@ -1,4 +1,4 @@
-I'm an Open Source Developer, sharing with the community some of my personal work so then others can use them as a base for their ideas or as a a future inspiration, as well as, contributing to several [Open Source Projects](#projects).
+I'm an [Open Source Developer](https://github.com/EmaSuriano), sharing with the community some of my personal work so then others can use them as a base for their ideas or as a a future inspiration, as well as, contributing to several [Open Source Projects](#projects).
 
 I like to share my discoveries and learning with others, by posting new content in my [Blog](/blog) or [speaking](#talks) in many local meetups and conferences about web development.
 
