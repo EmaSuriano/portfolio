@@ -3,6 +3,7 @@
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "strictNullChecks": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "ignoreDeprecations": "5.0"
   }
 }
