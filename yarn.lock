@@ -1530,10 +1530,10 @@ astro-imagetools@^0.8.1:
   optionalDependencies:
     imagetools-core "3.0.2"
 
-astro-seo@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.7.1.tgz#b1921ba94bc80319f091d3dbf93d9450f3fa5ffe"
-  integrity sha512-8Yo1nQrl2iB5zj+VUAHrvGIck8bZ4WAmXQgJOeF9FuAZGQD5qK6DtSZaRbpBXsFfZYHA6tE8pjs3btHhLbC1zQ==
+astro-seo@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.7.2.tgz#b6ef5d1590063631c03394fbeb501973a0460912"
+  integrity sha512-YnSqj4E6vbF7wRk3gcxOPHBjenhfgaINEJlTsnu4sovAyfyGEdQksbioYKoZ+vERRDaYvEricfSzC6fc9lieww==
 
 astro@2.3.2:
   version "2.3.2"
