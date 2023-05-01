@@ -17,7 +17,7 @@
     "@astrojs/image": "^0.13.0",
     "@astrojs/markdown-remark": "^2.0.0",
     "@astrojs/mdx": "^0.17.2",
-    "@astrojs/rss": "^2.3.2",
+    "@astrojs/rss": "^2.4.0",
     "@astrojs/sitemap": "^1.2.2",
     "@astrojs/tailwind": "^3.0.1",
     "@microflash/remark-figure-caption": "^1.0.0",
