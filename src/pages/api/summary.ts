@@ -33,7 +33,7 @@ const summary = {
   talks: talks.map((talk): Link => ({ title: talk.title, url: talk.url })),
 };
 
-export function get() {
+export function GET() {
   return new Response(JSON.stringify(summary), {
     status: 200,
     headers: {
