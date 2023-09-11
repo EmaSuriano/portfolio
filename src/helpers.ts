@@ -49,5 +49,6 @@ export const getPostLink = (post: Post, baseUrl: URL) => {
 
 export const BLOG_PATH = new URL(
   '/blog',
+  // @ts-expect-error TODO
   import.meta.env.DEV ? 'http://localhost:4321' : import.meta.env.SITE,
 );
