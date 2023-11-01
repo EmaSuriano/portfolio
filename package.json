@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@astrojs/markdown-remark": "^3.3.0",
-    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/mdx": "^1.0.3",
     "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^3.0.2",
     "@astrojs/tailwind": "^5.0.0",
