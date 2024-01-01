@@ -34,7 +34,7 @@
     "cssnano": "^6.0.2",
     "date-fns": "^2.30.0",
     "prettier": "^3.1.1",
-    "prettier-plugin-astro": "^0.12.2",
+    "prettier-plugin-astro": "^0.12.3",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "reading-time": "^1.5.0",
     "remark-autolink-headings": "^7.0.1",
