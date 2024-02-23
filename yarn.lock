@@ -113,12 +113,12 @@
   dependencies:
     prismjs "^1.29.0"
 
-"@astrojs/rss@^2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-2.4.3.tgz#fa743fcbbbd65c59b51ba8050e5cdaed65ea6821"
-  integrity sha512-Dc8lxsXiDlnxONVIUuc3ohO1+vV1Hp9fRFdUianOola0S9/xv/6FzIHhkQ62MkaFSlcZm5uIOllRWNKVvuFuoA==
+"@astrojs/rss@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-4.0.4.tgz#7c1868dad2f51b7d021a5731da27e18ace73b7d3"
+  integrity sha512-VmHmRoC62j9iR0ez2Qumpn4LTQ9/4txOmGwGBmCSI+PzSFJI5M/qdao656oT9Logjh7CDwcPrCGQEEEi3HF75A==
   dependencies:
-    fast-xml-parser "^4.0.8"
+    fast-xml-parser "^4.2.7"
     kleur "^4.1.5"
 
 "@astrojs/sitemap@^3.0.4":
@@ -3070,10 +3070,10 @@ fast-glob@^3.2.12, fast-glob@^3.2.9, fast-glob@^3.3.0, fast-glob@^3.3.1:
     merge2 "^1.3.0"
     micromatch "^4.0.4"
 
-fast-xml-parser@^4.0.8:
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-4.2.5.tgz#a6747a09296a6cb34f2ae634019bf1738f3b421f"
-  integrity sha512-B9/wizE4WngqQftFPmdaMYlXoJlJOYxGQOanC77fq9k8+Z0v5dDSVh+3glErdIROP//s/jgb7ZuxKfB8nVyo0g==
+fast-xml-parser@^4.2.7:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-4.3.4.tgz#385cc256ad7bbc57b91515a38a22502a9e1fca0d"
+  integrity sha512-utnwm92SyozgA3hhH2I8qldf2lBqm6qHOICawRNRFu1qMe3+oqr+GcXjGqTmXTMGE5T4eC03kr/rlh5C1IRdZA==
   dependencies:
     strnum "^1.0.5"
 
