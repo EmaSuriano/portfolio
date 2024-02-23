@@ -1,0 +1,6 @@
+content:
+  - name: posts
+    label: Posts
+    path: src/content/blog
+    type: collection
+    fields: [title, summary, publishedAt, cover]
