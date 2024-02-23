@@ -21,3 +21,23 @@ content:
       - name: body
         label: Body
         type: rich-text
+  - name: external
+    label: External
+    path: src/content/external
+    type: collection
+    view:
+      fields: [ title, publishedAt ]
+    fields:
+      - name: publishedAt
+        label: Date
+        type: date
+      - name: title
+        label: Title
+        type: string
+      - name: summary
+        label: Summary
+        type: string 
+      - name: external
+        label: Link
+        type: string
+      
