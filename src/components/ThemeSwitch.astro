@@ -24,7 +24,7 @@ import { Icon } from 'astro-icon';
       return "light";
     })();
 
-    localStorage.setItem('theme', theme === 'dark' ? 'white : 'dark')
+    localStorage.setItem('theme', theme === 'dark' ? 'white' : 'dark')
     document.documentElement.classList.toggle('dark')
   });
 </script>
