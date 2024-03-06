@@ -6,21 +6,9 @@ import { Icon } from 'astro-icon';
   data-theme-switcher
   class="absolute right-6 top-0 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
 >
-  <Icon name="ri:moon-line" class="w-6 h-6 text-current absolute" id="moon" />
-  <Icon name="ri:sun-line" class="w-6 h-6 text-current absolute" id="sun" />
+  <Icon name="ri:moon-line" class="w-6 h-6 text-current absolute dark:visible invisible" id="moon" />
+  <Icon name="ri:sun-line" class="w-6 h-6 text-current absolute dark:invisible visible" id="sun" />
 </button>
-
-<style is:global>
-  [data-theme='light'] #moon,
-  [data-theme='dark'] #sun {
-    @apply visible;
-  }
-
-  [data-theme='light'] #sun,
-  [data-theme='dark'] #moon {
-    @apply invisible;
-  }
-</style>
 
 <script>
   const buttons = document.querySelector('[data-theme-switcher]');
