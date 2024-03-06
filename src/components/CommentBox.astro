@@ -29,14 +29,14 @@ const { repo } = Astro.props;
 </section>
 
 <style is:global>
-  [data-theme='light'] #comments-dark,
-  [data-theme='dark'] #comments-light {
+  #comments-dark,
+  .dark #comments-light {
     display: none;
     height: 0px;
   }
 
-  [data-theme='light'] #comments-light,
-  [data-theme='dark'] #comments-dark {
+  #comments-light,
+  .dark #comments-dark {
     display: block;
     height: fit-content;
   }
