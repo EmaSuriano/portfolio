@@ -12,5 +12,19 @@ import { Icon } from 'astro-icon';
 
 <script>
   const button = document.querySelector('[data-theme-switcher]');
-  button.addEventListener('click', () => document.documentElement.classList.toggle('dark'));
+
+  button.addEventListener('click', () => {
+    const theme = (() => {
+      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+        return localStorage.getItem("theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
+
+    localStorage.setItem('theme', theme === 'dark' ? 'white : 'dark')
+    document.documentElement.classList.toggle('dark')
+  });
 </script>
