@@ -6,7 +6,7 @@ type Props = {
 const { repo } = Astro.props;
 ---
 
-<section id="comments-light" class="-ml-6">
+<section class="block h-fit -ml-6 dark:hidden dark:h-0">
   <script
     src="https://utteranc.es/client.js"
     repo={repo}
@@ -17,7 +17,7 @@ const { repo } = Astro.props;
   ></script>
 </section>
 
-<section id="comments-dark" class="-ml-6">
+<section class="dark:block dark:h-fit -ml-6">
   <script
     src="https://utteranc.es/client.js"
     repo={repo}
@@ -27,17 +27,3 @@ const { repo } = Astro.props;
     async
   ></script>
 </section>
-
-<style is:global>
-  #comments-dark,
-  .dark #comments-light {
-    display: none;
-    height: 0px;
-  }
-
-  #comments-light,
-  .dark #comments-dark {
-    display: block;
-    height: fit-content;
-  }
-</style>
