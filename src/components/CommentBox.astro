@@ -6,7 +6,7 @@ type Props = {
 const { repo } = Astro.props;
 ---
 
-<section class="block h-fit ml-6 dark:hidden dark:h-0">
+<section class="block h-fit dark:hidden dark:h-0">
   <script
     src="https://utteranc.es/client.js"
     repo={repo}
@@ -17,7 +17,7 @@ const { repo } = Astro.props;
   ></script>
 </section>
 
-<section class="hidden h-0 ml-6 dark:block dark:h-fit">
+<section class="hidden h-0 dark:block dark:h-fit">
   <script
     src="https://utteranc.es/client.js"
     repo={repo}
