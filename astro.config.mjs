@@ -19,4 +19,7 @@ export default defineConfig({
     syntaxHighlight: 'prism',
     remarkPlugins,
   },
+  redirects: {
+    '/resume': 'https://resume.emasuriano.com'
+  }
 });
