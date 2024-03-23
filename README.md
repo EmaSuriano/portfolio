@@ -2,7 +2,7 @@
 
 [![master](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml)
 ![Dependabot Status](https://badgen.net/github/dependabot/EmaSuriano/portfolio)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6c5ab50c-b5ad-4c2f-a933-860a7bfc8530/deploy-status)](https://app.netlify.com/sites/gifted-dubinsky-50dab2/deploys)
+[![Deploy to GitHub Pages](https://github.com/EmaSuriano/portfolio/actions/workflows/deploy-gh.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/deploy-gh.yml)
 
 > My portfolio where I share who I am, the projects I built, talks I gave, and the centralized place for all the blog post that I wrote in the past years.
 
