@@ -1,6 +1,6 @@
 # EmaSuriano
 
-[![master](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml)
+[![ci](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml)
 ![Dependabot Status](https://badgen.net/github/dependabot/EmaSuriano/portfolio)
 [![Deploy to GitHub Pages](https://github.com/EmaSuriano/portfolio/actions/workflows/deploy-gh.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/deploy-gh.yml)
 
@@ -12,7 +12,7 @@
 - Support for [Typescript](https://www.typescriptlang.org/)
 - Powered by [MDX](https://mdxjs.com/)
 - Design system with [Tailwind](https://tailwindcss.com/)
-- CI/CD with [Netlify](https://netlify.com/)
+- CI/CD with [Github Pages]([https://netlify.com/](https://github.com/actions/deploy-pages))
 - Dependency updates with [Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
 ## Features 🎁
@@ -31,6 +31,5 @@
 ## Dev Tools 👷
 
 - [Prettier](https://prettier.io/) + [Tailwind plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
-- Integration of Lighthouse plugin in [Netlify](https://docs.netlify.com/monitor-sites/lighthouse/)
 - Weekly [Dependabot alerts](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/)
 - Auto merge Dependabot on CI pass using [Github Actions](https://github.com/marketplace/actions/dependabot-auto-merge)
