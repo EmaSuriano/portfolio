@@ -12,7 +12,7 @@ const allExternalPosts = await getCollection('external');
 const posts = [...allBlogPosts, ...allExternalPosts].sort(sortPostByDate);
 
 export function get() {
-  // @ts-expect-error TODO
+  // @ts-ignore
   const site = import.meta.env.SITE;
 
   return rss({
