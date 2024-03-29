@@ -14,5 +14,3 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: npm install -g @lhci/cli@0.13.x
-      - run: lhci autorun
