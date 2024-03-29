@@ -29,7 +29,7 @@
     "astro-icon": "^0.8.1",
     "astro-imagetools": "^0.9.0",
     "astro-seo": "^0.8.2",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.19",
     "capture-website-cli": "^4.0.0",
     "cssnano": "^6.0.5",
     "date-fns": "^3.3.1",
