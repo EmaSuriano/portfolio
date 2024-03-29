@@ -1,0 +1,30 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<button
+  data-theme-switcher
+  class="absolute right-6 top-0 transition-colors hover:text-slate-600 hover:dark:text-slate-400"
+>
+  <Icon name="ri:moon-line" class="w-6 h-6 text-current absolute dark:visible invisible" id="moon" />
+  <Icon name="ri:sun-line" class="w-6 h-6 text-current absolute dark:invisible visible" id="sun" />
+</button>
+
+<script>
+  const button = document.querySelector('[data-theme-switcher]');
+
+  button.addEventListener('click', () => {
+    const theme = (() => {
+      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+        return localStorage.getItem("theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
+
+    localStorage.setItem('theme', theme === 'dark' ? 'white' : 'dark')
+    document.documentElement.classList.toggle('dark')
+  });
+</script>

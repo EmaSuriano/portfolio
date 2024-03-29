@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://emasuriano.com/sitemap.xml

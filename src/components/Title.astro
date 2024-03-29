@@ -1,0 +1,75 @@
+---
+type Props = {
+  animation: 'gradient' | 'line';
+};
+
+const { animation } = Astro.props;
+---
+
+{
+  animation === 'gradient' && (
+    <h1 class="relative mb-4 inline-block text-4xl font-bold tracking-tight text-slate-800 dark:text-slate-200 sm:text-7xl md:text-8xl">
+      <span class="gradient text-transparent">
+        <slot />
+      </span>
+      <span
+        class="absolute inset-0 cursor-default transition-opacity duration-500 hover:opacity-0"
+        aria-hidden="true"
+      >
+        <slot />
+      </span>
+    </h1>
+  )
+}
+
+{
+  animation === 'line' && (
+    <h1 class="hover relative w-fit text-3xl font-bold tracking-tight sm:text-5xl ">
+      <slot />
+    </h1>
+  )
+}
+
+<style>
+  .gradient {
+    background-image: linear-gradient(
+      to right,
+      #fb7185 0%,
+      #d946ef 33%,
+      #6366f1 66%,
+      #fb7185 100%
+    );
+    background-clip: text;
+    background-size: 200% auto;
+    animation: slide 10s linear infinite;
+  }
+
+  @keyframes slide {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  .hover {
+    @apply transition-all;
+
+    --b: 0.1em; /* the thickness of the line */
+    --c: rgb(99, 102, 241);
+
+    color: #0000;
+    padding-block: var(--b);
+    background: linear-gradient(var(--c) 50%, #000 0) 0%
+        calc(100% - var(--_p, 0%)) / 100% 200%,
+      linear-gradient(var(--c) 0 0) 0% var(--_p, 0%) / var(--_p, 0%) var(--b)
+        no-repeat;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    transition: 0.3s var(--_s, 0s) linear,
+      background-size 0.3s calc(0.3s - var(--_s, 0s));
+  }
+
+  .hover:hover {
+    --_p: 100%;
+    --_s: 0.3s;
+  }
+</style>

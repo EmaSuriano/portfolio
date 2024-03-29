@@ -1,0 +1,29 @@
+---
+type Props = {
+  repo: string;
+};
+
+const { repo } = Astro.props;
+---
+
+<section class="block h-fit dark:hidden dark:h-0">
+  <script
+    src="https://utteranc.es/client.js"
+    repo={repo}
+    issue-term="pathname"
+    theme="github-light"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>
+
+<section class="hidden h-0 dark:block dark:h-fit">
+  <script
+    src="https://utteranc.es/client.js"
+    repo={repo}
+    issue-term="pathname"
+    theme="github-dark"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>

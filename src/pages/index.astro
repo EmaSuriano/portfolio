@@ -1,0 +1,30 @@
+---
+import Title from 'components/Title.astro';
+import Layout from 'layouts/Layout.astro';
+import about from 'author.json';
+
+const title = `${about.name} - ${about.role}`;
+---
+
+<Layout title={title}>
+  <section class="my-auto flex flex-col items-start pb-8 sm:gap-2">
+    <Title animation="gradient">{about.name}</Title>
+
+    <p
+      class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
+    >
+      I'm a {about.role} at
+      <a href={about.company.url} class="link-underline">{about.company.name}</a
+      >.
+    </p>
+
+    <p
+      class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
+    >
+      I contribute to <a href="/about#projects" class="link-underline"
+        >Open Source</a
+      >, and
+      <a href="/blog" class="link-underline">write</a> about web development.
+    </p>
+  </section>
+</Layout>

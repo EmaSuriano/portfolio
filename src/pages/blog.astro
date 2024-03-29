@@ -1,0 +1,52 @@
+---
+import { Icon } from 'astro-icon';
+import Layout from 'layouts/Layout.astro';
+import { format } from 'date-fns';
+import { getPostLink, groupPostsByDate } from 'helpers';
+import { getCollection } from 'astro:content';
+
+const allBlogPosts = await getCollection('blog');
+const allExternalPosts = await getCollection('external');
+
+const grouped = groupPostsByDate([
+  ...allBlogPosts.filter((post) => !post.data.draft),
+  ...allExternalPosts,
+]);
+---
+
+<Layout
+  title="Blog"
+  description="Here is my blog. I started to write not so long ago and trying my best"
+>
+  <section class="prose max-w-full dark:prose-dark">
+    <h1>Blog</h1>
+    {
+      grouped.map((group) => (
+        <>
+          <h2>{group.year}</h2>
+          <ul class="list-none space-y-8 pl-0">
+            {group.posts.map((post) => (
+              <li>
+                <div class="flex justify-between">
+                  <a href={getPostLink(post, Astro.url)} class="truncate">
+                    {post.collection === 'external' && (
+                      <Icon
+                        name="ri:external-link-line"
+                        class="ml-1 inline h-4 w-4 align-baseline"
+                      />
+                    )}
+                    {post.data.title}
+                  </a>
+                  <span class="w-20 text-right">
+                    {format(post.data.publishedAt, 'd MMM')}
+                  </span>
+                </div>
+                <p class="my-1">{post.data.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+    }
+  </section>
+</Layout>
