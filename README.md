@@ -1,6 +1,6 @@
 # EmaSuriano
 
-[![ci](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/master.yml)
+[![ci](https://github.com/EmaSuriano/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/ci.yml)
 ![Dependabot Status](https://badgen.net/github/dependabot/EmaSuriano/portfolio)
 [![Deploy to GitHub Pages](https://github.com/EmaSuriano/portfolio/actions/workflows/deploy-gh.yml/badge.svg)](https://github.com/EmaSuriano/portfolio/actions/workflows/deploy-gh.yml)
 
