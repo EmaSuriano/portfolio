@@ -13,4 +13,6 @@ jobs:
           node-version-file: '.nvmrc'
 
       - run: yarn install --frozen-lockfile
+      
+      - run: yarn check-types
       - run: yarn build
