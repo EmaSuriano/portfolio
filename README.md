@@ -17,7 +17,7 @@
 
 ## Features 🎁
 
-- Images visualizer in Blogs with [medium-zoom]](https://github.com/francoischalifour/medium-zoom)
+- Images visualizer in Blogs with [medium-zoom](https://github.com/francoischalifour/medium-zoom)
 - Improve of Youtube loader with [lite-youtube](https://github.com/justinribeiro/lite-youtube)
 - Github integration with [octokit](https://github.com/octokit/core.js/)
 - CSS optimizations with [autoprefixer](https://github.com/postcss/autoprefixer) and [cssnano](https://github.com/cssnano/cssnano)
