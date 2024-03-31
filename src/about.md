@@ -2,4 +2,6 @@ I'm an [Open Source Developer](https://github.com/EmaSuriano), sharing with the 
 
 I like to share my discoveries and learning with others, by posting new content in my [Blog](/blog) or [speaking](#talks) in many local meetups and conferences about web development.
 
-While I’m not coding I tend to share my thoughts in my [Non-Tech Blog](https://write.as/emasuriano/) or spending endless hours in the kitchen cooking.
+While I’m not coding I tend to share my thoughts in my [Non-Tech Blog](https://write.as/emasuriano/).
+
+In case you want to reach out to me, you can contact me at [emanuel.suriano@gmail.com](mailto:emanuel.suriano@gmail.com).
