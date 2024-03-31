@@ -79,9 +79,9 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
     '[data-zoomable] > img, article figure > img',
   );
 
-  mediumZoom(target, {
-    margin: 24,
-  });
+  console.log('called!', target)
+
+  mediumZoom(target, { margin: 24 });
 </script>
 
 <script>
