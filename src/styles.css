@@ -93,6 +93,10 @@ lite-youtube {
   @apply text-inherit;
 }
 
+.prose code {
+  word-break: break-all;
+}
+
 h1 a,
 h2 a,
 h3 a,
