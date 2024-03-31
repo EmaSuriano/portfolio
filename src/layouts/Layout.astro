@@ -86,7 +86,7 @@ const {
         isHome ? 'h-full max-h-[44rem]' : 'min-h-full'
       }`}
     >
-      <header class="relative">
+      <header class="relative" transition:persist>
         <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
         <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
@@ -106,11 +106,12 @@ const {
           </ul>
         </nav>  
       </header>
-      <main id="skip" class="flex flex-grow flex-col py-12">
+      <main id="skip" class="flex flex-grow flex-col py-12" transition:animate="fade">
         <slot />
       </main>
       <footer
         class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"
+        transition:persist
       >
         <ul class="flex max-w-full flex-shrink-0 flex-wrap">
           {
@@ -126,7 +127,7 @@ const {
       </footer>
     </div>
 
-    <script is:inline>
+    <script is:inline data-astro-rerun>
       setTimeout(() => {
         if (window.location.hash) {
           const article = document.querySelector(
