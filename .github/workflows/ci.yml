@@ -13,6 +13,11 @@ jobs:
           node-version-file: '.nvmrc'
 
       - run: yarn install --frozen-lockfile
-      
+      - run: npm install -g @lhci/cli@0.13.x
+
       - run: yarn check-types
       - run: yarn build
+
+      - run: lhci autorun
+        env: 
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
