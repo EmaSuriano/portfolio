@@ -9,10 +9,6 @@ First of all, happy new 2023 to everybody reading this and welcome to the new ve
 
 My old website was powered by [Gatsby](https://www.gatsbyjs.com/), a very popular static website generator. The part that attracted me the most about it was the whole [JAM Stack](https://jamstack.org/) architecture: the idea of decoupling data loading and application logic. Having as a result a fully static website without any loader if everything was fetched during build time.
 
-I kept in a separate branch the previous website, to have it as a memento and also to come back at any point if there was something that I didn’t migrate yet. You can access the older version by clicking the image below.
-
-[![Previous website](./_images/Previous_website.png)](https://63b5a8db12a7da186b68d5d9--emasuriano.netlify.app/)
-
 ## What was the problem before?
 
 The previous version itself was a great website in terms of UI/UX and also performance-wise was quite competent, showing great results in Lighthouse. The main issue was maintaining the project. This was mainly related to the fact that the whole project was based on a non-maintained Gatsby Theme, called **Novela**. It still exists in the [documentation of Gatsby](https://www.gatsbyjs.com/plugins/@narative/gatsby-theme-novela/), but when trying to access to source code of the project the repository doesn’t exist anymore ...
@@ -71,8 +67,6 @@ const result = transform(data);
 The current total time of this website is **6.64s**, counting as well optimization for images and compression for the website. With an incredible size of only **1MB**, thanks mostly to [`astro-compress`](https://github.com/astro-community/astro-compress). I highly recommend this plugin for anyone building websites with Astro!
 
 In terms of performance, this website is actually much faster than the previous one, scoring a solid 100 in the Lighthouse report.
-
-![Lighthouse score](./_images/Lighthouse_score.png)
 
 ### Managing Assets properly
 

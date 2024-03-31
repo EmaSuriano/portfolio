@@ -13,11 +13,11 @@ I am the owner and maintainer of the [Gatsby Starter Mate](https://github.com/Em
 
 Although one can always open the [Demo website](https://gatsby-starter-mate.netlify.app/) and navigate through it to see how the project is, I decided to create a simple Table where I show how each of the sections looks like. Here is the table extracted from the [README.md](https://github.com/EmaSuriano/gatsby-starter-mate/blob/master/README.md#screenshot-and-design-).
 
-![Home](./_images/Home.png)
-![About me](./_images/About_me.png)
-![Projects](./_images/Projects.png)
-![Writing](./_images/Writing.png)
-![404](./_images/404.png)
+![Home](https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Landing.png)
+![About me](https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/About.png)
+![Projects](https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Projects.png)
+![Writing](https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Writing.png)
+![404](https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/404.png)
 
 As I highlighted at the beginning of this post, in case I made a change in the UI: CSS change, content change, add/remove new components, etc. I had to regenerate these screenshots ... The process was as follows:
 
