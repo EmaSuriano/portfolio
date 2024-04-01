@@ -7,7 +7,7 @@ summary: How I set up an Android tablet to be able to run a Linux Distro in
 ---
 This post is going to be about how I set up an Android tablet to be able to run a Linux Distro in order to have a desktop experience and boost the productivity due to the Window Manager.
 
-> **Disclaimer:** The whole process happens locally in the tablet, therefore all the programs are executed inside the tablet. I saw some other tutorials where people use \[code-server\]([https://github.com/coder/code-server](https://github.com/coder/code-server)) and besides the coding experience might look the same, running the full OS offers more capabilities.
+> **Disclaimer:** The whole process happens locally in the tablet, therefore all the programs are executed inside the tablet. I saw some other tutorials where people use [code-server](https://github.com/coder/code-server) and besides the coding experience might look the same, running the full OS offers more capabilities.
 
 This is how the end result looks like:
 
@@ -17,11 +17,11 @@ This is how the end result looks like:
 
 While I was travelling and reading some Machine Learning books, I wanted to try some of the new things that I was reading, but sadly I didn't have any laptop with me, and I was not planning in getting a new one. The only big screen that I had with me was a 10" Tablet, which I use for streaming and reading.
 
-The tablet is a \[Redmi Pad SE\]([https://www.gsmarena.com/xiaomi\_redmi\_pad\_se-12466.php](https://www.gsmarena.com/xiaomi_redmi_pad_se-12466.php)) running Android 14 with 8 GB of RAM, Snapdragon 680 for the CPU and 256 GB of disk. It's not a bad tablet at all, but clearly is not the best one, specially the CPU could have been better.
+The tablet is a [Redmi Pad SE](https://www.gsmarena.com/xiaomi_redmi_pad_se-12466.php) running Android 14 with 8 GB of RAM, Snapdragon 680 for the CPU and 256 GB of disk. It's not a bad tablet at all, but clearly is not the best one, specially the CPU could have been better.
 
 !\[\[Screenshot\_2024-03-20-22-14-01-158\_[com.android](http://com.android).settings.jpg\]\]
 
-The only piece of Hardware that I would highly recommend getting is a Bluetooth keyboard. Using the virtual keyboard in the screen takes quite a lot of space in the screen and highly reduce the productivity while using the desktop. I got a \[Logitech K380\]([https://www.logitech.com/en-us/products/keyboards/k380-multi-device.920-009600.html](https://www.logitech.com/en-us/products/keyboards/k380-multi-device.920-009600.html)), which is one of the cheapest and most compact Bluetooth keyboard that you can find stores.
+The only piece of Hardware that I would highly recommend getting is a Bluetooth keyboard. Using the virtual keyboard in the screen takes quite a lot of space in the screen and highly reduce the productivity while using the desktop. I got a [Logitech K380](https://www.logitech.com/en-us/products/keyboards/k380-multi-device.920-009600.html), which is one of the cheapest and most compact Bluetooth keyboard that you can find stores.
 
 One valid argument can be: what's the point of running Linux in a tablet if I already have a computer/laptop for development? I came up with the following points:
 
@@ -36,15 +36,15 @@ One valid argument can be: what's the point of running Linux in a tablet if I al
 
 The only things applications that you need to download are:
 
-\- \[Termux\]([https://termux.dev/en/](https://termux.dev/en/)): terminal application that allows to emulate bash and have access to package installation like `apt install`.
+\- [Termux](https://termux.dev/en/): terminal application that allows to emulate bash and have access to package installation like `apt install`.
 
-\- \[Termux:X11\]([https://github.com/termux/termux-x11](https://github.com/termux/termux-x11)): plugin for Termux to connect to instance of servers and handle the connection.
+\- [Termux:X11](https://github.com/termux/termux-x11): plugin for Termux to connect to instance of servers and handle the connection.
 
 > **Important disclaimer**: You can find the latest version of Termux inside F-Droid instead of Play Store, so please download those instead.
 
-I want to keep this post mostly practical, therefore in case you want to read how the actual desktop emulation run, please check out the \[official repository of the plugin\]([https://github.com/termux/termux-x11/blob/master/README.md](https://github.com/termux/termux-x11/blob/master/README.md)). It provides an in depth description of the inner commands and options available inside the plugin.
+I want to keep this post mostly practical, therefore in case you want to read how the actual desktop emulation run, please check out the [official repository of the plugin](https://github.com/termux/termux-x11/blob/master/README.md). It provides an in depth description of the inner commands and options available inside the plugin.
 
-Once both applications are installed, we can start with the installation of the project dependencies and image of the OS. For this step I found a \[great GitHub repository\]([https://github.com/phoenixbyrd/Termux\_XFCE](https://github.com/phoenixbyrd/Termux_XFCE)) where the whole process is automatized, so I want to send great kudos to \[@phoenixbyrd\]([https://github.com/phoenixbyrd](https://github.com/phoenixbyrd)) and rest of the team which made the installation script. Inside his README you can find:
+Once both applications are installed, we can start with the installation of the project dependencies and image of the OS. For this step I found a [great GitHub repository](https://github.com/phoenixbyrd/Termux_XFCE) where the whole process is automatized, so I want to send great kudos to [@phoenixbyrd](https://github.com/phoenixbyrd) and rest of the team which made the installation script. Inside his README you can find:
 
 > Sets up a Termux XFCE desktop and a Debian proot install. This setup uses Termux-X11, the termux-x11 server will be installed, and you will be prompted to allow Termux to install the Android APK.
 
@@ -58,11 +58,11 @@ Open Termux and paste the following command.
 
 This might take some time because it has to download all the resources + packages for the OS. In case you encountered some issue during the installation, you can
 
-join their \[Discord server\]([https://discord.gg/pNMVrZu5dm](https://discord.gg/pNMVrZu5dm)) or check out the \[GitHub Issues\]([https://github.com/phoenixbyrd/Termux\_XFCE/issues](https://github.com/phoenixbyrd/Termux_XFCE/issues)) of the repository.
+join their [Discord server](https://discord.gg/pNMVrZu5dm) or check out the [GitHub Issues](https://github.com/phoenixbyrd/Termux_XFCE/issues) of the repository.
 
 Assuming your installation is successful, the setup already added a new `start` command into your Termux that allows you start the server and at the same time boot Termux:X11 with the same port.
 
-I tested several setup in the past using approaches like \[Andronix\]([https://andronix.app](https://andronix.app)) and this setup is better in many ways:
+I tested several setup in the past using approaches like [Andronix](https://andronix.app) and this setup is better in many ways:
 
 *   _Installation_: the setup script takes care of downloading the resources you need and a single place for troubleshooting. This is extremely helpful because there are so many parts that can be misconfigured and searching in Stack Overflow is not that helpful due to the configuration of someone might defer from yours.
     
@@ -91,7 +91,7 @@ The first step is to install the IDE to handle files and changes. Nowadays, VS C
 
 Once installed we can open it and select the option to clone a new repository. I use GitHub to store my public repositories, which VS Code has an integration already built in for it.
 
-Depending on the stack of the repository you are cloning, you might have to install additional dependencies. For this demo, I'm using my \[own website\]([https://emasuriano.com](https://emasuriano.com)), which is a static website built with \[Astro.js\]([https://astro.build/](https://astro.build/)). It which requires to have \[Node.js\]([https://nodejs.org/](https://nodejs.org/)) installed and \[Yarn\]([https://yarnpkg.com/](https://yarnpkg.com/)) for package manager.
+Depending on the stack of the repository you are cloning, you might have to install additional dependencies. For this demo, I'm using my [own website](https://emasuriano.com), which is a static website built with [Astro.js](https://astro.build/). It which requires to have [Node.js](https://nodejs.org/) installed and [Yarn](https://yarnpkg.com/) for package manager.
 
 Once all the dependencies are installed, we can now start the server. In my case, I run `yarn start` which starts a local server that can be opened in the browser.
 
@@ -113,6 +113,6 @@ Once we are happy with the changes, we can commit our changes to saved our chang
 
 I normally don't write this kind of posts of "tech hacks" but I had so much fun tweaking the tablet that I just wanted to make a post documenting the process to help others. On top of that, when I was re-searching for this kind of stuff I would have wished to find some kind of post like this one!
 
-Feel free to reach out to me or leave a comment in this post, I can try to help with the process or even better you consider joining the \[Discord server\]([https://discord.gg/pNMVrZu5dm](https://discord.gg/pNMVrZu5dm)) where the real maintainers of the project can help you.
+Feel free to reach out to me or leave a comment in this post, I can try to help with the process or even better you consider joining the [Discord server](https://discord.gg/pNMVrZu5dm) where the real maintainers of the project can help you.
 
 Have fun hacking, and thanks for reading.
