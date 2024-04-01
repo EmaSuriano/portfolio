@@ -8,6 +8,10 @@ import CommentBox from 'components/CommentBox.astro';
 import type { CollectionEntry } from 'astro:content';
 import getReadingTime from 'reading-time';
 
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs';
+import 'medium-zoom/dist/style.css'
+
 type Props = { entry: CollectionEntry<'blog'> };
 
 const { title, publishedAt, summary, cover } = Astro.props.entry.data;
