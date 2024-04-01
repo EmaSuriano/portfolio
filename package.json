@@ -20,7 +20,7 @@
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/tailwind": "^5.1.0",
     "@microflash/remark-figure-caption": "^1.0.0",
-    "@octokit/core": "^5.0.2",
+    "@octokit/core": "^6.0.1",
     "@tailwindcss/typography": "^0.5.12",
     "@types/glob": "^8.1.0",
     "@types/prismjs": "^1.26.3",
