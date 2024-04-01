@@ -21,5 +21,5 @@ export default defineConfig({
   },
   redirects: {
     '/resume': 'https://resume.emasuriano.com',
-    '/avatar': "https://cdn.statically.io/gh/emasuriano/static/main/assets/avatar.jpeg",  }
+  }
 });
