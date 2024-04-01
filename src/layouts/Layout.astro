@@ -5,6 +5,7 @@ import 'prismjs';
 import about from 'author.json';
 import { SEO } from 'astro-seo';
 import {ViewTransitions} from 'astro:transitions';
+import 'medium-zoom/dist/style.css'
 
 export type Props = {
   title: string;
@@ -90,18 +91,8 @@ const {
         <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
         <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
-            {
-              !isHome && (
-                <li>
-                  <a class="link-underline" href="/">
-                    Home
-                  </a>
-                </li>
-              )
-            }
-            <li>
-              <a href="/about" class="link-underline"> About</a>
-            </li>
+            <li><a class="link-underline" href="/">Home</a></li>
+            <li><a href="/about" class="link-underline">About</a></li>
             <li><a href="/blog" class="link-underline">Blog</a></li>
           </ul>
         </nav>  
