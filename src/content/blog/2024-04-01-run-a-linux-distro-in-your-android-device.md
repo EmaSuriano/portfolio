@@ -11,7 +11,7 @@ This post is going to be about how I set up an Android tablet to be able to run 
 
 This is how the end result looks like:
 
-![Deskptop](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/desktop.png)
+![Desktop](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/desktop.png)
 
 ## How I got here?
 
