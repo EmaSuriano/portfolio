@@ -11,7 +11,7 @@ This post is going to be about how I set up an Android tablet to be able to run 
 
 This is how the end result looks like:
 
-!\[\[Screenshot\_2024-03-23-19-54-36-331\_com.termux.x11.png\]\]
+![Deskptop](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/desktop.png)
 
 ## How I got here?
 
@@ -19,7 +19,7 @@ While I was travelling and reading some Machine Learning books, I wanted to try 
 
 The tablet is a [Redmi Pad SE](https://www.gsmarena.com/xiaomi_redmi_pad_se-12466.php) running Android 14 with 8 GB of RAM, Snapdragon 680 for the CPU and 256 GB of disk. It's not a bad tablet at all, but clearly is not the best one, specially the CPU could have been better.
 
-!\[\[Screenshot\_2024-03-20-22-14-01-158\_[com.android](http://com.android).settings.jpg\]\]
+![Tablet specs](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/tablet-specs.jpg)
 
 The only piece of Hardware that I would highly recommend getting is a Bluetooth keyboard. Using the virtual keyboard in the screen takes quite a lot of space in the screen and highly reduce the productivity while using the desktop. I got a [Logitech K380](https://www.logitech.com/en-us/products/keyboards/k380-multi-device.920-009600.html), which is one of the cheapest and most compact Bluetooth keyboard that you can find stores.
 
@@ -79,7 +79,7 @@ Luckily this project already have the solution for that! In your desktop there i
 
 Some good examples are Visual Studio Code (even Extensions works!), Notion, Brave browser, PyCharm and many more! Just select the one you want to install and click on OK.
 
-!\[\[Screenshot\_2024-03-23-19-08-33-346\_com.termux.x11.png\]\]
+![App Installer](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/app-installer.png)
 
 > _Small caveat_: there is no installation progression indicator, so after selecting the application to install it might seem that nothing is happening, but simply wait a couple of minutes, and you should see a new alert saying that the App has been installed.
 
@@ -95,17 +95,17 @@ Depending on the stack of the repository you are cloning, you might have to inst
 
 Once all the dependencies are installed, we can now start the server. In my case, I run `yarn start` which starts a local server that can be opened in the browser.
 
-!\[\[Screenshot\_2024-03-23-19-55-49-592\_com.termux.x11.png\]\]
+![VS code running](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/code.png)
 
-!\[\[Screenshot\_2024-03-23-19-39-41-986\_com.termux.x11.png\]\]
+![Local server running](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/local-running.png)
 
 For Web Development one of the most powerful tools is the Dev Tools, where you can inspect DOM Nodes, network activity or even trigger commands from the terminal. This kind of tooling is normally missing in Android and thanks to this setup we can have it.
 
-!\[\[Screenshot\_2024-03-23-20-05-44-363\_com.termux.x11.png\]\]
+![Dev Tools working](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/web-inspector.png)
 
 Thanks that we are running the local server, can we modify the codebase and see the changes in real time inside our browser. In this case, I modify the name and the company.
 
-!\[\[Screenshot\_2024-03-23-19-45-02-168\_com.termux.x11.png\]\]
+![Local modification running](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/2024-04-01-run-a-linux-distro-in-your-android-device/local-server-modified.png)
 
 Once we are happy with the changes, we can commit our changes to saved our changes and potentially trigger a new deployment. With this we basically cover how we can do basic web development.
 
