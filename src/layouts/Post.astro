@@ -75,7 +75,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   <CommentBox repo="EmaSuriano/portfolio" />
 </Layout>
 
-<script>
+<script client:only>
   import mediumZoom from 'medium-zoom/dist/pure'
 
   document.addEventListener('astro:page-load', () => {
@@ -88,7 +88,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
 })
 </script>
 
-<script>
+<script client:only>
   import '@justinribeiro/lite-youtube';
 
 document.addEventListener('astro:page-load', () => {
