@@ -78,24 +78,30 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
 <script data-astro-rerun>
   import mediumZoom from 'medium-zoom/dist/pure'
 
-  
+  document.addEventListener('astro:page-load', () => {
     const target = document.querySelectorAll(
       '[data-zoomable] > img, article prose figure > img',
     );
 
     mediumZoom(target, { margin: 24 });
+
+})
 </script>
 
-<script data-astro-rerun>
+<script>
   import '@justinribeiro/lite-youtube';
 
+document.addEventListener('astro:page-load', () => {
+lite-youtube');
   const videos = document.querySelectorAll('lite-youtube');
 
     videos.forEach((node) => {
       const label = document.createElement('figcaption');
       label.textContent = node.videoTitle;
       node.parentNode?.insertBefore(label, node.nextSibling);
-    });
+    });
+
+});
 </script>
 
 <style is:global>
