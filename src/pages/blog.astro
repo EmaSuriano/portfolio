@@ -19,7 +19,7 @@ const grouped = groupPostsByDate([
   description="Here is my blog. I started to write not so long ago and trying my best"
 >
   <section class="prose max-w-full dark:prose-dark">
-    <h1>Blog</h1>
+    <h1 transition:name="title">Blog</h1>
     {
       grouped.map((group) => (
         <>
