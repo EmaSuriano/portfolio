@@ -4,8 +4,7 @@ import Talk from 'components/Talk.astro';
 import Layout from 'layouts/Layout.astro';
 import about from 'author.json';
 import { Content } from 'about.md';
-// @ts-expect-error ts issue here ...
-import { Img } from 'astro-imagetools/components';
+import { Image } from 'astro:assets';
 
 ---
 
@@ -25,7 +24,7 @@ import { Img } from 'astro-imagetools/components';
         <div
           class="aspect-square h-full w-full overflow-hidden rounded-lg bg-white transition-transform dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-x-5 sm:hover:-translate-y-5 sm:hover:shadow-lg"
         >
-          <Img format='webp' src={about.avatar} alt={about.name} width={1024} height={1024} />
+          <Image loading="eager" src={about.avatar} alt={about.name} inferSize />
         </div>
       </div>
     </div>
