@@ -1,8 +1,7 @@
 ---
 import { format } from 'date-fns';
 import Layout from 'layouts/Layout.astro';
-// @ts-expect-error ts issue here ...
-import { Img } from 'astro-imagetools/components';
+import { Image } from 'astro:assets';
 import author from 'author.json';
 import CommentBox from 'components/CommentBox.astro';
 import type { CollectionEntry } from 'astro:content';
@@ -26,8 +25,8 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   article={{ date: publishDate }}
   image={cover}
 >
-  <div class="overflow-hidden rounded-2xl shadow-lg" data-zoomable>
-    <Img format="webp" src={cover} alt={title} width={1400} height={600} />
+  <div class="overflow-hidden rounded-2xl shadow-lg h-96 flex items-center">
+    <Image loading="eager" src={cover} alt={title} inferSize   />
   </div>
 
   <article
@@ -46,8 +45,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
       <figure
         class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full sm:h-6 sm:w-6"
       >
-    <Img format="webp" src={author.avatar} alt={author.name} width={100} height={100} />
-
+        <Image loading="eager" src={author.avatar} alt={author.name} height="100" width="100" />
       </figure>
       <div
         class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"
@@ -82,7 +80,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
 
   document.addEventListener('astro:page-load', () => {  
     const target = document.querySelectorAll(
-      '[data-zoomable] > img, article figure > img',
+      '[data-zoomable] > img, article prose figure > img',
     );
 
     mediumZoom(target, { margin: 24 });

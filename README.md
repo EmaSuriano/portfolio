@@ -27,6 +27,7 @@
 - Improvements over MDX:
   - Reading time with [reading-time](https://github.com/ngryman/reading-time)
   - Automatic image caption using [remark-figure-caption](https://github.com/Microflash/remark-figure-caption)
+- Smooth view transitions using [ViewTransition](https://docs.astro.build/en/guides/view-transitions/)
 
 ## Dev Tools 👷
 

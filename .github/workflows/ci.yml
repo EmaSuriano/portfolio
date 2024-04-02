@@ -12,13 +12,13 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - run: yarn install --frozen-lockfile
-      - run: npm install -g @lhci/cli@0.13.x
-
+      - run: yarn install --frozen-lockfile --ignore-engines
+      
       - run: yarn check-types
       - run: yarn build
 
-      - run: lhci autorun
-        if: false # TODO: enable Lighthouse 
-        env: 
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      # - run: npm install -g @lhci/cli@0.13.x
+      # - run: lhci autorun
+      #   if: false 
+      #   env: 
+      #     LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
