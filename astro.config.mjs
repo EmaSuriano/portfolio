@@ -1,32 +1,29 @@
-import { defineConfig } from 'astro/config';
-import compress from 'astro-compress';
-import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
-import mdx from '@astrojs/mdx';
-import remarkPlugins from './remark-plugins';
+import { defineConfig } from "astro/config";
+import compress from "astro-compress";
+import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
+import rehypePlugins from "./rehype-plugins";
 import icon from "astro-icon";
 
-
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://emasuriano.com/',
+  site: "https://emasuriano.com/",
   integrations: [
     tailwind(),
     sitemap(),
     compress(),
     icon(),
-    mdx({ remarkPlugins, syntaxHighlight: 'prism' }),
+    mdx({
+      rehypePlugins,
+      syntaxHighlight: "prism",
+    }),
   ],
   markdown: {
-    syntaxHighlight: 'prism',
-    remarkPlugins,
+    syntaxHighlight: "prism",
+    rehypePlugins,
   },
   redirects: {
-    '/resume': 'https://resume.emasuriano.com',
-  },
-  image: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'cdn.statically.io' },
-    ],
+    "/resume": "https://resume.emasuriano.com",
   },
 });

@@ -1,16 +1,15 @@
 ---
-import Project from 'components/Project.astro';
-import Talk from 'components/Talk.astro';
-import Layout from 'layouts/Layout.astro';
-import about from 'author.json';
-import { Content } from 'about.md';
-import { Image } from 'astro:assets';
-
+import Project from "components/Project.astro";
+import Talk from "components/Talk.astro";
+import Layout from "layouts/Layout.astro";
+import about from "author.json";
+import { Content } from "about.md";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="About me">
   <section class="prose max-w-full dark:prose-dark">
-    <h1 transition:name="title" >About me</h1>
+    <h1>About me</h1>
 
     <div
       class="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-8"
@@ -24,7 +23,13 @@ import { Image } from 'astro:assets';
         <div
           class="aspect-square h-full w-full overflow-hidden rounded-lg bg-white transition-transform dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-x-5 sm:hover:-translate-y-5 sm:hover:shadow-lg"
         >
-          <Image loading="eager" src={about.avatar} alt={about.name} inferSize />
+          <Image
+            loading="eager"
+            src={about.avatar}
+            alt={about.name}
+            width={600}
+            height={600}
+          />
         </div>
       </div>
     </div>
@@ -54,9 +59,11 @@ import { Image } from 'astro:assets';
     --g1: radial-gradient(var(--r), var(--c2));
     --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
     --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
-    background: var(--f) 0 calc(-5 * var(--r) / 2),
+    background:
+      var(--f) 0 calc(-5 * var(--r) / 2),
       var(--f) calc(-2 * var(--s)) calc(var(--r) / 2),
-      var(--p) 0 calc(-2 * var(--r)), var(--g0) var(--s) calc(-5 * var(--r) / 2),
+      var(--p) 0 calc(-2 * var(--r)),
+      var(--g0) var(--s) calc(-5 * var(--r) / 2),
       var(--g1) var(--s) calc(5 * var(--r) / 2),
       radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),
       radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)),
@@ -65,7 +72,8 @@ import { Image } from 'astro:assets';
       var(--p) calc(-2 * var(--s)) var(--r),
       var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2),
       var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2),
-      var(--g0) 0 calc(-1 * var(--r)), var(--g1) var(--s) calc(var(--r) / -2),
+      var(--g0) 0 calc(-1 * var(--r)),
+      var(--g1) var(--s) calc(var(--r) / -2),
       var(--g0) var(--s) calc(var(--r) / 2) #fb7185; /*color 2 again here */
     background-size: calc(4 * var(--s)) calc(6 * var(--r));
   }

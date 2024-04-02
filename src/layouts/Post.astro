@@ -1,21 +1,21 @@
 ---
-import { format } from 'date-fns';
-import Layout from 'layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import author from 'author.json';
-import CommentBox from 'components/CommentBox.astro';
-import type { CollectionEntry } from 'astro:content';
-import getReadingTime from 'reading-time';
+import { format } from "date-fns";
+import Layout from "layouts/Layout.astro";
+import { Image } from "astro:assets";
+import author from "author.json";
+import CommentBox from "components/CommentBox.astro";
+import type { CollectionEntry } from "astro:content";
+import getReadingTime from "reading-time";
 
-import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs';
-import 'medium-zoom/dist/style.css'
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs";
+import "medium-zoom/dist/style.css";
 
-type Props = { entry: CollectionEntry<'blog'> };
+type Props = { entry: CollectionEntry<"blog"> };
 
 const { title, publishedAt, summary, cover } = Astro.props.entry.data;
 
-const publishDate = format(publishedAt, 'MMMM d, yyyy');
+const publishDate = format(publishedAt, "MMMM d, yyyy");
 const minutesRead = getReadingTime(Astro.props.entry.body);
 ---
 
@@ -25,8 +25,8 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   article={{ date: publishDate }}
   image={cover}
 >
-  <div class="overflow-hidden rounded-2xl shadow-lg">
-    <Image loading="eager" src={cover} alt={title} inferSize   />
+  <div class="overflow-hidden rounded-2xl shadow-lg max-h-80 flex items-center">
+    <Image loading="eager" src={cover} alt={title} width={1400} height={600} />
   </div>
 
   <article
@@ -38,14 +38,20 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
     <h1
       class="mb-6 text-3xl font-bold tracking-tight md:text-4xl"
       item-prop="title"
-      transition:name="title">
+    >
       {title}
     </h1>
     <header class="mb-8 flex items-center sm:mb-10">
       <figure
         class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full sm:h-6 sm:w-6"
       >
-        <Image loading="eager" src={author.avatar} alt={author.name} height="100" width="100" />
+        <Image
+          loading="eager"
+          src={author.avatar}
+          alt={author.name}
+          height="100"
+          width="100"
+        />
       </figure>
       <div
         class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"
@@ -75,33 +81,30 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   <CommentBox repo="EmaSuriano/portfolio" />
 </Layout>
 
-<script client:only>
-  import mediumZoom from 'medium-zoom/dist/pure'
+<script>
+  import mediumZoom from "medium-zoom/dist/pure";
 
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     const target = document.querySelectorAll(
-      '[data-zoomable] > img, article prose figure > img',
+      "[data-zoomable] > img, article section figure > img",
     );
 
     mediumZoom(target, { margin: 24 });
-
-})
+  });
 </script>
 
-<script client:only>
-  import '@justinribeiro/lite-youtube';
+<script>
+  import "@justinribeiro/lite-youtube";
 
-document.addEventListener('astro:page-load', () => {
-lite-youtube');
-  const videos = document.querySelectorAll('lite-youtube');
+  document.addEventListener("astro:page-load", () => {
+    const videos = document.querySelectorAll("lite-youtube");
 
     videos.forEach((node) => {
-      const label = document.createElement('figcaption');
+      const label = document.createElement("figcaption");
       label.textContent = node.videoTitle;
       node.parentNode?.insertBefore(label, node.nextSibling);
     });
-
-});
+  });
 </script>
 
 <style is:global>

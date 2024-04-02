@@ -1,8 +1,8 @@
 ---
-import 'styles.css';
-import about from 'author.json';
-import { SEO } from 'astro-seo';
-import {ViewTransitions} from 'astro:transitions';
+import "styles.css";
+import about from "author.json";
+import { SEO } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
 
 export type Props = {
   title: string;
@@ -15,20 +15,20 @@ export type Props = {
 
 const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
-const isHome = pathname === '/';
+const isHome = pathname === "/";
 
 const {
   title,
   article,
   description = about.bio,
-  image = origin.concat('/preview.png'),
+  image = origin.concat("/preview.png"),
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <SEO
       title={about.name}
       charset="utf-8"
@@ -39,11 +39,11 @@ const {
         description,
         image,
         title,
-        card: 'summary_large_image',
+        card: "summary_large_image",
       }}
       openGraph={{
         basic: {
-          type: 'Portfolio',
+          type: "Portfolio",
           title,
           url,
           image,
@@ -53,7 +53,7 @@ const {
           alt: `${about.name} Portfolio`,
         },
         optional: {
-          locale: 'en_US',
+          locale: "en_US",
           siteName: about.name,
           description,
         },
@@ -73,26 +73,42 @@ const {
     <link href="/manifest.json" rel="manifest" />
     <meta content="#fff" name="theme-color" />
     <ViewTransitions />
-  </head> 
+  </head>
 
   <body
     class={`bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
-    ${isHome ? ' flex items-center' : ''}`}
+    ${isHome ? " flex items-center" : ""}`}
   >
     <div
       class={`w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl ${
-        isHome ? 'h-full max-h-[44rem]' : 'min-h-full'
+        isHome ? "h-full max-h-[44rem]" : "min-h-full"
       }`}
     >
       <header class="relative" transition:persist>
         <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
         <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
-            <li><a class="link-underline" href="/" data-astro-prefetch="viewport">Home</a></li>
-            <li><a href="/about" class="link-underline" data-astro-prefetch="viewport">About</a></li>
-            <li><a href="/blog" class="link-underline" data-astro-prefetch="viewport">Blog</a></li>
+            <li>
+              <a class="link-underline" href="/" data-astro-prefetch="viewport"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="/about"
+                class="link-underline"
+                data-astro-prefetch="viewport">About</a
+              >
+            </li>
+            <li>
+              <a
+                href="/blog"
+                class="link-underline"
+                data-astro-prefetch="viewport">Blog</a
+              >
+            </li>
           </ul>
-        </nav>  
+        </nav>
       </header>
       <main id="skip" class="flex flex-grow flex-col py-12" transition:animate="fade">
         <slot />
@@ -115,7 +131,7 @@ const {
       </footer>
     </div>
 
-    <script is:inline data-astro-rerun>
+    <script data-astro-rerun>
       setTimeout(() => {
         if (window.location.hash) {
           const article = document.querySelector(
@@ -135,7 +151,7 @@ const {
 
       .link-underline::before {
         @apply absolute -bottom-1 left-0 block h-0.5 w-full origin-top-left scale-x-0 bg-indigo-500 transition-transform;
-        content: '';
+        content: "";
       }
 
       .link-underline:hover::before {
