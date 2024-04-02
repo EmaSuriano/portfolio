@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import compress from "astro-compress";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx";
 import rehypePlugins from "./rehype-plugins";
 import icon from "astro-icon";
 
@@ -14,10 +13,6 @@ export default defineConfig({
     sitemap(),
     compress(),
     icon(),
-    mdx({
-      rehypePlugins,
-      syntaxHighlight: "prism",
-    }),
   ],
   markdown: {
     syntaxHighlight: "prism",
