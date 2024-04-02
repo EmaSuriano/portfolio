@@ -22,5 +22,11 @@ export default defineConfig({
   },
   redirects: {
     '/resume': 'https://resume.emasuriano.com',
-  }
+  },
+  image: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'cdn.statically.io' },
+    ],
+  },
 });
