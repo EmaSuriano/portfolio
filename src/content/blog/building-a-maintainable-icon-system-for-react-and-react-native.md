@@ -54,7 +54,7 @@ At the same time, both platforms should implement the same API (`propTypes`) mak
 
 ## Demo time 🎉
 
-![Demo](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/building-a-maintainable-icon-system-for-react-and-react-native/Demo.png)
+![Demo](../../static/assets/blog/building-a-maintainable-icon-system-for-react-and-react-native/Demo.png)
 
 I created a repository from which I extracted the following snippets. If you want to skip the explanation and jump into the code, you can use this link:
 
@@ -324,7 +324,7 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-![Demo React](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/building-a-maintainable-icon-system-for-react-and-react-native/Demo_React.png)
+![Demo React](../../static/assets/blog/building-a-maintainable-icon-system-for-react-and-react-native/Demo_React.png)
 
 ### React Native implementation
 
@@ -343,7 +343,7 @@ const App = () => (
 export default App;
 ```
 
-![Demo React Native](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/building-a-maintainable-icon-system-for-react-and-react-native/Demo_React_Native.png)
+![Demo React Native](../../static/assets/blog/building-a-maintainable-icon-system-for-react-and-react-native/Demo_React_Native.png)
 
 ## Last words 👋
 

@@ -17,7 +17,7 @@ Regarding **visual testing**, it’s a testing approach that consists of taking 
 
 In case you already understand the concept of [Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing), this is the same. The difference is you compare a picture and not some resulting code.
 
-![Example of Visual Testing Diff](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Example_of_Visual_Testing_Diff.png)
+![Example of Visual Testing Diff](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Example_of_Visual_Testing_Diff.png)
 
 In case you are thinking _“But how are these two concepts connected?”_. Storybook insists on developing your components in isolation, which is the best scenario to do Visual Testing in order to avoid unwanted differences in our images. One way of thinking about this approach is like, **every story** defined in Storybook is a **visual test** in our application.
 
@@ -33,7 +33,7 @@ $ npx -p @storybook/cli sb init
 
 When the installation is finished you can check if everything was set up properly by running yarn storybook , and you should see the Homepage with two stories that were created by default.
 
-![Storybook Homepage](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Storybook_Homepage.png)
+![Storybook Homepage](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Storybook_Homepage.png)
 
 Now let’s create a simple component for testing. I decided to create a simple Button called DuplicationButton , in which every time the user clicks on it the children provided by props will be duplicated. Not really useful but it will serve as a great example!
 
@@ -103,7 +103,7 @@ initStoryshots({ */* configuration options */* });
 
 In order to run it, execute yarn test. Now for each story, there is a test with a _snapshot_ where you can check what is the output (component rendered) of the story. These _snapshots_ are going to be automatically generated every time we run our tests, and in case they have a difference with the previous one the test will fail.
 
-![Test result with storyshots](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Test_result_with_storyshots.png)
+![Test result with storyshots](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Test_result_with_storyshots.png)
 
 ## Let’s get Visual! 🌈
 
@@ -129,7 +129,7 @@ initStoryshots({
 
 One thing to mention is that now our tests depends on having an instance of storybook running. I recommend managing two terminals at the same time for this kind of scenarios: in one terminal you run yarn storybook and in another yarn test .
 
-![Running visual testing along with Storybook](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Running_visual_testing_along_with_Storybook.png)
+![Running visual testing along with Storybook](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Running_visual_testing_along_with_Storybook.png)
 
 The old snapshots are obsolete (you can safely delete them) because now we have a new folder called **image_snapshots** where there is a picture for each story. And every time a component changes what it renders, tests will fail and you can check it with a visual diffing between the stored image snapshot and the new image.
 
@@ -153,7 +153,7 @@ Inside package.json , you need to create a new script which will start storybook
 },
 ```
 
-![Test CI output](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Test_CI_output.jpg)
+![Test CI output](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Test_CI_output.jpg)
 
 ## Interactive Visual Testing 🕺
 
@@ -205,13 +205,13 @@ describe('<DuplicationButton />', () => {
 
 In order to run this test, we need to start Storybook or you can directly use yarn test:ci which will do it for you! This is how the screenshot looks like:
 
-![Interactive visual testing](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Interactive_visual_testing.png)
+![Interactive visual testing](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Interactive_visual_testing.png)
 
 ## My Experience working with Visual Testing 🙋‍♂️
 
 As with all the new technologies/frameworks, I tried Visual testing first with a side project in which I saw a possible improvement. The project itself was a collection of weather icons made with React and [styled-components](https://www.styled-components.com/), called [weather-styled-icon](https://github.com/EmaSuriano/weather-styled-icon).
 
-![weather-styled-icon showcase](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/weather-styled-icon_showcase.png)
+![weather-styled-icon showcase](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/weather-styled-icon_showcase.png)
 
 The first release I made of this library I wrote all the tests with enzyme, following a structural testing strategy. In simple words, I was rendering an icon with mount and then running checking if a node exists, and in order to check how it “looks” I was running `expect.toMatchSnapshot` of the resulting styles. As you can imagine, this way of testing is very time consuming, but nevertheless, I was able to finish all of them.
 
@@ -221,7 +221,7 @@ After I made all the changes inside the code, all my tests were broken due to I 
 
 So I made the decision to give a try to Visual Testing because it seemed the most suitable testing strategy for my situation, where I want to check exactly how the icons and them variations looked like. I followed the same steps that I already explained above and I ended up having a better suite of tests with way less code. This is the difference of lines of the merged Pull Request!
 
-![Visual testing lines diff weather-styled-icon](https://cdn.statically.io/gh/emasuriano/static/main/assets/blog/using-storybook-as-a-visual-testing-platform/Visual_testing_lines_diff_weather-styled-icon.png)
+![Visual testing lines diff weather-styled-icon](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/Visual_testing_lines_diff_weather-styled-icon.png)
 
 ## Do’s and Dont’s ✍️
 

@@ -20,5 +20,5 @@ export default defineConfig({
   },
   redirects: {
     "/resume": "https://resume.emasuriano.com",
-  },
+  }
 });
