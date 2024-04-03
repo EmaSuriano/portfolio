@@ -2,7 +2,7 @@
 title: Make any Static Site Dynamic with Zapier
 summary: Demo on how to integrate Zapier along with Gatsby to make automatic deploys based on events.
 publishedAt: 2019-03-19
-cover: https://images.unsplash.com/photo-1517953377824-516f2dca803b
+cover: https://images.unsplash.com/photo-1517953377824-516f2dca803b?w=1400&h=600&fit=crop
 ---
 
 Without any doubt, there has been a huge adoption for Static Site Generators in these past 2 years, and one of the main reasons was the huge growth of Gatsby and its community.

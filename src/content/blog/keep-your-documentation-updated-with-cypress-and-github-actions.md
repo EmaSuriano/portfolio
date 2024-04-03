@@ -2,7 +2,7 @@
 title: Keep your Documentation updated with Cypress and Github Actions
 summary: How I automatize the README images of my open-source projects by using Cypress and GitHub Actions.
 publishedAt: 2020-10-26
-cover: https://images.unsplash.com/photo-1500051638674-ff996a0ec29e
+cover: https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?w=1400&h=600&fit=crop
 ---
 
 One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated, and I was being forced to manually update them ... In this post, how I automatize this task by using Cypress and GitHub Actions.

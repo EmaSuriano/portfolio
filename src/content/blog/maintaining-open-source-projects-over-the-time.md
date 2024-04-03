@@ -2,7 +2,7 @@
 title: 'Open Source Project Maintenance for Busy Developers: Best Practices'
 summary: Discover practical tips and best practices for maintaining open source projects alongside a busy developer job. Learn how to effectively balance responsibilities, and manage work commitments from my own experience.
 publishedAt: 2023-04-13
-cover: https://images.unsplash.com/photo-1570129476815-ba368ac77013
+cover: https://images.unsplash.com/photo-1570129476815-ba368ac77013?w=1400&h=600&fit=crop
 draft: true
 ---
 

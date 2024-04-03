@@ -2,7 +2,7 @@
 title: Building a collaborative Calendar with Google and Gatsby
 summary: Step by step on how to integrate Google Forms into a Gatsby project to collect new answer and display them inside the website.
 publishedAt: 2018-12-26
-cover: https://images.unsplash.com/photo-1506784365847-bbad939e9335
+cover: https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=1400&h=600&fit=crop
 ---
 
 About one week ago a friend of mine came to me for help, he wanted to create an online calendar for cultural events around the city. The idea was to create an application with a calendar showing all the upcoming events with the possibility that any person can add or edit new events.

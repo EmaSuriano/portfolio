@@ -1,7 +1,7 @@
 ---
 publishedAt: 2024-02-23
 title: Going into a new direction
-cover: https://images.unsplash.com/photo-1453173267031-c4c5ace6b624
+cover: https://images.unsplash.com/photo-1453173267031-c4c5ace6b624?w=1400&h=600&fit=crop
 summary: My sharing regarding my approach towards the AI development, and what
   are my next steps for this incoming year.
 ---

@@ -1,7 +1,7 @@
 ---
 publishedAt: 2024-04-01
 title: Run a Linux Distro in your Android device
-cover: https://images.unsplash.com/photo-1650094980569-f7903e52633d
+cover: https://images.unsplash.com/photo-1650094980569-f7903e52633d?w=1400&h=600&fit=crop
 summary: How I set up an Android tablet to be able to run a Linux Distro in
   order to have a desktop experience and boost your productivity.
 ---

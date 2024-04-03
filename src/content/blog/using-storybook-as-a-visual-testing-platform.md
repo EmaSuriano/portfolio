@@ -2,7 +2,7 @@
 title: Using Storybook as a Visual Testing Platform
 summary: Converting Storybook into a great testing framework by using the strategy of visual diffing to check for changes.
 publishedAt: 2019-04-28
-cover: https://images.unsplash.com/photo-1570283626328-53f8bfd59a0b
+cover: https://images.unsplash.com/photo-1570283626328-53f8bfd59a0b?w=1400&h=600&fit=crop
 ---
 
 My experience working with this strategy of testing (which does not replace the others) and the integration with my current development tool.

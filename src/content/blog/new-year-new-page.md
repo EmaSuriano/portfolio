@@ -2,7 +2,7 @@
 title: New year, new portfolio
 summary: Introduction to my website, along with some learning I found on the process of refactoring and technical improvements.
 publishedAt: 2023-01-03
-cover: https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa
+cover: https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?w=1400&h=600&fit=crop
 ---
 
 First of all, happy new 2023 to everybody reading this and welcome to the new version of my website! It took some time to set it up, between the breaks of work and some weekends while playing around with the new stack. The idea of the article is to share my insights about why I decided to fully rebuild it and some other improvements I made on top of the journey.
