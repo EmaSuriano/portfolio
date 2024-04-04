@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { slug } = Astro.props;
+---
+
+<view-counter data-slug={slug} class="flex items-center gap-1">
+  <Icon name="ri:eye-fill" class="w-4 h-4 text-current" />
+  <span data-view-number>--</span>
+  <span>views</span>
+</view-counter>
+
+<script>
+  class Views extends HTMLElement {
+    constructor() {
+      super();
+
+      const slug = this.dataset.slug;
+      const viewCounter = this.querySelector("[data-view-number]");
+
+      fetch(`/api/views/${slug}`)
+        .then((x) => x.json())
+        .then((count) => {
+          viewCounter!.innerHTML = count;
+        });
+    }
+  }
+
+  customElements.define("view-counter", Views);
+</script>

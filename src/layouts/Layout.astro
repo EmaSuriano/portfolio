@@ -110,7 +110,11 @@ const {
           </ul>
         </nav>
       </header>
-      <main id="skip" class="flex flex-grow flex-col py-12" transition:animate="fade">
+      <main
+        id="skip"
+        class="flex flex-grow flex-col py-12"
+        transition:animate="fade"
+      >
         <slot />
       </main>
       <footer
@@ -142,6 +146,23 @@ const {
           }
         }
       }, 0);
+    </script>
+
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        setTimeout(() => {
+          const slug = location.pathname.split("/").pop();
+          // TODO: cannot use Astro API because POST is not available here ...
+          // Possible solution move the worker to the same domain in cloudfare
+          fetch(
+            `https://counter-visits.emanuel-suriano.workers.dev/api/${slug}`,
+            {
+              method: "POST",
+              mode: "no-cors",
+            },
+          );
+        }, 10_000);
+      });
     </script>
 
     <style is:global>
