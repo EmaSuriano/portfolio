@@ -151,7 +151,10 @@ const {
     <script>
       document.addEventListener("astro:page-load", () => {
         setTimeout(() => {
-          const slug = location.pathname.split("/").pop();
+          const regex = new RegExp("[^/]+(?=/$|$)") 
+          const parts = regex.exec(location.pathname);
+          const slug = parts === null ? 'home' : parts[0]
+          
           // TODO: cannot use Astro API because POST is not available here ...
           // Possible solution move the worker to the same domain in cloudfare
           fetch(
@@ -161,7 +164,7 @@ const {
               mode: "no-cors",
             },
           );
-        }, 10_000);
+        }, 1000);
       });
     </script>
 
