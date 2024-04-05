@@ -18,7 +18,11 @@ const { slug } = Astro.props;
       const slug = this.dataset.slug;
       const viewCounter = this.querySelector("[data-view-number]");
       
-      fetch(`https://counter-visits.emanuel-suriano.workers.dev/api/views/${slug}`)
+      fetch(`https://counter-visits.emanuel-suriano.workers.dev/api/views/${slug}`,
+            {
+              method: "GET",
+              mode: "no-cors",
+            },)
         .then((x) => x.json())
         .then((count) => {
           viewCounter!.innerHTML = count;
