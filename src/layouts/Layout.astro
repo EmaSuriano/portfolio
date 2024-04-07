@@ -155,14 +155,7 @@ const {
           const parts = regex.exec(location.pathname);
           const slug = parts === null ? 'home' : parts[0]
           
-          // TODO: cannot use Astro API because POST is not available here ...
-          // Possible solution move the worker to the same domain in cloudfare
-          fetch(
-            `https://counter-visits.emanuel-suriano.workers.dev/api/${slug}`,
-            {
-              method: "POST",
-              mode: "no-cors",
-            },
+          fetch(`https://visits.emasuriano.com/api/${slug}`, { method: "POST" },
           );
         }, 5000);
       });
