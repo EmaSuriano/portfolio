@@ -147,8 +147,7 @@ const {
       }, 0);
     </script>
 
-    <script>
-      document.addEventListener("astro:page-load", () => {
+    <script data-astro-rerun>    
         setTimeout(() => {
           const regex = new RegExp("[^/]+(?=/$|$)") 
           const parts = regex.exec(location.pathname);
@@ -157,7 +156,6 @@ const {
           fetch(`https://visits.emasuriano.com/api/${slug}`, { method: "POST" },
           );
         }, 5000);
-      });
     </script>
 
     <style is:global>
