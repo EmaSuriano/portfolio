@@ -10,7 +10,7 @@ export default defineConfig({
   site: "https://emasuriano.com/",
   prefetch: {
     defaultStrategy: 'viewport'
-  }
+  },
   integrations: [
     tailwind(),
     sitemap(),
