@@ -11,17 +11,12 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: 'viewport'
   },
-  integrations: [
-    tailwind(),
-    sitemap(),
-    compress(),
-    icon(),
-  ],
+  integrations: [tailwind(), sitemap(), compress(), icon()],
   markdown: {
     syntaxHighlight: "prism",
-    rehypePlugins,
+    rehypePlugins
   },
   redirects: {
-    "/resume": "https://resume.emasuriano.com",
+    "/resume": "https://resume.emasuriano.com"
   }
 });

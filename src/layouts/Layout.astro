@@ -140,7 +140,7 @@ const {
         const parts = regex.exec(location.pathname);
         const slug = parts === null ? "home" : parts[0];
 
-        const visits = JSON.parse(localStorage.getItem("visits") || []);
+        const visits = JSON.parse(localStorage.getItem("visits")) || [];
 
         if (visits.includes(slug)) return;
 
