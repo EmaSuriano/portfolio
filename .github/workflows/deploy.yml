@@ -31,11 +31,11 @@ jobs:
       - run: yarn build 
 
       - run: npx @divriots/jampack ./dist
-      
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy --project-name=portfolio
+          command: pages deploy dist --project-name=portfolio
       
