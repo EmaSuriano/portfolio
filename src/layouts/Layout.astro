@@ -89,29 +89,18 @@ const {
         <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
             <li>
-              <a class="link-underline" href="/"
-                >Home</a
-              >
+              <a class="link-underline" href="/">Home</a>
             </li>
             <li>
-              <a
-                href="/about"
-                class="link-underline">About</a
-              >
+              <a href="/about" class="link-underline">About</a>
             </li>
             <li>
-              <a
-                href="/blog"
-                class="link-underline">Blog</a
-              >
+              <a href="/blog" class="link-underline">Blog</a>
             </li>
           </ul>
         </nav>
       </header>
-      <main
-        id="skip"
-        class="flex flex-grow flex-col py-12"
-      >
+      <main id="skip" class="flex flex-grow flex-col py-12">
         <slot />
       </main>
       <footer
@@ -145,21 +134,19 @@ const {
       }, 0);
     </script>
 
-    <script data-astro-rerun>    
-        setTimeout(() => {
-          const regex = new RegExp("[^/]+(?=/$|$)") 
-          const parts = regex.exec(location.pathname);
-          const slug = parts === null ? 'home' : parts[0]
+    <script data-astro-rerun>
+      setTimeout(() => {
+        const regex = new RegExp("[^/]+(?=/$|$)");
+        const parts = regex.exec(location.pathname);
+        const slug = parts === null ? "home" : parts[0];
 
-          const visits = JSON.parse(localStorage.getItem('visits') || [])
-          
-          if(visits.includes(slug))
-            return
+        const visits = JSON.parse(localStorage.getItem("visits") || []);
 
-          fetch(`https://visits.emasuriano.com/api/${slug}`, { method: "POST" },
-          localStorage.setItem('visits', JSON.stringify(visits.concat(slug)))
-          );
-        }, 5000);
+        if (visits.includes(slug)) return;
+
+        fetch(`https://visits.emasuriano.com/api/${slug}`, { method: "POST" });
+        localStorage.setItem("visits", JSON.stringify(visits.concat(slug)));
+      }, 5000);
     </script>
 
     <style is:global>
