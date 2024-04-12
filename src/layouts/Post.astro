@@ -15,7 +15,7 @@ import ViewCounter from "components/ViewCounter.astro";
 type Props = { entry: CollectionEntry<"blog"> };
 
 const { title, publishedAt, summary, cover } = Astro.props.entry.data;
-const { slug } = Astro.props.entry 
+const { slug } = Astro.props.entry;
 
 const publishDate = format(publishedAt, "MMMM d, yyyy");
 const minutesRead = getReadingTime(Astro.props.entry.body);
@@ -28,7 +28,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   image={cover}
 >
   <div class="overflow-hidden rounded-2xl shadow-lg">
-    <Image loading="eager" src={cover} alt={title} width={1400} height={600} />
+    <Image src={cover} alt={title} width={1400} height={600} />
   </div>
 
   <article
@@ -43,17 +43,10 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
     >
       {title}
     </h1>
+
     <header class="mb-8 flex items-center sm:mb-10">
-      <figure
-        class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"
-      >
-        <Image
-          loading="eager"
-          src={author.avatar}
-          alt={author.name}
-          height="150"
-          width="150"
-        />
+      <figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full">
+        <Image src={`${author.avatar}?s=150`} alt={author.name} width={150} height={150} />
       </figure>
       <div
         class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"

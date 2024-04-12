@@ -18,18 +18,11 @@ import { Image } from "astro:assets";
         <Content />
       </div>
 
-      <!-- Do not use Img here because Gravatar already does this convertion  -->
       <div class="not-prose image-container">
         <div
           class="aspect-square h-full w-full overflow-hidden rounded-lg bg-white transition-transform dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-x-5 sm:hover:-translate-y-5 sm:hover:shadow-lg"
         >
-          <Image
-            loading="eager"
-            src={about.avatar}
-            alt={about.name}
-            width={600}
-            height={600}
-          />
+          <Image src={`${about.avatar}?s=1024`} alt={about.name} width={1024} height={1024} />
         </div>
       </div>
     </div>
