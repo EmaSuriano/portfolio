@@ -11,7 +11,8 @@ const { slug } = Astro.props;
 </view-counter>
 
 <script>
-  class Views extends HTMLElement {
+  document.addEventListener("astro:page-load", () => {
+class Views extends HTMLElement {
     constructor() {
       super();
 
@@ -27,4 +28,6 @@ const { slug } = Astro.props;
   }
 
   customElements.define("view-counter", Views);
-</script>
+});
+
+  </script>
