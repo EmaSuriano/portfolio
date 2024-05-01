@@ -23,7 +23,7 @@
     "@types/glob": "^8.1.0",
     "@types/prismjs": "^1.26.3",
     "astro": "4.7.0",
-    "astro-compress": "^2.2.21",
+    "astro-compress": "^2.2.22",
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.3",
     "autoprefixer": "^10.4.19",
