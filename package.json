@@ -14,7 +14,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.2",
+    "@astrojs/sitemap": "^3.1.4",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/ri": "^1.1.20",
     "@microflash/rehype-figure": "^2.0.0",
