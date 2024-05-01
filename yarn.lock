@@ -822,13 +822,13 @@
   resolved "https://registry.yarnpkg.com/@justinribeiro/lite-youtube/-/lite-youtube-1.5.0.tgz#c8f5b1e9bc6980defb725bf84d84a957deea1b92"
   integrity sha512-TU92RKtz9BI9PRYrVwDIUsnFadLZtqRKWl1ZOdbxb7roJDb8Dd/xURllAsLEmCg6oJNyhXlVa5RsnUc0EKd8Cw==
 
-"@microflash/rehype-figure@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@microflash/rehype-figure/-/rehype-figure-2.0.0.tgz#efb6fe5f718b213a98008532a511cca659c274e7"
-  integrity sha512-mQodZlU7n+/YbOS6iJ9O6I+cT9dsOOImKsaOSiWh8bKycXRPCc16Fs3NGoofgupkYpJdX0oqjwmQL9j+tBcAGA==
+"@microflash/rehype-figure@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@microflash/rehype-figure/-/rehype-figure-2.1.0.tgz#70b7e8c916dd5d2b867a820c7d633a8d5f77e674"
+  integrity sha512-Ff1rrqjRYcmV9/7Qk8HM/mBpz9k5yzO8pgKfbI2hnN09sBQXoeOP4d9J419Mwk+LoMZlSfd4kgI92dFRtYBvUg==
   dependencies:
     hast-util-whitespace "^3.0.0"
-    hastscript "^8.0.0"
+    hastscript "^9.0.0"
     unist-util-remove "^4.0.0"
     unist-util-visit "^5.0.0"
 
@@ -2686,6 +2686,17 @@ hastscript@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/hastscript/-/hastscript-8.0.0.tgz#4ef795ec8dee867101b9f23cc830d4baf4fd781a"
   integrity sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==
+  dependencies:
+    "@types/hast" "^3.0.0"
+    comma-separated-tokens "^2.0.0"
+    hast-util-parse-selector "^4.0.0"
+    property-information "^6.0.0"
+    space-separated-tokens "^2.0.0"
+
+hastscript@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/hastscript/-/hastscript-9.0.0.tgz#2b76b9aa3cba8bf6d5280869f6f6f7165c230763"
+  integrity sha512-jzaLBGavEDKHrc5EfFImKN7nZKKBdSLIdGvCwDZ9TfzbF2ffXiov8CKE445L2Z1Ek2t/m4SKQ2j6Ipv7NyUolw==
   dependencies:
     "@types/hast" "^3.0.0"
     comma-separated-tokens "^2.0.0"
