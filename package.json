@@ -19,7 +19,7 @@
     "@iconify-json/ri": "^1.1.20",
     "@microflash/rehype-figure": "^2.1.0",
     "@octokit/core": "^6.0.1",
-    "@tailwindcss/typography": "^0.5.12",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/glob": "^8.1.0",
     "@types/prismjs": "^1.26.3",
     "astro": "4.5.12",
