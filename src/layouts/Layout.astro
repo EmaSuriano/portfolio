@@ -124,24 +124,11 @@ const {
     <script data-astro-rerun>
       setTimeout(() => {
         if (window.location.hash) {
-          const article = document.querySelector(
-            `[href='${window.location.hash}']`,
-          );
-          if (article) {
-            article.scrollIntoView();
-          }
+          document
+            .querySelector(`[href='${window.location.hash}']`)
+            ?.scrollIntoView();
         }
       }, 0);
-    </script>
-
-    <script data-astro-rerun>
-      setTimeout(() => {
-        const regex = new RegExp("[^/]+(?=/$|$)");
-        const parts = regex.exec(location.pathname);
-        const slug = parts === null ? "home" : parts[0];
-
-fetch(`https://visits.emasuriano.com/api/${slug}`, { method: "POST" });
-      }, 1000);
     </script>
 
     <style is:global>

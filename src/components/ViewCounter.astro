@@ -10,24 +10,27 @@ const { slug } = Astro.props;
   <span>views</span>
 </view-counter>
 
-<script>
-  document.addEventListener("astro:page-load", () => {
-class Views extends HTMLElement {
+<script data-astro-rerun>
+  class Views extends HTMLElement {
     constructor() {
       super();
 
       const slug = this.dataset.slug;
       const viewCounter = this.querySelector("[data-view-number]");
-      
-      fetch(`https://visits.emasuriano.com/api/${slug}`)
-        .then((x) => x.json())
-        .then((count) => {
-          viewCounter!.innerHTML = count;
-        });
+
+      if (viewCounter) {
+        fetch(`https://visits.emasuriano.com/api/${slug}`)
+          .then((x) => x.json())
+          .then((count) => {
+            viewCounter.innerHTML = count;
+          });
+      }
+
+      setTimeout(() => {
+        fetch(`https://visits.emasuriano.com/api/${slug}`, { method: "POST" });
+      }, 5000);
     }
   }
 
   customElements.define("view-counter", Views);
-});
-
-  </script>
+</script>

@@ -22,7 +22,12 @@ import { Image } from "astro:assets";
         <div
           class="aspect-square h-full w-full overflow-hidden rounded-lg bg-white transition-transform dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-x-5 sm:hover:-translate-y-5 sm:hover:shadow-lg"
         >
-          <Image src={`${about.avatar}?s=1024`} alt={about.name} width={1024} height={1024} />
+          <Image
+            src={`${about.avatar}?s=1024`}
+            alt={about.name}
+            width={1024}
+            height={1024}
+          />
         </div>
       </div>
     </div>
