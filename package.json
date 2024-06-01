@@ -21,7 +21,7 @@
     "@octokit/core": "^6.1.2",
     "@tailwindcss/typography": "^0.5.13",
     "@types/glob": "^8.1.0",
-    "@types/prismjs": "^1.26.3",
+    "@types/prismjs": "^1.26.4",
     "astro": "4.7.0",
     "astro-compress": "^2.2.22",
     "astro-icon": "^1.1.0",
