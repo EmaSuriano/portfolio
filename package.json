@@ -31,7 +31,7 @@
     "date-fns": "^3.6.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
