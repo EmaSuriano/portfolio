@@ -1,8 +1,9 @@
 ---
 publishedAt: 2024-06-18
-title: Pages CMS to quickly to add new TIL
-summary: My new tool to quickly share content directly from the browser
+title: Using Pages CMS to quickly to add new TIL
+summary: An open source project to quickly share content directly from the browser
 ---
+
 I wanted to share this tool before, but it was too "short" to be considered a full article, so I was keeping it for my self. Now that I officially release my TIL section, this is the perfect place for it.
 
 The tool is called [Pages CMS](https://pagescms.org/), it's basically an online CMS that integrated perfectly with any of your GitHub repositories. It allows you to quickly add, remove or edit any plain text file in your repo. In my case, I was using it mostly for editing small typos in articles, but now I see a much better usage for TIL posts.
