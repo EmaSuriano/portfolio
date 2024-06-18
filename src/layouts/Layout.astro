@@ -2,7 +2,6 @@
 import "styles.css";
 import about from "author.json";
 import { SEO } from "astro-seo";
-import { ViewTransitions } from "astro:transitions";
 import { humanize } from "helpers";
 
 export type Props = {
@@ -86,7 +85,6 @@ const {
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="/manifest.json" rel="manifest" />
     <meta content="#fff" name="theme-color" />
-    <ViewTransitions />
   </head>
 
   <body
@@ -102,9 +100,15 @@ const {
         <a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a>
         <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
-            <li>
-              <a class="link-underline" href="/">Home</a>
-            </li>
+            {
+              !isHome && (
+                <li>
+                  <a class="link-underline" href="/">
+                    Home
+                  </a>
+                </li>
+              )
+            }
             {
               routeList.map(({ route, title }) => (
                 <li>
@@ -138,7 +142,7 @@ const {
       </footer>
     </div>
 
-    <script data-astro-rerun>
+    <script>
       setTimeout(() => {
         if (window.location.hash) {
           document

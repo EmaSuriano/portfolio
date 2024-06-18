@@ -12,7 +12,7 @@
 - Support for [Typescript](https://www.typescriptlang.org/)
 - Powered by [MDX](https://mdxjs.com/)
 - Design system with [Tailwind](https://tailwindcss.com/)
-- CI/CD with [Github Pages]([https://netlify.com/](https://github.com/actions/deploy-pages))
+- CI/CD with [Github Pages](<[https://netlify.com/](https://github.com/actions/deploy-pages)>)
 - Dependency updates with [Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
 ## Features 🎁
@@ -27,7 +27,6 @@
 - Improvements over MDX:
   - Reading time with [reading-time](https://github.com/ngryman/reading-time)
   - Automatic image caption using [remark-figure-caption](https://github.com/Microflash/remark-figure-caption)
-- Smooth view transitions using [ViewTransition](https://docs.astro.build/en/guides/view-transitions/)
 
 ## Dev Tools 👷
 

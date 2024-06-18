@@ -11,28 +11,28 @@ const { slug } = Astro.props;
 </view-counter>
 
 <script>
-  document.addEventListener("astro:page-load", async () => {
-    const viewCounter = document.querySelector("[data-view-number]");
+  const viewCounter = document.querySelector("[data-view-number]");
 
-    if (viewCounter) {
-      const slug = document.location.pathname.replaceAll("/", "");
+  if (!viewCounter) {
+    return;
+  }
 
-      try {
-        viewCounter.innerHTML = await fetch(
-          `https://visits.emasuriano.com/api/${slug}`,
-        ).then((x) => x.text());
+  const slug = document.location.pathname.replaceAll("/", "");
 
-        setTimeout(() => {
-          const visits = localStorage.getItem("visits") || "";
+  const visitCounts = await fetch(
+    `https://visits.emasuriano.com/api/${slug}`,
+  ).then((x) => x.text());
 
-          if (!visits.includes(slug)) {
-            localStorage.setItem("visits", visits.concat(slug));
-            fetch(`https://visits.emasuriano.com/api/${slug}`, {
-              method: "POST",
-            });
-          }
-        }, 5000);
-      } catch (error) {}
+  viewCounter.innerHTML = visitCounts;
+
+  setTimeout(() => {
+    const visits = localStorage.getItem("visits") || "";
+
+    if (!visits.includes(slug)) {
+      localStorage.setItem("visits", visits.concat(slug));
+      fetch(`https://visits.emasuriano.com/api/${slug}`, {
+        method: "POST",
+      });
     }
-  });
+  }, 5000);
 </script>
