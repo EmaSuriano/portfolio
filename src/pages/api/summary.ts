@@ -1,43 +1,36 @@
-import about from 'author.json';
-import { BLOG_PATH, getPostLink, humanize, sortPostByDate } from 'helpers';
-import { getCollection } from 'astro:content';
-
-type Link = {
-  title: string;
-  url: string;
-};
+import about from "author.json";
+import { getPostLink, humanize, sortPostByDate, type Summary } from "helpers";
+import { getCollection } from "astro:content";
 
 const { name, bio, website, projects, talks } = about;
 
-const allBlogPosts = await getCollection('blog');
-const allExternalPosts = await getCollection('external');
+export async function GET() {
+  const blogPosts = (await getCollection("blog")).filter(
+    (post) => !post.data.draft,
+  );
+  const externalPosts = await getCollection("external");
+  const tilPosts = await getCollection("til");
 
-const posts = [...allBlogPosts, ...allExternalPosts].sort(sortPostByDate);
+  const posts = [...blogPosts, ...externalPosts, ...tilPosts].sort(
+    sortPostByDate,
+  );
 
-const summary = {
-  name,
-  bio,
-  website,
-  projects: projects.map(
-    (url): Link => ({
-      title: humanize(url.split('/').pop()),
+  const summary: Summary = {
+    name,
+    bio,
+    website,
+    projects: projects.map((url) => ({
+      title: humanize(url.split("/").pop()),
       url,
-    }),
-  ),
-  posts: posts.map(
-    (post): Link => ({
-      title: post.data.title,
-      url: getPostLink(post, BLOG_PATH),
-    }),
-  ),
-  talks: talks.map((talk): Link => ({ title: talk.title, url: talk.url })),
-};
+    })),
+    posts: posts.map((post) => ({ ...post, url: getPostLink(post) })),
+    talks: talks.map((talk) => ({ title: talk.title, url: talk.url })),
+  };
 
-export function GET() {
   return new Response(JSON.stringify(summary), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 }

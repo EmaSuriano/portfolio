@@ -32,7 +32,7 @@ const postsByDate = groupPostsByDate(tilPosts);
             {group.posts.map((post) => (
               <li>
                 <div class="flex justify-between">
-                  <a href={getPostLink(post, Astro.url)} class="truncate">
+                  <a href={getPostLink(post)} class="truncate">
                     {post.data.title}
                   </a>
                   <span class="w-20 text-right">

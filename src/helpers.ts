@@ -8,6 +8,20 @@ type Post =
 
 type Group = { year: number; posts: Post[] };
 
+type Link = {
+  title: string;
+  url: string;
+};
+
+export type Summary = {
+  name: string;
+  bio: string;
+  website: string;
+  projects: Link[];
+  talks: Link[];
+  posts: (Post & { url: string })[];
+};
+
 export const humanize = (text = "") => {
   return text
     .split("-")
@@ -36,14 +50,16 @@ export const groupPostsByDate = (posts: Post[]): Group[] => {
     .sort((a, b) => b.year - a.year);
 };
 
-export const getPostLink = (post: Post, baseUrl: URL) => {
+export const getPostLink = (post: Post) => {
+  const { SITE, DEV } = import.meta.env;
+  const base = new URL(DEV ? "http://localhost:4321" : SITE);
+
   switch (post.collection) {
     case "blog":
+      return new URL(`blog/${post.slug}`, base).toString();
+
     case "til":
-      return new URL(
-        post.slug,
-        baseUrl.href.endsWith("/") ? baseUrl.href : baseUrl.href.concat("/"),
-      ).toString();
+      return new URL(`til/${post.slug}`, base).toString();
 
     case "external":
       return post.data.external;
@@ -53,9 +69,3 @@ export const getPostLink = (post: Post, baseUrl: URL) => {
       throw new Error("Collection not find");
   }
 };
-
-export const BLOG_PATH = new URL(
-  "/blog",
-  // @ts-ignore
-  import.meta.env.DEV ? "http://localhost:4321" : import.meta.env.SITE,
-);
