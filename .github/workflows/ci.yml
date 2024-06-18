@@ -3,7 +3,7 @@ name: ci
 on: [push]
 
 jobs:
-  lighthouseci:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,15 +12,9 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - run: yarn install --frozen-lockfile --ignore-engines
-      
+
       - run: yarn check-types
       - run: yarn build
-
-      # - run: npm install -g @lhci/cli@0.13.x
-      # - run: lhci autorun
-      #   if: false 
-      #   env: 
-      #     LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

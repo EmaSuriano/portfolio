@@ -4,7 +4,7 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches: [ main ]
+    branches: [main]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -24,11 +24,11 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - run: yarn install --lock-file --ignore-engines
 
-      - run: yarn build 
+      - run: yarn build
 
       - run: npx @divriots/jampack ./dist
 
@@ -38,4 +38,3 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=portfolio
-      
