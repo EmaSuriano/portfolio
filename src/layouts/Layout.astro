@@ -150,7 +150,7 @@ const {
 
     <script>
       document.addEventListener("astro:after-swap", () => {
-        var viewCounter = document.querySelector("[data-view-number]");
+        const viewCounter = document.querySelector("[data-view-number]");
         console.log("called!", viewCounter);
 
         if (viewCounter) {
