@@ -13,26 +13,24 @@ const { slug } = Astro.props;
 <script>
   const viewCounter = document.querySelector("[data-view-number]");
 
-  if (!viewCounter) {
-    return;
+  if (viewCounter) {
+    const slug = document.location.pathname.replaceAll("/", "");
+
+    const visitCounts = await fetch(
+      `https://visits.emasuriano.com/api/${slug}`,
+    ).then((x) => x.text());
+
+    viewCounter.innerHTML = visitCounts;
+
+    setTimeout(() => {
+      const visits = localStorage.getItem("visits") || "";
+
+      if (!visits.includes(slug)) {
+        localStorage.setItem("visits", visits.concat(slug));
+        fetch(`https://visits.emasuriano.com/api/${slug}`, {
+          method: "POST",
+        });
+      }
+    }, 5000);
   }
-
-  const slug = document.location.pathname.replaceAll("/", "");
-
-  const visitCounts = await fetch(
-    `https://visits.emasuriano.com/api/${slug}`,
-  ).then((x) => x.text());
-
-  viewCounter.innerHTML = visitCounts;
-
-  setTimeout(() => {
-    const visits = localStorage.getItem("visits") || "";
-
-    if (!visits.includes(slug)) {
-      localStorage.setItem("visits", visits.concat(slug));
-      fetch(`https://visits.emasuriano.com/api/${slug}`, {
-        method: "POST",
-      });
-    }
-  }, 5000);
 </script>
