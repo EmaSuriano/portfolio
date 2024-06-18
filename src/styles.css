@@ -38,7 +38,7 @@ img {
 
 .block-link::after {
   @apply absolute inset-0 block;
-  content: '';
+  content: "";
 }
 
 .prose h1 {
@@ -61,7 +61,7 @@ article .prose a {
   text-decoration: none;
 }
 
-.prose img {
+.prose .prose img {
   @apply mx-auto w-fit rounded-xl shadow-lg;
 }
 
@@ -78,6 +78,11 @@ lite-youtube {
   @apply mt-10 mb-4;
 }
 
+.prose blockquote,
+.prose strong {
+  color: inherit;
+}
+
 .prose .anchor {
   @apply invisible ml-1 align-middle no-underline;
   color: inherit;
@@ -86,11 +91,6 @@ lite-youtube {
 
 .prose *:hover > a {
   @apply visible;
-}
-
-.prose :where(strong):not(:where([class~='not-prose'] *)),
-.prose :where(blockquote):not(:where([class~='not-prose'] *)) {
-  @apply text-inherit;
 }
 
 .prose code {
@@ -107,5 +107,5 @@ h6 a {
 }
 
 .icon-link::before {
-  content: '#';
+  content: "#";
 }
