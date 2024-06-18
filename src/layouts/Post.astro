@@ -78,7 +78,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
           </time>
           <p>{minutesRead.text}</p>
         </div>
-        <ViewCounter slug={slug} client:idle />
+        <ViewCounter slug={slug} />
       </div>
     </header>
 
