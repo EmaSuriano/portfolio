@@ -149,29 +149,28 @@ const {
     </script>
 
     <script>
-      document.addEventListener("astro:after-swap", () => {
+      document.addEventListener("astro:after-swap", async () => {
         const viewCounter = document.querySelector("[data-view-number]");
-        console.log("called!", viewCounter);
 
         if (viewCounter) {
           const slug = document.location.pathname.replaceAll("/", "");
 
-          fetch(`https://visits.emasuriano.com/api/${slug}`)
-            .then((x) => x.json())
-            .then((count) => {
-              viewCounter.innerHTML = count;
-            });
+          try {
+            viewCounter.innerHTML = await fetch(
+              `https://visits.emasuriano.com/api/${slug}`,
+            ).then((x) => x.text());
 
-          setTimeout(() => {
-            const visits = localStorage.getItem("visits") || "";
+            setTimeout(() => {
+              const visits = localStorage.getItem("visits") || "";
 
-            if (!visits.includes(slug)) {
-              localStorage.setItem("visits", visits.concat(slug));
-              fetch(`https://visits.emasuriano.com/api/${slug}`, {
-                method: "POST",
-              });
-            }
-          }, 5000);
+              if (!visits.includes(slug)) {
+                localStorage.setItem("visits", visits.concat(slug));
+                fetch(`https://visits.emasuriano.com/api/${slug}`, {
+                  method: "POST",
+                });
+              }
+            }, 5000);
+          } catch (error) {}
         }
       });
     </script>
