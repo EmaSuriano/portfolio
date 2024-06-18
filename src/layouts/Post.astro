@@ -13,10 +13,13 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs";
 import "medium-zoom/dist/style.css";
 
-type Props = { entry: CollectionEntry<"blog"> };
+type Props = { entry: CollectionEntry<"blog"> | CollectionEntry<"til"> };
 
-const { title, publishedAt, summary, cover } = Astro.props.entry.data;
+const { title, publishedAt, summary } = Astro.props.entry.data;
 const { slug } = Astro.props.entry;
+
+const cover =
+  "cover" in Astro.props.entry.data ? Astro.props.entry.data.cover : undefined;
 
 const publishDate = format(publishedAt, "MMMM d, yyyy");
 const minutesRead = getReadingTime(Astro.props.entry.body);
@@ -28,9 +31,13 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   article={{ date: publishDate }}
   image={cover}
 >
-  <div class="overflow-hidden rounded-2xl shadow-lg">
-    <Image src={cover} alt={title} width={1400} height={600} />
-  </div>
+  {
+    cover && (
+      <div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg">
+        <Image src={cover} alt={title} width={1400} height={600} />
+      </div>
+    )
+  }
 
   <article
     class="my-6"

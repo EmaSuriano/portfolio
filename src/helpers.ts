@@ -1,26 +1,32 @@
-import { differenceInDays } from 'date-fns';
-import type { CollectionEntry } from 'astro:content';
+import { differenceInDays } from "date-fns";
+import type { CollectionEntry } from "astro:content";
 
-type Post = CollectionEntry<'blog'> | CollectionEntry<'external'>;
+type Post =
+  | CollectionEntry<"blog">
+  | CollectionEntry<"external">
+  | CollectionEntry<"til">;
 
 type Group = { year: number; posts: Post[] };
 
-export const humanize = (text = '') => {
+export const humanize = (text = "") => {
   return text
-    .split('-')
+    .split("-")
     .map((word) => word[0]!.toUpperCase() + word.slice(1 - word.length))
-    .join(' ');
+    .join(" ");
 };
 
 export const sortPostByDate = (a: Post, b: Post) =>
   differenceInDays(b.data.publishedAt, a.data.publishedAt);
 
 export const groupPostsByDate = (posts: Post[]): Group[] => {
-  const grouped = posts.reduce((acc, curr) => {
-    const year = curr.data.publishedAt.getFullYear();
+  const grouped = posts.reduce(
+    (acc, curr) => {
+      const year = curr.data.publishedAt.getFullYear();
 
-    return { ...acc, [year]: acc[year] ? acc[year]!.concat(curr) : [curr] };
-  }, {} as Record<string, Post[]>);
+      return { ...acc, [year]: acc[year] ? acc[year]!.concat(curr) : [curr] };
+    },
+    {} as Record<string, Post[]>,
+  );
 
   return Object.entries(grouped)
     .map(([year, posts]) => ({
@@ -32,23 +38,24 @@ export const groupPostsByDate = (posts: Post[]): Group[] => {
 
 export const getPostLink = (post: Post, baseUrl: URL) => {
   switch (post.collection) {
-    case 'blog':
+    case "blog":
+    case "til":
       return new URL(
         post.slug,
-        baseUrl.href.endsWith('/') ? baseUrl.href : baseUrl.href.concat('/'),
+        baseUrl.href.endsWith("/") ? baseUrl.href : baseUrl.href.concat("/"),
       ).toString();
 
-    case 'external':
+    case "external":
       return post.data.external;
 
     /* istanbul ignore next */
     default:
-      throw new Error('Collection not find');
+      throw new Error("Collection not find");
   }
 };
 
 export const BLOG_PATH = new URL(
-  '/blog',
+  "/blog",
   // @ts-ignore
-  import.meta.env.DEV ? 'http://localhost:4321' : import.meta.env.SITE,
+  import.meta.env.DEV ? "http://localhost:4321" : import.meta.env.SITE,
 );

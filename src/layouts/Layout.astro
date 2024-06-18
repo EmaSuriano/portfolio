@@ -3,6 +3,7 @@ import "styles.css";
 import about from "author.json";
 import { SEO } from "astro-seo";
 import { ViewTransitions } from "astro:transitions";
+import { humanize } from "helpers";
 
 export type Props = {
   title: string;
@@ -10,8 +11,14 @@ export type Props = {
   article?: {
     date: string;
   };
-  image?: string;
+  image?: string | undefined;
 };
+
+const routes = import.meta.glob("/src/pages/*.astro");
+const routeList = Object.keys(routes)
+  .map((route) => route.replace("/src/pages", "").replace(/\.astro$/, ""))
+  .filter((route) => !["/404", "/index"].includes(route))
+  .map((route) => ({ title: humanize(route.replace("/", "")), route }));
 
 const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
@@ -85,18 +92,21 @@ const {
       }`}
     >
       <header class="relative" transition:persist>
-        <a href="#skip" class="sr-only focus:not-sr-only"> Skip to content</a>
+        <a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a>
         <nav class="text-sm sm:text-base">
           <ul class="relative flex w-full list-none space-x-4 pl-0">
             <li>
               <a class="link-underline" href="/">Home</a>
             </li>
-            <li>
-              <a href="/about" class="link-underline">About</a>
-            </li>
-            <li>
-              <a href="/blog" class="link-underline">Blog</a>
-            </li>
+            {
+              routeList.map(({ route, title }) => (
+                <li>
+                  <a href={route} class="link-underline">
+                    {title}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </nav>
       </header>
