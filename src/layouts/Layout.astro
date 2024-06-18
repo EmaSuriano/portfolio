@@ -154,7 +154,7 @@ const {
         console.log("called!", viewCounter);
 
         if (viewCounter) {
-          var slug = document.location.pathname;
+          const slug = document.location.pathname.split("/").pop()!;
 
           fetch(`https://visits.emasuriano.com/api/${slug}`)
             .then((x) => x.json())
