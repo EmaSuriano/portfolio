@@ -14,11 +14,18 @@ export type Props = {
   image?: string | undefined;
 };
 
+const ROUTE_TITLE_MAP: Record<string, string> = {
+  "/til": "TIL",
+};
+
 const routes = import.meta.glob("/src/pages/*.astro");
 const routeList = Object.keys(routes)
   .map((route) => route.replace("/src/pages", "").replace(/\.astro$/, ""))
   .filter((route) => !["/404", "/index"].includes(route))
-  .map((route) => ({ title: humanize(route.replace("/", "")), route }));
+  .map((route) => ({
+    title: ROUTE_TITLE_MAP[route] || humanize(route.replace("/", "")),
+    route,
+  }));
 
 const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
@@ -139,6 +146,34 @@ const {
             ?.scrollIntoView();
         }
       }, 0);
+    </script>
+
+    <script>
+      document.addEventListener("astro:after-swap", () => {
+        var viewCounter = document.querySelector("[data-view-number]");
+        console.log("called!", viewCounter);
+
+        if (viewCounter) {
+          var slug = document.location.pathname;
+
+          fetch(`https://visits.emasuriano.com/api/${slug}`)
+            .then((x) => x.json())
+            .then((count) => {
+              viewCounter.innerHTML = count;
+            });
+
+          setTimeout(() => {
+            const visits = localStorage.getItem("visits") || "";
+
+            if (!visits.includes(slug)) {
+              localStorage.setItem("visits", visits.concat(slug));
+              fetch(`https://visits.emasuriano.com/api/${slug}`, {
+                method: "POST",
+              });
+            }
+          }, 5000);
+        }
+      });
     </script>
 
     <style is:global>

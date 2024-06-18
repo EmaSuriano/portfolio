@@ -9,27 +9,3 @@ const { slug } = Astro.props;
   <span data-view-number>--</span>
   <span>views</span>
 </view-counter>
-
-<script data-astro-rerun is:inline>
-  var slug = document.location.pathname;
-  var viewCounter = document.querySelector("[data-view-number]");
-
-  if (viewCounter) {
-    fetch(`https://visits.emasuriano.com/api/${slug}`)
-      .then((x) => x.json())
-      .then((count) => {
-        viewCounter.innerHTML = count;
-      });
-  }
-
-  setTimeout(() => {
-    const visits = localStorage.getItem("visits") || "";
-
-    if (!visits.includes(slug)) {
-      localStorage.setItem("visits", visits.concat(slug));
-      fetch(`https://visits.emasuriano.com/api/${slug}`, {
-        method: "POST",
-      });
-    }
-  }, 5000);
-</script>
