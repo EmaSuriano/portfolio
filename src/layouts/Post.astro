@@ -30,6 +30,7 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   description={summary}
   article={{ date: publishDate }}
   image={cover}
+  viewTransitionEnabled={false}
 >
   {
     cover && (

@@ -28,6 +28,16 @@
   });
 </script>
 
+<script>
+  setTimeout(() => {
+    if (window.location.hash) {
+      document
+        .querySelector(`[href='${window.location.hash}']`)
+        ?.scrollIntoView();
+    }
+  }, 0);
+</script>
+
 <style is:global>
   .medium-zoom-overlay {
     @apply bg-white dark:bg-neutral-900 !important;
