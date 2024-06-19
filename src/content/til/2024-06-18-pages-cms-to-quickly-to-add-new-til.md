@@ -10,7 +10,7 @@ The tool is called [Pages CMS](https://pagescms.org/), it's basically an online 
 
 The UI is quite straight forward, where you can see all your "content" that you have to define in a config file called `.pages.yml` that looks something like this:
 
-```
+```yml
 content:
   - name: til
     label: TIL
@@ -31,7 +31,6 @@ content:
       - name: body
         label: Body
         type: rich-text
-
 ```
 
 This will allow the CMS to understand where to look for the TIL posts and also generate on the fly the fields to add or edit information about the post, and this is how I'm currently editing this post:
