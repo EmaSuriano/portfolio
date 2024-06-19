@@ -1,3 +1,4 @@
 [submodule "src/static"]
 	path = src/static
 	url = https://github.com/EmaSuriano/static
+	branch = main
