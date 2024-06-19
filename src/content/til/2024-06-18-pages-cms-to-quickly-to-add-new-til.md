@@ -34,7 +34,9 @@ content:
 
 ```
 
-This will allow the CMS to understand where to look for the TIL posts and also generate on the fly the fields to add or edit information about the post.
+This will allow the CMS to understand where to look for the TIL posts and also generate on the fly the fields to add or edit information about the post, and this is how I'm currently editing this post:
+
+![Pages CMS edit page](../../static/assets/til/pages-cms/screenshot.png)
 
 It's an amazing tool and Open Source, so you should definitely check out the [GitHub repository](https://github.com/pages-cms/pages-cms).
 
