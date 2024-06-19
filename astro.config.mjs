@@ -8,15 +8,6 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://emasuriano.com/",
-  prefetch: {
-    defaultStrategy: 'viewport'
-  },
   integrations: [tailwind(), sitemap(), compress(), icon()],
-  markdown: {
-    syntaxHighlight: "prism",
-    rehypePlugins
-  },
-  redirects: {
-    "/resume": "https://resume.emasuriano.com"
-  }
+  markdown: { syntaxHighlight: "prism", rehypePlugins },
 });
