@@ -69,3 +69,8 @@ export const getPostLink = (post: Post) => {
       throw new Error("Collection not find");
   }
 };
+
+export const hasCommonItem = (arr1: string[], arr2: string[]) =>
+  arr1.some((item1) =>
+    arr2.map((item2) => item2.toLowerCase()).includes(item1.toLowerCase()),
+  );

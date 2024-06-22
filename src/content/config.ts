@@ -6,12 +6,14 @@ const blogSchema = z.object({
   publishedAt: z.date(),
   cover: z.string(),
   draft: z.boolean().optional(),
+  tags: z.array(z.string()).optional(),
 });
 
 const tilSchema = z.object({
   title: z.string(),
   publishedAt: z.date(),
   summary: z.string(),
+  tags: z.array(z.string()).optional(),
 });
 
 const externalSchema = z.object({

@@ -2,6 +2,8 @@
 publishedAt: 2024-06-18
 title: Using Pages CMS to quickly to add new TIL
 summary: An open source project to quickly share content directly from the browser
+tags:
+  - Today I learned
 ---
 
 I wanted to share this tool before, but it was too "short" to be considered a full article, so I was keeping it for my self. Now that I officially release my TIL section, this is the perfect place for it.

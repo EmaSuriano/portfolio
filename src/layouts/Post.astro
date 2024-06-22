@@ -12,11 +12,12 @@ import getReadingTime from "reading-time";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs";
 import "medium-zoom/dist/style.css";
+import RelatedArticles from "components/RelatedArticles.astro";
 
 type Props = { entry: CollectionEntry<"blog"> | CollectionEntry<"til"> };
 
-const { title, publishedAt, summary } = Astro.props.entry.data;
-const { slug } = Astro.props.entry;
+const { title, publishedAt, summary, tags } = Astro.props.entry.data;
+const { slug, id } = Astro.props.entry;
 
 const cover =
   "cover" in Astro.props.entry.data ? Astro.props.entry.data.cover : undefined;
@@ -85,8 +86,10 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
 
     <PostContent>
       <slot />
+
+      {tags && tags.length && <RelatedArticles tags={tags} id={id} />}
     </PostContent>
   </article>
 
-  <CommentBox repo="EmaSuriano/portfolio" />
+  <CommentBox repo="EmaSuriano/portfolio" client:visible />
 </Layout>

@@ -2,6 +2,9 @@
 publishedAt: 2024-06-21
 title: Running Jupyter notebook in the browser
 summary: I found JupyterLite for embedding Python code in websites, enabling easy sharing and local execution.
+tags:
+  - Jupyter
+  - Python
 ---
 
 Given that this year I decided [moving into a new direction](/blog/going-into-a-new-direction/), towards the career path of AI engineer, learning first the fundamentals of python along with the core libraries like `numpy`, `pandas`, `matplotlib`, etc. I've been dealing a lot with Jupyter Notebook, like a lot ...
@@ -17,6 +20,8 @@ For that reason, I did some research and I stumble across the awesome project of
 And here is the demo, feel free to modify the code as you pleased because it's literally running in your computer, so the changes are local to you. By clicking in the button that says _Jupyter Lab_, you can open the current project in a new tab for a more comfortable view:
 
 <iframe
+  loading="lazy"
+  title="Demo of jupyter notebook in the browser"
   src="https://emasuriano.github.io/python-demos/notebooks/index.html?path=demo.ipynb"
   width="100%"
   height="500px"

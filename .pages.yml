@@ -18,6 +18,10 @@ content:
       - name: summary
         label: Summary
         type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
       - name: body
         label: Body
         type: rich-text
@@ -56,6 +60,10 @@ content:
       - name: summary
         label: Summary
         type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
       - name: body
         label: Body
         type: rich-text

@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import { sortPostByDate } from "helpers";
+import { hasCommonItem } from "helpers";
+
+type Props = {
+  tags: string[];
+  id: string;
+};
+
+const { tags, id } = Astro.props;
+
+const blogPosts = (await getCollection("blog")).filter(
+  (post) => !post.data.draft,
+);
+const tilPosts = await getCollection("til");
+
+const relatedPosts = [...blogPosts, ...tilPosts]
+  .filter((post) => post.id !== id && hasCommonItem(tags, post.data.tags || []))
+  .sort(sortPostByDate)
+  .slice(0, 3);
+---
+
+{
+  relatedPosts.length > 0 && (
+    <section class="block">
+      <h3>Related articles</h3>
+      <ul>
+        {relatedPosts.map((post) => (
+          <li>
+            <a href={post.slug}>{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

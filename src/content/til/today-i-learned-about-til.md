@@ -2,6 +2,8 @@
 title: Today I learned about TIL
 publishedAt: 2024-06-18
 summary: I introduce TIL, a micro-blogging format to share concise, specific knowledge in under 200 words for simplicity and quick content creation.
+tags:
+  - Today I learned
 ---
 
 As the title says, today I learned about the concept of Today I Learned, or TIL for the friends. It's some sort of micro-blogging where you create posts that are less than 200 words and that have only one goal, sharing one little and normally quite specific thing without entering into broader topics.
