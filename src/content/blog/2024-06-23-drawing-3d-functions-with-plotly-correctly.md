@@ -67,9 +67,9 @@ You can play with the function by using the following interactive notebook. Feel
 
 But unexpectedly for some other function, it was making a different graph, so this is the main reason for this article ... The function itself was:
 
-```math
+$$
 f(x,y) = x^2 - y^3
-```
+$$
 
 The plot inside Grapher has the following shape:
 
