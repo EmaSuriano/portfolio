@@ -6,6 +6,7 @@ tags:
   - Astro
   - LaTeX
 ---
+
 [LaTeX](https://en.wikipedia.org/wiki/LaTeX) can be considered the standard language to represent mathematical expression in any possible field, and adding it to your page content is not that complicated. In case you already have an Astro project, and you are generating your pages from Markdown files, then you can easily add support by extending your [Markdown plugins](https://docs.astro.build/en/guides/markdown-content/#markdown-plugins).
 
 The great open source project [remark-math](https://github.com/remarkjs/remark-math/tree/main?tab=readme-ov-file) allows you to extend your markdown and be able to use the classic `$$` or `$` and transform them into LaTeX syntax on the spot. The first step is to install both `remark-math` and one of the math rendering extensions: `rehype-katex` (uses [KaTeX](https://katex.org/)) or `rehype-mathjax`(uses [MathJax](https://www.mathjax.org/)).
@@ -14,7 +15,7 @@ I personally prefer `rehype-katex` mostly because the LaTeX text can be selected
 
 The next step is to add both extensions to your `astro.config.mjs`:
 
-```json
+```js
 import { defineConfig } from "astro/config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -43,7 +44,7 @@ In case you also decided to use `rehype-katex` you have to add the following `li
 
 The setup of the extensions is now done and you can represent LaTeX by using the `$` symbol. Some examples are:
 
-```
+```md
 - Inline expression: $f(x) = x + 1$
 
 - New line + centered expression:
@@ -54,14 +55,10 @@ The setup of the extensions is now done and you can represent LaTeX by using the
 
 Which looks the following way:
 
-\- Inline expression: $f(x) = x + 1$
-
-\- New line + centered expression:
-
-$$
-
-f(x) = x + 1
-
-$$
+- Inline expression: $f(x) = x + 1$
+- New line + centered expression:
+  $$
+  f(x) = x + 1
+  $$
 
 That's all for now, thanks for reading.
