@@ -6,13 +6,12 @@ type Props = {
 const { repo } = Astro.props;
 ---
 
-<section class="block h-fit">
+<section class="block h-fit" id="blog-comments">
   <script
     src="https://utteranc.es/client.js"
     repo={repo}
     issue-term="pathname"
     theme="preferred-color-scheme"
     crossorigin="anonymous"
-    async
-  ></script>
+    async></script>
 </section>

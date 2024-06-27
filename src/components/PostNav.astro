@@ -1,0 +1,88 @@
+---
+import GithubSlugger from "github-slugger";
+import type { CollectionEntry } from "astro:content";
+import { extractMarkdownTitles } from "helpers";
+
+type Props = { entry: CollectionEntry<"blog"> };
+
+const slugs = new GithubSlugger();
+
+const { body } = Astro.props.entry;
+
+const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
+  margin: level <= 2 ? "ml-4" : level === 3 ? "ml-6" : "ml-8",
+  title,
+  slug: slugs.slug(title),
+}));
+---
+
+<nav
+  id="blog-navigation"
+  class="transition-opacity sticky top-24 hidden lg:block"
+>
+  <div class="absolute right-0 w-80 -mr-64">
+    <b>Content</b>
+    <ol>
+      {
+        titles.map(({ title, margin, slug }) => (
+          <li>
+            <a
+              href={`#${slug}`}
+              class={` opacity-30 focus:opacity-80 hover:opacity-80 ${margin}`}
+            >
+              {title}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  a {
+    text-decoration: none;
+    display: block;
+
+    padding: 0.125rem 0;
+  }
+</style>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
+
+        if (entry.isIntersecting) {
+          elem.classList.add("opacity-100");
+        } else {
+          elem.classList.remove("opacity-100");
+        }
+      });
+    });
+
+    // Track all sections that have an `id` applied
+    document
+      .querySelectorAll("h2[id], h3[id], h4[id]")
+      .forEach((target) => observer.observe(target));
+  });
+</script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const elem = document.querySelector(`#blog-navigation`)!;
+        if (entry.isIntersecting) {
+          elem.classList.add("opacity-0");
+        } else {
+          elem.classList.remove("opacity-0");
+        }
+      });
+    });
+
+    observer.observe(document.querySelector("#blog-comments")!);
+  });
+</script>

@@ -6,6 +6,7 @@ import author from "author.json";
 import CommentBox from "components/CommentBox.astro";
 import ViewCounter from "components/ViewCounter.astro";
 import PostContent from "components/PostContent.astro";
+import PostNav from "components/PostNav.astro";
 import type { CollectionEntry } from "astro:content";
 import getReadingTime from "reading-time";
 
@@ -17,10 +18,9 @@ import RelatedArticles from "components/RelatedArticles.astro";
 type Props = { entry: CollectionEntry<"blog"> | CollectionEntry<"til"> };
 
 const { title, publishedAt, summary, tags } = Astro.props.entry.data;
-const { slug, id } = Astro.props.entry;
+const { slug, id, collection } = Astro.props.entry;
 
-const cover =
-  "cover" in Astro.props.entry.data ? Astro.props.entry.data.cover : undefined;
+const cover = collection === "blog" ? Astro.props.entry.data.cover : undefined;
 
 const publishDate = format(publishedAt, "MMMM d, yyyy");
 const minutesRead = getReadingTime(Astro.props.entry.body);
@@ -83,6 +83,8 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
         <ViewCounter slug={slug} />
       </div>
     </header>
+
+    {collection === "blog" && <PostNav entry={Astro.props.entry} />}
 
     <PostContent>
       <slot />

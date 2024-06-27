@@ -5,6 +5,7 @@ cover: https://images.unsplash.com/photo-1453173267031-c4c5ace6b624?w=1400&h=600
 summary: My sharing regarding my approach towards the AI development, and what
   are my next steps for this incoming year.
 ---
+
 Hello, and happy new 2024! Last year was a crazy for all of us, and especially if you were to be in the tech industry, it felt like any day a new tool was going to be released ready to replace us.
 
 Luckily most of us were not replaced which is good! But sadly there were many layoffs globally from companies that funnily were facing the highest profits of all time, but in their own words "We have to make the cut" ...
@@ -21,7 +22,7 @@ Coming from the Web development world, where JS is the predominant language to w
 
 So I made my first attempt to go a try to make an app using Python and some of the Model outs there, and I failed ... Not only the syntax was a bit different, but the kind of errors that I was getting were not clear to me. Even very basic stuff like traversing an array just felt uncomfortable, and when trying to build a project you need to know more than just Python.
 
-## **I bet I can do the same with JS**
+## I bet I can do the same with JS
 
 After my failure, I thought about, but why do I need to learn a whole new language and ecosystem if I already have everything I need in the JS world, right? Well I found out that I wasn't the only one that thought the same way! I found many new (and experimental) packages in NPM that were serving as wrappers for deployed models.
 
@@ -33,7 +34,7 @@ Besides this stack is still being used in many projects, IMO it's not scalable a
 
 Don't take me wrong, I don't have anything against that way of charging users. I believe a good product or service should be paid. But back then, I felt that if I decided to stick with JS and re-use services of other people, I wouldn't be able to make it too far.
 
-## **New year, new mindset**
+## New year, new mindset
 
 At the beginning of 2024, I had the opportunity to go on a long trip around South-East Asia. One of the thing that I love about long trips is that there is going to be a moment where one will simply get tired of sightseeing or strolling around, and that's were great ideas and revelations start happening!
 
@@ -59,14 +60,10 @@ I would suggest anyone entering a new field of programming to start with a book,
 
 Here are the set of books that I picked to start with:
 
-*   Automate the boring stuff with Python, by Al Sweigart: serves as an introduction to Python, showcasing easy examples for day to day tasks.
-    
-*   Python Data Science Handbook, by Jake Vanderplas: This is a must to understand the main libraries used in Data Science (and Machine Learning): NumPy, Pandas, scikit-learn and matplot.
-    
-*   Introduction to Machine Learning with Python, by Sarah Guido: great explanation of the process in ML, along with theory and practical examples.
-    
-*   Building Machine Learning powered Applications, by Emmanuel Ameisen: didn't have time yet to read it ...
-    
+- Automate the boring stuff with Python, by Al Sweigart: serves as an introduction to Python, showcasing easy examples for day to day tasks.
+- Python Data Science Handbook, by Jake Vanderplas: This is a must to understand the main libraries used in Data Science (and Machine Learning): NumPy, Pandas, scikit-learn and matplot.
+- Introduction to Machine Learning with Python, by Sarah Guido: great explanation of the process in ML, along with theory and practical examples.
+- Building Machine Learning powered Applications, by Emmanuel Ameisen: didn't have time yet to read it ...
 
 On top of reading these books, I'm studying them. I found recently a very nice article highlight in Hacker News, which talks about the pitfalls when studying or giving exams, and how can we have an effective learning process. It doesn't have anything to do with AI, but I would recommend it in case you are learning something new. Link to [https://cse.buffalo.edu/~rapaport/howtostudy](https://cse.buffalo.edu/~rapaport/howtostudy)
 

@@ -74,3 +74,36 @@ export const hasCommonItem = (arr1: string[], arr2: string[]) =>
   arr1.some((item1) =>
     arr2.map((item2) => item2.toLowerCase()).includes(item1.toLowerCase()),
   );
+
+type Title = {
+  level: number;
+  title: string;
+};
+
+export const extractMarkdownTitles = (markdown: string): Title[] => {
+  const titles: Title[] = [];
+
+  const lines = markdown.split("\n");
+  let inCodeBlock = false;
+
+  lines.forEach((line) => {
+    // Check for code block delimiters
+    if (line.startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      return;
+    }
+
+    // If we're not in a code block, check for titles
+    if (!inCodeBlock) {
+      const titleMatch = line.match(/^(#{1,6})\s+(.+)$/);
+      if (titleMatch) {
+        titles.push({
+          level: titleMatch[1]!.length,
+          title: titleMatch[2]!.trim(),
+        });
+      }
+    }
+  });
+
+  return titles;
+};
