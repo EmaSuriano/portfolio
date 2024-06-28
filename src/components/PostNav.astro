@@ -51,7 +51,6 @@ const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      console.log(entry);
       const id = entry.target.getAttribute("id");
       const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
 
