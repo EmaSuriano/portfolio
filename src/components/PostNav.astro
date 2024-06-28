@@ -18,9 +18,9 @@ const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
 
 <nav
   id="blog-navigation"
-  class="transition-opacity sticky top-24 hidden lg:block"
+  class="transition-opacity sticky top-24 hidden lg:block overflow-x"
 >
-  <div class="absolute right-0 w-80 -mr-64">
+  <div class="absolute right-0 w-60 -mr-40">
     <b>Content</b>
     <ol>
       {
@@ -28,7 +28,7 @@ const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
           <li>
             <a
               href={`#${slug}`}
-              class={` opacity-30 focus:opacity-80 hover:opacity-80 ${margin}`}
+              class={`transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ${margin}`}
             >
               {title}
             </a>
@@ -49,40 +49,39 @@ const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
 </style>
 
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute("id");
-        const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      console.log(entry);
+      const id = entry.target.getAttribute("id");
+      const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
 
-        if (entry.isIntersecting) {
-          elem.classList.add("opacity-100");
-        } else {
-          elem.classList.remove("opacity-100");
-        }
-      });
+      if (entry.isIntersecting) {
+        elem.classList.remove("opacity-30");
+        elem.classList.add("opacity-100");
+      } else {
+        elem.classList.add("opacity-30");
+        elem.classList.remove("opacity-100");
+      }
     });
-
-    // Track all sections that have an `id` applied
-    document
-      .querySelectorAll("h2[id], h3[id], h4[id]")
-      .forEach((target) => observer.observe(target));
   });
+
+  // Track all sections that have an `id` applied
+  document
+    .querySelectorAll("h2[id], h3[id], h4[id]")
+    .forEach((target) => observer.observe(target));
 </script>
 
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const elem = document.querySelector(`#blog-navigation`)!;
-        if (entry.isIntersecting) {
-          elem.classList.add("opacity-0");
-        } else {
-          elem.classList.remove("opacity-0");
-        }
-      });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const elem = document.querySelector(`#blog-navigation`)!;
+      if (entry.isIntersecting) {
+        elem.classList.add("opacity-0");
+      } else {
+        elem.classList.remove("opacity-0");
+      }
     });
-
-    observer.observe(document.querySelector("#blog-comments")!);
   });
+
+  observer.observe(document.querySelector("#blog-comments")!);
 </script>
