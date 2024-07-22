@@ -1,12 +1,12 @@
 ---
 import Layout from "layouts/Layout.astro";
 import { format } from "date-fns";
-import { getPostLink, groupPostsByDate } from "helpers";
+import { getPostLink, groupPostsByDate, isDraft } from "helpers";
 import { getCollection } from "astro:content";
 
 const tilPosts = await getCollection("til");
 
-const postsByDate = groupPostsByDate(tilPosts.filter((post) => !post.draft));
+const postsByDate = groupPostsByDate(tilPosts.filter((post) => !isDraft(post)));
 ---
 
 <Layout

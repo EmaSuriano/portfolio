@@ -1,19 +1,23 @@
 import about from "author.json";
-import { getPostLink, humanize, sortPostByDate, type Summary } from "helpers";
+import {
+  getPostLink,
+  humanize,
+  sortPostByDate,
+  type Summary,
+  isDraft,
+} from "helpers";
 import { getCollection } from "astro:content";
 
 const { name, bio, website, projects, talks } = about;
 
 export async function GET() {
-  const blogPosts = (await getCollection("blog")).filter(
-    (post) => !post.data.draft,
-  );
+  const blogPosts = await getCollection("blog");
   const externalPosts = await getCollection("external");
   const tilPosts = await getCollection("til");
 
-  const posts = [...blogPosts, ...externalPosts, ...tilPosts].sort(
-    sortPostByDate,
-  );
+  const posts = [...blogPosts, ...externalPosts, ...tilPosts]
+    .filter((post) => !isDraft(post))
+    .sort(sortPostByDate);
 
   const summary: Summary = {
     name,

@@ -1,5 +1,5 @@
 ---
-title: You can create presentations from a Jupyter Notebook
+title: Interactive presentations from a Jupyter Notebook
 publishedAt: 2024-07-02
 summary: I explained how you can easily convert your notebooks into well animated presentations powered by Reveal.js
 tags:

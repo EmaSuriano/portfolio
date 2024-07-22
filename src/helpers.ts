@@ -107,3 +107,15 @@ export const extractMarkdownTitles = (markdown: string): Title[] => {
 
   return titles;
 };
+
+export const isDraft = (post: Post): boolean => {
+  switch (post.collection) {
+    case "blog":
+    case "til":
+      return Boolean(post.data.draft);
+
+    case "external":
+    default:
+      return false;
+  }
+};

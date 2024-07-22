@@ -3,8 +3,11 @@ title: The world of Meta heuristics
 publishedAt: 2024-07-20
 summary: I explained how you can easily convert your notebooks into well animated presentations powered by Reveal.js
 draft: true
+cover: https://images.unsplash.com/photo-1577401239170-897942555fb3?w=1400&h=600&fit=crop
 tags:
   - Programming
+  - Heuristics
+  - Meta heuristics
 ---
 
 For the past month I've been working quite extensively with the topic of Heuristics or meta heuristics (both are fine to say) in the topic of Algorithm Optimization, and even after developing several implementation I still cannot believe this topic is not spread or talked enough.

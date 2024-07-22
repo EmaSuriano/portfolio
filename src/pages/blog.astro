@@ -2,16 +2,15 @@
 import { Icon } from "astro-icon/components";
 import Layout from "layouts/Layout.astro";
 import { format } from "date-fns";
-import { getPostLink, groupPostsByDate } from "helpers";
+import { getPostLink, groupPostsByDate, isDraft } from "helpers";
 import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("blog");
 const allExternalPosts = await getCollection("external");
 
-const grouped = groupPostsByDate([
-  ...allBlogPosts.filter((post) => !post.data.draft),
-  ...allExternalPosts,
-]);
+const grouped = groupPostsByDate(
+  [...allBlogPosts, ...allExternalPosts].filter((post) => !isDraft(post)),
+);
 ---
 
 <Layout
