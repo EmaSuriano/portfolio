@@ -13,6 +13,7 @@ const tilSchema = z.object({
   title: z.string(),
   publishedAt: z.date(),
   summary: z.string(),
+  draft: z.boolean().optional(),
   tags: z.array(z.string()).optional(),
 });
 

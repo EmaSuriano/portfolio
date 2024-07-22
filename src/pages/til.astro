@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 
 const tilPosts = await getCollection("til");
 
-const postsByDate = groupPostsByDate(tilPosts);
+const postsByDate = groupPostsByDate(tilPosts.filter((post) => !post.draft));
 ---
 
 <Layout
