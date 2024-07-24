@@ -4,7 +4,7 @@ content:
     path: src/content/blog
     type: collection
     view:
-      fields: [title, publishedAt]
+      fields: [draft, title, publishedAt]
     fields:
       - name: publishedAt
         label: Date
@@ -18,6 +18,9 @@ content:
       - name: summary
         label: Summary
         type: string
+      - name: draft
+        label: Draft
+        type: boolean
       - name: tags
         label: Tags
         type: string
@@ -49,7 +52,7 @@ content:
     path: src/content/til
     type: collection
     view:
-      fields: [title, publishedAt]
+      fields: [draft, title, publishedAt]
     fields:
       - name: publishedAt
         label: Date
@@ -64,6 +67,9 @@ content:
         label: Tags
         type: string
         list: true
+      - name: draft
+        label: Draft
+        type: boolean
       - name: body
         label: Body
         type: rich-text
