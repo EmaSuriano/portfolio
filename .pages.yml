@@ -4,7 +4,7 @@ content:
     path: src/content/blog
     type: collection
     view:
-      fields: [draft, title, publishedAt]
+      fields: [draft, title, tags, publishedAt]
     fields:
       - name: publishedAt
         label: Date
@@ -52,7 +52,7 @@ content:
     path: src/content/til
     type: collection
     view:
-      fields: [draft, title, publishedAt]
+      fields: [draft, title, publishedAt, tags]
     fields:
       - name: publishedAt
         label: Date
