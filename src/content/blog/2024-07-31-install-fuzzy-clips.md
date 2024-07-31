@@ -260,6 +260,37 @@ FuzzyCLIPS> (moment-defuzzify 3)
 50.0
 ```
 
+## Fun fact: Clips is compatible with Clojure syntax
+
+In case want to keep a strict formatting in your code, I have good news for you! You can change your syntax language to [Clojure](https://clojure.org/) and it will format your code accordingly. The main reason is because Clojure tries to keep the same formatting practices as in LISP, therefore it's _compatbile_ with CLIPS as well!
+
+You can easily install any formatter in your code editor and on save you can pass from this:
+
+```clojure
+(deftemplate Humidity
+	0 100
+	(
+		(low (0 1) (20 0))
+		(medium (10 0) (50 1) (90 0))
+		(high (70 0) (100 1) (100 1))
+	)
+)
+```
+
+To this
+
+```clojure
+(deftemplate Humidity
+  0 100
+  ((low (0 1) (20 0))
+   (medium (10 0) (50 1) (90 0))
+   (high (70 0) (100 1) (100 1))))
+```
+
+Which one is better? I actually don't care so much, what I care is all my code is now formatted in the same way and I don't have to manually start adding spacing.
+
+Another tip, you can use the formatter as some sort of _compiler_ mostly to check if you skip some parenthesis while you were writing. As you can see from the previous example, there quite a lot of them and it can quite easy to forget to close one of them. The formatter will fail in case you have some parenthesis that are not properly closed, which means that you can speed up your process because you don't have to load and execute your program in Fuzzy CLIPS to see the error message.
+
 ## Closing words
 
 As I mentioned at the beginning of this article, the amount of information about this framework is quite scarce and it took me quite some time to gather all this information. Hopefully, more people will find it handy as well!
