@@ -1,5 +1,5 @@
 ---
-title: How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial
+title: "How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial"
 publishedAt: 2024-07-31
 summary: How to set up and use Fuzzy CLIPS to create a fuzzy logic system for controlling fan speed based on temperature and humidity.
 cover: https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?w=1400&h=600&fit=crop
