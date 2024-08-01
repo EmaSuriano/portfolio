@@ -828,13 +828,13 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@playform/pipe@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@playform/pipe/-/pipe-0.0.6.tgz#4041f3b134f56a3c3d00f597169fe013b65a3eb4"
-  integrity sha512-dsW6Dyq9yNLOSw0iV7iD0P13pqmKFk2YjlGzgJOM7Qnl05Vdv0beFz0MquOma7rCE+Kg4njCPNAQUDsSss8xZw==
+"@playform/pipe@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@playform/pipe/-/pipe-0.1.0.tgz#c44e2223f84ed7dc675348f73eb6e7946f2d31fa"
+  integrity sha512-EiY5y81BKSIBduFDM9UAN9RISQptYd8TR1UWTx1H/5Tm86AHxjAm/fiGqUuWwZShBqc5K1TY4ynkT6dpp1r7UQ==
   dependencies:
-    "@types/node" "20.14.2"
-    deepmerge-ts "7.0.3"
+    "@types/node" "20.14.12"
+    deepmerge-ts "7.1.0"
     fast-glob "3.3.2"
 
 "@rollup/rollup-android-arm-eabi@4.13.2":
@@ -1059,10 +1059,10 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@20.14.2":
-  version "20.14.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.2.tgz#a5f4d2bcb4b6a87bffcaa717718c5a0f208f4a18"
-  integrity sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==
+"@types/node@20.14.12":
+  version "20.14.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.12.tgz#129d7c3a822cb49fc7ff661235f19cfefd422b49"
+  integrity sha512-r7wNXakLeSsGT0H1AU863vS2wa5wBOK4bWMjZz2wj+8nBx+m5PeIn0k8AloSLpRuiwdRQZwarZqHE4FNArPuJQ==
   dependencies:
     undici-types "~5.26.4"
 
@@ -1280,12 +1280,12 @@ array-iterate@^2.0.0:
   resolved "https://registry.yarnpkg.com/array-iterate/-/array-iterate-2.0.1.tgz#6efd43f8295b3fee06251d3d62ead4bd9805dd24"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro-compress@^2.2.28:
-  version "2.2.28"
-  resolved "https://registry.yarnpkg.com/astro-compress/-/astro-compress-2.2.28.tgz#76a24552c79b184d9274f999754d7279ffc45b60"
-  integrity sha512-6vfP34YQzuRu+3S8ufmG4924NXZ8D095ii+BLNbkroDgAxlL5C6T6L47BSWdkSXofHvNMIa8nIVAGW+AUjubiw==
+astro-compress@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/astro-compress/-/astro-compress-2.3.0.tgz#8715b494ea280bd4e8746fe2d640a33463cd31cc"
+  integrity sha512-7JkIgQyngmWnRnjVkOcPHelVIi9/4RXGAy68wmsIBREpfKsBCAIVnyF9riBaahkL6rqiGEecyFDUBk6aW9qIew==
   dependencies:
-    "@playform/pipe" "0.0.6"
+    "@playform/pipe" "0.1.0"
     "@types/csso" "5.0.4"
     "@types/html-minifier-terser" "7.0.2"
     astro "*"
@@ -1294,8 +1294,8 @@ astro-compress@^2.2.28:
     kleur "4.1.5"
     lightningcss "1.25.1"
     sharp "0.33.4"
-    svgo "3.3.2"
-    terser "5.31.1"
+    svgo "4.0.0-rc.0"
+    terser "5.31.3"
 
 astro-icon@^1.1.0:
   version "1.1.0"
@@ -1703,6 +1703,11 @@ commander@^10.0.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-10.0.1.tgz#881ee46b4f77d1c1dccc5823433aa39b022cbe06"
   integrity sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==
 
+commander@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-11.1.0.tgz#62fdce76006a68e5c1ab3314dc92e800eb83d906"
+  integrity sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==
+
 commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
@@ -1864,10 +1869,10 @@ decode-named-character-reference@^1.0.0:
   dependencies:
     character-entities "^2.0.0"
 
-deepmerge-ts@7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/deepmerge-ts/-/deepmerge-ts-7.0.3.tgz#0cc3ac9f370915d55126cd3b216788d786e6e714"
-  integrity sha512-dxFbFO2RSIhPNBPL/j8Nvdt6/vrkW9+uGf1NLah/QxBGAVbK9fj2fGTO+HwdHpPAyFAsyT9iEn/1SI9SUvespw==
+deepmerge-ts@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/deepmerge-ts/-/deepmerge-ts-7.1.0.tgz#c1e0f11f64465b3e04ca4e03658235fba1cce07b"
+  integrity sha512-q6bNsfNBtgr8ZOQqmZbl94MmYWm+QcDNIkqCxVWiw1vKvf+y/N2dZQKdnDXn4c5Ygt/y63tDof6OCN+2YwWVEg==
 
 dequal@^2.0.0, dequal@^2.0.3:
   version "2.0.3"
@@ -4379,6 +4384,11 @@ sax@^1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.3.0.tgz#a5dbe77db3be05c9d1ee7785dbd3ea9de51593d0"
   integrity sha512-0s+oAmw9zLl1V1cS9BtZN7JAd0cW5e0QH4W3LWEK6a4LaLEA2OTpGYWDY+6XasBLtz6wkm3u1xRw95mRuJ59WA==
 
+sax@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.4.1.tgz#44cc8988377f126304d3b3fc1010c733b929ef0f"
+  integrity sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==
+
 section-matter@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/section-matter/-/section-matter-1.0.0.tgz#e9041953506780ec01d59f292a19c7b850b84167"
@@ -4658,7 +4668,20 @@ svgo@3.0.3:
     csso "5.0.5"
     picocolors "^1.0.0"
 
-svgo@3.3.2, svgo@^3.3.2:
+svgo@4.0.0-rc.0:
+  version "4.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/svgo/-/svgo-4.0.0-rc.0.tgz#31e5ef146b36981d663e6ba2743e2d7b3bc81f83"
+  integrity sha512-V6DFAkoKXl9GFPZPKNDcJpeXQtMhJT3mgt0VIJTuTe89Ih4ZMtlVR/Djxm0WZX1+9TC7srNhQG6Ffs7EcB4T7Q==
+  dependencies:
+    commander "^11.1.0"
+    css-select "^5.1.0"
+    css-tree "^2.3.1"
+    css-what "^6.1.0"
+    csso "^5.0.5"
+    picocolors "^1.0.0"
+    sax "^1.4.1"
+
+svgo@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-3.3.2.tgz#ad58002652dffbb5986fc9716afe52d869ecbda8"
   integrity sha512-OoohrmuUlBs8B8o6MB2Aevn+pRIH9zDALSR+6hhqVfa6fRwG/Qw9VUMSMW9VNg2CFc/MTIfabtdOVl9ODIJjpw==
@@ -4711,20 +4734,10 @@ tar@^6.2.0:
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 
-terser@5.31.1:
-  version "5.31.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.31.1.tgz#735de3c987dd671e95190e6b98cfe2f07f3cf0d4"
-  integrity sha512-37upzU1+viGvuFtBo9NPufCb9dwM0+l9hMxYyWfBA+fbwrPqNJAhbZ6W47bBFnZHKHTUBnMvi87434qq+qnxOg==
-  dependencies:
-    "@jridgewell/source-map" "^0.3.3"
-    acorn "^8.8.2"
-    commander "^2.20.0"
-    source-map-support "~0.5.20"
-
-terser@^5.15.1:
-  version "5.31.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.31.0.tgz#06eef86f17007dbad4593f11a574c7f5eb02c6a1"
-  integrity sha512-Q1JFAoUKE5IMfI4Z/lkE/E6+SwgzO+x4tq4v1AyBLRj8VSYvRO6A/rQrPg1yud4g0En9EKI1TvFRF2tQFcoUkg==
+terser@5.31.3, terser@^5.15.1:
+  version "5.31.3"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.31.3.tgz#b24b7beb46062f4653f049eea4f0cd165d0f0c38"
+  integrity sha512-pAfYn3NIZLyZpa83ZKigvj6Rn9c/vd5KfYGX7cN1mnzqgDcxWvrU5ZtAfIKhEXz9nRecw4z3LXkjaq96/qZqAA==
   dependencies:
     "@jridgewell/source-map" "^0.3.3"
     acorn "^8.8.2"
