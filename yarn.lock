@@ -50,12 +50,7 @@
     kleur "^4.1.5"
     yargs "^17.7.2"
 
-"@astrojs/compiler@^1.5.5":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-1.8.2.tgz#f305d5724c45a9932a8ef4e87b2e7227d15d1c2b"
-  integrity sha512-o/ObKgtMzl8SlpIdzaxFnt7SATKPxu4oIP/1NL+HDJRzxfJcAkOTAb/ZKMRyULbz4q+1t2/DAebs2Z1QairkZw==
-
-"@astrojs/compiler@^2.7.0", "@astrojs/compiler@^2.9.2":
+"@astrojs/compiler@^2.7.0", "@astrojs/compiler@^2.9.1", "@astrojs/compiler@^2.9.2":
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.10.1.tgz#36eb9dcf55f0ddc774e245eadc8c1132caac58fd"
   integrity sha512-XmM4j6BjvOVMag2xELq0JuG2yKOW8wgIu6dvb9BsjbGYmnvoStJn/pqEzVqc1EBszf2xYT7onIkftIOUz9AwrQ==
@@ -4048,12 +4043,12 @@ preferred-pm@^4.0.0:
     find-yarn-workspace-root2 "1.2.16"
     which-pm "^3.0.0"
 
-prettier-plugin-astro@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.14.0.tgz#035bb78b7b8a45b4ab7c5b926f73850af9afffb6"
-  integrity sha512-7jRGJsexaRIyUzTk8uzXlP45cw6DQ5Ci4bTe0xCBCcuO1Fff8jJy9oI+kRCQKSdDFTSAArMSg8GpvzlKBtSaZA==
+prettier-plugin-astro@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.14.1.tgz#50bff8a659f2a6a4ff3b1d7ea73f2de93c95b213"
+  integrity sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw==
   dependencies:
-    "@astrojs/compiler" "^1.5.5"
+    "@astrojs/compiler" "^2.9.1"
     prettier "^3.0.0"
     sass-formatter "^0.7.6"
 
