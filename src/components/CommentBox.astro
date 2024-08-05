@@ -1,13 +1,16 @@
 ---
+// @ts-nocheck  
 type Props = {
   repo: string;
 };
 
 const { repo } = Astro.props;
+
 ---
 
 <section class="block h-fit" id="blog-comments">
   <script
+    is:inline
     src="https://utteranc.es/client.js"
     repo={repo}
     issue-term="pathname"
