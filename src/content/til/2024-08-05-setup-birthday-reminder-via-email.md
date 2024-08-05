@@ -1,5 +1,5 @@
 ---
-publishedAt: 2024-07-24
+publishedAt: 2024-08-05
 title: Remind yourself of Birthdays Using Google Calendar and Apps Script
 summary: How to automate birthday email reminders using Google Calendar and Apps Script by leveraging Google Contacts to create a birthday calendar and setting up a script to send notifications on each birthday.
 tags:
