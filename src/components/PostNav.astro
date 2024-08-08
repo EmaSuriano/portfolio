@@ -49,25 +49,43 @@ const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
 </style>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
+  const navLinks = document.querySelectorAll("nav li a");
+  let lastVisible = navLinks[0]; // Start with the first link as the initial selection
 
+  const observer = new IntersectionObserver((entries) => {
+    let intersectingEntries: Element[] = [];
+
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        elem.classList.remove("opacity-30");
-        elem.classList.add("opacity-100");
-      } else {
-        elem.classList.add("opacity-30");
-        elem.classList.remove("opacity-100");
+        const id = entry.target.getAttribute("id");
+        const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
+
+        intersectingEntries.push(elem);
       }
     });
+
+    // Clear all highlights
+    navLinks.forEach((link) => {
+      link.classList.remove("opacity-100");
+      link.classList.add("opacity-30");
+    });
+
+    // If there are intersecting entries, highlight the first one
+    if (intersectingEntries[0]) {
+      intersectingEntries[0].classList.add("opacity-100");
+      intersectingEntries[0].classList.remove("opacity-30");
+      lastVisible = intersectingEntries[0];
+    } else if (lastVisible) {
+      // If no sections are intersecting, highlight the last visible link
+      lastVisible.classList.add("opacity-100");
+      lastVisible.classList.remove("opacity-30");
+    }
   });
 
   // Track all sections that have an `id` applied
-  document
-    .querySelectorAll("h2[id], h3[id], h4[id]")
-    .forEach((target) => observer.observe(target));
+  document.querySelectorAll("h2[id], h3[id], h4[id]").forEach((target) => {
+    observer.observe(target);
+  });
 </script>
 
 <script>
