@@ -3,6 +3,15 @@ import Title from "components/Title.astro";
 import Layout from "layouts/Layout.astro";
 import about from "author.json";
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 const title = `${about.name} - ${about.role}`;
 ---
 
@@ -27,4 +36,17 @@ const title = `${about.name} - ${about.role}`;
       <a href="/blog" class="link-underline">write</a> about web development.
     </p>
   </section>
+
+  <Card>
+    <CardHeader>
+      <CardTitle>Card Title</CardTitle>
+      <CardDescription>Card Description</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>Card Content</p>
+    </CardContent>
+    <CardFooter>
+      <p>Card Footer</p>
+    </CardFooter>
+  </Card>
 </Layout>

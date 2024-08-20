@@ -6,13 +6,17 @@ import remarkMath from "remark-math";
 import rehypePlugins from "./rehype-plugins";
 import icon from "astro-icon";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://emasuriano.com/",
-  integrations: [tailwind(), sitemap(), compress(), icon()],
+  integrations: [tailwind({
+    applyBaseStyles: false
+  }), sitemap(), compress(), icon(), react()],
   markdown: {
     syntaxHighlight: "prism",
     remarkPlugins: [remarkMath],
-    rehypePlugins,
-  },
+    rehypePlugins
+  }
 });
