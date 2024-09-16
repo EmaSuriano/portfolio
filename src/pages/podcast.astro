@@ -1,12 +1,9 @@
 ---
 import Layout from "layouts/Layout.astro";
 import { format } from "date-fns";
-import { groupPostsByDate } from "helpers";
 import { getCollection } from "astro:content";
 
 const podcasts = await getCollection("podcast");
-
-const postsByDate = groupPostsByDate(podcasts);
 ---
 
 <Layout
@@ -21,31 +18,25 @@ const postsByDate = groupPostsByDate(podcasts);
       <a href="https://notebooklm.google.com/">Notebook LLM</a>
     </p>
 
-    {
-      postsByDate.map((group) => (
-        <>
-          <h2>{group.year}</h2>
+    <ul class="list-none space-y-8 pl-0">
+      {
+        podcasts.map((post) => (
+          <li>
+            <div class="flex justify-between items-baseline">
+              <h3 class="truncate">{post.data.title}</h3>
+              <span class="w-20 text-right">
+                {format(post.data.publishedAt, "d MMM")}
+              </span>
+            </div>
+            <p class="my-1 mb-3">{post.data.summary}</p>
 
-          <ul class="list-none space-y-8 pl-0">
-            {group.posts.map((post) => (
-              <li>
-                <div class="flex justify-between">
-                  <b class="truncate">{post.data.title}</b>
-                  <span class="w-20 text-right">
-                    {format(post.data.publishedAt, "d MMM")}
-                  </span>
-                </div>
-                <p class="my-1">{post.data.summary}</p>
-
-                <audio controls>
-                  <source src={post.data.src} type="audio/wav" />
-                  Your browser does not support the audio element.
-                </audio>
-              </li>
-            ))}
-          </ul>
-        </>
-      ))
-    }
+            <audio controls>
+              <source src={post.data.src} type="audio/wav" />
+              Your browser does not support the audio element.
+            </audio>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </Layout>
