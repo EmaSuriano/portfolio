@@ -2,7 +2,7 @@
 title: Supervised learning 101
 publishedAt: 2024-09-16
 summary: Fist episode to test if this new technique works or not, where I cover key unsupervised learning techniques like clustering, PageRank, and rule association, offering a brief overview of their theory and applications.
-src: /audio/2024-09-16-supervised-learning.wav
+src: /audio/2024-09-16-supervised-learning.mp3
 ---
 
 As the title says, today I learned about the concept of Today I Learned, or TIL for the friends. It's some sort of micro-blogging where you create posts that are less than 200 words and that have only one goal, sharing one little and normally quite specific thing without entering into broader topics.
