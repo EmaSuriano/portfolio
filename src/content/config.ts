@@ -24,8 +24,16 @@ const externalSchema = z.object({
   publishedAt: z.date(),
 });
 
+const podcastSchema = z.object({
+  title: z.string(),
+  publishedAt: z.date(),
+  summary: z.string(),
+  src: z.string(),
+});
+
 export const collections = {
   blog: defineCollection({ schema: blogSchema }),
   external: defineCollection({ schema: externalSchema }),
   til: defineCollection({ schema: tilSchema }),
+  podcast: defineCollection({ schema: podcastSchema }),
 };

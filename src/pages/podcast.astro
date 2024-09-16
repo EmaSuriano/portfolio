@@ -1,0 +1,51 @@
+---
+import Layout from "layouts/Layout.astro";
+import { format } from "date-fns";
+import { groupPostsByDate } from "helpers";
+import { getCollection } from "astro:content";
+
+const podcasts = await getCollection("podcast");
+
+const postsByDate = groupPostsByDate(podcasts);
+---
+
+<Layout
+  title="Podcast"
+  description="Here is my blog. I started to write not so long ago and trying my best"
+>
+  <section class="prose max-w-full dark:prose-dark">
+    <h1>Podcast</h1>
+    <p>
+      This is a collection of auto-generated podcast by different tools and
+      techniques. The latest podcast has been generated with:
+      <a href="https://notebooklm.google.com/">Notebook LLM</a>
+    </p>
+
+    {
+      postsByDate.map((group) => (
+        <>
+          <h2>{group.year}</h2>
+
+          <ul class="list-none space-y-8 pl-0">
+            {group.posts.map((post) => (
+              <li>
+                <div class="flex justify-between">
+                  <b class="truncate">{post.data.title}</b>
+                  <span class="w-20 text-right">
+                    {format(post.data.publishedAt, "d MMM")}
+                  </span>
+                </div>
+                <p class="my-1">{post.data.summary}</p>
+
+                <audio controls>
+                  <source src={post.data.src} type="audio/wav" />
+                  Your browser does not support the audio element.
+                </audio>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+    }
+  </section>
+</Layout>

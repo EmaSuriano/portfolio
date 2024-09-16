@@ -14,6 +14,7 @@ export async function GET() {
   const blogPosts = await getCollection("blog");
   const externalPosts = await getCollection("external");
   const tilPosts = await getCollection("til");
+  const podcasts = await getCollection("podcast");
 
   const posts = [...blogPosts, ...externalPosts, ...tilPosts]
     .filter((post) => !isDraft(post))
@@ -29,6 +30,7 @@ export async function GET() {
     })),
     posts: posts.map((post) => ({ ...post, url: getPostLink(post) })),
     talks: talks.map((talk) => ({ title: talk.title, url: talk.url })),
+    podcasts,
   };
 
   return new Response(JSON.stringify(summary), {

@@ -4,7 +4,8 @@ import type { CollectionEntry } from "astro:content";
 type Post =
   | CollectionEntry<"blog">
   | CollectionEntry<"external">
-  | CollectionEntry<"til">;
+  | CollectionEntry<"til">
+  | CollectionEntry<"podcast">;
 
 type Group = { year: number; posts: Post[] };
 
@@ -20,6 +21,7 @@ export type Summary = {
   projects: Link[];
   talks: Link[];
   posts: (Post & { url: string })[];
+  podcasts: CollectionEntry<"podcast">[];
 };
 
 export const humanize = (text = "") => {
@@ -60,6 +62,9 @@ export const getPostLink = (post: Post) => {
 
     case "til":
       return new URL(`til/${post.slug}`, base).toString();
+
+    case "podcast":
+      throw new Error("I don't support podcast links...");
 
     case "external":
       return post.data.external;
