@@ -3,9 +3,11 @@ import path from "path";
 import { type Summary } from "helpers";
 import { GET as getSummary } from "./api/summary.ts";
 import fs from "fs";
+import GithubSlugger from "github-slugger";
 
 export async function GET() {
   const summary: Summary = await getSummary().then((x) => x.json());
+  const slugger = new GithubSlugger();
 
   return rss({
     title: `${summary.name}'s Podcast`,
@@ -45,7 +47,7 @@ export async function GET() {
           type: "audio/mpeg",
         },
         customData: `
-          <guid>${new URL(path.join(import.meta.env.SITE, "podcast")).href}</guid>
+          <guid>${new URL(path.join(import.meta.env.SITE, `podcast#${slugger.slug(title)}`)).href}</guid>
           <itunes:duration>${length}</itunes:duration>
           <itunes:summary>${description}</itunes:summary>
         `,

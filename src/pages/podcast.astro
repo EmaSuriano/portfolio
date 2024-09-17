@@ -5,10 +5,13 @@ import { getCollection } from "astro:content";
 import { sortPostByDate } from "helpers";
 import { Image } from "astro:assets";
 import spotifyBadge from "../assets/spotify-badge.svg";
+import GithubSlugger from "github-slugger";
 
 const podcasts = await getCollection("podcast");
 
 const sorted = podcasts.sort(sortPostByDate);
+
+const slugger = new GithubSlugger();
 ---
 
 <Layout
@@ -40,7 +43,9 @@ const sorted = podcasts.sort(sortPostByDate);
         sorted.map((post) => (
           <li>
             <div class="flex justify-between items-baseline">
-              <h3 class="truncate mt-3">{post.data.title}</h3>
+              <a href={`#${slugger.slug(post.data.title)}`}>
+                <h3 class="truncate m-0">{post.data.title}</h3>
+              </a>
               <span class="w-20 text-right">
                 {format(post.data.publishedAt, "d MMM")}
               </span>
