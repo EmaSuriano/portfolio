@@ -29,6 +29,7 @@ const podcastSchema = z.object({
   publishedAt: z.date(),
   summary: z.string(),
   src: z.string(),
+  length: z.string(),
 });
 
 export const collections = {
