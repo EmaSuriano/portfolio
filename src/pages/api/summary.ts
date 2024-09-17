@@ -30,7 +30,7 @@ export async function GET() {
     })),
     posts: posts.map((post) => ({ ...post, url: getPostLink(post) })),
     talks: talks.map((talk) => ({ title: talk.title, url: talk.url })),
-    podcasts,
+    podcasts: podcasts.sort(sortPostByDate),
   };
 
   return new Response(JSON.stringify(summary), {

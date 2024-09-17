@@ -4,7 +4,8 @@ import type { CollectionEntry } from "astro:content";
 type Post =
   | CollectionEntry<"blog">
   | CollectionEntry<"external">
-  | CollectionEntry<"til">;
+  | CollectionEntry<"til">
+  | CollectionEntry<"podcast">;
 
 type Group = { year: number; posts: Post[] };
 
@@ -64,6 +65,9 @@ export const getPostLink = (post: Post) => {
 
     case "external":
       return post.data.external;
+
+    case "podcast":
+      throw new Error("Podcast link not supported for now");
 
     /* istanbul ignore next */
     default:
