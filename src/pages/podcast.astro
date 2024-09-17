@@ -3,6 +3,8 @@ import Layout from "layouts/Layout.astro";
 import { format } from "date-fns";
 import { getCollection } from "astro:content";
 import { sortPostByDate } from "helpers";
+import { Image } from "astro:assets";
+import spotifyBadge from "../assets/spotify-badge.svg";
 
 const podcasts = await getCollection("podcast");
 
@@ -21,12 +23,24 @@ const sorted = podcasts.sort(sortPostByDate);
       <a href="https://notebooklm.google.com/">Notebook LLM</a>
     </p>
 
-    <ul class="list-none space-y-8 pl-0">
+    <a href="https://open.spotify.com/show/7hba19unhTLNTFXnTf0T9T">
+      <Image
+        src={spotifyBadge}
+        format="svg"
+        alt="Spotify badge"
+        loading="lazy"
+        width={165}
+        height={40}
+        class="m-0"
+      />
+    </a>
+
+    <ul class="list-none space-y-4 pl-0">
       {
         sorted.map((post) => (
           <li>
             <div class="flex justify-between items-baseline">
-              <h3 class="truncate">{post.data.title}</h3>
+              <h3 class="truncate mt-3">{post.data.title}</h3>
               <span class="w-20 text-right">
                 {format(post.data.publishedAt, "d MMM")}
               </span>
