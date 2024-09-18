@@ -6,6 +6,7 @@ import { sortPostByDate } from "helpers";
 import { Image } from "astro:assets";
 import spotifyBadge from "../assets/spotify-badge.svg";
 import GithubSlugger from "github-slugger";
+import author from "author.json";
 
 const podcasts = await getCollection("podcast");
 
@@ -26,7 +27,7 @@ const slugger = new GithubSlugger();
       <a href="https://notebooklm.google.com/">Notebook LLM</a>
     </p>
 
-    <a href="https://open.spotify.com/show/7hba19unhTLNTFXnTf0T9T">
+    <a href={author.podcast.links.spotify}>
       <Image
         src={spotifyBadge}
         format="svg"
