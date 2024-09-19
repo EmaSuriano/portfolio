@@ -8,7 +8,7 @@ import {
 } from "helpers";
 import { getCollection } from "astro:content";
 
-const { name, bio, website, projects, talks } = about;
+const { name, bio, website, projects, talks, podcast } = about;
 
 export async function GET() {
   const blogPosts = await getCollection("blog");
@@ -30,7 +30,11 @@ export async function GET() {
     })),
     posts: posts.map((post) => ({ ...post, url: getPostLink(post) })),
     talks: talks.map((talk) => ({ title: talk.title, url: talk.url })),
-    podcasts: podcasts.sort(sortPostByDate),
+    podcast: {
+      name: podcast.name,
+      description: podcast.description,
+      episodes: podcasts.sort(sortPostByDate),
+    },
   };
 
   return new Response(JSON.stringify(summary), {

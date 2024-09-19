@@ -4,9 +4,10 @@ import { format } from "date-fns";
 import { getCollection } from "astro:content";
 import { sortPostByDate } from "helpers";
 import { Image } from "astro:assets";
-import spotifyBadge from "../assets/spotify-badge.svg";
+import spotifyBadge from "../assets/spotify-badge-light.svg";
 import GithubSlugger from "github-slugger";
 import author from "author.json";
+import { Icon } from "astro-icon/components";
 
 const podcasts = await getCollection("podcast");
 
@@ -20,10 +21,15 @@ const slugger = new GithubSlugger();
   description="Here is my blog. I started to write not so long ago and trying my best"
 >
   <section class="prose max-w-full dark:prose-dark">
-    <h1>Podcast</h1>
+    <h1>
+      Podcast
+      <a class="border-none">
+        <Icon name="ri:rss-fill" class="ml-1 inline h-8 w-8 align-baseline" />
+      </a>
+    </h1>
     <p>
-      This is a collection of auto-generated podcast by different tools and
-      techniques. The latest podcast has been generated with:
+      {author.podcast.description}
+      The latest podcast has been generated with:
       <a href="https://notebooklm.google.com/">Notebook LLM</a>
     </p>
 
