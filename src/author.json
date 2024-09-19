@@ -11,6 +11,7 @@
   },
   "podcast": {
     "name": "Ema Suriano's Podcast",
+    "description": "Experimental podcast made by EmaSuriano, where we explore different topics of Machine Learning explained by the LLMs.",
     "links": {
       "rss": "https://emasuriano.com/podcast.xml",
       "spotify": "https://open.spotify.com/show/7hba19unhTLNTFXnTf0T9T"

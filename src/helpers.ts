@@ -21,7 +21,11 @@ export type Summary = {
   projects: Link[];
   talks: Link[];
   posts: (Post & { url: string })[];
-  podcasts: CollectionEntry<"podcast">[];
+  podcast: {
+    name: string;
+    description: string;
+    episodes: CollectionEntry<"podcast">[];
+  };
 };
 
 export const humanize = (text = "") => {

@@ -10,8 +10,8 @@ export async function GET() {
   const slugger = new GithubSlugger();
 
   return rss({
-    title: `${summary.name}'s Podcast`,
-    description: summary.bio,
+    title: summary.podcast.name,
+    description: summary.podcast.description,
     site: import.meta.env.SITE,
     xmlns: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
@@ -27,14 +27,14 @@ export async function GET() {
       <itunes:image href="${new URL(path.join(import.meta.env.SITE, "icon-512-maskable.png")).href}"/>
       <itunes:explicit>no</itunes:explicit>
     `,
-    items: summary.podcasts.map((podcast) => {
+    items: summary.podcast.episodes.map((episode) => {
       const {
         title,
         publishedAt,
         summary: description,
         src,
         length,
-      } = podcast.data;
+      } = episode.data;
 
       return {
         title,
