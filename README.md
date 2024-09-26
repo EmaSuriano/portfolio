@@ -6,6 +6,13 @@
 
 > My portfolio where I share who I am, the projects I built, talks I gave, and the centralized place for all the blog post that I wrote in the past years.
 
+## Setup
+
+- Set up node version: `nvm use`
+- Install dependencies: `yarn`
+- Get Git submodules: `git submodule update --init`
+- Start server: `yarn dev`
+
 ## Stack 🚀
 
 - SSG with [Astro](https://astro.build/)

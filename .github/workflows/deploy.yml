@@ -26,7 +26,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
 
-      - run: yarn install --lock-file --ignore-engines
+      - run: yarn install
 
       - run: yarn build
 

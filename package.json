@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "author": "Ema Suriano",
   "scripts": {
-    "preinstall": "yarn config set ignore-engines true",
     "start": "astro dev",
     "check-types": "astro check && tsc --noEmit",
     "build": "astro build",
     "serve": "astro preview",
-    "clean": "rm -rf node_modules/ & rm -rf dist/ & rm -rf .cache/ & rm yarn.lock"
+    "clean": "rm -rf node_modules/ & rm -rf dist/ & rm -rf .cache/ & rm yarn.lock",
+    "cli": "node cli.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.3",
@@ -28,6 +28,7 @@
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
     "date-fns": "^3.6.0",
+    "inquirer": "^11.0.2",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
@@ -42,7 +43,6 @@
   },
   "dependencies": {
     "@justinribeiro/lite-youtube": "^1.5.0",
-    "medium-zoom": "^1.1.0",
-    "sharp": "^0.33.5"
+    "medium-zoom": "^1.1.0"
   }
 }
