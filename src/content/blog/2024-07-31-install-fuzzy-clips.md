@@ -78,6 +78,8 @@ Let's create a fuzzy logic system to control a fan based on temperature and humi
 
 Create a new file with the extension `.clp` and open it with any code editor that you want.
 
+> I created a [Github Repository](https://github.com/EmaSuriano/fuzzy-clips-demo.git) with the following code, so it will be easier to run it locally.
+
 ### 1. Definition of Membership functions
 
 ```clojure
