@@ -35,7 +35,7 @@ Following the Astro philosophy, I decided not to adopt any framework. The entire
 
 ```astro
 ---
-import { transform } from 'dependency';
+import { transform } from "dependency";
 
 // fetching logic
 const data = await fetch(URL);
@@ -54,7 +54,7 @@ const result = transform(data);
 </style>
 
 <script>
-  import clientModule from 'another-dep';
+  import clientModule from "another-dep";
 
   clientModule.start();
 </script>

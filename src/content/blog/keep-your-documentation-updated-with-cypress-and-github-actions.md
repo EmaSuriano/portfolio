@@ -11,6 +11,8 @@ One of my favorite ways to document projects is by adding screenshots of how it 
 
 I am the owner and maintainer of the [Gatsby Starter Mate](https://github.com/EmaSuriano/gatsby-starter-mate), which allows developers or tech writers to bootstrap their portfolio and manage its content with a CMS.
 
+![gatsby-starter-mate Github](https://opengraph.githubassets.com/random/EmaSuriano/gatsby-starter-mate)
+
 Although one can always open the [Demo website](https://gatsby-starter-mate.netlify.app/) and navigate through it to see how the project is, I decided to create a simple Table where I show how each of the sections looks like. Here is the table extracted from the [README.md](https://github.com/EmaSuriano/gatsby-starter-mate/blob/master/README.md#screenshot-and-design-).
 
 ![Home](https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Landing.png)
@@ -60,8 +62,8 @@ Next, let's add a simple health check that will navigate to the Home Page of the
 ```javascript
 // cypress/integration/health.spec.js
 
-it('health test', () => {
-  cy.visit('/');
+it("health test", () => {
+  cy.visit("/");
 });
 ```
 
@@ -127,26 +129,26 @@ This command will create the folders of `plugins` and `support` inside the Cypre
 Time to make Cypress take those screenshots! Let's start by adding a new file inside `integration` called `photographer.test.js`, with some basic tests:
 
 ```javascript
-describe('Photographer', () => {
+describe("Photographer", () => {
   beforeEach(() => {
-    cy.viewport('macbook-15'); // Desktop viewport
+    cy.viewport("macbook-15"); // Desktop viewport
   });
 
   // Taking screenshots by Sections
-  it('Landing Section', () => {
-    cy.visit('/');
-    cy.get('#home').screenshot('Landing');
+  it("Landing Section", () => {
+    cy.visit("/");
+    cy.get("#home").screenshot("Landing");
   });
 
-  it('About Section', () => {
-    cy.visit('/');
-    cy.get('#about').scrollIntoView().screenshot('About');
+  it("About Section", () => {
+    cy.visit("/");
+    cy.get("#about").scrollIntoView().screenshot("About");
   });
 
   // Taking screenshots of the whole page
-  it('404 Page', () => {
-    cy.visit('/');
-    cy.get('#404').screenshot('404');
+  it("404 Page", () => {
+    cy.visit("/");
+    cy.get("#404").screenshot("404");
   });
 });
 ```
@@ -287,17 +289,17 @@ The first step will be to collect all the routes inside the application. This wi
 Next, you have to store this file inside the folder `cypress/fixtures`, so then Cypress can have access to it inside the `photographer.test.js` file:
 
 ```javascript
-describe('Dynamic Photographer', () => {
-  const routes = require('../fixtures/routes.json');
+describe("Dynamic Photographer", () => {
+  const routes = require("../fixtures/routes.json");
 
   beforeEach(() => {
-    cy.viewport('macbook-15'); // Desktop viewport
+    cy.viewport("macbook-15"); // Desktop viewport
   });
 
   routes.forEach((route) => {
     it(`${route}`, () => {
-      cy.visit('/');
-      cy.get('#shared-section-id').screenshot(route);
+      cy.visit("/");
+      cy.get("#shared-section-id").screenshot(route);
     });
   });
 });
@@ -307,21 +309,21 @@ Finally, you have to generate the table based on the `routes.json` file or from 
 
 ```javascript
 // generate-docs-readme.js
-const fs = require('fs');
-const routes = require('./cypress/fixtures/routes.json');
+const fs = require("fs");
+const routes = require("./cypress/fixtures/routes.json");
 
 const routeToTable = (route) =>
   `| ${route} | ![${route}](screenshots/photographer.test.js/${route}.png) |`;
 
 const content = [
-  '## Pages Screenshots',
-  'Dynamic screenshots based on the last version deployed.',
-  '| Page  | Screenshot |',
-  '| --- | :---: |',
+  "## Pages Screenshots",
+  "Dynamic screenshots based on the last version deployed.",
+  "| Page  | Screenshot |",
+  "| --- | :---: |",
   ...routes.map(routeToTable),
 ];
 
-fs.writeFileSync('photographer.md', content.join('\n'));
+fs.writeFileSync("photographer.md", content.join("\n"));
 ```
 
 This idea can be improved in several ways:

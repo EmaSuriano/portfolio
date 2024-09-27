@@ -38,13 +38,13 @@ When the installation is finished you can check if everything was set up properl
 Now let’s create a simple component for testing. I decided to create a simple Button called DuplicationButton , in which every time the user clicks on it the children provided by props will be duplicated. Not really useful but it will serve as a great example!
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ButtonStyle = {
-  padding: '10px',
-  borderRadius: '5px',
-  fontSize: '16px',
-  border: 'pink 3px solid',
+  padding: "10px",
+  borderRadius: "5px",
+  fontSize: "16px",
+  border: "pink 3px solid",
 };
 
 const DuplicationButton = ({ children }) => {
@@ -63,19 +63,19 @@ export default DuplicationButton;
 Let’s add some stories for the component.
 
 ```jsx
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import DuplicationButton from './DuplicationButton';
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import DuplicationButton from "./DuplicationButton";
 
-storiesOf('DuplicationButton', module)
-  .add('Good', () => (
+storiesOf("DuplicationButton", module)
+  .add("Good", () => (
     <DuplicationButton>
       <span role="img" aria-label="angel">
         😇
       </span>
     </DuplicationButton>
   ))
-  .add('Bad', () => (
+  .add("Bad", () => (
     <DuplicationButton>
       <span role="img" aria-label="devil">
         😈
@@ -167,7 +167,7 @@ In order to enable jest-image-snapshot, you need to extend the function expect f
 
 ```javascript
 // src/setupTests.js
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import { toMatchImageSnapshot } from "jest-image-snapshot";
 
 expect.extend({ toMatchImageSnapshot });
 ```
@@ -210,6 +210,8 @@ In order to run this test, we need to start Storybook or you can directly use ya
 ## My Experience working with Visual Testing 🙋‍♂️
 
 As with all the new technologies/frameworks, I tried Visual testing first with a side project in which I saw a possible improvement. The project itself was a collection of weather icons made with React and [styled-components](https://www.styled-components.com/), called [weather-styled-icon](https://github.com/EmaSuriano/weather-styled-icon).
+
+![weather-styled-icon Github](https://opengraph.githubassets.com/random/EmaSuriano/weather-styled-icon)
 
 ![weather-styled-icon showcase](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/weather-styled-icon_showcase.png)
 
