@@ -27,7 +27,7 @@
     "astro-seo": "^0.8.4",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "inquirer": "^11.0.2",
     "markdown-it": "^14.1.0",
     "postcss": "^8.4.47",
