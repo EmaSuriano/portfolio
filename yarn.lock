@@ -367,28 +367,6 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@beoe/rehype-code-hook@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@beoe/rehype-code-hook/-/rehype-code-hook-0.0.2.tgz#cb81e23167411e658aee680354e324c31efca8a7"
-  integrity sha512-+jpkaKR4SFIUDLPbh7amJ6oTz90uBDcoRV6Grcc7Rm+aI4oXD5DevX0ls3WQA5iZYj0Oaa+DnoFsKV/OVVZBug==
-  dependencies:
-    "@types/hast" "^3.0.4"
-    hast-util-from-html-isomorphic "^2.0.0"
-    hast-util-to-text "^4.0.2"
-    unified "^11.0.4"
-    unist-util-visit "^5.0.0"
-
-"@beoe/rehype-mermaid@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@beoe/rehype-mermaid/-/rehype-mermaid-0.0.2.tgz#2d97769a5bcafe6561c3b55cc4205193289379a2"
-  integrity sha512-Ok4pNeYPcr7tsg7ucDa3Ir5ukftHs+7OIyrDJ4wQbo2s1H0oG1A9gfMPCx4rthLRv6o9C6Kdx9fIBc46PcP7Ow==
-  dependencies:
-    "@beoe/rehype-code-hook" "0.0.2"
-    hastscript "^9.0.0"
-    mermaid-isomorphic "^2.1.2"
-    mini-svg-data-uri "^1.4.4"
-    svgo "^3.2.0"
-
 "@braintree/sanitize-url@^6.0.1":
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-6.0.4.tgz#923ca57e173c6b232bbbb07347b1be982f03e783"
@@ -1407,6 +1385,19 @@
   resolved "https://registry.yarnpkg.com/@types/katex/-/katex-0.16.7.tgz#03ab680ab4fa4fbc6cb46ecf987ecad5d8019868"
   integrity sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ==
 
+"@types/linkify-it@^5":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/linkify-it/-/linkify-it-5.0.0.tgz#21413001973106cda1c3a9b91eedd4ccd5469d76"
+  integrity sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==
+
+"@types/markdown-it@^14.1.2":
+  version "14.1.2"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-14.1.2.tgz#57f2532a0800067d9b934f3521429a2e8bfb4c61"
+  integrity sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==
+  dependencies:
+    "@types/linkify-it" "^5"
+    "@types/mdurl" "^2"
+
 "@types/mdast@^3.0.0":
   version "3.0.15"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.15.tgz#49c524a263f30ffa28b71ae282f813ed000ab9f5"
@@ -1420,6 +1411,11 @@
   integrity sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==
   dependencies:
     "@types/unist" "*"
+
+"@types/mdurl@^2":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/mdurl/-/mdurl-2.0.0.tgz#d43878b5b20222682163ae6f897b20447233bdfd"
+  integrity sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==
 
 "@types/minimatch@^5.1.2":
   version "5.1.2"
@@ -1454,6 +1450,13 @@
   version "1.26.4"
   resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.26.4.tgz#1a9e1074619ce1d7322669e5b46fbe823925103a"
   integrity sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==
+
+"@types/sanitize-html@^2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@types/sanitize-html/-/sanitize-html-2.13.0.tgz#ac3620e867b7c68deab79c72bd117e2049cdd98e"
+  integrity sha512-X31WxbvW9TjIhZZNyNBZ/p5ax4ti7qsNDBDEnH4zAgmEh35YnFD1UiS6z9Cd34kKm0LslFW0KPmTQzu/oGtsqQ==
+  dependencies:
+    htmlparser2 "^8.0.0"
 
 "@types/sax@^1.2.1":
   version "1.2.7"
@@ -3881,7 +3884,7 @@ merge2@^1.3.0:
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
 
-mermaid-isomorphic@^2.0.0, mermaid-isomorphic@^2.1.2:
+mermaid-isomorphic@^2.0.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/mermaid-isomorphic/-/mermaid-isomorphic-2.2.1.tgz#fbe3209cfd3f42b43463e1302f098f2a894ae448"
   integrity sha512-OPxQsUL2TIlAfC3ExhI/mORzigTbUOqYtqUGUECSKevGCSf/+QEwq78MRZWG1PpmTkl2ORoK8Yy5WkqqTqywMg==
@@ -4421,7 +4424,7 @@ mimic-function@^5.0.0:
   resolved "https://registry.yarnpkg.com/mimic-function/-/mimic-function-5.0.1.tgz#acbe2b3349f99b9deaca7fb70e48b83e94e67076"
   integrity sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==
 
-mini-svg-data-uri@^1.0.0, mini-svg-data-uri@^1.4.4:
+mini-svg-data-uri@^1.0.0:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
   integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
@@ -5252,18 +5255,6 @@ remark-math@^6.0.0:
     micromark-extension-math "^3.0.0"
     unified "^11.0.0"
 
-remark-mermaidjs@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/remark-mermaidjs/-/remark-mermaidjs-6.0.0.tgz#89ded57981cc01b7a207860a2708fd410ba8c870"
-  integrity sha512-U7nJ8oJGhLPHfMvlmE+8bw57qp++hEygwSdANOHGmqg3V4uGUz8nnOwa1oWf6kwOrG7jf9gXllD+rWvf5mHzBw==
-  dependencies:
-    "@types/mdast" "^4.0.0"
-    hast-util-from-html-isomorphic "^2.0.0"
-    mermaid-isomorphic "^2.0.0"
-    unified "^11.0.0"
-    unist-util-visit-parents "^6.0.0"
-    vfile "^6.0.0"
-
 remark-parse@^11.0.0:
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-11.0.0.tgz#aa60743fcb37ebf6b069204eb4da304e40db45a1"
@@ -5727,7 +5718,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svgo@^3.2.0, svgo@^3.3.2:
+svgo@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-3.3.2.tgz#ad58002652dffbb5986fc9716afe52d869ecbda8"
   integrity sha512-OoohrmuUlBs8B8o6MB2Aevn+pRIH9zDALSR+6hhqVfa6fRwG/Qw9VUMSMW9VNg2CFc/MTIfabtdOVl9ODIJjpw==

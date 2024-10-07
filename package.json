@@ -16,13 +16,14 @@
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.2.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@beoe/rehype-mermaid": "^0.0.2",
     "@iconify-json/ri": "^1.2.0",
     "@microflash/rehype-figure": "^2.1.1",
     "@octokit/core": "^6.1.2",
     "@tailwindcss/typography": "^0.5.15",
     "@types/glob": "^8.1.0",
+    "@types/markdown-it": "^14.1.2",
     "@types/prismjs": "^1.26.4",
+    "@types/sanitize-html": "^2.13.0",
     "astro": "4.15.11",
     "astro-icon": "^1.1.1",
     "astro-seo": "^0.8.4",
@@ -48,7 +49,6 @@
   },
   "dependencies": {
     "@justinribeiro/lite-youtube": "^1.5.0",
-    "medium-zoom": "^1.1.0",
-    "remark-mermaidjs": "^6.0.0"
+    "medium-zoom": "^1.1.0"
   }
 }
