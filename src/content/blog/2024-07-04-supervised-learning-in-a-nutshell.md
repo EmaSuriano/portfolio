@@ -1,6 +1,6 @@
 ---
 publishedAt: 2024-10-07
-title: Supervised learning in a nutshell
+title: Supervised Learning in a Nutshell
 summary: Key steps and improvements in supervised learning, from data splitting to advanced techniques for better performance
 cover: https://images.unsplash.com/photo-1598112155290-484266d5d312?w=1400&h=600&fit=crop
 tags:
