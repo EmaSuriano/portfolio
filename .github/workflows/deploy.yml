@@ -28,6 +28,9 @@ jobs:
 
       - run: yarn install
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - run: yarn build
 
       - run: npx @divriots/jampack ./dist

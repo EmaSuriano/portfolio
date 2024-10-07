@@ -15,5 +15,9 @@ jobs:
           node-version-file: ".nvmrc"
 
       - run: yarn install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - run: yarn check-types
       - run: yarn build
