@@ -22,7 +22,7 @@ And here is the demo, feel free to modify the code as you pleased because it's l
 <iframe
   loading="lazy"
   title="Demo of jupyter notebook in the browser"
-  src="https://emasuriano.github.io/python-demos/notebooks/index.html?path=demo.ipynb"
+  src="https://emasuriano.github.io/jupyterlite/notebooks/index.html?path=demo.ipynb"
   width="100%"
   height="500px"
 >

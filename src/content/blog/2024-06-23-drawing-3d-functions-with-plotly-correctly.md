@@ -56,7 +56,7 @@ You can play with the function by using the following interactive notebook. Feel
 <iframe
   loading="lazy"
   title="Demo plotly 1"
-  src="https://emasuriano.github.io/python-demos/notebooks/index.html?path=/drawing-function-with-plotly/demo.ipynb"
+  src="https://emasuriano.github.io/jupyterlite/notebooks/index.html?path=/drawing-function-with-plotly/demo.ipynb"
   width="100%"
   height="500px"
 ></iframe>
@@ -183,7 +183,7 @@ I deployed another version of the notebook where you can test the same `draw_fun
 <iframe
   loading="lazy"
   title="Demo plotly 1"
-  src="https://emasuriano.github.io/python-demos/notebooks/index.html?path=/drawing-function-with-plotly/demo-fixed.ipynb"
+  src="https://emasuriano.github.io/jupyterlite/notebooks/index.html?path=/drawing-function-with-plotly/demo-fixed.ipynb"
   width="100%"
   height="500px"
 ></iframe>

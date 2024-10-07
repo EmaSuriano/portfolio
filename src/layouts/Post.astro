@@ -34,7 +34,11 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
 >
   {
     cover && (
-      <div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg">
+      <div
+        aria-label="cover"
+        class="overflow-hidden rounded-2xl shadow-lg"
+        data-zoomable
+      >
         <Image src={cover} alt={title} width={1400} height={600} />
       </div>
     )

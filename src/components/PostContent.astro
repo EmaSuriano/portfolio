@@ -11,7 +11,7 @@
   import "medium-zoom/dist/style.css";
 
   const target = document.querySelectorAll(
-    "[data-zoomable] > img, article section figure > img",
+    "[data-zoomable] > img, article section figure > img, [id^='mermaid-']",
   );
 
   mediumZoom(target, { margin: 24 });

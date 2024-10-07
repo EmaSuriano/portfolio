@@ -109,3 +109,7 @@ h6 a {
 .icon-link::before {
   content: "#";
 }
+
+[id^="mermaid-"] {
+  margin: auto;
+}

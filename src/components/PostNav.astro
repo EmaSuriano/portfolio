@@ -49,7 +49,7 @@ const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
 </style>
 
 <script>
-  const navLinks = document.querySelectorAll("nav li a");
+  const navLinks = document.querySelectorAll("#blog-navigation li a");
   let lastVisible = navLinks[0]; // Start with the first link as the initial selection
 
   const observer = new IntersectionObserver((entries) => {

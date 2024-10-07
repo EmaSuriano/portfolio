@@ -41,11 +41,11 @@ You can see that each cell has on the bottom left the _Slide type_ assigned to, 
 <iframe
   loading="lazy"
   title="Demo slide"
-  src="https://emasuriano.github.io/python-demos/files/slides/demo.slides.html#/"
+  src="https://emasuriano.github.io/jupyterlite/files/slides/demo.slides.html#/"
   width="100%"
   height="500px"
 ></iframe>
 
-To see the presentation in full screen, click [here](https://emasuriano.github.io/python-demos/files/slides/demo.slides.html#/). It also supports mobile gestures and many other features related to reveal.js.
+To see the presentation in full screen, click [here](https://emasuriano.github.io/jupyterlite/files/slides/demo.slides.html#/). It also supports mobile gestures and many other features related to reveal.js.
 
 Thanks for reading.
