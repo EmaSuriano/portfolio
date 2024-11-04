@@ -68,14 +68,18 @@ const EXTRA_PROMPTS: Record<Prompt["type"], any> = {
 };
 
 async function main() {
-  const { title, type, summary } = await inquirer.prompt<Prompt>([
-    { type: "input", name: "title", message: "Enter title:", required: true },
+  console.log(
+    "✨ Welcome to the best CLI in the world, just follow the steps and start writing!",
+  );
+
+  const { type, title, summary } = await inquirer.prompt<Prompt>([
     {
       type: "list",
       name: "type",
       message: "Choose a document type:",
       choices: ARTICLE_TYPES,
     },
+    { type: "input", name: "title", message: "Enter title:", required: true },
     { type: "input", name: "summary", message: "Enter summary (optional):" },
   ]);
 
