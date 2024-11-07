@@ -79,10 +79,13 @@ export const getPostLink = (post: Post) => {
   }
 };
 
-export const hasCommonItem = (arr1: string[], arr2: string[]) =>
-  arr1.some((item1) =>
-    arr2.map((item2) => item2.toLowerCase()).includes(item1.toLowerCase()),
-  );
+export const countCommonItems = (arr1: string[], arr2: string[]): number => {
+  const lowerCaseArr1 = arr1.map((item) => item.toLowerCase());
+  const lowerCaseArr2 = arr2.map((item) => item.toLowerCase());
+  return lowerCaseArr1.reduce((count, item1) => {
+    return count + Number(lowerCaseArr2.includes(item1));
+  }, 0);
+};
 
 type Title = {
   level: number;

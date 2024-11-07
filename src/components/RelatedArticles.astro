@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { sortPostByDate } from "helpers";
-import { hasCommonItem } from "helpers";
+import { countCommonItems } from "helpers";
 
 type Props = {
   tags: string[];
@@ -16,9 +16,19 @@ const blogPosts = (await getCollection("blog")).filter(
 const tilPosts = await getCollection("til");
 
 const relatedPosts = [...blogPosts, ...tilPosts]
-  .filter((post) => post.id !== id && hasCommonItem(tags, post.data.tags || []))
-  .sort(sortPostByDate)
-  .slice(0, 3);
+  .map((post) => ({
+    ...post,
+    commonItems: countCommonItems(tags, post.data.tags || []),
+  }))
+  .filter((post) => post.id !== id && post.commonItems > 0)
+  .sort((a, b) => {
+    // Sort by commonItemCount in descending order
+    if (b.commonItems !== a.commonItems) {
+      return b.commonItems - a.commonItems;
+    }
+
+    return sortPostByDate(a, b);
+  });
 ---
 
 {
