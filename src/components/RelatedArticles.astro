@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { sortPostByDate } from "helpers";
+import { getPostLink, sortPostByDate } from "helpers";
 import { countCommonItems } from "helpers";
 
 type Props = {
@@ -38,7 +38,7 @@ const relatedPosts = [...blogPosts, ...tilPosts]
       <ul>
         {relatedPosts.map((post) => (
           <li>
-            <a href={post.slug}>{post.data.title}</a>
+            <a href={getPostLink(post)}>{post.data.title}</a>
           </li>
         ))}
       </ul>
