@@ -1924,10 +1924,10 @@ array-iterate@^2.0.0:
   resolved "https://registry.yarnpkg.com/array-iterate/-/array-iterate-2.0.1.tgz#6efd43f8295b3fee06251d3d62ead4bd9805dd24"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro-icon@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/astro-icon/-/astro-icon-1.1.2.tgz#4f7fdeb6ae15ce8bb27bad0b0c8f0c160e2d5510"
-  integrity sha512-2qAHBtZLYuFEIMP0Ck0edyLi5fQmJjwP2Qbv41f8L4KAJ2sra/dH7q5lCOn4q0DHVtS0w3tPG8UKQRits3UPcg==
+astro-icon@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/astro-icon/-/astro-icon-1.1.4.tgz#64cb630a82d42d4bf3814d7c56192e1b066de08a"
+  integrity sha512-sMLkQaevIQLv38WBzb/RDbsmxhg5+X+KcNmpTi9cE6MLurNWU1MPnlO87d9Vwg4HxTenKpDlYp81A3syXFW/gw==
   dependencies:
     "@iconify/tools" "^4.0.5"
     "@iconify/types" "^2.0.0"
