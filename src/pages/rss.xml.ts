@@ -1,10 +1,21 @@
 import rss from "@astrojs/rss";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
+
 const parser = new MarkdownIt();
 
 import { getPostLink, type Summary } from "helpers";
 import { GET as getSummary } from "./api/summary.ts";
+
+const parseBody = (body?: string) => {
+  if (!body) {
+    return undefined;
+  }
+
+  return sanitizeHtml(parser.render(post.body), {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+  });
+};
 
 export async function GET() {
   const summary: Summary = await getSummary().then((x) => x.json());
@@ -20,9 +31,7 @@ export async function GET() {
         pubDate: post.data.publishedAt,
         description: post.data.summary,
         author: summary.name,
-        content: sanitizeHtml(parser.render(post.body), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-        }),
+        content: parseBody(post.body),
       };
     }),
   });

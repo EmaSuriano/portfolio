@@ -18,22 +18,14 @@
     }
   },
   "social": [
-    {
-      "name": "GitHub",
-      "url": "https://github.com/EmaSuriano"
-    },
-    {
-      "name": "Twitter",
-      "url": "https://twitter.com/EmaSuriano"
-    },
-    {
-      "name": "YouTube",
-      "url": "https://www.youtube.com/c/EmaSuriano"
-    },
+    { "name": "GitHub", "url": "https://github.com/EmaSuriano" },
+    { "name": "Twitter", "url": "https://twitter.com/EmaSuriano" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/EmaSuriano" },
     {
       "name": "LinkedIn",
       "url": "https://www.linkedin.com/in/emanuel-suriano"
-    }
+    },
+    { "name": "RSS", "url": "https://emasuriano.com/rss.xml" }
   ],
   "projects": [
     "https://github.com/EmaSuriano/gatsby-starter-event-calendar",
