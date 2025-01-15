@@ -12,7 +12,7 @@ const parseBody = (body?: string) => {
     return undefined;
   }
 
-  return sanitizeHtml(parser.render(post.body), {
+  return sanitizeHtml(parser.render(body), {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
   });
 };
