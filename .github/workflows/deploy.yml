@@ -44,6 +44,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-pages-artifact@v4
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:

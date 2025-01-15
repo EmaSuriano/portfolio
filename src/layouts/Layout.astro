@@ -3,7 +3,7 @@ import "styles.css";
 import about from "author.json";
 import { SEO } from "astro-seo";
 import { humanize } from "helpers";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export type Props = {
   title: string;
@@ -97,7 +97,7 @@ const {
     />
 
     <meta content="#fff" name="theme-color" />
-    {viewTransitionEnabled && <ViewTransitions />}
+    {viewTransitionEnabled && <ClientRouter />}
   </head>
 
   <body
