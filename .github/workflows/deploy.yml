@@ -36,7 +36,7 @@ jobs:
       - run: npx @divriots/jampack ./dist
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./dist
 
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: actions/download-pages-artifact@v4
+        uses: actions/download-artifact@v4
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
