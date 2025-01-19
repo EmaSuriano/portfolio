@@ -5,13 +5,10 @@
   "role": "Software Engineer",
   "avatar": "https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d",
   "twitter": "@EmaSuriano",
-  "company": {
-    "name": "Revolut",
-    "url": "https://revolut.com/"
-  },
+  "company": { "name": "Revolut", "url": "https://revolut.com/" },
   "podcast": {
     "name": "Ema Suriano's Podcast",
-    "description": "Experimental podcast made by EmaSuriano, where we explore different topics of Machine Learning explained by the LLMs.",
+    "description": "A podcast where Ema Suriano shares insights and experiences on software engineering, technology trends, and personal growth.",
     "links": {
       "rss": "https://emasuriano.com/podcast.xml",
       "spotify": "https://open.spotify.com/show/7hba19unhTLNTFXnTf0T9T"

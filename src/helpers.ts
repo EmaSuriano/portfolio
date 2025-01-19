@@ -1,7 +1,7 @@
 import { differenceInDays } from "date-fns";
 import type { CollectionEntry } from "astro:content";
 
-type Post =
+export type Post =
   | CollectionEntry<"blog">
   | CollectionEntry<"external">
   | CollectionEntry<"til">
@@ -20,11 +20,15 @@ export type Summary = {
   website: string;
   projects: Link[];
   talks: Link[];
-  posts: (Post & { url: string })[];
+  posts: Link[];
+  podcasts: Link[];
   podcast: {
     name: string;
     description: string;
-    episodes: CollectionEntry<"podcast">[];
+    links: {
+      rss: string;
+      spotify: string;
+    };
   };
 };
 

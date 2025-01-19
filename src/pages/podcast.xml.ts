@@ -2,11 +2,16 @@ import rss from "@astrojs/rss";
 import path from "path";
 import { type Summary } from "helpers";
 import { GET as getSummary } from "./api/summary.ts";
+import { GET as getPodcasts } from "./api/podcasts.ts";
 import fs from "fs";
 import GithubSlugger from "github-slugger";
+import type { CollectionEntry } from "astro:content";
 
 export async function GET() {
   const summary: Summary = await getSummary().then((x) => x.json());
+  const podcasts: CollectionEntry<"podcast">[] = await getPodcasts().then((x) =>
+    x.json(),
+  );
   const slugger = new GithubSlugger();
 
   return rss({
@@ -27,7 +32,7 @@ export async function GET() {
       <itunes:image href="${new URL(path.join(import.meta.env.SITE, "icon-512-maskable.png")).href}"/>
       <itunes:explicit>no</itunes:explicit>
     `,
-    items: summary.podcast.episodes.map((episode) => {
+    items: podcasts.map((episode) => {
       const {
         title,
         publishedAt,

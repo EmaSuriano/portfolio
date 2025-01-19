@@ -4,8 +4,9 @@ import MarkdownIt from "markdown-it";
 
 const parser = new MarkdownIt();
 
-import { getPostLink, type Summary } from "helpers";
+import { getPostLink, type Post, type Summary } from "helpers";
 import { GET as getSummary } from "./api/summary.ts";
+import { GET as getPosts } from "./api/posts.ts";
 
 const parseBody = (body?: string) => {
   if (!body) {
@@ -19,12 +20,13 @@ const parseBody = (body?: string) => {
 
 export async function GET() {
   const summary: Summary = await getSummary().then((x) => x.json());
+  const posts: Post[] = await getPosts().then((x) => x.json());
 
   return rss({
     title: `${summary.name}'s Blog`,
     description: summary.bio,
     site: import.meta.env.SITE,
-    items: summary.posts.map((post) => {
+    items: posts.map((post) => {
       return {
         link: getPostLink(post),
         title: post.data.title,

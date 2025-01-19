@@ -24,17 +24,19 @@ export async function GET() {
     name,
     bio,
     website,
+    podcast,
     projects: projects.map((url) => ({
       title: humanize(url.split("/").pop()),
       url,
     })),
-    posts: posts.map((post) => ({ ...post, url: getPostLink(post) })),
+    posts: posts.map((post) => ({
+      title: post.data.title,
+      url: getPostLink(post),
+    })),
     talks: talks.map((talk) => ({ title: talk.title, url: talk.url })),
-    podcast: {
-      name: podcast.name,
-      description: podcast.description,
-      episodes: podcasts.sort(sortPostByDate),
-    },
+    podcasts: podcasts
+      .sort(sortPostByDate)
+      .map((podcast) => ({ title: podcast.data.title, url: podcast.data.src })),
   };
 
   return new Response(JSON.stringify(summary), {
