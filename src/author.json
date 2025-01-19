@@ -30,8 +30,6 @@
   "projects": [
     "https://github.com/EmaSuriano/gatsby-starter-event-calendar",
     "https://github.com/EmaSuriano/gatsby-starter-mate",
-    "https://github.com/EmaSuriano/react-hotkey-tooltip",
-    "https://github.com/EmaSuriano/react-scroll-section",
     "https://github.com/EmaSuriano/astro-art-portfolio",
     "https://github.com/EmaSuriano/astro-resume"
   ],
