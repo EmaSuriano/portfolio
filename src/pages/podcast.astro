@@ -92,6 +92,8 @@ const slugger = new GithubSlugger();
 
 <style>
   .audio-control {
-    filter: invert(1) hue-rotate(180deg);
+    @media screen and (prefers-color-scheme: dark) {
+      filter: invert(1) hue-rotate(180deg);
+    }
   }
 </style>

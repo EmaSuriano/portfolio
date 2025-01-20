@@ -20,4 +20,5 @@ jobs:
         run: npx playwright install --with-deps
 
       - run: yarn check-types
+
       - run: yarn build
