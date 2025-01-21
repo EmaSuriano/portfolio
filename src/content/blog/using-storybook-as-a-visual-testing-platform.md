@@ -211,7 +211,7 @@ In order to run this test, we need to start Storybook or you can directly use ya
 
 As with all the new technologies/frameworks, I tried Visual testing first with a side project in which I saw a possible improvement. The project itself was a collection of weather icons made with React and [styled-components](https://www.styled-components.com/), called [weather-styled-icon](https://github.com/EmaSuriano/weather-styled-icon).
 
-![weather-styled-icon Github](https://opengraph.githubassets.com/random/EmaSuriano/weather-styled-icon)
+![weather-styled-icon Github](https://opengraph.githubassets.com/EmaSuriano/EmaSuriano/weather-styled-icon)
 
 ![weather-styled-icon showcase](../../static/assets/blog/using-storybook-as-a-visual-testing-platform/weather-styled-icon_showcase.png)
 

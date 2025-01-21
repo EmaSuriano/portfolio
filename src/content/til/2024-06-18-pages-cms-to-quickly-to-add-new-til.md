@@ -41,6 +41,6 @@ This will allow the CMS to understand where to look for the TIL posts and also g
 
 It's an amazing tool and Open Source, so you should definitely check out the [GitHub repository](https://github.com/pages-cms/pages-cms).
 
-![pages-cms Github](https://opengraph.githubassets.com/random/pages-cms/pages-cms)
+![pages-cms Github](https://opengraph.githubassets.com/EmaSuriano/pages-cms/pages-cms)
 
 Thanks for reading

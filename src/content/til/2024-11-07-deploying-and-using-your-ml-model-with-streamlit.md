@@ -16,7 +16,7 @@ Nevertheless, I didn't want to lose the opportunity to share my latest discovery
 
 > It's like Github Pages but for ML models. - Ema Suriano
 
-![Streamlit Github](https://opengraph.githubassets.com/random/streamlit/streamlit)
+![Streamlit Github](https://opengraph.githubassets.com/EmaSuriano/streamlit/streamlit)
 
 ## Some context first
 

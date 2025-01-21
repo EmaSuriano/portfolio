@@ -13,7 +13,7 @@ The main issue of this problem is not the fact that the repository size is going
 
 While I was searching for some kind of image that represents the project without information that can get outdated, I found this preview:
 
-![Ollama Github preview](https://opengraph.githubassets.com/16dc0ce438cf338ca03e98e84238f23161d058f1665111075ba68fcd2f0ecf04/ollama/ollama)
+![Ollama Github preview](https://opengraph.githubassets.com/EmaSuriano/ollama/ollama)
 
 It caught my attention because all the information was extremely up-to-date, considering that the last commit was less than 12 hours ago.
 
@@ -31,7 +31,7 @@ https://opengraph.githubassets.com/<random_hash>/<owner>/<repo>
 
 After knowing this I started playing with some of my other repositories and I found that I can always reliably get an up-to-date Github preview of my projects. As an example, I generated the one for this website:
 
-![Portfolio Github preview](https://opengraph.githubassets.com/test/EmaSuriano/portfolio)
+![Portfolio Github preview](https://opengraph.githubassets.com/EmaSuriano/EmaSuriano/portfolio)
 
 That will be all for now.
 

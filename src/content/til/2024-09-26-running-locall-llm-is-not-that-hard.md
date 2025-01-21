@@ -12,7 +12,7 @@ Let's keep it short, if you don't have a dedicated GPU you can still run locally
 
 The open-source project that will make your life easier is called [Ollama](https://ollama.com/).
 
-![Ollama Github preview](https://opengraph.githubassets.com/16dc0ce438cf338ca03e98e84238f23161d058f1665111075ba68fcd2f0ecf04/ollama/ollama)
+![Ollama Github preview](https://opengraph.githubassets.com/EmaSuriano/ollama/ollama)
 
 Ollama can be described as an LLM manager, with which you can easily install and run models locally on your computer.
 
@@ -78,7 +78,7 @@ We can all agree that using the terminal to communicate with the model can be a 
 
 This is the problem that Open WebUI is coming to solve!
 
-![Open WebUI Github preview](https://opengraph.githubassets.com/16dc0ce438cf338ca03e98e84238f23161d058f1665111075ba68fcd2f0ecf04/open-webui/open-webui).
+![Open WebUI Github preview](https://opengraph.githubassets.com/EmaSuriano/open-webui/open-webui).
 
 It's a project that runs on top of Ollama and allows you to interact with the models in many ways. You can see it as a front end of your Backend (Ollama).
 

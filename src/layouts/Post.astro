@@ -14,12 +14,27 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs";
 import RelatedArticles from "components/RelatedArticles.astro";
 
+const COVER_WIDTH = 1400;
+const COVER_HEIGHT = 600;
+const COVER_QUALITY = 30;
+
 type Props = { entry: CollectionEntry<"blog"> | CollectionEntry<"til"> };
+
+const enhanceCover = (cover: string) => {
+  if (cover.startsWith("https://images.unsplash.com/")) {
+    return `${cover.split("?")[0]}?q=${COVER_QUALITY}&w=${COVER_WIDTH}&h=${COVER_HEIGHT}&fit=crop`;
+  }
+
+  return cover;
+};
 
 const { title, publishedAt, summary, tags } = Astro.props.entry.data;
 const { slug, id, collection } = Astro.props.entry;
 
-const cover = collection === "blog" ? Astro.props.entry.data.cover : undefined;
+const cover =
+  collection === "blog"
+    ? enhanceCover(Astro.props.entry.data.cover)
+    : undefined;
 
 const publishDate = format(publishedAt, "MMMM d, yyyy");
 const minutesRead = getReadingTime(Astro.props.entry.body);
@@ -39,7 +54,12 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
         class="overflow-hidden rounded-2xl shadow-lg"
         data-zoomable
       >
-        <Image src={cover} alt={title} width={1400} height={600} />
+        <Image
+          src={cover}
+          alt={title}
+          width={COVER_WIDTH}
+          height={COVER_HEIGHT}
+        />
       </div>
     )
   }

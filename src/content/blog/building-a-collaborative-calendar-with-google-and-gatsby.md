@@ -64,7 +64,7 @@ Once we stored all the events inside the Spreadsheet and have a way to retrieve 
 
 I created a Gatsby starter with a 1-minute setup that connects the application with your spreadsheet and renders all the events inside a calendar. You can find the repository [here](https://github.com/EmaSuriano/gatsby-starter-event-calendar).
 
-![gatsby-starter-event-calendar Github](https://opengraph.githubassets.com/random/EmaSuriano/gatsby-starter-event-calendar)
+![gatsby-starter-event-calendar Github](https://opengraph.githubassets.com/EmaSuriano/EmaSuriano/gatsby-starter-event-calendar)
 
 In order to bootstrap the project, I recommend using the `new` command from Gatbsy, which will create a new folder, copy all the code from the repository and install all the dependencies.
 

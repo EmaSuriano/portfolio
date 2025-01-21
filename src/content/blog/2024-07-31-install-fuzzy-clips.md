@@ -23,7 +23,7 @@ It's precious in fields like control engineering, decision support systems, and 
 
 The source code can be found in [GitHub](https://github.com/rorchard/FuzzyCLIPS) but as expected, this cannot be directly executed in our system. We need to compile the program to run it locally.
 
-![FuzzyCLIPS Github](https://opengraph.githubassets.com/random/rorchard/FuzzyCLIPS)
+![FuzzyCLIPS Github](https://opengraph.githubassets.com/EmaSuriano/rorchard/FuzzyCLIPS)
 
 Let's start by cloning the repository:
 

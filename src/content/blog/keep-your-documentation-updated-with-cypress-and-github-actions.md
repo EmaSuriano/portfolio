@@ -11,7 +11,7 @@ One of my favorite ways to document projects is by adding screenshots of how it 
 
 I am the owner and maintainer of the [Gatsby Starter Mate](https://github.com/EmaSuriano/gatsby-starter-mate), which allows developers or tech writers to bootstrap their portfolio and manage its content with a CMS.
 
-![gatsby-starter-mate Github](https://opengraph.githubassets.com/random/EmaSuriano/gatsby-starter-mate)
+![gatsby-starter-mate Github](https://opengraph.githubassets.com/EmaSuriano/EmaSuriano/gatsby-starter-mate)
 
 Although one can always open the [Demo website](https://gatsby-starter-mate.netlify.app/) and navigate through it to see how the project is, I decided to create a simple Table where I show how each of the sections looks like. Here is the table extracted from the [README.md](https://github.com/EmaSuriano/gatsby-starter-mate/blob/master/README.md#screenshot-and-design-).
 
