@@ -32,7 +32,7 @@
     "date-fns": "^4.1.0",
     "inquirer": "^12.3.3",
     "markdown-it": "^14.1.0",
-    "playwright": "^1.49.1",
+    "playwright": "^1.50.1",
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
