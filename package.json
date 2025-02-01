@@ -24,7 +24,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/prismjs": "^1.26.5",
     "@types/sanitize-html": "^2.13.0",
-    "astro": "5.1.7",
+    "astro": "5.2.3",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "autoprefixer": "^10.4.20",
