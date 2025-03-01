@@ -885,10 +885,10 @@
   dependencies:
     langium "3.0.0"
 
-"@microflash/rehype-figure@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@microflash/rehype-figure/-/rehype-figure-2.1.2.tgz#9b42775411127744616b25c1ed4d75b77561d074"
-  integrity sha512-EgI5xnFmOxI1WI6Jk2bCVByPIYY11j1JPfjQGKEstoVci0kGJfCe9Fa3B7LZr+WWQMAm/hfcQ9Q4veBItiApVg==
+"@microflash/rehype-figure@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@microflash/rehype-figure/-/rehype-figure-2.1.3.tgz#8ed7e8419e176641b57405369d7106ddc5080111"
+  integrity sha512-8YsyqLKPnshjjtXkleX85+d1JPRWcjqURg80MvJWWINFRSTljq4yDoHZjbGBZz96+M3asZFsHqGIaCCMdjXyaA==
   dependencies:
     hast-util-whitespace "^3.0.0"
     hastscript "^9.0.0"
