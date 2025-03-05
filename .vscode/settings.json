@@ -7,5 +7,25 @@
   "yaml.schemas": {
     "file:///Users/emanuel.suriano/.vscode/extensions/atlassian.atlascode-2.10.11/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
     "https://json.schemastore.org/github-workflow.json": "file:///Users/emanuel.suriano/Git/portfolio/.github/workflows/deploy.yml"
-  }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#de9676",
+    "activityBar.background": "#de9676",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#1f803d",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#de9676",
+    "statusBar.background": "#d4774d",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#c05c2e",
+    "statusBarItem.remoteBackground": "#d4774d",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#d4774d",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#d4774d99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#d4774d"
 }
