@@ -14,4 +14,8 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins,
   },
+  redirects: {
+    "/resume": "https://emasuriano.github.io/resume/",
+    "/life-in-weeks": "https://emasuriano.github.io/life-in-weeks/",
+  },
 });
