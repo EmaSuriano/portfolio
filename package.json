@@ -5,6 +5,7 @@
   "author": "Ema Suriano",
   "scripts": {
     "start": "astro dev",
+    "dev": "astro dev",
     "check-types": "astro check && tsc --noEmit",
     "build": "astro build",
     "serve": "astro preview",
