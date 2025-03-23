@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "author": "Ema Suriano",
   "scripts": {
-    "start": "astro dev",
+    "start": "yarn dev",
+    "dev": "astro dev",
     "check-types": "astro check && tsc --noEmit",
     "build": "astro build",
     "serve": "astro preview",

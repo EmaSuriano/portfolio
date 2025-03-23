@@ -32,6 +32,13 @@
   ],
   "talks": [
     {
+      "title": "Practical Introduction to LLMs with Ollama",
+      "description": "Hands-on exploration of running AI models locally using Ollama, an open-source tool that prioritizes privacy, offline capabilities, and cost savings compared to cloud alternatives. The workshop guides participants from basic installation and model selection through building applications with Streamlit and Chainlit frameworks, culminating in creating conversational interfaces using the OpenAI Agents SDK—making local AI development accessible to both beginners and experienced developers.",
+      "url": "https://emasuriano.github.io/workshop-ollama",
+      "language": "en",
+      "places": []
+    },
+    {
       "title": "Is it time for framework-agnostic apps?",
       "description": "Time to talk about Astro: the new way to build framework agnostic applications. Explaining the concept of island architecture, along with the possibility of using any framework within the same app (react, angular, vue, etc.), or nothing!",
       "url": "https://time-for-framework-agnostic-projects.netlify.app",
