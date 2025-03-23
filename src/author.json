@@ -5,7 +5,10 @@
   "role": "Software Engineer",
   "avatar": "https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d",
   "twitter": "@EmaSuriano",
-  "company": { "name": "Revolut", "url": "https://revolut.com/" },
+  "company": {
+    "name": "Revolut",
+    "url": "https://revolut.com/"
+  },
   "podcast": {
     "name": "Ema Suriano's Podcast",
     "description": "A podcast where Ema Suriano shares insights and experiences on software engineering, technology trends, and personal growth.",
@@ -15,20 +18,33 @@
     }
   },
   "social": [
-    { "name": "GitHub", "url": "https://github.com/EmaSuriano" },
-    { "name": "Twitter", "url": "https://twitter.com/EmaSuriano" },
-    { "name": "YouTube", "url": "https://www.youtube.com/c/EmaSuriano" },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/EmaSuriano"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/EmaSuriano"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/c/EmaSuriano"
+    },
     {
       "name": "LinkedIn",
       "url": "https://www.linkedin.com/in/emanuel-suriano"
     },
-    { "name": "RSS", "url": "https://emasuriano.com/rss.xml" }
+    {
+      "name": "RSS",
+      "url": "https://emasuriano.com/rss.xml"
+    }
   ],
   "projects": [
     "https://github.com/EmaSuriano/gatsby-starter-event-calendar",
     "https://github.com/EmaSuriano/gatsby-starter-mate",
     "https://github.com/EmaSuriano/astro-art-portfolio",
-    "https://github.com/EmaSuriano/astro-resume"
+    "https://github.com/EmaSuriano/astro-resume",
+    "https://github.com/EmaSuriano/language-learning-client"
   ],
   "talks": [
     {
