@@ -50,7 +50,7 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@justinribeiro/lite-youtube": "^1.7.1",
+    "@justinribeiro/lite-youtube": "^1.8.1",
     "medium-zoom": "^1.1.0"
   }
 }
