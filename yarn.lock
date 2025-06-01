@@ -763,10 +763,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@justinribeiro/lite-youtube@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@justinribeiro/lite-youtube/-/lite-youtube-1.8.1.tgz#d0035abb79beb924fd5a66feae5bf6828df1e99b"
-  integrity sha512-b64RclJsQoONgIjayk/2wPqwrCdxcb2ZBR49cS6Tgt858vj7eKJYhekwgYBRn61tDDflkYedK+KOkrdBZVnwRQ==
+"@justinribeiro/lite-youtube@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@justinribeiro/lite-youtube/-/lite-youtube-1.8.2.tgz#7b0b1b43623a52fe8381a8b84d8ee4153191fc14"
+  integrity sha512-wayU5sYA/e5J/1j7zFk8Hoi72Hk67Axy7Za2OFRzsytd9gvtv7ZeWhmdi2lOGbnXwMZHkeMsqxRGFxH60lo5bg==
 
 "@mermaid-js/parser@^0.3.0":
   version "0.3.0"
