@@ -1,0 +1,57 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="search-button"
+  class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+  aria-label="Search"
+>
+  <Icon name="ri:search-line" class="w-5 h-5" />
+</button>
+
+<script>
+  function initializeSearchButton() {
+    const searchButton = document.getElementById("search-button");
+
+    function openSearch() {
+      const searchModal = document.getElementById("search-modal");
+      searchModal?.classList.remove("hidden");
+      
+      // Initialize pagefind if needed
+      const event = new CustomEvent("openSearch");
+      document.dispatchEvent(event);
+      
+      // Focus the search input after a brief delay
+      setTimeout(() => {
+        const searchContainer = document.getElementById("pagefind-search");
+        const searchInput = searchContainer?.querySelector('input[type="text"]') as HTMLInputElement;
+        searchInput?.focus();
+      }, 100);
+    }
+
+    // Remove existing listeners to prevent duplicates
+    const newButton = searchButton?.cloneNode(true) as HTMLElement;
+    searchButton?.parentNode?.replaceChild(newButton, searchButton);
+
+    // Event listeners
+    newButton?.addEventListener("click", openSearch);
+
+    // Keyboard shortcuts
+    const keydownHandler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        openSearch();
+      }
+    };
+
+    document.removeEventListener("keydown", keydownHandler);
+    document.addEventListener("keydown", keydownHandler);
+  }
+
+  // Initialize on load
+  initializeSearchButton();
+
+  // Reinitialize on Astro navigation
+  document.addEventListener("astro:page-load", initializeSearchButton);
+</script>

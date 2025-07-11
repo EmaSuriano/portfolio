@@ -24,8 +24,6 @@ As AI models become increasingly diverse and powerful, developers often face the
 
 In this post, I'll walk you through building a universal AI chat interface using [Streamlit](https://streamlit.io/) and [LiteLLM](https://litellm.ai/) that solves exactly this problem.
 
-![Chat interface](https://private-user-images.githubusercontent.com/3399429/465159926-87ff53ea-53cf-45f8-8b4f-f6d486d20b08.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTIyMjMzMjksIm5iZiI6MTc1MjIyMzAyOSwicGF0aCI6Ii8zMzk5NDI5LzQ2NTE1OTkyNi04N2ZmNTNlYS01M2NmLTQ1ZjgtOGI0Zi1mNmQ0ODZkMjBiMDgucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MTFUMDgzNzA5WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YTcwOTMwMTk5OTFmNmIxZTNmYTVlODM5ZGMwNTQwMzQ5M2M2YTQzN2Q5YjU4ZTFmZWU2NTI5ZTdmMDkyZjZiNCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.-5BxhL2Fxe285b_tBeSOI1fB2jF_ESeBOzcF1kPhgL8)
-
 ## The Technologies Behind the Solution
 
 ### Streamlit: Rapid Web App Development

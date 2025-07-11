@@ -4,11 +4,12 @@ import sitemap from "@astrojs/sitemap";
 import remarkMath from "remark-math";
 import rehypePlugins from "./rehype-plugins";
 import icon from "astro-icon";
+import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://emasuriano.com/",
-  integrations: [tailwind(), sitemap(), icon()],
+  integrations: [tailwind(), sitemap(), icon(), pagefind()],
   markdown: {
     syntaxHighlight: "prism",
     remarkPlugins: [remarkMath],

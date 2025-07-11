@@ -4,6 +4,8 @@ import about from "author.json";
 import { SEO } from "astro-seo";
 import { humanize } from "helpers";
 import { ClientRouter } from "astro:transitions";
+import SearchButton from "components/SearchButton.astro";
+import SearchModal from "components/SearchModal.astro";
 
 export type Props = {
   title: string;
@@ -16,13 +18,20 @@ export type Props = {
 };
 
 const ROUTE_TITLE_MAP: Record<string, string> = {
+  "/": "Home",
   "/til": "TIL",
 };
 
 const routes = import.meta.glob("/src/pages/*.astro");
 const routeList = Object.keys(routes)
-  .map((route) => route.replace("/src/pages", "").replace(/\.astro$/, ""))
-  .filter((route) => !["/404", "/index"].includes(route))
+  .map((route) =>
+    route
+      .replace("/src/pages", "")
+      .replace(/\.astro$/, "")
+      .replace("/index", "/"),
+  )
+  .filter((route) => !["/404"].includes(route))
+  .toSorted((a, b) => a.localeCompare(b))
   .map((route) => ({
     title: ROUTE_TITLE_MAP[route] || humanize(route.replace("/", "")),
     route,
@@ -31,6 +40,8 @@ const routeList = Object.keys(routes)
 const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
 const isHome = pathname === "/";
+
+console.log(pathname);
 
 const {
   title,
@@ -113,20 +124,24 @@ const {
         <a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a>
 
         <nav class="text-sm sm:text-base">
-          <ul class="relative flex w-full list-none space-x-4 pl-0">
-            <li>
-              <a class="link-underline" href="/"> Home </a>
-            </li>
-            {
-              routeList.map(({ route, title }) => (
-                <li>
-                  <a href={route} class="link-underline">
-                    {title}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
+          <div class="flex justify-between items-center w-full">
+            <ul class="relative flex list-none space-x-4 pl-0">
+              {
+                routeList.map(({ route, title }) => (
+                  <li>
+                    <a
+                      href={route}
+                      class={`link-underline ${pathname === route ? "pointer-events-none opacity-50" : ""}`}
+                      aria-disabled={pathname === route ? "true" : "false"}
+                    >
+                      {title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+            <SearchButton />
+          </div>
         </nav>
       </header>
       <main
@@ -153,6 +168,8 @@ const {
         </ul>
       </footer>
     </div>
+
+    <SearchModal />
 
     <style is:global>
       .link-underline {
