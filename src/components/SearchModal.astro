@@ -1,16 +1,20 @@
 ---
+
 ---
 
 <div
   id="search-modal"
   class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"
 >
-  <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 max-h-[80vh] overflow-hidden">
+  <div
+    class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 max-h-[80vh] overflow-hidden"
+  >
     <div id="pagefind-search" class="p-4"></div>
   </div>
 </div>
 
 <script>
+  // @ts-expect-error types are indeed defined ...
   import { PagefindUI } from "@pagefind/default-ui";
 
   let pagefindInitialized = false;
@@ -34,10 +38,10 @@
 
     function initializePagefind() {
       if (pagefindInitialized || !searchContainer) return;
-      
+
       // Clear any existing content first
-      searchContainer.innerHTML = '';
-      
+      searchContainer.innerHTML = "";
+
       new PagefindUI({
         element: "#pagefind-search",
         showSubResults: true,
@@ -45,7 +49,7 @@
         excerptLength: 30,
         resetStyles: false,
       });
-      
+
       pagefindInitialized = true;
     }
 
@@ -55,7 +59,9 @@
     }
 
     function getSearchResults() {
-      return document.querySelectorAll("#pagefind-search .pagefind-ui__result") || [];
+      return (
+        document.querySelectorAll("#pagefind-search .pagefind-ui__result") || []
+      );
     }
 
     function updateSelection() {
@@ -112,8 +118,10 @@
       }
 
       // Get fresh results each time
-      const results = document.querySelectorAll("#pagefind-search .pagefind-ui__result");
-      
+      const results = document.querySelectorAll(
+        "#pagefind-search .pagefind-ui__result",
+      );
+
       if (e.key === "ArrowDown") {
         e.preventDefault();
         e.stopPropagation();
@@ -149,15 +157,15 @@
     if (observer) {
       observer.disconnect();
     }
-    
+
     if (searchContainer) {
       observer = new MutationObserver(() => {
         selectedIndex = -1;
       });
-      
+
       observer.observe(searchContainer, {
         childList: true,
-        subtree: true
+        subtree: true,
       });
     }
   }
@@ -173,7 +181,6 @@
   /* Custom styles for Pagefind */
   :global(.pagefind-ui) {
     --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: #4f46e5;
     --pagefind-ui-text: inherit;
     --pagefind-ui-background: transparent;
     --pagefind-ui-border: #e5e7eb;
@@ -229,10 +236,8 @@
 
   :global(.pagefind-ui__result:hover),
   :global(.pagefind-ui__result.selected) {
-    background: #f8fafc;
+    background: #e3e3e333;
     border-color: var(--pagefind-ui-primary);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   :global(.dark .pagefind-ui__result:hover),
