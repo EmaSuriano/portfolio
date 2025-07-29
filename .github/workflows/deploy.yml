@@ -65,7 +65,7 @@ jobs:
         id: screenshot
         with:
           url: https://emasuriano.com
-          result: /public/screenshot.png
+          output: /public/screenshot.png
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
