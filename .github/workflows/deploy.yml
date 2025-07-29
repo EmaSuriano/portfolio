@@ -72,6 +72,4 @@ jobs:
           url: https://emasuriano.com
           output: ./public/preview.png
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Add phrase of the day
+      - uses: stefanzweifel/git-auto-commit-action@v6
