@@ -61,15 +61,3 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=portfolio
-
-  screenshots:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: karol-brejna-i/webpage-screenshot-action@v1
-        id: screenshot
-        with:
-          url: https://emasuriano.com
-          output: ./public/preview.png
-
-      - uses: stefanzweifel/git-auto-commit-action@v6

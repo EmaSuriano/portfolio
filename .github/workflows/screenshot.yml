@@ -1,0 +1,17 @@
+name: Screenshot
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: karol-brejna-i/webpage-screenshot-action@v1
+        id: screenshot
+        with:
+          url: https://emasuriano.com
+          output: ./public/preview.png
+
+      - uses: stefanzweifel/git-auto-commit-action@v6
