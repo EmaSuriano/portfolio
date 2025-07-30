@@ -7,7 +7,15 @@ on:
 jobs:
   screenshots:
     runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
     steps:
+      - uses: actions/checkout@v4
+
       - uses: karol-brejna-i/webpage-screenshot-action@v1
         id: screenshot
         with:
