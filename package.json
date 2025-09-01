@@ -27,7 +27,7 @@
     "@types/sanitize-html": "^2.16.0",
     "astro": "5.13.1",
     "astro-icon": "^1.1.5",
-    "astro-pagefind": "^1.8.3",
+    "astro-pagefind": "^1.8.4",
     "astro-seo": "^0.8.4",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.1.0",
