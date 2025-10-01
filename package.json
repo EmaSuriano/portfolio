@@ -19,7 +19,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@iconify-json/ri": "^1.2.5",
     "@microflash/rehype-figure": "^2.1.4",
-    "@octokit/core": "^7.0.3",
+    "@octokit/core": "^7.0.5",
     "@tailwindcss/typography": "^0.5.19",
     "@types/glob": "^9.0.0",
     "@types/markdown-it": "^14.1.2",
