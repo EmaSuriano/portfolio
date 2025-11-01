@@ -1665,10 +1665,10 @@ astro-icon@^1.1.5:
     "@iconify/types" "^2.0.0"
     "@iconify/utils" "^2.1.30"
 
-astro-pagefind@^1.8.4:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/astro-pagefind/-/astro-pagefind-1.8.4.tgz#31d1dc804df1d3a871bbfbec2cb08b008df94217"
-  integrity sha512-Kb1HDPVpXK36JshnTdxGf53ZNJg/ABbH0nOxjdQIBKHADBGB7y63pLHPtCt1brzwrZxNlpISA/ci2cQUOhBuSQ==
+astro-pagefind@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/astro-pagefind/-/astro-pagefind-1.8.5.tgz#f5ab80c8533c8600e781ee7e50a0f94f3c7765ca"
+  integrity sha512-CVhKKA9bTQ7hLsHk9KTNDzOdgR4EI04gn0mjDGfnXzaHx7rL92YkNpFM5AoFl9NWmOUbaIFC2DN7Yvs/ZFPRdA==
   dependencies:
     "@pagefind/default-ui" "^1.2.0"
     pagefind "^1.2.0"
