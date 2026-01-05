@@ -16,7 +16,7 @@ export default defineConfig({
     rehypePlugins,
   },
   redirects: {
-    "/resume": "https://emasuriano.github.io/resume/",
-    "/life-in-weeks": "https://emasuriano.github.io/life-in-weeks/",
+    "/resume": "https://drive.google.com/file/d/1J5DsseLPW_tdKCd7R5unBx_mcfbesGNj",
+    "/life-in-weeks": "https://lifeweeks.app/emasuriano",
   },
 });
