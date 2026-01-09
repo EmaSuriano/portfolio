@@ -253,7 +253,6 @@
 
 "@emmetio/css-parser@github:ramya-rao-a/css-parser#vscode":
   version "0.4.0"
-  uid "370c480ac103bd17c7bcfb34bf5d577dc40d3660"
   resolved "https://codeload.github.com/ramya-rao-a/css-parser/tar.gz/370c480ac103bd17c7bcfb34bf5d577dc40d3660"
   dependencies:
     "@emmetio/stream-reader" "^2.2.0"
@@ -1800,7 +1799,7 @@ astro-icon@^1.1.5:
     "@iconify/types" "^2.0.0"
     "@iconify/utils" "^2.1.30"
 
-astro-pagefind@^1.8.5:
+astro-pagefind@1.8.5:
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/astro-pagefind/-/astro-pagefind-1.8.5.tgz#f5ab80c8533c8600e781ee7e50a0f94f3c7765ca"
   integrity sha512-CVhKKA9bTQ7hLsHk9KTNDzOdgR4EI04gn0mjDGfnXzaHx7rL92YkNpFM5AoFl9NWmOUbaIFC2DN7Yvs/ZFPRdA==
@@ -6231,7 +6230,7 @@ volar-service-emmet@0.0.66:
   resolved "https://registry.yarnpkg.com/volar-service-emmet/-/volar-service-emmet-0.0.66.tgz#99c93ea8f0a2479d31ba5b317d847e9e22c221a5"
   integrity sha512-BMPSpm6mk0DAEVdI2haxYIOt1Z2oaIZvCGtXuRu95x50a5pOSRPjdeHv2uGp1rQsq1Izigx+VR/bZUf2HcSnVQ==
   dependencies:
-    "@emmetio/css-parser" "github:ramya-rao-a/css-parser#vscode"
+    "@emmetio/css-parser" ramya-rao-a/css-parser#vscode
     "@emmetio/html-matcher" "^1.3.0"
     "@vscode/emmet-helper" "^2.9.3"
     vscode-uri "^3.0.8"

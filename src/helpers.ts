@@ -5,7 +5,6 @@ export type Post =
   | CollectionEntry<"blog">
   | CollectionEntry<"external">
   | CollectionEntry<"til">
-  | CollectionEntry<"podcast">;
 
 type Group = { year: number; posts: Post[] };
 
@@ -21,15 +20,6 @@ export type Summary = {
   projects: Link[];
   talks: Link[];
   posts: Link[];
-  podcasts: Link[];
-  podcast: {
-    name: string;
-    description: string;
-    links: {
-      rss: string;
-      spotify: string;
-    };
-  };
 };
 
 export const humanize = (text = "") => {
@@ -71,9 +61,6 @@ export const getPostLink = (post: Post) => {
 
     case "external":
       return post.data.external;
-
-    case "podcast":
-      throw new Error("Podcast link not supported for now");
 
     /* istanbul ignore next */
     default:

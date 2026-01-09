@@ -9,14 +9,6 @@
     "name": "Revolut",
     "url": "https://revolut.com/"
   },
-  "podcast": {
-    "name": "Ema Suriano's Podcast",
-    "description": "A podcast where Ema Suriano shares insights and experiences on software engineering, technology trends, and personal growth.",
-    "links": {
-      "rss": "https://emasuriano.com/podcast.xml",
-      "spotify": "https://open.spotify.com/show/7hba19unhTLNTFXnTf0T9T"
-    }
-  },
   "social": [
     {
       "name": "GitHub",
