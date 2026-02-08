@@ -15,8 +15,10 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins,
   },
+  output: "static",
   redirects: {
-    "/resume": "https://drive.google.com/file/d/1J5DsseLPW_tdKCd7R5unBx_mcfbesGNj",
+    "/resume":
+      "https://drive.google.com/file/d/1J5DsseLPW_tdKCd7R5unBx_mcfbesGNj",
     "/life-in-weeks": "https://lifeweeks.app/emasuriano",
   },
 });

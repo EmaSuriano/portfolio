@@ -17,15 +17,19 @@ import { Icon } from "astro-icon/components";
     function openSearch() {
       const searchModal = document.getElementById("search-modal");
       searchModal?.classList.remove("hidden");
-      
-      // Initialize pagefind if needed
-      const event = new CustomEvent("openSearch");
-      document.dispatchEvent(event);
-      
+
+      searchModal?.addEventListener("click", (e) => {
+        if (e.target === searchModal) {
+          searchModal?.classList.add("hidden");
+        }
+      });
+
       // Focus the search input after a brief delay
       setTimeout(() => {
-        const searchContainer = document.getElementById("pagefind-search");
-        const searchInput = searchContainer?.querySelector('input[type="text"]') as HTMLInputElement;
+        const searchContainer = document.getElementById("search");
+        const searchInput = searchContainer?.querySelector(
+          'input[type="text"]',
+        ) as HTMLInputElement;
         searchInput?.focus();
       }, 100);
     }
@@ -36,17 +40,6 @@ import { Icon } from "astro-icon/components";
 
     // Event listeners
     newButton?.addEventListener("click", openSearch);
-
-    // Keyboard shortcuts
-    const keydownHandler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        openSearch();
-      }
-    };
-
-    document.removeEventListener("keydown", keydownHandler);
-    document.addEventListener("keydown", keydownHandler);
   }
 
   // Initialize on load
