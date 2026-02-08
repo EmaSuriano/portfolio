@@ -30,13 +30,14 @@
 </script>
 
 <script>
-  setTimeout(() => {
+  document.addEventListener("DOMContentLoaded", () => {
     if (window.location.hash) {
-      document
-        .querySelector(`[href='${window.location.hash}']`)
-        ?.scrollIntoView();
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
-  }, 0);
+  });
 </script>
 
 <style is:global>

@@ -24,6 +24,12 @@ import { Icon } from "astro-icon/components";
         }
       });
 
+      searchModal?.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          searchModal?.classList.add("hidden");
+        }
+      });
+
       // Focus the search input after a brief delay
       setTimeout(() => {
         const searchContainer = document.getElementById("search");

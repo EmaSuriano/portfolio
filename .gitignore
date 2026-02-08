@@ -71,3 +71,8 @@ public/assets
 .astro/
 
 engine.bin
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
