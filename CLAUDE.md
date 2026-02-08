@@ -23,6 +23,24 @@ This is a personal portfolio website built with Astro that showcases blog posts,
 - `yarn serve` - Preview the production build locally
 - `yarn check-types` - Run Astro and TypeScript type checking
 - `yarn cli` - Run the interactive CLI to create new articles (blog, TIL, external)
+- `yarn test` - Run E2E tests with Playwright
+- `yarn test:ui` - Run tests with Playwright UI mode (recommended for development)
+- `yarn test:headed` - Run tests in headed mode (see the browser)
+- `yarn test:debug` - Run tests in debug mode
+
+## Testing
+
+The project uses Playwright for end-to-end testing. Tests are located in `tests/e2e/`:
+
+- `homepage.spec.ts` - Homepage functionality and display
+- `blog.spec.ts` - Blog listing and individual post pages
+- `til.spec.ts` - TIL pages functionality
+- `about.spec.ts` - About page content
+- `search.spec.ts` - Search modal and functionality
+- `navigation.spec.ts` - Navigation and routing
+- `accessibility.spec.ts` - Accessibility compliance
+
+Tests run automatically in CI on every PR. See `tests/README.md` for detailed documentation.
 
 ## Creating Content
 
@@ -131,9 +149,11 @@ The CI pipeline:
 1. Checks out code with submodules
 2. Sets up Node.js (version from `.nvmrc`)
 3. Installs dependencies
-4. Installs Playwright browsers (for testing)
+4. Installs Playwright browsers
 5. Runs type checking
 6. Builds the project
+7. Runs E2E tests
+8. Uploads test reports as artifacts (on failure)
 
 ## Code Style
 

@@ -35,9 +35,9 @@ const postsByDate = groupPostsByDate(tilPosts.filter((post) => !isDraft(post)));
                   <a href={getPostLink(post)} class="truncate">
                     {post.data.title}
                   </a>
-                  <span class="w-20 text-right">
+                  <time class="w-20 text-right">
                     {format(post.data.publishedAt, "d MMM")}
-                  </span>
+                  </time>
                 </div>
                 <p class="my-1">{post.data.summary}</p>
               </li>
