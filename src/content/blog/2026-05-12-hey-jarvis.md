@@ -1,5 +1,5 @@
 ---
-publishedAt: 2025-05-12
+publishedAt: 2026-05-12
 title: "Hey Jarvis: Building a Voice-Activated Launcher for Sesame"
 summary: How I built a local wake word detector to open and close Sesame with my voice, trained a custom model, and ended up with a tool I actually use every day.
 cover: https://images.unsplash.com/photo-1650513737281-882e597ee5e5?q=80&w=1400&h=600&fit=crop
