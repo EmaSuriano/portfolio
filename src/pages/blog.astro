@@ -11,12 +11,30 @@ const allExternalPosts = await getCollection("external");
 const grouped = groupPostsByDate(
   [...allBlogPosts, ...allExternalPosts].filter((post) => !isDraft(post)),
 );
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Ema Suriano's Blog",
+  url: "https://emasuriano.com/blog",
+  description: "Writing about web development, open source, and local LLMs.",
+  author: {
+    "@type": "Person",
+    "@id": "https://emasuriano.com/#person",
+    name: "Ema Suriano",
+  },
+};
 ---
 
 <Layout
   title="Blog"
   description="Here is my blog. I started to write not so long ago and trying my best"
 >
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(blogJsonLd)}
+  />
   <section class="prose max-w-full dark:prose-dark">
     <h1>Blog</h1>
     {
