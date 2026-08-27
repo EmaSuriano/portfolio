@@ -1,2 +1,10 @@
 /*
   Link: </llms.txt>; rel="describedby"; type="text/plain", </llms.md>; rel="alternate"; type="text/markdown", </sitemap-index.xml>; rel="sitemap", </openapi.json>; rel="service-desc"
+/api/summary
+  Content-Type: application/json; charset=utf-8
+/api/posts
+  Content-Type: application/json; charset=utf-8
+/api/v1/summary
+  Content-Type: application/json; charset=utf-8
+/api/v1/posts
+  Content-Type: application/json; charset=utf-8
