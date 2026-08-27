@@ -49,6 +49,10 @@ const {
   viewTransitionEnabled = true,
 } = Astro.props;
 
+const pageTitle = title.includes(about.name)
+  ? title
+  : `${title} | ${about.name}`;
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -84,7 +88,7 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <SEO
-      title={about.name}
+      title={pageTitle}
       charset="utf-8"
       description={description}
       canonical={url}
