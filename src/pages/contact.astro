@@ -1,0 +1,47 @@
+---
+import Layout from "layouts/Layout.astro";
+import about from "author.json";
+
+const description =
+  "How to contact Ema Suriano: GitHub, LinkedIn, Twitter/X, YouTube, and RSS. Based in Berlin, Software Engineer at Revolut.";
+---
+
+<Layout title="Contact" description={description}>
+  <section class="prose max-w-full dark:prose-dark">
+    <h1>Contact</h1>
+
+    <p>
+      I am {about.name}, a {about.role} at {about.company.name} based in Berlin.
+      This page is the public contact surface for this site. There is no sales
+      form and no account signup: if you want to reach me, use the profiles
+      below. I read GitHub and LinkedIn most reliably.
+    </p>
+
+    <p>
+      For questions about open-source projects (Gatsby Starter Mate, Astro Art
+      Portfolio, and others listed on the <a href="/about#projects">about
+      page</a>), open an issue or discussion on the relevant GitHub repository.
+      For writing, talks, or anything else on emasuriano.com, LinkedIn or
+      Twitter/X is the right channel. Conference or meetup invitations can go
+      through the same profiles.
+    </p>
+
+    <h2>Profiles</h2>
+    <ul>
+      {
+        about.social.map(({ name, url }) => (
+          <li>
+            <a href={url}>{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p>
+      I do not run a newsletter signup or a contact form on this domain. The
+      <a href="/rss.xml">RSS feed</a> is the best way to follow new posts
+      without an account. Source for this site lives at
+      <a href="https://github.com/EmaSuriano/portfolio">github.com/EmaSuriano/portfolio</a>.
+    </p>
+  </section>
+</Layout>
