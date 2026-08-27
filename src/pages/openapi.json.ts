@@ -1,97 +1,359 @@
+const problemSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["type", "title", "status", "detail", "instance", "code"],
+  properties: {
+    type: {
+      type: "string",
+      format: "uri",
+      description: "Stable URI identifying this problem type.",
+    },
+    title: {
+      type: "string",
+      description: "Short, human-readable summary.",
+    },
+    status: {
+      type: "integer",
+      description: "HTTP status code.",
+      example: 404,
+    },
+    detail: {
+      type: "string",
+      description: "Human-readable explanation specific to this occurrence.",
+    },
+    instance: {
+      type: "string",
+      description: "The request path that produced the error.",
+      example: "/api/v1/unknown",
+    },
+    code: {
+      type: "string",
+      description: "Machine-readable error code agents can switch on.",
+      enum: [
+        "not_found",
+        "method_not_allowed",
+        "invalid_cursor",
+        "upstream_error",
+      ],
+    },
+  },
+};
+
+const linkSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["title", "url"],
+  properties: {
+    title: { type: "string", description: "Display title.", example: "portfolio" },
+    url: {
+      type: "string",
+      format: "uri",
+      description: "Canonical URL.",
+      example: "https://github.com/EmaSuriano/portfolio",
+    },
+  },
+};
+
+const summarySchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["name", "bio", "website", "projects", "talks", "posts"],
+  properties: {
+    name: { type: "string", description: "Full name.", example: "Ema Suriano" },
+    bio: {
+      type: "string",
+      description: "Short biography.",
+    },
+    website: {
+      type: "string",
+      format: "uri",
+      description: "Canonical website.",
+      example: "https://emasuriano.com/",
+    },
+    projects: {
+      type: "array",
+      description: "Open-source projects.",
+      items: linkSchema,
+    },
+    talks: {
+      type: "array",
+      description: "Conference talks.",
+      items: linkSchema,
+    },
+    posts: {
+      type: "array",
+      description: "Published posts with canonical URLs.",
+      items: linkSchema,
+    },
+  },
+};
+
+const postSchema = {
+  type: "object",
+  additionalProperties: true,
+  required: ["url"],
+  properties: {
+    url: {
+      type: "string",
+      format: "uri",
+      description: "Canonical post URL.",
+    },
+    collection: {
+      type: "string",
+      description: "Content collection.",
+      enum: ["blog", "til", "external"],
+    },
+    slug: { type: "string", description: "Collection slug." },
+    id: { type: "string", description: "Collection entry id." },
+    data: {
+      type: "object",
+      description: "Frontmatter for the post.",
+      additionalProperties: true,
+      properties: {
+        title: { type: "string" },
+        summary: { type: "string" },
+        publishedAt: { type: "string", format: "date-time" },
+      },
+    },
+  },
+};
+
+const postPageSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["items", "has_more", "next_cursor", "total", "limit"],
+  properties: {
+    items: {
+      type: "array",
+      description: "Page of posts, newest first.",
+      items: postSchema,
+    },
+    has_more: {
+      type: "boolean",
+      description: "True when another page exists.",
+    },
+    next_cursor: {
+      type: "string",
+      nullable: true,
+      description: "Pass as cursor on the next request, or null on the last page.",
+      example: "20",
+    },
+    total: { type: "integer", description: "Total published posts.", example: 35 },
+    limit: { type: "integer", description: "Page size used for this response.", example: 20 },
+  },
+};
+
+const problemResponse = (description: string) => ({
+  description,
+  headers: {
+    "API-Version": {
+      schema: { type: "string", example: "1" },
+      description: "API major version that served this response.",
+    },
+    RateLimit: {
+      schema: { type: "string", example: "limit=60, remaining=59, reset=60" },
+      description: "RFC 9331 combined rate-limit policy.",
+    },
+    "RateLimit-Limit": { schema: { type: "integer", example: 60 } },
+    "RateLimit-Remaining": { schema: { type: "integer", example: 59 } },
+    "RateLimit-Reset": { schema: { type: "integer", example: 60 } },
+  },
+  content: {
+    "application/problem+json": {
+      schema: { $ref: "#/components/schemas/Problem" },
+    },
+    "application/json": {
+      schema: { $ref: "#/components/schemas/Problem" },
+    },
+  },
+});
+
+const rateLimitHeaderParams = {
+  "API-Version": {
+    schema: { type: "string", example: "1" },
+    description: "API major version. This surface is v1.",
+  },
+  RateLimit: {
+    schema: { type: "string", example: "limit=60, remaining=59, reset=60" },
+    description: "RFC 9331 combined rate-limit policy. 60 requests per 60 seconds.",
+  },
+  "RateLimit-Limit": { schema: { type: "integer", example: 60 } },
+  "RateLimit-Remaining": { schema: { type: "integer", example: 59 } },
+  "RateLimit-Reset": { schema: { type: "integer", example: 60 } },
+};
+
+const versionHeader = {
+  name: "API-Version",
+  in: "header",
+  required: false,
+  description:
+    "Optional major version selector. Unversioned /api/* aliases v1. Breaking changes will ship as /api/v2 with Deprecation and Sunset headers.",
+  schema: { type: "string", enum: ["1"], default: "1" },
+};
+
+const jsonErrors = {
+  "400": problemResponse("Bad request, for example an invalid pagination cursor."),
+  "404": problemResponse("Unknown API path."),
+  "405": problemResponse("Method not allowed. This API is GET-only."),
+  "429": {
+    ...problemResponse("Rate limit exceeded. Wait and retry."),
+    headers: {
+      ...problemResponse("").headers,
+      "Retry-After": {
+        schema: { type: "integer", example: 60 },
+        description: "Seconds until the client may retry.",
+      },
+    },
+  },
+  "500": problemResponse("Server or upstream asset error."),
+};
+
 const spec = {
-  openapi: "3.1.0",
+  openapi: "3.0.3",
   info: {
     title: "emasuriano.com public API",
     version: "1.0.0",
     description:
-      "Read-only JSON for Ema Suriano's profile, posts, talks, and projects. No authentication. Not a SaaS product API.",
+      "Read-only JSON for Ema Suriano's profile, posts, talks, and projects. No authentication. Versioning: /api/v1 is the stable surface; unversioned /api/summary and /api/posts are aliases of v1. Breaking changes will be introduced as /api/v2 and advertised with Deprecation and Sunset response headers. Rate limit: 60 requests per 60 seconds. Errors use RFC 9457 application/problem+json with a machine-readable code.",
   },
-  servers: [{ url: "https://emasuriano.com", description: "Production" }],
+  servers: [
+    { url: "https://emasuriano.com", description: "Production v1 (path-versioned and unversioned aliases)" },
+  ],
   paths: {
-    "/api/summary": {
+    "/api/v1/summary": {
       get: {
         operationId: "getProfileSummary",
         summary: "Profile summary",
         description:
           "Canonical machine-readable profile: name, bio, website, projects, talks, and posts.",
         tags: ["profile"],
+        parameters: [versionHeader],
         responses: {
           "200": {
             description: "Profile summary",
+            headers: rateLimitHeaderParams,
             content: {
               "application/json": {
                 schema: { $ref: "#/components/schemas/Summary" },
               },
             },
           },
+          ...jsonErrors,
+        },
+      },
+    },
+    "/api/summary": {
+      get: {
+        operationId: "getProfileSummaryUnversioned",
+        summary: "Profile summary (v1 alias)",
+        description:
+          "Alias of GET /api/v1/summary. Prefer the versioned path for new integrations.",
+        tags: ["profile"],
+        deprecated: false,
+        parameters: [versionHeader],
+        responses: {
+          "200": {
+            description: "Profile summary",
+            headers: rateLimitHeaderParams,
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/Summary" },
+              },
+            },
+          },
+          ...jsonErrors,
+        },
+      },
+    },
+    "/api/v1/posts": {
+      get: {
+        operationId: "listPosts",
+        summary: "List posts (paginated)",
+        description:
+          "Published blog, TIL, and external posts, newest first. Cursor pagination: pass the next_cursor value from the previous page as cursor. Default page size 20, max 100.",
+        tags: ["profile"],
+        parameters: [
+          versionHeader,
+          {
+            name: "limit",
+            in: "query",
+            required: false,
+            description: "Page size. Default 20, maximum 100.",
+            schema: { type: "integer", minimum: 1, maximum: 100, default: 20 },
+          },
+          {
+            name: "cursor",
+            in: "query",
+            required: false,
+            description: "Opaque offset cursor from the previous page's next_cursor.",
+            schema: { type: "string", default: "0" },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "A page of posts",
+            headers: rateLimitHeaderParams,
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/PostPage" },
+              },
+            },
+          },
+          ...jsonErrors,
         },
       },
     },
     "/api/posts": {
       get: {
-        operationId: "listPosts",
-        summary: "List posts",
+        operationId: "listPostsUnversioned",
+        summary: "List posts (v1 alias, full array)",
         description:
-          "All published blog, TIL, and external posts, newest first, each with a canonical url.",
+          "Unpaginated array of all published posts. Prefer GET /api/v1/posts for cursor pagination. If limit or cursor is supplied, the paginated PostPage shape is returned instead.",
         tags: ["profile"],
+        parameters: [
+          versionHeader,
+          {
+            name: "limit",
+            in: "query",
+            required: false,
+            description: "If set, switch this alias to the paginated PostPage shape.",
+            schema: { type: "integer", minimum: 1, maximum: 100 },
+          },
+          {
+            name: "cursor",
+            in: "query",
+            required: false,
+            description: "If set, switch this alias to the paginated PostPage shape.",
+            schema: { type: "string" },
+          },
+        ],
         responses: {
           "200": {
-            description: "Array of posts",
+            description: "Array of posts, or PostPage when limit/cursor is present",
+            headers: rateLimitHeaderParams,
             content: {
               "application/json": {
                 schema: {
-                  type: "array",
-                  items: { $ref: "#/components/schemas/Post" },
+                  oneOf: [
+                    { type: "array", items: { $ref: "#/components/schemas/Post" } },
+                    { $ref: "#/components/schemas/PostPage" },
+                  ],
                 },
               },
             },
           },
+          ...jsonErrors,
         },
       },
     },
   },
   components: {
     schemas: {
-      Link: {
-        type: "object",
-        required: ["title", "url"],
-        properties: {
-          title: { type: "string" },
-          url: { type: "string", format: "uri" },
-        },
-      },
-      Summary: {
-        type: "object",
-        required: ["name", "bio", "website", "projects", "talks", "posts"],
-        properties: {
-          name: { type: "string", examples: ["Ema Suriano"] },
-          bio: { type: "string" },
-          website: { type: "string", format: "uri" },
-          projects: {
-            type: "array",
-            items: { $ref: "#/components/schemas/Link" },
-          },
-          talks: { type: "array", items: { $ref: "#/components/schemas/Link" } },
-          posts: { type: "array", items: { $ref: "#/components/schemas/Link" } },
-        },
-      },
-      Post: {
-        type: "object",
-        required: ["url"],
-        properties: {
-          url: { type: "string", format: "uri" },
-          collection: { type: "string", enum: ["blog", "til", "external"] },
-          slug: { type: "string" },
-          data: {
-            type: "object",
-            properties: {
-              title: { type: "string" },
-              summary: { type: "string" },
-              publishedAt: { type: "string", format: "date-time" },
-            },
-          },
-        },
-      },
+      Link: linkSchema,
+      Summary: summarySchema,
+      Post: postSchema,
+      PostPage: postPageSchema,
+      Problem: problemSchema,
     },
   },
 };
