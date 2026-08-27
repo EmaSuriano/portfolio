@@ -2,8 +2,20 @@
 import Title from "components/Title.astro";
 import Layout from "layouts/Layout.astro";
 import about from "author.json";
+import { getCollection } from "astro:content";
+import { getPostLink, isDraft, sortPostByDate } from "helpers";
 
 const title = `${about.name} - ${about.role}`;
+
+const recentPosts = [
+  ...(await getCollection("blog")),
+  ...(await getCollection("til")),
+]
+  .filter((post) => !isDraft(post))
+  .sort(sortPostByDate)
+  .slice(0, 5);
+
+const talks = about.talks.slice(0, 3);
 ---
 
 <Layout title={title}>
@@ -26,5 +38,42 @@ const title = `${about.name} - ${about.role}`;
       >, and
       <a href="/blog" class="link-underline">write</a> about web development.
     </p>
+  </section>
+
+  <section class="prose max-w-full dark:prose-dark">
+    <p>
+      {about.bio} I am based in Berlin. This site is the canonical source for my
+      bio, open-source projects, conference talks, and writing about the
+      JavaScript ecosystem, Astro, TypeScript, and running LLMs locally.
+    </p>
+    <p>
+      I share personal work so others can reuse it, contribute to open source,
+      and speak at meetups and conferences. Start with the
+      <a href="/about">about page</a>, the <a href="/blog">blog</a>, or
+      <a href="/til">today I learned</a> notes. Talks include local-first LLM
+      workshops with Ollama and talks on Astro island architecture.
+    </p>
+
+    <h2>Recent writing</h2>
+    <ul>
+      {
+        recentPosts.map((post) => (
+          <li>
+            <a href={getPostLink(post)}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>Talks</h2>
+    <ul>
+      {
+        talks.map((talk) => (
+          <li>
+            <a href={talk.url}>{talk.title}</a>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </Layout>
