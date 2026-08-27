@@ -20,6 +20,5 @@ export default defineConfig({
     "/resume":
       "https://drive.google.com/file/d/1J5DsseLPW_tdKCd7R5unBx_mcfbesGNj",
     "/life-in-weeks": "https://lifeweeks.app/emasuriano",
-    "/sitemap.xml": "/sitemap-index.xml",
   },
 });
