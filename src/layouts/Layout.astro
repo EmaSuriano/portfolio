@@ -48,6 +48,39 @@ const {
   image = origin.concat("/preview.png"),
   viewTransitionEnabled = true,
 } = Astro.props;
+
+const pageTitle = title.includes(about.name)
+  ? title
+  : `${title} | ${about.name}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${about.website}#person`,
+      name: about.name,
+      url: about.website,
+      image: about.avatar,
+      jobTitle: about.role,
+      description: about.bio,
+      worksFor: {
+        "@type": "Organization",
+        name: about.company.name,
+        url: about.company.url,
+      },
+      sameAs: about.social.map((profile) => profile.url),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${about.website}#website`,
+      url: about.website,
+      name: about.name,
+      description: about.bio,
+      publisher: { "@id": `${about.website}#person` },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -55,11 +88,12 @@ const {
   <head>
     <meta charset="UTF-8" />
     <SEO
-      title={about.name}
+      title={pageTitle}
       charset="utf-8"
       description={description}
+      canonical={url}
       twitter={{
-        site: `@${about.name}`,
+        site: about.twitter,
         creator: about.twitter,
         description,
         image,
@@ -68,7 +102,7 @@ const {
       }}
       openGraph={{
         basic: {
-          type: "Portfolio",
+          type: article ? "article" : "website",
           title,
           url,
           image,
@@ -96,6 +130,13 @@ const {
     <link href="/icon-192.png" rel="icon" type="image/png" />
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="/manifest.json" rel="manifest" />
+    <link rel="alternate" type="text/markdown" href={`${origin}/llms.md`} />
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
 
     <!-- Katex -->
     <link
