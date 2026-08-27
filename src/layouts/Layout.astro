@@ -39,8 +39,6 @@ const routeList = Object.keys(routes)
 
 const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
-const isHome = pathname === "/";
-
 const {
   title,
   article,
@@ -151,13 +149,10 @@ const jsonLd = {
   </head>
 
   <body
-    class={`bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
-    ${isHome ? " flex items-center" : ""}`}
+    class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors"
   >
     <div
-      class={`w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl ${
-        isHome ? "h-full max-h-[44rem]" : "min-h-full"
-      }`}
+      class="w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl min-h-full"
     >
       <header class="relative" transition:name="header">
         <a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a>
