@@ -8,10 +8,21 @@ export async function GET() {
 
   const posts = [...blogPosts, ...externalPosts, ...tilPosts]
     .filter((post) => !isDraft(post))
-    .sort(sortPostByDate);
+    .sort(sortPostByDate)
+    .map((post) => ({
+      id: post.id,
+      collection: post.collection,
+      slug: post.slug,
+      url: getPostLink(post),
+      data: {
+        title: post.data.title,
+        summary: post.data.summary,
+        publishedAt: post.data.publishedAt.toISOString(),
+      },
+    }));
 
-  return new Response(
-    JSON.stringify(posts.map((post) => ({ ...post, url: getPostLink(post) }))),
-    { status: 200, headers: { "Content-Type": "application/json" } },
-  );
+  return new Response(JSON.stringify(posts), {
+    status: 200,
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+  });
 }
