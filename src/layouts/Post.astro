@@ -38,6 +38,30 @@ const cover =
 
 const publishDate = format(publishedAt, "MMMM d, yyyy");
 const minutesRead = getReadingTime(Astro.props.entry.body);
+const canonical = Astro.url.toString();
+
+const blogPostingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: summary,
+  datePublished: publishedAt.toISOString(),
+  url: canonical,
+  mainEntityOfPage: canonical,
+  image: cover,
+  keywords: tags,
+  author: {
+    "@type": "Person",
+    "@id": `${author.website}#person`,
+    name: author.name,
+    url: author.website,
+  },
+  publisher: {
+    "@type": "Person",
+    "@id": `${author.website}#person`,
+    name: author.name,
+  },
+};
 ---
 
 <Layout
@@ -47,6 +71,11 @@ const minutesRead = getReadingTime(Astro.props.entry.body);
   image={cover}
   viewTransitionEnabled={false}
 >
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(blogPostingJsonLd)}
+  />
   {
     cover && (
       <div
