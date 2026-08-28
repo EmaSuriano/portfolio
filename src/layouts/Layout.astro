@@ -69,6 +69,35 @@ const jsonLd = {
         name: about.company.name,
         url: about.company.url,
       },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Berlin",
+        addressCountry: "DE",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "author",
+        url: about.social.find((profile) => profile.name === "LinkedIn")?.url,
+      },
+      sameAs: about.social.map((profile) => profile.url),
+    },
+    {
+      "@type": "Organization",
+      "@id": `${about.website}#brand`,
+      name: about.name,
+      url: about.website,
+      description: about.bio,
+      founder: { "@id": `${about.website}#person` },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Berlin",
+        addressCountry: "DE",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "author",
+        url: about.social.find((profile) => profile.name === "LinkedIn")?.url,
+      },
       sameAs: about.social.map((profile) => profile.url),
     },
     {
