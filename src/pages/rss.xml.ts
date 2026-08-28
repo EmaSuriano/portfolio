@@ -4,7 +4,7 @@ import MarkdownIt from "markdown-it";
 
 const parser = new MarkdownIt();
 
-import { getPostLink, type Post, type Summary } from "helpers";
+import { type Summary } from "helpers";
 import { GET as getSummary } from "./api/summary.ts";
 import { GET as getPosts } from "./api/posts.ts";
 
@@ -20,21 +20,29 @@ const parseBody = (body?: string) => {
 
 export async function GET() {
   const summary: Summary = await getSummary().then((x) => x.json());
-  const posts: Post[] = await getPosts().then((x) => x.json());
+  const posts: {
+    url?: string;
+    body?: string;
+    data: { title: string; summary: string; publishedAt: string };
+  }[] = await getPosts().then((x) => x.json());
 
   return rss({
     title: `${summary.name}'s Blog`,
     description: summary.bio,
     site: import.meta.env.SITE,
-    items: posts.map((post) => {
-      return {
-        link: getPostLink(post),
-        title: post.data.title,
-        pubDate: post.data.publishedAt,
-        description: post.data.summary,
-        author: summary.name,
-        content: parseBody(post.body),
-      };
+    items: posts.flatMap((post) => {
+      const loc = post.url;
+      if (typeof loc !== "string") return [];
+      return [
+        {
+          link: loc,
+          title: post.data.title,
+          pubDate: new Date(post.data.publishedAt),
+          description: post.data.summary,
+          author: summary.name,
+          content: parseBody(post.body),
+        },
+      ];
     }),
   });
 }
