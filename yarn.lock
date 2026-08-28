@@ -1044,10 +1044,10 @@
   resolved "https://registry.yarnpkg.com/@pagefind/darwin-x64/-/darwin-x64-1.4.0.tgz#671e1fe0f0733350a3eb244ace2675166186793e"
   integrity sha512-e7JPIS6L9/cJfow+/IAqknsGqEPjJnVXGjpGm25bnq+NPdoD3c/7fAwr1OXkG4Ocjx6ZGSCijXEV4ryMcH2E3A==
 
-"@pagefind/default-ui@^1.2.0", "@pagefind/default-ui@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@pagefind/default-ui/-/default-ui-1.4.0.tgz#036017ba6ed40e9f34ff5652b9caed11113f7bcc"
-  integrity sha512-wie82VWn3cnGEdIjh4YwNESyS1G6vRHwL6cNjy9CFgNnWW/PGRjsLq300xjVH5sfPFK3iK36UxvIBymtQIEiSQ==
+"@pagefind/default-ui@^1.2.0", "@pagefind/default-ui@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@pagefind/default-ui/-/default-ui-1.5.2.tgz#6473cd2c34a94b8221c5334a5fef314cd4844c37"
+  integrity sha512-pm1LMnQg8N2B3n2TnjKlhaFihpz6zTiA4HiGQ6/slKO/+8K9CAU5kcjdSSPgpuk1PMuuN4hxLipUIifnrkl3Sg==
 
 "@pagefind/freebsd-x64@1.4.0":
   version "1.4.0"
