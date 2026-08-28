@@ -37,7 +37,7 @@
     "astro-pagefind": "^1.8.5",
     "astro-seo": "^1.1.0",
     "autoprefixer": "^10.4.27",
-    "cssnano": "^7.1.2",
+    "cssnano": "^7.1.5",
     "date-fns": "^4.1.0",
     "inquirer": "^12.10.0",
     "markdown-it": "^14.1.1",
