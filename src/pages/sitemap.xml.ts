@@ -1,5 +1,4 @@
 import about from "author.json";
-import { getPostLink, type Post } from "helpers";
 import { GET as getPosts } from "./api/posts.ts";
 
 const SITE = "https://emasuriano.com";
@@ -28,7 +27,8 @@ const urlEntry = (
 };
 
 export async function GET() {
-  const posts: Post[] = await getPosts().then((x) => x.json());
+  const posts: { url?: string; data: { publishedAt: string } }[] =
+    await getPosts().then((x) => x.json());
 
   const staticUrls = [
     urlEntry(`${SITE}/`, undefined, "weekly", "1.0"),
@@ -40,8 +40,8 @@ export async function GET() {
   ];
 
   const postUrls = posts.flatMap((post) => {
-    const loc = getPostLink(post);
-    if (!loc.startsWith(SITE)) return [];
+    const loc = post.url;
+    if (typeof loc !== "string" || !loc.startsWith(SITE)) return [];
     return [urlEntry(loc, post.data.publishedAt, "monthly", "0.6")];
   });
 
