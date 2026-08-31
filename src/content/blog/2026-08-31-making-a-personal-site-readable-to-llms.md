@@ -43,6 +43,8 @@ flowchart LR
 
 [is-agentic](https://is-agentic.com/scan/emasuriano.com) is not a second crawler. It re-weights the same Ora evidence, and it is kinder to a homepage that is a person. Same timestamp as the 66 scan: **90/100**. The remaining fails were mostly "add more homepage copy", "add a /developers portal", and "add contact + privacy". In other words: become a product.
 
+![is-agentic score, 90 out of 100](../../static/assets/blog/2026-08-31-making-a-personal-site-readable-to-llms/is-agentic-score.png)
+
 I treated Ora as a noisy dashboard and is-agentic as a second reading of the same evidence. Neither is the goal. The goal is that an agent can fetch who I am, what I wrote, and which projects are mine, without executing a bundle of JavaScript.
 
 ## What actually moved the needle
