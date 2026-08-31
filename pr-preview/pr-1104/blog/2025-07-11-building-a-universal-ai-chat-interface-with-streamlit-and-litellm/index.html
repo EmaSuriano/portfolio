@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en" data-astro-transition-scope="astro-smooz4hq-1"> <head><meta charset="UTF-8"><title>Building a Universal AI Chat Interface with Streamlit and LiteLLM | Ema Suriano</title><meta charset="utf-8"><link rel="canonical" href="https://emasuriano.github.io/portfolio/pr-preview/pr-1104/blog/2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm/"><meta name="description" content="Creating a flexible AI chat application that works with 100+ language models from different providers using Streamlit's interactive interface and LiteLLM's unified API abstraction."><meta name="robots" content="index, follow"><meta property="og:title" content="Building a Universal AI Chat Interface with Streamlit and LiteLLM"><meta property="og:type" content="article"><meta property="og:image" content="https://images.unsplash.com/uploads/1413222992504f1b734a6/1928e537?q=30&w=1400&h=600&fit=crop"><meta property="og:url" content="https://emasuriano.github.io/portfolio/pr-preview/pr-1104/blog/2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm/"><meta property="og:description" content="Creating a flexible AI chat application that works with 100+ language models from different providers using Streamlit's interactive interface and LiteLLM's unified API abstraction."><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Ema Suriano"><meta property="og:image:url" content="https://images.unsplash.com/uploads/1413222992504f1b734a6/1928e537?q=30&w=1400&h=600&fit=crop"><meta property="og:image:alt" content="Ema Suriano Portfolio"><meta property="article:published_time" content="July 11, 2025"><meta property="article:author" content="Ema Suriano"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@EmaSuriano"><meta name="twitter:title" content="Building a Universal AI Chat Interface with Streamlit and LiteLLM"><meta name="twitter:image" content="https://images.unsplash.com/uploads/1413222992504f1b734a6/1928e537?q=30&w=1400&h=600&fit=crop"><meta name="twitter:description" content="Creating a flexible AI chat application that works with 100+ language models from different providers using Streamlit's interactive interface and LiteLLM's unified API abstraction."><meta name="twitter:creator" content="@EmaSuriano"><meta name="viewport" content="width=device-width"><link href="/favicon.ico" rel="icon"><link href="/icon-192.png" rel="icon" type="image/png"><link href="/apple-touch-icon.png" rel="apple-touch-icon"><link href="/manifest.json" rel="manifest"><link rel="alternate" type="text/markdown" href="https://emasuriano.github.io/llms.md"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/","image":"https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d","jobTitle":"Software Engineer","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","worksFor":{"@type":"Organization","name":"Revolut","url":"https://revolut.com/"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"Organization","@id":"https://emasuriano.com/#brand","name":"Ema Suriano","url":"https://emasuriano.com/","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","founder":{"@id":"https://emasuriano.com/#person"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"WebSite","@id":"https://emasuriano.com/#website","url":"https://emasuriano.com/","name":"Ema Suriano","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","publisher":{"@id":"https://emasuriano.com/#person"}}]}</script><!-- Katex --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"><meta content="#fff" name="theme-color"><style>.medium-zoom-overlay{inset:0;opacity:0;position:fixed;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{cursor:pointer;cursor:zoom-out;position:relative;will-change:transform}
+</style>
+<link rel="stylesheet" href="/portfolio/pr-preview/pr-1104/_astro/_slug_.BQFtR0ji.css">
+<style>.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}@media(prefers-color-scheme:dark){.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(23 23 23/var(--tw-bg-opacity,1))!important}}.medium-zoom-image{border-radius:.375rem}a[data-astro-cid-bknnyp27]{display:block;padding:.125rem 0;text-decoration:none}code[class*=language-],pre[class*=language-]{background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+</style>
+<link rel="stylesheet" href="/portfolio/pr-preview/pr-1104/_astro/_slug_.BFgJWleE.css">
+<style>.gradient[data-astro-cid-zfufvvig]{animation:slide 10s linear infinite;-webkit-background-clip:text;background-clip:text;background-image:linear-gradient(90deg,#fb7185,#d946ef 33%,#6366f1 66%,#fb7185);background-size:200% auto}@keyframes slide{to{background-position:200%}}.hover[data-astro-cid-zfufvvig]{transition-duration:.15s;transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);--b:.1em;--c:#6366f1;background:linear-gradient(var(--c) 50%,#000 0) 0 calc(100% - var(--_p, 0%)) /100% 200%,linear-gradient(var(--c) 0 0) 0 var(--_p,0) /var(--_p,0) var(--b) no-repeat;-webkit-background-clip:text,padding-box;background-clip:text,padding-box;color:#0000;padding-block:var(--b);transition:.3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s, 0s))}.hover[data-astro-cid-zfufvvig]:hover{--_p:100%;--_s:.3s}
+.image-container[data-astro-cid-kh7btl4r]{border-radius:1.5rem;height:15rem;position:relative;transition-duration:.15s;transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);width:15rem}@media(min-width:1024px){.image-container[data-astro-cid-kh7btl4r]{height:20rem;width:20rem}}.image-container[data-astro-cid-kh7btl4r]{--r:40px;--c1:#6366f1 99%,#0000 101%;--c2:#fb7185 99%,#0000 101%;--s:calc(var(--r)*.866);--g0:radial-gradient(var(--r),var(--c1));--g1:radial-gradient(var(--r),var(--c2));--f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));--p:radial-gradient(var(--r) at 100% 50%,var(--c2));background:var(--f) 0 calc(var(--r)*-5/2),var(--f) calc(var(--s)*-2) calc(var(--r)/2),var(--p) 0 calc(var(--r)*-2),var(--g0) var(--s) calc(var(--r)*-5/2),var(--g1) var(--s) calc(var(--r)*5/2),radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(var(--r)*-1),radial-gradient(var(--r) at 0 50%,var(--c1)) 0 calc(var(--r)*-4),var(--g1) calc(var(--s)*-1) calc(var(--r)*-7/2),var(--g0) calc(var(--s)*-1) calc(var(--r)*-5/2),var(--p) calc(var(--s)*-2) var(--r),var(--g0) calc(var(--s)*-1) calc(var(--r)/2),var(--g1) calc(var(--s)*-1) calc(var(--r)/-2),var(--g0) 0 calc(var(--r)*-1),var(--g1) var(--s) calc(var(--r)/-2),var(--g0) var(--s) calc(var(--r)/2) #fb7185;background-size:calc(var(--s)*4) calc(var(--r)*6)}
+</style><style>[data-astro-transition-scope="astro-smooz4hq-1"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-smooz4hq-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-smooz4hq-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-smooz4hq-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-smooz4hq-1"] { animation: none; mix-blend-mode: normal; }</style><style>[data-astro-transition-scope="astro-p74ezckc-2"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-lyu3at5e-3"] { view-transition-name: astro-lyu3at5e-3; }@layer astro { ::view-transition-old(astro-lyu3at5e-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-lyu3at5e-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-lyu3at5e-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-lyu3at5e-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style><style>[data-astro-transition-scope="astro-nqfck5zj-4"] { view-transition-name: footer; }@layer astro { ::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    "> <div class="w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl min-h-full"> <header class="relative" data-astro-transition-scope="astro-p74ezckc-2"> <a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a> <nav class="text-sm sm:text-base"> <div class="flex justify-between items-center w-full"> <ul class="relative flex list-none space-x-4 pl-0"> <li> <a href="/" class="link-underline " aria-disabled="false"> Home </a> </li><li> <a href="/about" class="link-underline " aria-disabled="false"> About </a> </li><li> <a href="/blog" class="link-underline " aria-disabled="false"> Blog </a> </li><li> <a href="/til" class="link-underline " aria-disabled="false"> TIL </a> </li><li> <a href="/tools" class="link-underline " aria-disabled="false"> Tools </a> </li> </ul> <button id="search-button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="ri:search-line">   <symbol id="ai:ri:search-line"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use>  </svg> </button> <script type="module">function a(){const n=document.getElementById("search-button");function d(){const e=document.getElementById("search-modal");e?.classList.remove("hidden"),e?.addEventListener("click",t=>{t.target===e&&e?.classList.add("hidden")}),e?.addEventListener("keydown",t=>{t.key==="Escape"&&e?.classList.add("hidden")}),setTimeout(()=>{document.getElementById("search")?.querySelector('input[type="text"]')?.focus()},100)}const c=n?.cloneNode(!0);n?.parentNode?.replaceChild(c,n),c?.addEventListener("click",d)}a();document.addEventListener("astro:page-load",a);</script> </div> </nav> </header> <main id="skip" class="flex flex-grow flex-col py-12" data-astro-transition-scope="astro-lyu3at5e-3">  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Building a Universal AI Chat Interface with Streamlit and LiteLLM","description":"Creating a flexible AI chat application that works with 100+ language models from different providers using Streamlit's interactive interface and LiteLLM's unified API abstraction.","datePublished":"2025-07-11T00:00:00.000Z","url":"https://emasuriano.github.io/portfolio/pr-preview/pr-1104/blog/2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm/","mainEntityOfPage":"https://emasuriano.github.io/portfolio/pr-preview/pr-1104/blog/2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm/","image":"https://images.unsplash.com/uploads/1413222992504f1b734a6/1928e537?q=30&w=1400&h=600&fit=crop","keywords":["streamlit","litellm","ai","chatbot","python","llm","api","interface","machine-learning","openai","anthropic","google","ollama"],"author":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/"},"publisher":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano"}}</script> <div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg" data-zoomable> <img src="https://images.unsplash.com/uploads/1413222992504f1b734a6/1928e537?q=30&w=1400&h=600&fit=crop" data-pagefind-meta="image[src]" alt="Building a Universal AI Chat Interface with Streamlit and LiteLLM" loading="lazy" decoding="async" fetchpriority="auto" width="1400" height="600"> </div><article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting"> <h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="title"> Building a Universal AI Chat Interface with Streamlit and LiteLLM </h1> <header class="mb-8 flex items-center sm:mb-10"> <figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"> <img src="https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d?s=150" alt="Ema Suriano" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="150"> </figure> <div class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"> <div> <span item-prop="author" item-scope item-type="https://schema.org/Person"> <span item-prop="name">Ema Suriano</span> </span>
+at
+<time item-prop="datePublished" date-time="Fri Jul 11 2025 00:00:00 GMT+0000 (Coordinated Universal Time)"> July 11, 2025 </time> <p>7 min read</p> </div> <view-counter data-slug="2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm" class="flex items-center gap-1"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 text-current" data-icon="ri:eye-fill">   <symbol id="ai:ri:eye-fill"><path fill="currentColor" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></symbol><use href="#ai:ri:eye-fill"></use>  </svg> <span data-view-number>--</span> <span>views</span> </view-counter> <script type="module">const i=document.querySelector("[data-view-number]");if(i){const t=document.location.pathname.replaceAll("/",""),s=await fetch(`https://visits.emasuriano.com/api/${t}`).then(e=>e.text());i.innerHTML=s,setTimeout(()=>{const e=localStorage.getItem("visits")||"";e.includes(t)||(localStorage.setItem("visits",e.concat(t)),fetch(`https://visits.emasuriano.com/api/${t}`,{method:"POST"}))},5e3)}</script> </div> </header> <nav id="blog-navigation" class="transition-opacity sticky top-24 hidden lg:block overflow-x" data-astro-cid-bknnyp27> <div class="absolute right-0 w-60 -mr-40" data-astro-cid-bknnyp27> <b data-astro-cid-bknnyp27>Content</b> <ol data-astro-cid-bknnyp27>  </ol> </div> </nav>  <script type="module">const t=new IntersectionObserver(o=>{o.forEach(s=>{const e=document.querySelector("#blog-navigation");s.isIntersecting?e.classList.add("opacity-0"):e.classList.remove("opacity-0")})});t.observe(document.querySelector("#blog-comments"));</script> <script type="module">const c=document.querySelectorAll("#blog-navigation li a");let s=c[0];const r=new IntersectionObserver(i=>{let e=[];i.forEach(t=>{if(t.isIntersecting){const o=t.target.getAttribute("id"),a=document.querySelector(`nav li a[href="#${o}"]`);e.push(a)}}),c.forEach(t=>{t.classList.remove("opacity-100"),t.classList.add("opacity-30")}),e[0]?(e[0].classList.add("opacity-100"),e[0].classList.remove("opacity-30"),s=e[0]):s&&(s.classList.add("opacity-100"),s.classList.remove("opacity-30"))});document.querySelectorAll("h2[id], h3[id], h4[id]").forEach(i=>{r.observe(i)});</script> <section class="prose mx-auto w-full dark:prose-dark">   <p>As AI models become increasingly diverse and powerful, developers often face the challenge of working with different APIs and providers. Each has unique interfaces, authentication methods, and response formats. What if we could create a single application that works seamlessly with OpenAI’s GPT models, Anthropic’s Claude, Google’s Gemini, local Ollama models, and dozens of others?</p>
+<p>In this post, I’ll walk you through building a universal AI chat interface using <a href="https://streamlit.io/">Streamlit</a> and <a href="https://litellm.ai/">LiteLLM</a> that solves exactly this problem.</p>
+<h2 id="the-technologies-behind-the-solution"><a aria-label="The Technologies Behind the Solution" href="#the-technologies-behind-the-solution"><span class="icon icon-link"></span></a>The Technologies Behind the Solution</h2>
+<h3 id="streamlit-rapid-web-app-development"><a aria-label="Streamlit: Rapid Web App Development" href="#streamlit-rapid-web-app-development"><span class="icon icon-link"></span></a>Streamlit: Rapid Web App Development</h3>
+<p>Streamlit is a Python framework that transforms data scripts into shareable web applications in minutes. What makes Streamlit particularly powerful for AI applications is its reactive nature - when users interact with widgets, the entire app reruns, making it perfect for conversational interfaces.</p>
+<p>Key advantages for our use case:</p>
+<ul>
+<li><strong>Zero frontend complexity</strong>: Pure Python with automatic UI generation</li>
+<li><strong>Built-in chat components</strong>: Native support for chat interfaces with <code>st.chat_message()</code> and <code>st.chat_input()</code></li>
+<li><strong>Session state management</strong>: Persistent data across interactions for maintaining conversation history</li>
+<li><strong>Real-time updates</strong>: Automatic rerendering when state changes</li>
+<li><strong>Easy deployment</strong>: One-click deployment to <a href="https://streamlit.io/cloud">Streamlit Cloud</a></li>
+</ul>
+<h3 id="litellm-the-universal-llm-gateway"><a aria-label="LiteLLM: The Universal LLM Gateway" href="#litellm-the-universal-llm-gateway"><span class="icon icon-link"></span></a>LiteLLM: The Universal LLM Gateway</h3>
+<p>LiteLLM acts as a translation layer between your application and 100+ language models from different providers. Instead of learning multiple APIs, you write code once and it works everywhere.</p>
+<p>Core benefits:</p>
+<ul>
+<li><strong>Unified interface</strong>: Same function calls work with OpenAI, Anthropic, Google, Cohere, and many others</li>
+<li><strong>Automatic format conversion</strong>: Handles different request/response formats internally</li>
+<li><strong>Provider abstraction</strong>: Switch models without changing code</li>
+<li><strong>Error standardization</strong>: Consistent error handling across providers</li>
+<li><strong>Cost tracking</strong>: Built-in usage monitoring and cost calculation</li>
+</ul>
+<h3 id="architecture-overview"><a aria-label="Architecture Overview" href="#architecture-overview"><span class="icon icon-link"></span></a>Architecture Overview</h3>
+<p>The application follows a simple but effective architecture:</p>
+<pre class="language-plaintext" data-language="plaintext"><code is:raw="" class="language-plaintext">┌─────────────────┐    ┌──────────────┐    ┌─────────────────┐
+│   Streamlit UI  │ -> │   LiteLLM    │ -> │  AI Providers   │
+│                 │    │   Gateway    │    │ (OpenAI, etc.)  │
+│ - Chat Input    │    │              │    │                 │
+│ - Model Config  │    │ - API Trans  │    │ - GPT Models    │
+│ - Message History│   │ - Error Hand │    │ - Claude Models │
+│ - Settings      │    │ - Format Conv│    │ - Gemini Models │
+└─────────────────┘    └──────────────┘    └─────────────────┘
+</code></pre>
+<h2 id="implementation-deep-dive"><a aria-label="Implementation Deep Dive" href="#implementation-deep-dive"><span class="icon icon-link"></span></a>Implementation Deep Dive</h2>
+<p>Let’s explore the key components of our application:</p>
+<h3 id="1-application-configuration-and-session-state"><a aria-label="1. Application Configuration and Session State" href="#1-application-configuration-and-session-state"><span class="icon icon-link"></span></a>1. Application Configuration and Session State</h3>
+<pre class="language-python" data-language="python"><code is:raw="" class="language-python"><span class="token keyword">import</span> streamlit <span class="token keyword">as</span> st
+<span class="token keyword">import</span> litellm
+<span class="token keyword">from</span> typing <span class="token keyword">import</span> List<span class="token punctuation">,</span> Dict
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+<span class="token comment"># Configure the page</span>
+st<span class="token punctuation">.</span>set_page_config<span class="token punctuation">(</span>
+    page_title<span class="token operator">=</span><span class="token string">"AI Chat Assistant"</span><span class="token punctuation">,</span>
+    page_icon<span class="token operator">=</span><span class="token string">"🤖"</span><span class="token punctuation">,</span>
+    layout<span class="token operator">=</span><span class="token string">"wide"</span><span class="token punctuation">,</span>
+    initial_sidebar_state<span class="token operator">=</span><span class="token string">"expanded"</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># Initialize session state</span>
+<span class="token keyword">if</span> <span class="token string">"messages"</span> <span class="token keyword">not</span> <span class="token keyword">in</span> st<span class="token punctuation">.</span>session_state<span class="token punctuation">:</span>
+    st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>messages <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> <span class="token string">"model"</span> <span class="token keyword">not</span> <span class="token keyword">in</span> st<span class="token punctuation">.</span>session_state<span class="token punctuation">:</span>
+    st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>model <span class="token operator">=</span> <span class="token string">"github/Phi-4"</span>
+<span class="token keyword">if</span> <span class="token string">"api_key"</span> <span class="token keyword">not</span> <span class="token keyword">in</span> st<span class="token punctuation">.</span>session_state<span class="token punctuation">:</span>
+    st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>api_key <span class="token operator">=</span> st<span class="token punctuation">.</span>secrets<span class="token punctuation">[</span><span class="token string">"api_key"</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Streamlit’s session state mechanism ensures that conversation history and configuration persist across interactions. This is crucial for maintaining context in a chat application.</p>
+<h3 id="2-universal-ai-response-handler"><a aria-label="2. Universal AI Response Handler" href="#2-universal-ai-response-handler"><span class="icon icon-link"></span></a>2. Universal AI Response Handler</h3>
+<pre class="language-python" data-language="python"><code is:raw="" class="language-python"><span class="token keyword">def</span> <span class="token function">get_ai_response</span><span class="token punctuation">(</span>messages<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Dict<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> model<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> api_key<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Get response from the AI model using LiteLLM."""</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> litellm<span class="token punctuation">.</span>completion<span class="token punctuation">(</span>
+            model<span class="token operator">=</span>model<span class="token punctuation">,</span>
+            messages<span class="token operator">=</span>messages<span class="token punctuation">,</span>
+            api_key<span class="token operator">=</span>api_key<span class="token punctuation">,</span>
+            temperature<span class="token operator">=</span><span class="token number">0.7</span><span class="token punctuation">,</span>
+            max_tokens<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> response<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message<span class="token punctuation">.</span>content
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"Error: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">"</span></span>
+</code></pre>
+<p>This single function works with any LiteLLM-supported model. Whether you’re calling OpenAI’s <code>gpt-4</code>, Anthropic’s <code>claude-3-sonnet-20240229</code>, or Google’s <code>gemini-pro</code>, the interface remains identical.</p>
+<h3 id="3-dynamic-model-configuration-interface"><a aria-label="3. Dynamic Model Configuration Interface" href="#3-dynamic-model-configuration-interface"><span class="icon icon-link"></span></a>3. Dynamic Model Configuration Interface</h3>
+<pre class="language-python" data-language="python"><code is:raw="" class="language-python"><span class="token comment"># Sidebar for configuration</span>
+<span class="token keyword">with</span> st<span class="token punctuation">.</span>sidebar<span class="token punctuation">:</span>
+    st<span class="token punctuation">.</span>header<span class="token punctuation">(</span><span class="token string">"⚙️ Configuration"</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Model input - free text field</span>
+    model_input <span class="token operator">=</span> st<span class="token punctuation">.</span>text_input<span class="token punctuation">(</span>
+        <span class="token string">"Model Name:"</span><span class="token punctuation">,</span>
+        value<span class="token operator">=</span>st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>model<span class="token punctuation">,</span>
+        placeholder<span class="token operator">=</span><span class="token string">"e.g., gpt-3.5-turbo, claude-3-sonnet-20240229, gemini-pro"</span><span class="token punctuation">,</span>
+        <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">"Enter any model supported by LiteLLM"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token comment"># API Key input</span>
+    api_key <span class="token operator">=</span> st<span class="token punctuation">.</span>text_input<span class="token punctuation">(</span>
+        <span class="token string">"API Key:"</span><span class="token punctuation">,</span>
+        <span class="token builtin">type</span><span class="token operator">=</span><span class="token string">"password"</span><span class="token punctuation">,</span>
+        value<span class="token operator">=</span>st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>api_key<span class="token punctuation">,</span>
+        <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">"Enter your API key for the model provider"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+</code></pre>
+<p>The flexible text input allows users to specify any model name that LiteLLM supports, making the application truly universal. The sidebar also includes helpful model suggestions organized by provider.</p>
+<h3 id="4-real-time-chat-interface"><a aria-label="4. Real-time Chat Interface" href="#4-real-time-chat-interface"><span class="icon icon-link"></span></a>4. Real-time Chat Interface</h3>
+<pre class="language-python" data-language="python"><code is:raw="" class="language-python"><span class="token comment"># Chat input</span>
+<span class="token keyword">if</span> prompt <span class="token operator">:=</span> st<span class="token punctuation">.</span>chat_input<span class="token punctuation">(</span><span class="token string">"Type your message here..."</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Add user message to chat history</span>
+    timestamp <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">"%H:%M:%S"</span><span class="token punctuation">)</span>
+    user_message <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token string">"content"</span><span class="token punctuation">:</span> prompt<span class="token punctuation">,</span> <span class="token string">"timestamp"</span><span class="token punctuation">:</span> timestamp<span class="token punctuation">}</span>
+    st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>messages<span class="token punctuation">.</span>append<span class="token punctuation">(</span>user_message<span class="token punctuation">)</span>
+
+    <span class="token comment"># Display user message</span>
+    <span class="token keyword">with</span> st<span class="token punctuation">.</span>chat_message<span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        st<span class="token punctuation">.</span>markdown<span class="token punctuation">(</span>prompt<span class="token punctuation">)</span>
+        st<span class="token punctuation">.</span>caption<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"🕐 </span><span class="token interpolation"><span class="token punctuation">{</span>timestamp<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Get AI response</span>
+    <span class="token keyword">with</span> st<span class="token punctuation">.</span>chat_message<span class="token punctuation">(</span><span class="token string">"assistant"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> st<span class="token punctuation">.</span>spinner<span class="token punctuation">(</span><span class="token string">"Thinking..."</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># Prepare messages for API (without timestamps)</span>
+            api_messages <span class="token operator">=</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span><span class="token string">"role"</span><span class="token punctuation">:</span> msg<span class="token punctuation">[</span><span class="token string">"role"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"content"</span><span class="token punctuation">:</span> msg<span class="token punctuation">[</span><span class="token string">"content"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+                <span class="token keyword">for</span> msg <span class="token keyword">in</span> st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>messages
+            <span class="token punctuation">]</span>
+
+            response <span class="token operator">=</span> get_ai_response<span class="token punctuation">(</span>
+                api_messages<span class="token punctuation">,</span> st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>model<span class="token punctuation">,</span> st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>api_key
+            <span class="token punctuation">)</span>
+
+            st<span class="token punctuation">.</span>markdown<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+            response_timestamp <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">"%H:%M:%S"</span><span class="token punctuation">)</span>
+            st<span class="token punctuation">.</span>caption<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"🕐 </span><span class="token interpolation"><span class="token punctuation">{</span>response_timestamp<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Add assistant response to chat history</span>
+    assistant_message <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"assistant"</span><span class="token punctuation">,</span>
+        <span class="token string">"content"</span><span class="token punctuation">:</span> response<span class="token punctuation">,</span>
+        <span class="token string">"timestamp"</span><span class="token punctuation">:</span> response_timestamp<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    st<span class="token punctuation">.</span>session_state<span class="token punctuation">.</span>messages<span class="token punctuation">.</span>append<span class="token punctuation">(</span>assistant_message<span class="token punctuation">)</span>
+</code></pre>
+<p>The chat interface leverages Streamlit’s native chat components for a polished user experience. Messages include timestamps and the conversation maintains context across the entire session.</p>
+<h3 id="local-development-setup"><a aria-label="Local Development Setup" href="#local-development-setup"><span class="icon icon-link"></span></a>Local Development Setup</h3>
+<p>Getting the application running locally is straightforward:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash"><span class="token comment"># Clone the repository</span>
+<span class="token function">git</span> clone https://github.com/EmaSuriano/streamlit-litellm-demo.git
+<span class="token builtin class-name">cd</span> streamlit-litellm-demo
+
+<span class="token comment"># Install dependencies using uv</span>
+uv <span class="token function">sync</span>
+
+<span class="token comment"># Run the Streamlit application</span>
+uv run streamlit run streamlit_app.py
+</code></pre>
+<p>The application will be available at <code>http://localhost:8501</code> with a clean, responsive interface that works across different devices.</p>
+<h2 id="supported-models-and-providers"><a aria-label="Supported Models and Providers" href="#supported-models-and-providers"><span class="icon icon-link"></span></a>Supported Models and Providers</h2>
+<p>One of the most powerful aspects of this implementation is its extensive model support through LiteLLM:</p>
+<h3 id="openai-models"><a aria-label="OpenAI Models" href="#openai-models"><span class="icon icon-link"></span></a>OpenAI Models</h3>
+<ul>
+<li><code>gpt-3.5-turbo</code> - Fast and cost-effective for most conversations</li>
+<li><code>gpt-4</code> - Enhanced reasoning and complex task handling</li>
+<li><code>gpt-4-turbo</code> - Latest improvements with larger context windows</li>
+</ul>
+<h3 id="anthropic-models"><a aria-label="Anthropic Models" href="#anthropic-models"><span class="icon icon-link"></span></a>Anthropic Models</h3>
+<ul>
+<li><code>claude-3-sonnet-20240229</code> - Balanced performance and speed</li>
+<li><code>claude-3-haiku-20240307</code> - Ultra-fast responses for simple tasks</li>
+<li><code>claude-3-opus-20240229</code> - Maximum capability for complex reasoning</li>
+</ul>
+<h3 id="google-models"><a aria-label="Google Models" href="#google-models"><span class="icon icon-link"></span></a>Google Models</h3>
+<ul>
+<li><code>gemini-pro</code> - Google’s flagship conversational AI</li>
+<li><code>gemini-1.5-pro</code> - Enhanced with larger context understanding</li>
+</ul>
+<h3 id="local-and-open-source"><a aria-label="Local and Open Source" href="#local-and-open-source"><span class="icon icon-link"></span></a>Local and Open Source</h3>
+<ul>
+<li><code>ollama/llama2</code> - Run models locally with Ollama</li>
+<li><code>together_ai/togethercomputer/llama-2-70b-chat</code> - Hosted open models</li>
+<li><code>replicate/meta/llama-2-70b-chat</code> - Alternative hosting options</li>
+</ul>
+<h2 id="live-demo-and-deployment"><a aria-label="Live Demo and Deployment" href="#live-demo-and-deployment"><span class="icon icon-link"></span></a>Live Demo and Deployment</h2>
+<p>The application is deployed and accessible at: <a href="https://emasuriano-litellm-demo.streamlit.app/">Streamlit LiteLLM Demo</a></p>
+<p><a href="https://streamlit.io/cloud">Streamlit Cloud</a> deployment is remarkably simple:</p>
+<ol>
+<li>Connect your GitHub repository to Streamlit Cloud</li>
+<li>Configure any necessary secrets (API keys)</li>
+<li>Automatic deployment on every push to main branch</li>
+</ol>
+<p>The cloud deployment includes proper secret management, ensuring API keys are never exposed in the code while remaining accessible to the application.</p>
+<h2 id="key-features-and-user-experience"><a aria-label="Key Features and User Experience" href="#key-features-and-user-experience"><span class="icon icon-link"></span></a>Key Features and User Experience</h2>
+<ul>
+<li><strong>Dynamic Model Switching</strong>: Users can change models on-the-fly without losing conversation history, enabling comparison of responses from different providers for the same prompt.</li>
+<li><strong>Privacy-First Design</strong>: API keys are securely handled, stored only in the browser session, and transmitted solely to the intended AI provider.</li>
+<li><strong>Comprehensive Error Handling</strong>: LiteLLM’s standardized error responses provide helpful feedback regardless of provider issues.</li>
+<li><strong>Real-time Statistics</strong>: The sidebar displays conversation metrics and model status, allowing users to track usage and confirm proper configuration.</li>
+</ul>
+<h2 id="practical-applications"><a aria-label="Practical Applications" href="#practical-applications"><span class="icon icon-link"></span></a>Practical Applications</h2>
+<p>This universal interface pattern proves valuable in numerous scenarios:</p>
+<ul>
+<li><strong>Model Comparison</strong>: Compare outputs from different models using identical prompts.</li>
+<li><strong>Prototyping</strong>: Test models and prompts before committing to providers.</li>
+<li><strong>Education</strong>: Experiment with language models without complex APIs.</li>
+<li><strong>Business Use</strong>: Evaluate AI providers for cost, quality, and performance.</li>
+</ul>
+<h2 id="conclusion"><a aria-label="Conclusion" href="#conclusion"><span class="icon icon-link"></span></a>Conclusion</h2>
+<p>Building a universal AI chat interface with Streamlit and LiteLLM demonstrates how modern Python tools can rapidly create sophisticated applications. The combination of Streamlit’s intuitive UI framework and LiteLLM’s provider abstraction enables developers to focus on user experience rather than API integration complexity.</p>
+<p>This project showcases the power of choosing the right abstractions - by leveraging these two libraries, we’ve created an application that works with over 100 AI models while maintaining clean, readable code.</p>
+<p>The complete source code is available on <a href="https://github.com/EmaSuriano/streamlit-litellm-demo">GitHub</a>, and you can try the live demo at <a href="https://emasuriano-litellm-demo.streamlit.app/">Streamlit LiteLLM Demo</a>. Whether you’re exploring different AI models, building prototypes, or creating production applications, this foundation provides a solid starting point for AI-powered interfaces.</p>  <section class="block"><h3>Related articles</h3><ul><li><a href="https://emasuriano.github.io/blog/2026-08-31-making-a-personal-site-readable-to-llms">Making a personal site readable to LLMs</a></li><li><a href="https://emasuriano.github.io/blog/2026-05-12-sesame-wake">Sesame Wake: A Bring-Your-Own Wake Word Launcher for Sesame</a></li><li><a href="https://emasuriano.github.io/til/2026-01-25-ollama-launch-free-claude-code">Ollama Launch lets you run Claude Code for free</a></li><li><a href="https://emasuriano.github.io/til/2024-11-07-deploying-and-using-your-ml-model-with-streamlit">Deploying and using your ML model with Streamlit</a></li><li><a href="https://emasuriano.github.io/blog/2025-03-27-running-ollama-in-github-actions---automating-llm-workflows">Running Ollama in GitHub Actions - Automating LLM Workflows</a></li><li><a href="https://emasuriano.github.io/blog/2025-01-21-simplifying-python-development-with-uv-a-modern-package-management-tool">Simplifying Python Development with uv: A Modern Package Management Tool</a></li><li><a href="https://emasuriano.github.io/blog/2024-06-23-drawing-3d-functions-with-plotly-correctly">Drawing 3D functions with Plotly</a></li><li><a href="https://emasuriano.github.io/til/2024-06-21-running-jupyter-notebook-in-the-browser">Running Jupyter notebook in the browser</a></li></ul></section> </section> <script type="module">document.addEventListener("DOMContentLoaded",()=>{if(window.location.hash){const o=document.querySelector(window.location.hash);o&&o.scrollIntoView({behavior:"smooth",block:"start"})}});</script> <script type="module" src="/portfolio/pr-preview/pr-1104/_astro/PostContent.astro_astro_type_script_index_1_lang.CtSWIMhs.js"></script> <script type="module" src="/portfolio/pr-preview/pr-1104/_astro/PostContent.astro_astro_type_script_index_2_lang.DDtk4Mzb.js"></script>  </article> <section class="block h-fit" id="blog-comments"> <script src="https://utteranc.es/client.js" repo="EmaSuriano/portfolio" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async></script> </section>  </main> <footer class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base" data-astro-transition-scope="astro-nqfck5zj-4"> <ul class="flex max-w-full flex-shrink-0 flex-wrap"> <li class="mr-4 mt-2"> <a href="https://github.com/EmaSuriano" class="link-underline"> GitHub </a> </li><li class="mr-4 mt-2"> <a href="https://twitter.com/EmaSuriano" class="link-underline"> Twitter </a> </li><li class="mr-4 mt-2"> <a href="https://www.youtube.com/c/EmaSuriano" class="link-underline"> YouTube </a> </li><li class="mr-4 mt-2"> <a href="https://www.linkedin.com/in/emanuel-suriano" class="link-underline"> LinkedIn </a> </li><li class="mr-4 mt-2"> <a href="https://emasuriano.com/rss.xml" class="link-underline"> RSS </a> </li> </ul> </footer> </div> <div id="search-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"> <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 overflow-hidden"> <div id="search" class="pagefind-ui pagefind-init" data-pagefind-ui data-bundle-path="/portfolio/pr-preview/pr-1104/pagefind/" data-ui-options="{&#34;autofocus&#34;:true,&#34;showImages&#34;:true}"></div> <script type="module" src="/portfolio/pr-preview/pr-1104/_astro/Search.astro_astro_type_script_index_0_lang.DjacWrzk.js"></script> </div> </div>   </body> </html>
