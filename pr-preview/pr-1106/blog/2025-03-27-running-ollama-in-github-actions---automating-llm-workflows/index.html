@@ -1,0 +1,285 @@
+<!DOCTYPE html><html data-astro-transition-scope="astro-yztbsuuz-1" lang="en"><head><meta charset="UTF-8"><title>Running Ollama in GitHub Actions - Automating LLM Workflows | Ema Suriano</title><meta charset="utf-8"><link rel="canonical" href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-03-27-running-ollama-in-github-actions---automating-llm-workflows/"><meta name="description" content="How I integrated Ollama into GitHub Actions to run LLMs in CI/CD pipelines opening up new possibilities for automated content generation and AI-powered workflows"><meta name="robots" content="index, follow"><meta property="og:title" content="Running Ollama in GitHub Actions - Automating LLM Workflows"><meta property="og:type" content="article"><meta property="og:image" content="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:url" content="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-03-27-running-ollama-in-github-actions---automating-llm-workflows/"><meta property="og:description" content="How I integrated Ollama into GitHub Actions to run LLMs in CI/CD pipelines opening up new possibilities for automated content generation and AI-powered workflows"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Ema Suriano"><meta property="og:image:url" content="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:image:alt" content="Ema Suriano Portfolio"><meta property="article:published_time" content="March 27, 2025"><meta property="article:author" content="Ema Suriano"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@EmaSuriano"><meta name="twitter:title" content="Running Ollama in GitHub Actions - Automating LLM Workflows"><meta name="twitter:image" content="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta name="twitter:description" content="How I integrated Ollama into GitHub Actions to run LLMs in CI/CD pipelines opening up new possibilities for automated content generation and AI-powered workflows"><meta name="twitter:creator" content="@EmaSuriano"><meta name="viewport" content="width=device-width"><link href="/favicon.ico" rel="icon"><link href="/icon-192.png" rel="icon" type="image/png"><link href="/apple-touch-icon.png" rel="apple-touch-icon"><link href="/manifest.json" rel="manifest"><link rel="alternate" type="text/markdown" href="https://emasuriano.github.io/llms.md"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/","image":"https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d","jobTitle":"Software Engineer","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","worksFor":{"@type":"Organization","name":"Revolut","url":"https://revolut.com/"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"Organization","@id":"https://emasuriano.com/#brand","name":"Ema Suriano","url":"https://emasuriano.com/","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","founder":{"@id":"https://emasuriano.com/#person"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"WebSite","@id":"https://emasuriano.com/#website","url":"https://emasuriano.com/","name":"Ema Suriano","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","publisher":{"@id":"https://emasuriano.com/#person"}}]}</script><!-- Katex --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"><meta content="#fff" name="theme-color"><style>.medium-zoom-overlay{opacity:0;will-change:opacity;transition:opacity .3s;position:fixed;inset:0}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{cursor:pointer;cursor:zoom-out;will-change:transform;position:relative}
+</style><link rel="stylesheet" href="/portfolio/pr-preview/pr-1106/_astro/Layout.Br4TBiDK.css"><style>.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}@media (prefers-color-scheme:dark){.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(23 23 23/var(--tw-bg-opacity,1))!important}}.medium-zoom-image{border-radius:.375rem}a[data-astro-cid-hgp7mnje]{padding:.125rem 0;text-decoration:none;display:block}code[class*=language-],pre[class*=language-]{color:#ccc;text-align:left;white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal;hyphens:none;-moz-tab-size:4;-o-tab-size:4;tab-size:4;background:0 0;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;line-height:1.5}pre[class*=language-]{margin:.5em 0;padding:1em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{white-space:normal;border-radius:.3em;padding:.1em}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+.gradient[data-astro-cid-2ynwtmkb]{background-image:linear-gradient(90deg,#fb7185,#d946ef 33%,#6366f1 66%,#fb7185);background-size:200%;-webkit-background-clip:text;background-clip:text;animation:10s linear infinite slide}@keyframes slide{to{background-position:200%}}.hover[data-astro-cid-2ynwtmkb]{--b:.1em;--c:#6366f1;background:linear-gradient(var(--c) 50%,#000 0) 0 calc(100% - var(--_p,0%)) /100% 200%,linear-gradient(var(--c) 0 0) 0 var(--_p,0) /var(--_p,0) var(--b) no-repeat;color:#0000;padding-block:var(--b);transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);transition:.3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));-webkit-background-clip:text,padding-box;background-clip:text,padding-box}.hover[data-astro-cid-2ynwtmkb]:hover{--_p:100%;--_s:.3s}
+.image-container[data-astro-cid-ta2fbyqs]{border-radius:1.5rem;width:15rem;height:15rem;transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);position:relative}@media (width>=1024px){.image-container[data-astro-cid-ta2fbyqs]{width:20rem;height:20rem}}.image-container[data-astro-cid-ta2fbyqs]{--r:40px;--c1:#6366f1 99%,#0000 101%;--c2:#fb7185 99%,#0000 101%;--s:calc(var(--r)*.866);--g0:radial-gradient(var(--r),var(--c1));--g1:radial-gradient(var(--r),var(--c2));--f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));--p:radial-gradient(var(--r) at 100% 50%,var(--c2));background:var(--f) 0 calc(var(--r)*-5/2),var(--f) calc(var(--s)*-2) calc(var(--r)/2),var(--p) 0 calc(var(--r)*-2),var(--g0) var(--s) calc(var(--r)*-5/2),var(--g1) var(--s) calc(var(--r)*5/2),radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(var(--r)*-1),radial-gradient(var(--r) at 0 50%,var(--c1)) 0 calc(var(--r)*-4),var(--g1) calc(var(--s)*-1) calc(var(--r)*-7/2),var(--g0) calc(var(--s)*-1) calc(var(--r)*-5/2),var(--p) calc(var(--s)*-2) var(--r),var(--g0) calc(var(--s)*-1) calc(var(--r)/2),var(--g1) calc(var(--s)*-1) calc(var(--r)/-2),var(--g0) 0 calc(var(--r)*-1),var(--g1) var(--s) calc(var(--r)/-2),var(--g0) var(--s) calc(var(--r)/2) #fb7185;background-size:calc(var(--s)*4) calc(var(--r)*6)}
+</style><style>[data-astro-transition-scope="astro-yztbsuuz-1"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }</style><style>[data-astro-transition-scope="astro-jgduxsen-2"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-m4cmtus4-3"] { view-transition-name: astro-m4cmtus4-3; }@layer astro { ::view-transition-old(astro-m4cmtus4-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-m4cmtus4-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-m4cmtus4-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-m4cmtus4-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style><style>[data-astro-transition-scope="astro-crtsh4k5-4"] { view-transition-name: footer; }@layer astro { ::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    "><div class="w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl min-h-full"><header data-astro-transition-scope="astro-jgduxsen-2" class="relative"><a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a><nav class="text-sm sm:text-base"><div class="flex justify-between items-center w-full"><ul class="relative flex list-none space-x-4 pl-0"><li><a href="/portfolio/pr-preview/pr-1106/" class="link-underline " aria-disabled="false">Home</a></li><li><a href="/portfolio/pr-preview/pr-1106/about" class="link-underline " aria-disabled="false">About</a></li><li><a href="/portfolio/pr-preview/pr-1106/blog" class="link-underline " aria-disabled="false">Blog</a></li><li><a href="/portfolio/pr-preview/pr-1106/til" class="link-underline " aria-disabled="false">TIL</a></li><li><a href="/portfolio/pr-preview/pr-1106/tools" class="link-underline " aria-disabled="false">Tools</a></li></ul><button id="search-button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="ri:search-line"><symbol id="ai:ri:search-line"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use></svg></button><script type="module">function e(){let e=document.getElementById(`search-button`);function t(){let e=document.getElementById(`search-modal`);e?.classList.remove(`hidden`),e?.addEventListener(`click`,t=>{t.target===e&&e?.classList.add(`hidden`)}),e?.addEventListener(`keydown`,t=>{t.key===`Escape`&&e?.classList.add(`hidden`)}),setTimeout(()=>{(document.getElementById(`search`)?.querySelector(`input[type="text"]`))?.focus()},100)}let n=e?.cloneNode(!0);e?.parentNode?.replaceChild(n,e),n?.addEventListener(`click`,t)}e(),document.addEventListener(`astro:page-load`,e);</script></div></nav></header><main data-astro-transition-scope="astro-m4cmtus4-3" id="skip" class="flex flex-grow flex-col py-12"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Running Ollama in GitHub Actions - Automating LLM Workflows","description":"How I integrated Ollama into GitHub Actions to run LLMs in CI/CD pipelines opening up new possibilities for automated content generation and AI-powered workflows","datePublished":"2025-03-27T00:00:00.000Z","url":"https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-03-27-running-ollama-in-github-actions---automating-llm-workflows/","mainEntityOfPage":"https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-03-27-running-ollama-in-github-actions---automating-llm-workflows/","image":"https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=30&w=1400&h=600&fit=crop","keywords":["ollama","github","actions","text-generation"],"author":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/"},"publisher":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano"}}</script><div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg" data-zoomable><img src="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=30&amp;w=1400&amp;h=600&amp;fit=crop" data-pagefind-meta="image[src]" alt="Running Ollama in GitHub Actions - Automating LLM Workflows" loading="lazy" decoding="async" width="1400" height="600"></div><article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting"><h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="title">Running Ollama in GitHub Actions - Automating LLM Workflows</h1><header class="mb-8 flex items-center sm:mb-10"><figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"><img src="https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d?s=150" alt="Ema Suriano" loading="lazy" decoding="async" width="150" height="150"></figure><div class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"><div><span item-prop="author" item-scope item-type="https://schema.org/Person"><span item-prop="name">Ema Suriano</span></span>at<time item-prop="datePublished" date-time="Thu Mar 27 2025 00:00:00 GMT+0000 (Coordinated Universal Time)">March 27, 2025</time><p>7 min read</p></div><view-counter data-slug="2025-03-27-running-ollama-in-github-actions---automating-llm-workflows" class="flex items-center gap-1"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 text-current" data-icon="ri:eye-fill"><symbol id="ai:ri:eye-fill"><path fill="currentColor" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></symbol><use href="#ai:ri:eye-fill"></use></svg><span data-view-number>--</span><span>views</span></view-counter><script type="module">var e=document.querySelector(`[data-view-number]`);if(e){let t=document.location.pathname.replaceAll(`/`,``);e.innerHTML=await fetch(`https://visits.emasuriano.com/api/${t}`).then(e=>e.text()),setTimeout(()=>{let e=localStorage.getItem(`visits`)||``;e.includes(t)||(localStorage.setItem(`visits`,e.concat(t)),fetch(`https://visits.emasuriano.com/api/${t}`,{method:`POST`}))},5e3)}</script></div></header><nav id="blog-navigation" class="transition-opacity sticky top-24 hidden lg:block overflow-x" data-astro-cid-hgp7mnje><div class="absolute right-0 w-60 -mr-40" data-astro-cid-hgp7mnje><b data-astro-cid-hgp7mnje>Content</b><ol data-astro-cid-hgp7mnje><li data-astro-cid-hgp7mnje><a href="#what-is-ollama" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>What is Ollama?</a></li><li data-astro-cid-hgp7mnje><a href="#the-project-daily-motivational-phrases" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>The Project: Daily Motivational Phrases</a></li><li data-astro-cid-hgp7mnje><a href="#setting-up-ollama-in-github-actions" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Setting Up Ollama in GitHub Actions</a></li><li data-astro-cid-hgp7mnje><a href="#customizing-the-model" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Customizing the Model</a></li><li data-astro-cid-hgp7mnje><a href="#building-the-website" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Building the Website</a></li><li data-astro-cid-hgp7mnje><a href="#broader-applications" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Broader Applications</a></li><li data-astro-cid-hgp7mnje><a href="#content-generation" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Content Generation</a></li><li data-astro-cid-hgp7mnje><a href="#code-assistance" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Code Assistance</a></li><li data-astro-cid-hgp7mnje><a href="#data-processing" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Data Processing</a></li><li data-astro-cid-hgp7mnje><a href="#benefits-of-running-llms-in-cicd" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Benefits of Running LLMs in CI/CD</a></li><li data-astro-cid-hgp7mnje><a href="#considerations-and-limitations" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Considerations and Limitations</a></li><li data-astro-cid-hgp7mnje><a href="#getting-started" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Getting Started</a></li><li data-astro-cid-hgp7mnje><a href="#looking-forward" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Looking Forward</a></li><li data-astro-cid-hgp7mnje><a href="#conclusion" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Conclusion</a></li></ol></div></nav><script type="module">var e=document.querySelectorAll(`#blog-navigation li a`),t=e[0],n=new IntersectionObserver(n=>{let r=[];n.forEach(e=>{if(e.isIntersecting){let t=e.target.getAttribute(`id`),n=document.querySelector(`nav li a[href="#${t}"]`);r.push(n)}}),e.forEach(e=>{e.classList.remove(`opacity-100`),e.classList.add(`opacity-30`)}),r[0]?(r[0].classList.add(`opacity-100`),r[0].classList.remove(`opacity-30`),t=r[0]):t&&(t.classList.add(`opacity-100`),t.classList.remove(`opacity-30`))});document.querySelectorAll(`h2[id], h3[id], h4[id]`).forEach(e=>{n.observe(e)});</script><script type="module">new IntersectionObserver(e=>{e.forEach(e=>{let t=document.querySelector(`#blog-navigation`);e.isIntersecting?t.classList.add(`opacity-0`):t.classList.remove(`opacity-0`)})}).observe(document.querySelector(`#blog-comments`));</script><section class="prose mx-auto w-full dark:prose-dark"><p>As AI tools become more accessible, integrating them into our development workflows offers exciting new possibilities. In this post, I’ll share how I set up <a href="https://ollama.com/">Ollama</a> to run inside <a href="https://docs.github.com/en/actions">GitHub Actions</a>, creating a fully automated pipeline that generates daily motivational phrases for a website.</p>
+<h2 id="what-is-ollama"><a aria-label="What is Ollama?" href="#what-is-ollama"><span class="icon icon-link"></span></a>What is Ollama?</h2>
+<p>For those unfamiliar, Ollama is an open-source tool that makes it easy to run large language models (LLMs) locally. It provides a simple interface to download, run, and customize models like Llama 3.2, Mistral, and other open weights. The key advantage is you can run these powerful AI models on your own hardware without relying on external APIs.</p>
+<p>But what if we could run these models not just locally, but also in our CI/CD pipelines?</p>
+<h2 id="the-project-daily-motivational-phrases"><a aria-label="The Project: Daily Motivational Phrases" href="#the-project-daily-motivational-phrases"><span class="icon icon-link"></span></a>The Project: Daily Motivational Phrases</h2>
+<p>To demonstrate this concept, I created a project that:</p>
+<ol>
+<li>Runs Ollama with Llama 3.2 in GitHub Actions</li>
+<li>Generates a new inspirational phrase daily</li>
+<li>Saves it to the repository</li>
+<li>Builds and deploys an updated Astro website</li>
+</ol>
+<p>You can see the <a href="https://emasuriano.github.io/ollama-ci-demo">live demo here</a> and explore the <a href="https://github.com/emasuriano/ollama-ci-demo">full repository</a>.</p>
+<figure><img src="https://github.com/user-attachments/assets/6e258cdd-4b4f-497d-a925-17f3b1a062bc" alt="Screenshot of the daily motivation website"><figcaption>Screenshot of the daily motivation website</figcaption></figure>
+<h2 id="setting-up-ollama-in-github-actions"><a aria-label="Setting Up Ollama in GitHub Actions" href="#setting-up-ollama-in-github-actions"><span class="icon icon-link"></span></a>Setting Up Ollama in GitHub Actions</h2>
+<p>The magic happens in the GitHub Actions workflow file. Here’s how it works:</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> deploy
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span>
+  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
+  <span class="token key atrule">schedule</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">cron</span><span class="token punctuation">:</span> <span class="token string">"0 0 * * *"</span> <span class="token comment"># Runs every day at midnight UTC</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ollama</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token key atrule">permissions</span><span class="token punctuation">:</span>
+      <span class="token key atrule">contents</span><span class="token punctuation">:</span> write
+
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout your repository using git
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v4
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install ollama
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> curl <span class="token punctuation">-</span>fsSL https<span class="token punctuation">:</span>//ollama.com/install.sh <span class="token punctuation">|</span> bash
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Run LLM
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> ./run<span class="token punctuation">-</span>llm.sh
+
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> stefanzweifel/git<span class="token punctuation">-</span>auto<span class="token punctuation">-</span>commit<span class="token punctuation">-</span>action@v5
+</code></pre>
+<p>Let’s break down what’s happening:</p>
+<ol>
+<li>The workflow is triggered on push to main, manually, or every day at midnight UTC</li>
+<li>We install Ollama directly on the GitHub runner using their install script</li>
+<li>We execute the file called <code>run-llm</code> that I’m going to show right after this list.</li>
+<li>Finally, we commit the new file back to the repository</li>
+</ol>
+<p>Coming back to the <code>run-llm.sh</code> file, it contains the following code:</p>
+<pre class="language-sh" data-language="sh"><code class="language-sh"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">DATE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">'%Y-%m-%d'</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">FILE_PATH</span><span class="token operator">=</span><span class="token string">"./src/phrases/<span class="token variable">$DATE</span>.md"</span>
+<span class="token assign-left variable">MODEL</span><span class="token operator">=</span><span class="token string">'llama3.2-motivational'</span>
+<span class="token assign-left variable">MODEL_FILE</span><span class="token operator">=</span><span class="token string">'./Modelfile'</span>
+
+<span class="token comment"># Avoid running the command if the file already exists</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$FILE_PATH</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">'[INFO] Phrase already exists, skipping...'</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">'[INFO] Creating new model based on Modelfile...'</span>
+ollama create <span class="token variable">$MODEL</span> <span class="token parameter variable">-f</span> <span class="token variable">$MODEL_FILE</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">'[INFO] Generating new phrase...'</span>
+ollama run <span class="token string">"<span class="token variable">$MODEL</span>"</span> <span class="token string">'Give me an inspirational phrase, just the phrase without the author'</span> <span class="token operator">></span> <span class="token string">"<span class="token variable">$FILE_PATH</span>"</span>
+</code></pre>
+<p>That’s it! With just a few lines of configuration, we’ve set up a fully automated workflow that runs an LLM in the cloud.</p>
+<h2 id="customizing-the-model"><a aria-label="Customizing the Model" href="#customizing-the-model"><span class="icon icon-link"></span></a>Customizing the Model</h2>
+<p>For more control, I created a <code>Modelfile</code> to fine-tune the model’s behavior:</p>
+<pre class="language-plaintext" data-language="plaintext"><code class="language-plaintext"># Base model
+FROM llama3.2
+
+# Lower temperature for more focused output
+PARAMETER temperature 0.7
+
+# Context window is good, but adding a comment about token limit trade-offs
+PARAMETER num_ctx 4096
+
+# Add top_p to further control response randomness
+PARAMETER top_p 0.9
+
+# Reduce repetition with frequency penalty
+PARAMETER repeat_penalty 1.1
+
+# System prompt improvements
+SYSTEM """
+You are a motivational phrase writer specializing in concise, powerful messaging.
+
+GUIDELINES:
+- Create phrases under 30 words that inspire immediate action
+- Focus on strength, resilience, growth, and possibility
+- Avoid generic clichés like "never give up" or "follow your dreams"
+- When given a specific theme, customize the response to that context
+- Provide exactly ONE phrase per response unless multiple are requested
+- Occasionally incorporate metaphors that create strong mental imagery
+
+Each phrase should feel fresh, meaningful, and worthy of being remembered.
+"""
+</code></pre>
+<p>This custom model definition is used by the script in <code>run-llm.sh</code>, which creates a new model based on this file before generating a phrase.</p>
+<h2 id="building-the-website"><a aria-label="Building the Website" href="#building-the-website"><span class="icon icon-link"></span></a>Building the Website</h2>
+<p>Once our LLM has generated the content, the next jobs in the workflow handle building and deploying the website. I’m using Astro for the website, with a simple structure that displays each day’s phrase and allows navigation between days:</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">build</span><span class="token punctuation">:</span>
+  <span class="token key atrule">needs</span><span class="token punctuation">:</span> ollama
+  <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+  <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout your repository using git
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v4
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install<span class="token punctuation">,</span> build<span class="token punctuation">,</span> and upload your site
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> withastro/action@v3
+
+<span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">needs</span><span class="token punctuation">:</span> build
+  <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+  <span class="token key atrule">permissions</span><span class="token punctuation">:</span>
+    <span class="token key atrule">contents</span><span class="token punctuation">:</span> read
+    <span class="token key atrule">pages</span><span class="token punctuation">:</span> write
+    <span class="token key atrule">id-token</span><span class="token punctuation">:</span> write
+  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> github<span class="token punctuation">-</span>pages
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.deployment.outputs.page_url <span class="token punctuation">}</span><span class="token punctuation">}</span>
+  <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy to GitHub Pages
+      <span class="token key atrule">id</span><span class="token punctuation">:</span> deployment
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/deploy<span class="token punctuation">-</span>pages@v4
+</code></pre>
+<p>If we take a closer look at how the github workflow we can see how each step goes after the other.</p>
+<figure><img src="https://github.com/user-attachments/assets/5ebba5fe-4a77-4375-8a43-b5946dab0475" alt="Github Action overview"><figcaption>Github Action overview</figcaption></figure>
+<p>Github Actions allows us to create very nice flows where steps can be dependant (like in this case) or even run in parallel, like in the case we want to run multiple llm calls at the same time.</p>
+<h2 id="broader-applications"><a aria-label="Broader Applications" href="#broader-applications"><span class="icon icon-link"></span></a>Broader Applications</h2>
+<p>While generating daily phrases is a simple example, this pattern can be applied to numerous other use cases:</p>
+<h3 id="content-generation"><a aria-label="Content Generation" href="#content-generation"><span class="icon icon-link"></span></a>Content Generation</h3>
+<p>Imagine automating the creation of blog post ideas or summaries whenever new code is pushed. Your CI/CD pipeline could generate technical documentation updates that directly reflect code changes, keeping your docs perpetually in sync with your codebase. The same approach works for drafting social media content or newsletters - your repository could automatically prepare content drafts for review based on recent commits or releases.</p>
+<h3 id="code-assistance"><a aria-label="Code Assistance" href="#code-assistance"><span class="icon icon-link"></span></a>Code Assistance</h3>
+<p>LLMs in your pipeline can generate test cases to cover new functionality, ensuring better test coverage without manual intervention. They can create or update code documentation as your project evolves, write contextually appropriate commit messages based on the actual changes detected, and even offer code review suggestions before human reviewers get involved.</p>
+<h3 id="data-processing"><a aria-label="Data Processing" href="#data-processing"><span class="icon icon-link"></span></a>Data Processing</h3>
+<p>When dealing with data-heavy applications, these models can summarize reports and findings into digestible formats. They excel at converting raw data into human-readable narratives that explain trends and patterns. For DevOps teams, extracting meaningful insights from logs or metrics becomes a streamlined process that happens automatically after each deployment.</p>
+<h2 id="benefits-of-running-llms-in-cicd"><a aria-label="Benefits of Running LLMs in CI/CD" href="#benefits-of-running-llms-in-cicd"><span class="icon icon-link"></span></a>Benefits of Running LLMs in CI/CD</h2>
+<p>There are several advantages to this approach:</p>
+<ol>
+<li><strong>Automation</strong>: Once set up, the process runs without human intervention</li>
+<li><strong>Consistency</strong>: The same model and parameters are used each time</li>
+<li><strong>Version Control</strong>: All generated content is tracked in your repository</li>
+<li><strong>Integration</strong>: Output can be automatically built into websites, documentation, or other systems</li>
+<li><strong>Cost-Effective</strong>: No need for dedicated servers or API costs</li>
+</ol>
+<h2 id="considerations-and-limitations"><a aria-label="Considerations and Limitations" href="#considerations-and-limitations"><span class="icon icon-link"></span></a>Considerations and Limitations</h2>
+<p>This approach isn’t without challenges:</p>
+<ul>
+<li><strong>Runner Resources</strong>: GitHub’s free tier runners have limited CPU/RAM, which may impact model performance</li>
+<li><strong>Model Size</strong>: Larger models may be challenging to run in this environment</li>
+<li><strong>Runtime</strong>: LLM inference can take time, increasing your action minutes usage</li>
+<li><strong>Determinism</strong>: You might want to ensure consistent outputs by setting a seed</li>
+</ul>
+<h2 id="getting-started"><a aria-label="Getting Started" href="#getting-started"><span class="icon icon-link"></span></a>Getting Started</h2>
+<p>Want to try this yourself? Here’s what you need:</p>
+<ol>
+<li>Fork the <a href="https://github.com/emasuriano/ollama-ci-demo">demo repository</a></li>
+<li>Update the <code>astro.config.mjs</code> with your GitHub username</li>
+<li>Enable GitHub Pages in your repository settings</li>
+<li>Ensure GitHub Actions permissions are configured correctly</li>
+</ol>
+<p>The repository includes a full Astro website setup with dark/light mode support, keyboard navigation, and a responsive design.</p>
+<h2 id="looking-forward"><a aria-label="Looking Forward" href="#looking-forward"><span class="icon icon-link"></span></a>Looking Forward</h2>
+<p>As LLMs become more efficient and GitHub runners more powerful, we’ll see even more sophisticated AI-powered automation in our development workflows. This simple demo just scratches the surface of what’s possible.</p>
+<p>What would you build with LLMs in your CI/CD pipeline? The possibilities are endless:</p>
+<ul>
+<li>Automated code generation or refactoring</li>
+<li>Content localization and translation</li>
+<li>Intelligent comment analysis for issues and PRs</li>
+<li>Dynamic documentation that evolves with your codebase</li>
+</ul>
+<h2 id="conclusion"><a aria-label="Conclusion" href="#conclusion"><span class="icon icon-link"></span></a>Conclusion</h2>
+<p>Integrating Ollama with GitHub Actions demonstrates how we can leverage AI capabilities directly within our existing development workflows. By bringing LLMs into CI/CD pipelines, we open new possibilities for automation, content generation, and intelligent processing.</p>
+<p>Feel free to explore the <a href="https://github.com/emasuriano/ollama-ci-demo">repository</a>, try out the concepts in your own projects, and let me know what you build!</p><section class="block"><h3>Related articles</h3><ul><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/til/2026-08-31-pr-previews-on-github-pages-without-netlify">PR previews on GitHub Pages without Netlify</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/til/2026-01-25-ollama-launch-free-claude-code">Ollama Launch lets you run Claude Code for free</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm">Building a Universal AI Chat Interface with Streamlit and LiteLLM</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/til/2024-09-26-easily-obtain-github-repository-preview-images">Get Github repository preview images</a></li></ul></section></section><script type="module" src="/portfolio/pr-preview/pr-1106/_astro/PostContent.astro_astro_type_script_index_0_lang.BsyKlNyb.js"></script><script type="module" src="/portfolio/pr-preview/pr-1106/_astro/PostContent.astro_astro_type_script_index_1_lang.BsD0WNPE.js"></script><script type="module">document.addEventListener(`DOMContentLoaded`,()=>{if(window.location.hash){let e=document.querySelector(window.location.hash);e&&e.scrollIntoView({behavior:`smooth`,block:`start`})}});</script></article><section class="block h-fit" id="blog-comments"><script src="https://utteranc.es/client.js" repo="EmaSuriano/portfolio" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async></script></section></main><footer data-astro-transition-scope="astro-crtsh4k5-4" class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"><ul class="flex max-w-full flex-shrink-0 flex-wrap"><li class="mr-4 mt-2"><a href="https://github.com/EmaSuriano" class="link-underline">GitHub</a></li><li class="mr-4 mt-2"><a href="https://twitter.com/EmaSuriano" class="link-underline">Twitter</a></li><li class="mr-4 mt-2"><a href="https://www.youtube.com/c/EmaSuriano" class="link-underline">YouTube</a></li><li class="mr-4 mt-2"><a href="https://www.linkedin.com/in/emanuel-suriano" class="link-underline">LinkedIn</a></li><li class="mr-4 mt-2"><a href="https://emasuriano.com/rss.xml" class="link-underline">RSS</a></li></ul></footer></div><div id="search-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"><div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 overflow-hidden"><div id="search" class="pagefind-ui pagefind-init" data-pagefind-ui data-bundle-path="/portfolio/pr-preview/pr-1106/pagefind/" data-ui-options="{&quot;autofocus&quot;:true,&quot;showImages&quot;:true}"></div><script type="module" src="/portfolio/pr-preview/pr-1106/_astro/Search.astro_astro_type_script_index_0_lang.B4d6LIMb.js"></script></div></div></body></html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html><html data-astro-transition-scope="astro-yztbsuuz-1" lang="en"><head><meta charset="UTF-8"><title>Simplifying Python Development with uv: A Modern Package Management Tool | Ema Suriano</title><meta charset="utf-8"><link rel="canonical" href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-01-21-simplifying-python-development-with-uv-a-modern-package-management-tool/"><meta name="description" content="uv is a blazingly fast Python package manager that simplifies dependency management and virtual environment workflows through modern tooling written in Rust."><meta name="robots" content="index, follow"><meta property="og:title" content="Simplifying Python Development with uv: A Modern Package Management Tool"><meta property="og:type" content="article"><meta property="og:image" content="https://images.unsplash.com/photo-1605882174146-a464b70cf691?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:url" content="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-01-21-simplifying-python-development-with-uv-a-modern-package-management-tool/"><meta property="og:description" content="uv is a blazingly fast Python package manager that simplifies dependency management and virtual environment workflows through modern tooling written in Rust."><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Ema Suriano"><meta property="og:image:url" content="https://images.unsplash.com/photo-1605882174146-a464b70cf691?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:image:alt" content="Ema Suriano Portfolio"><meta property="article:published_time" content="January 21, 2025"><meta property="article:author" content="Ema Suriano"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@EmaSuriano"><meta name="twitter:title" content="Simplifying Python Development with uv: A Modern Package Management Tool"><meta name="twitter:image" content="https://images.unsplash.com/photo-1605882174146-a464b70cf691?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta name="twitter:description" content="uv is a blazingly fast Python package manager that simplifies dependency management and virtual environment workflows through modern tooling written in Rust."><meta name="twitter:creator" content="@EmaSuriano"><meta name="viewport" content="width=device-width"><link href="/favicon.ico" rel="icon"><link href="/icon-192.png" rel="icon" type="image/png"><link href="/apple-touch-icon.png" rel="apple-touch-icon"><link href="/manifest.json" rel="manifest"><link rel="alternate" type="text/markdown" href="https://emasuriano.github.io/llms.md"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/","image":"https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d","jobTitle":"Software Engineer","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","worksFor":{"@type":"Organization","name":"Revolut","url":"https://revolut.com/"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"Organization","@id":"https://emasuriano.com/#brand","name":"Ema Suriano","url":"https://emasuriano.com/","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","founder":{"@id":"https://emasuriano.com/#person"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"WebSite","@id":"https://emasuriano.com/#website","url":"https://emasuriano.com/","name":"Ema Suriano","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","publisher":{"@id":"https://emasuriano.com/#person"}}]}</script><!-- Katex --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"><meta content="#fff" name="theme-color"><style>.medium-zoom-overlay{opacity:0;will-change:opacity;transition:opacity .3s;position:fixed;inset:0}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{cursor:pointer;cursor:zoom-out;will-change:transform;position:relative}
+</style><link rel="stylesheet" href="/portfolio/pr-preview/pr-1106/_astro/Layout.Br4TBiDK.css"><style>.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}@media (prefers-color-scheme:dark){.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(23 23 23/var(--tw-bg-opacity,1))!important}}.medium-zoom-image{border-radius:.375rem}a[data-astro-cid-hgp7mnje]{padding:.125rem 0;text-decoration:none;display:block}code[class*=language-],pre[class*=language-]{color:#ccc;text-align:left;white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal;hyphens:none;-moz-tab-size:4;-o-tab-size:4;tab-size:4;background:0 0;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;line-height:1.5}pre[class*=language-]{margin:.5em 0;padding:1em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{white-space:normal;border-radius:.3em;padding:.1em}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+.gradient[data-astro-cid-2ynwtmkb]{background-image:linear-gradient(90deg,#fb7185,#d946ef 33%,#6366f1 66%,#fb7185);background-size:200%;-webkit-background-clip:text;background-clip:text;animation:10s linear infinite slide}@keyframes slide{to{background-position:200%}}.hover[data-astro-cid-2ynwtmkb]{--b:.1em;--c:#6366f1;background:linear-gradient(var(--c) 50%,#000 0) 0 calc(100% - var(--_p,0%)) /100% 200%,linear-gradient(var(--c) 0 0) 0 var(--_p,0) /var(--_p,0) var(--b) no-repeat;color:#0000;padding-block:var(--b);transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);transition:.3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));-webkit-background-clip:text,padding-box;background-clip:text,padding-box}.hover[data-astro-cid-2ynwtmkb]:hover{--_p:100%;--_s:.3s}
+.image-container[data-astro-cid-ta2fbyqs]{border-radius:1.5rem;width:15rem;height:15rem;transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);position:relative}@media (width>=1024px){.image-container[data-astro-cid-ta2fbyqs]{width:20rem;height:20rem}}.image-container[data-astro-cid-ta2fbyqs]{--r:40px;--c1:#6366f1 99%,#0000 101%;--c2:#fb7185 99%,#0000 101%;--s:calc(var(--r)*.866);--g0:radial-gradient(var(--r),var(--c1));--g1:radial-gradient(var(--r),var(--c2));--f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));--p:radial-gradient(var(--r) at 100% 50%,var(--c2));background:var(--f) 0 calc(var(--r)*-5/2),var(--f) calc(var(--s)*-2) calc(var(--r)/2),var(--p) 0 calc(var(--r)*-2),var(--g0) var(--s) calc(var(--r)*-5/2),var(--g1) var(--s) calc(var(--r)*5/2),radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(var(--r)*-1),radial-gradient(var(--r) at 0 50%,var(--c1)) 0 calc(var(--r)*-4),var(--g1) calc(var(--s)*-1) calc(var(--r)*-7/2),var(--g0) calc(var(--s)*-1) calc(var(--r)*-5/2),var(--p) calc(var(--s)*-2) var(--r),var(--g0) calc(var(--s)*-1) calc(var(--r)/2),var(--g1) calc(var(--s)*-1) calc(var(--r)/-2),var(--g0) 0 calc(var(--r)*-1),var(--g1) var(--s) calc(var(--r)/-2),var(--g0) var(--s) calc(var(--r)/2) #fb7185;background-size:calc(var(--s)*4) calc(var(--r)*6)}
+</style><style>[data-astro-transition-scope="astro-yztbsuuz-1"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }</style><style>[data-astro-transition-scope="astro-jgduxsen-2"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-m4cmtus4-3"] { view-transition-name: astro-m4cmtus4-3; }@layer astro { ::view-transition-old(astro-m4cmtus4-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-m4cmtus4-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-m4cmtus4-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-m4cmtus4-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style><style>[data-astro-transition-scope="astro-crtsh4k5-4"] { view-transition-name: footer; }@layer astro { ::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    "><div class="w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl min-h-full"><header data-astro-transition-scope="astro-jgduxsen-2" class="relative"><a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a><nav class="text-sm sm:text-base"><div class="flex justify-between items-center w-full"><ul class="relative flex list-none space-x-4 pl-0"><li><a href="/portfolio/pr-preview/pr-1106/" class="link-underline " aria-disabled="false">Home</a></li><li><a href="/portfolio/pr-preview/pr-1106/about" class="link-underline " aria-disabled="false">About</a></li><li><a href="/portfolio/pr-preview/pr-1106/blog" class="link-underline " aria-disabled="false">Blog</a></li><li><a href="/portfolio/pr-preview/pr-1106/til" class="link-underline " aria-disabled="false">TIL</a></li><li><a href="/portfolio/pr-preview/pr-1106/tools" class="link-underline " aria-disabled="false">Tools</a></li></ul><button id="search-button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="ri:search-line"><symbol id="ai:ri:search-line"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use></svg></button><script type="module">function e(){let e=document.getElementById(`search-button`);function t(){let e=document.getElementById(`search-modal`);e?.classList.remove(`hidden`),e?.addEventListener(`click`,t=>{t.target===e&&e?.classList.add(`hidden`)}),e?.addEventListener(`keydown`,t=>{t.key===`Escape`&&e?.classList.add(`hidden`)}),setTimeout(()=>{(document.getElementById(`search`)?.querySelector(`input[type="text"]`))?.focus()},100)}let n=e?.cloneNode(!0);e?.parentNode?.replaceChild(n,e),n?.addEventListener(`click`,t)}e(),document.addEventListener(`astro:page-load`,e);</script></div></nav></header><main data-astro-transition-scope="astro-m4cmtus4-3" id="skip" class="flex flex-grow flex-col py-12"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Simplifying Python Development with uv: A Modern Package Management Tool","description":"uv is a blazingly fast Python package manager that simplifies dependency management and virtual environment workflows through modern tooling written in Rust.","datePublished":"2025-01-21T00:00:00.000Z","url":"https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-01-21-simplifying-python-development-with-uv-a-modern-package-management-tool/","mainEntityOfPage":"https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-01-21-simplifying-python-development-with-uv-a-modern-package-management-tool/","image":"https://images.unsplash.com/photo-1605882174146-a464b70cf691?q=30&w=1400&h=600&fit=crop","keywords":["python","packagemanager","uv","devtools","virtualenv","dependency-management","rust","python-development","fastapi","development-tools","pip","package-installer"],"author":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/"},"publisher":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano"}}</script><div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg" data-zoomable><img src="https://images.unsplash.com/photo-1605882174146-a464b70cf691?q=30&amp;w=1400&amp;h=600&amp;fit=crop" data-pagefind-meta="image[src]" alt="Simplifying Python Development with uv: A Modern Package Management Tool" loading="lazy" decoding="async" width="1400" height="600"></div><article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting"><h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="title">Simplifying Python Development with uv: A Modern Package Management Tool</h1><header class="mb-8 flex items-center sm:mb-10"><figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"><img src="https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d?s=150" alt="Ema Suriano" loading="lazy" decoding="async" width="150" height="150"></figure><div class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"><div><span item-prop="author" item-scope item-type="https://schema.org/Person"><span item-prop="name">Ema Suriano</span></span>at<time item-prop="datePublished" date-time="Tue Jan 21 2025 00:00:00 GMT+0000 (Coordinated Universal Time)">January 21, 2025</time><p>10 min read</p></div><view-counter data-slug="2025-01-21-simplifying-python-development-with-uv-a-modern-package-management-tool" class="flex items-center gap-1"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 text-current" data-icon="ri:eye-fill"><symbol id="ai:ri:eye-fill"><path fill="currentColor" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></symbol><use href="#ai:ri:eye-fill"></use></svg><span data-view-number>--</span><span>views</span></view-counter><script type="module">var e=document.querySelector(`[data-view-number]`);if(e){let t=document.location.pathname.replaceAll(`/`,``);e.innerHTML=await fetch(`https://visits.emasuriano.com/api/${t}`).then(e=>e.text()),setTimeout(()=>{let e=localStorage.getItem(`visits`)||``;e.includes(t)||(localStorage.setItem(`visits`,e.concat(t)),fetch(`https://visits.emasuriano.com/api/${t}`,{method:`POST`}))},5e3)}</script></div></header><nav id="blog-navigation" class="transition-opacity sticky top-24 hidden lg:block overflow-x" data-astro-cid-hgp7mnje><div class="absolute right-0 w-60 -mr-40" data-astro-cid-hgp7mnje><b data-astro-cid-hgp7mnje>Content</b><ol data-astro-cid-hgp7mnje><li data-astro-cid-hgp7mnje><a href="#what-makes-uv-a-game-changing-package-manager" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>What Makes uv a Game-Changing Package Manager?</a></li><li data-astro-cid-hgp7mnje><a href="#lightning-fast-package-installation" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Lightning-Fast Package Installation</a></li><li data-astro-cid-hgp7mnje><a href="#advanced-dependency-resolution" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Advanced Dependency Resolution</a></li><li data-astro-cid-hgp7mnje><a href="#streamlined-virtual-environment-management" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Streamlined Virtual Environment Management</a></li><li data-astro-cid-hgp7mnje><a href="#project-management-features" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Project Management Features</a></li><li data-astro-cid-hgp7mnje><a href="#getting-started-with-uv-a-typescript-developers-guide" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Getting Started with uv: A TypeScript Developer&#39;s Guide</a></li><li data-astro-cid-hgp7mnje><a href="#project-management" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Project Management</a></li><li data-astro-cid-hgp7mnje><a href="#python-version-management" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Python Version Management</a></li><li data-astro-cid-hgp7mnje><a href="#script-management" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Script Management</a></li><li data-astro-cid-hgp7mnje><a href="#tool-management-with-uvx" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Tool Management with uvx</a></li><li data-astro-cid-hgp7mnje><a href="#virtual-environments-and-legacy-support" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>Virtual Environments and Legacy Support</a></li><li data-astro-cid-hgp7mnje><a href="#transitioning-from-javascripttypescript" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Transitioning from JavaScript/TypeScript</a></li><li data-astro-cid-hgp7mnje><a href="#hands-on-demo-building-a-fastapi-project" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Hands-on Demo: Building a FastAPI Project</a></li><li data-astro-cid-hgp7mnje><a href="#1-project-initialization" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>1. Project Initialization</a></li><li data-astro-cid-hgp7mnje><a href="#2-setting-up-dependencies" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>2. Setting Up Dependencies</a></li><li data-astro-cid-hgp7mnje><a href="#3-creating-the-api" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>3. Creating the API</a></li><li data-astro-cid-hgp7mnje><a href="#4-running-the-application" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>4. Running the Application</a></li><li data-astro-cid-hgp7mnje><a href="#5-running-tools" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>5. Running tools</a></li><li data-astro-cid-hgp7mnje><a href="#6-setting-up-cicd-with-github-actions" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-hgp7mnje>6. Setting Up CI/CD with GitHub Actions</a></li><li data-astro-cid-hgp7mnje><a href="#closing-words" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-hgp7mnje>Closing words</a></li></ol></div></nav><script type="module">var e=document.querySelectorAll(`#blog-navigation li a`),t=e[0],n=new IntersectionObserver(n=>{let r=[];n.forEach(e=>{if(e.isIntersecting){let t=e.target.getAttribute(`id`),n=document.querySelector(`nav li a[href="#${t}"]`);r.push(n)}}),e.forEach(e=>{e.classList.remove(`opacity-100`),e.classList.add(`opacity-30`)}),r[0]?(r[0].classList.add(`opacity-100`),r[0].classList.remove(`opacity-30`),t=r[0]):t&&(t.classList.add(`opacity-100`),t.classList.remove(`opacity-30`))});document.querySelectorAll(`h2[id], h3[id], h4[id]`).forEach(e=>{n.observe(e)});</script><script type="module">new IntersectionObserver(e=>{e.forEach(e=>{let t=document.querySelector(`#blog-navigation`);e.isIntersecting?t.classList.add(`opacity-0`):t.classList.remove(`opacity-0`)})}).observe(document.querySelector(`#blog-comments`));</script><section class="prose mx-auto w-full dark:prose-dark"><p>For developers transitioning from JavaScript/TypeScript to Python or those seeking to optimize their development workflow, <code>uv</code> represents a groundbreaking advancement in package management. As a modern alternative to traditional package managers, this Rust-based tool offers exceptional speed and reliability for Python package installation and dependency resolution.</p>
+<h2 id="what-makes-uv-a-game-changing-package-manager"><a aria-label="What Makes uv a Game-Changing Package Manager?" href="#what-makes-uv-a-game-changing-package-manager"><span class="icon icon-link"></span></a>What Makes uv a Game-Changing Package Manager?</h2>
+<p><code>uv</code> stands out in the Python packaging ecosystem by addressing common pain points in virtual environment management and package installation. For developers familiar with <code>npm</code> and yarn from the JavaScript world, <code>uv</code> brings similar modern development workflows to Python while delivering unprecedented performance capabilities.</p>
+<h3 id="lightning-fast-package-installation"><a aria-label="Lightning-Fast Package Installation" href="#lightning-fast-package-installation"><span class="icon icon-link"></span></a>Lightning-Fast Package Installation</h3>
+<p>Coming from the Node.js ecosystem, you’ll immediately notice <code>uv</code> remarkable speed:</p>
+<ul>
+<li>Performs up to 20x faster than traditional package managers like <code>pip</code> (<a href="https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md">Benchmarks</a>)</li>
+<li>Leverages parallel processing for complex dependency trees</li>
+<li>Optimizes performance with both cold cache and warm cache installations</li>
+<li>Minimizes redundant memory allocations during package resolution</li>
+</ul>
+<h3 id="advanced-dependency-resolution"><a aria-label="Advanced Dependency Resolution" href="#advanced-dependency-resolution"><span class="icon icon-link"></span></a>Advanced Dependency Resolution</h3>
+<p><code>uv</code> excels at handling complex dependency management scenarios:</p>
+<ul>
+<li>Creates Universal Lockfiles (similar to <code>package-lock.json</code> in <code>npm</code>)</li>
+<li>Supports both direct and transitive dependencies</li>
+<li>Handles dependency markers and version-specific dependencies</li>
+<li>Provides consistent environments across different platforms</li>
+</ul>
+<h3 id="streamlined-virtual-environment-management"><a aria-label="Streamlined Virtual Environment Management" href="#streamlined-virtual-environment-management"><span class="icon icon-link"></span></a>Streamlined Virtual Environment Management</h3>
+<p>Virtual environment integration in <code>uv</code> simplifies project isolation:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Create a new virtual environment</span>
+uv venv
+
+<span class="token comment"># Activate on Unix</span>
+<span class="token builtin class-name">source</span> .venv/bin/activate
+
+<span class="token comment"># Activate on Windows</span>
+.venv<span class="token punctuation">\</span>Scripts<span class="token punctuation">\</span>activate
+</code></pre>
+<h3 id="project-management-features"><a aria-label="Project Management Features" href="#project-management-features"><span class="icon icon-link"></span></a>Project Management Features</h3>
+<p><code>uv</code> consolidates essential features for modern Python development:</p>
+<ul>
+<li>Unified functionality for package installation and environment management</li>
+<li>Support for editable installs during development</li>
+<li>Integration with existing configuration files</li>
+<li>Handling of URL dependencies and custom indexes</li>
+</ul>
+<h2 id="getting-started-with-uv-a-typescript-developers-guide"><a aria-label="Getting Started with uv: A TypeScript Developer’s Guide" href="#getting-started-with-uv-a-typescript-developers-guide"><span class="icon icon-link"></span></a>Getting Started with uv: A TypeScript Developer’s Guide</h2>
+<p>For developers with a JavaScript/TypeScript background, <code>uv</code> offers familiar concepts with Python-specific advantages. This blog will guide you through using <code>uv</code> by drawing parallels to tools and workflows you already know from the JavaScript/TypeScript ecosystem.</p>
+<p>Let’s start by installing <code>uv</code> into our system. This can be done with their standalone installer. For more information you can check their <a href="https://docs.astral.sh/uv/#getting-started">official docs</a>.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Unix</span>
+<span class="token function">curl</span> <span class="token parameter variable">-LsSf</span> https://astral.sh/uv/install.sh <span class="token operator">|</span> <span class="token function">sh</span>
+
+<span class="token comment"># Windows</span>
+powershell <span class="token parameter variable">-c</span> <span class="token string">"irm https://astral.sh/uv/install.ps1 | iex"</span>
+</code></pre>
+<h3 id="project-management"><a aria-label="Project Management" href="#project-management"><span class="icon icon-link"></span></a>Project Management</h3>
+<p><code>uv</code> follows modern package manager conventions, similar to <code>npm</code> or <code>yarn</code>. It introduces a streamlined workflow for creating new projects, managing dependencies, and maintaining <code>lockfiles</code>. This approach reduces the cognitive load when switching between different programming ecosystems.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Bootstrap new project</span>
+uv init my-project
+<span class="token builtin class-name">cd</span> my-project
+
+<span class="token comment"># Add dependencies</span>
+uv <span class="token function">add</span> fastapi
+uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> pytest ruff
+
+<span class="token comment"># Create/update lockfile</span>
+uv lock
+
+<span class="token comment"># Sync project dependencies</span>
+uv <span class="token function">sync</span>
+</code></pre>
+<h3 id="python-version-management"><a aria-label="Python Version Management" href="#python-version-management"><span class="icon icon-link"></span></a>Python Version Management</h3>
+<p>Managing Python versions has traditionally been a pain point for developers. <code>uv</code> simplifies this process by providing built-in commands to install, manage, and switch between Python versions. This is particularly useful when working on multiple projects that require different Python versions.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Install specific Python version</span>
+uv python <span class="token function">install</span> <span class="token number">3.11</span>
+
+<span class="token comment"># List available versions</span>
+uv python list
+
+<span class="token comment"># Pin project to specific version</span>
+uv python pin <span class="token number">3.11</span>
+</code></pre>
+<p>For developers familiar with <code>nvm</code> (Node Version Manager), <code>uv</code> offers a similar experience for managing Python versions, making it easy to install, list, and switch between different versions.</p>
+<h3 id="script-management"><a aria-label="Script Management" href="#script-management"><span class="icon icon-link"></span></a>Script Management</h3>
+<p>For developers working with standalone scripts, <code>uv</code> provides a convenient way to manage dependencies at the script level. This is perfect for small utilities, automation scripts, or quick prototypes that don’t require a full project setup.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Add dependency to a script</span>
+uv <span class="token function">add</span> <span class="token parameter variable">--script</span> requests example.py
+
+<span class="token comment"># Run script with dependencies</span>
+uv run example.py
+</code></pre>
+<h3 id="tool-management-with-uvx"><a aria-label="Tool Management with uvx" href="#tool-management-with-uvx"><span class="icon icon-link"></span></a>Tool Management with uvx</h3>
+<p>The <code>uvx</code> command provides a powerful way to run Python tools without installing them permanently or affecting your project’s dependencies. This isolated execution environment is similar to <code>npx</code> in the Node.js ecosystem, making it ideal for running linters, formatters, and other development tools.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Run tools directly</span>
+uvx ruff check <span class="token builtin class-name">.</span>
+uvx black <span class="token builtin class-name">.</span>
+
+<span class="token comment"># Or install tools user-wide</span>
+uv tool <span class="token function">install</span> ruff
+uv tool <span class="token function">install</span> black
+</code></pre>
+<h3 id="virtual-environments-and-legacy-support"><a aria-label="Virtual Environments and Legacy Support" href="#virtual-environments-and-legacy-support"><span class="icon icon-link"></span></a>Virtual Environments and Legacy Support</h3>
+<p>While <code>uv</code> introduces modern workflows, it maintains strong compatibility with traditional Python development practices. This backward compatibility ensures you can gradually adopt <code>uv</code>’s features while working with existing projects and workflows.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Create virtual environment</span>
+uv venv
+
+<span class="token comment"># Install from requirements</span>
+uv pip <span class="token function">install</span> <span class="token parameter variable">-r</span> requirements.txt
+
+<span class="token comment"># Generate requirements</span>
+uv pip freeze <span class="token operator">></span> requirements.txt
+
+<span class="token comment"># View dependency tree</span>
+uv pip tree
+</code></pre>
+<h2 id="transitioning-from-javascripttypescript"><a aria-label="Transitioning from JavaScript/TypeScript" href="#transitioning-from-javascripttypescript"><span class="icon icon-link"></span></a>Transitioning from JavaScript/TypeScript</h2>
+<p>For developers with JavaScript/TypeScript experience, <code>uv</code> provides a familiar command structure. This section maps common Node.js commands to their <code>uv</code> equivalents, making the transition to Python development more intuitive.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Action</th><th>npm</th><th>Yarn</th><th>uv</th></tr></thead><tbody><tr><td>Initialize project</td><td><code>npm init</code></td><td><code>yarn init</code></td><td><code>uv init</code></td></tr><tr><td>Add dependency</td><td><code>npm install package</code></td><td><code>yarn add package</code></td><td><code>uv add package</code></td></tr><tr><td>Remove dependency</td><td><code>npm uninstall package</code></td><td><code>yarn remove package</code></td><td><code>uv remove package</code></td></tr><tr><td>Install/Update all dependencies</td><td><code>npm install</code></td><td><code>yarn install</code></td><td><code>uv sync</code></td></tr><tr><td>Lock dependencies</td><td><code>npm shrinkwrap</code></td><td><code>yarn lock</code></td><td><code>uv lock</code></td></tr><tr><td>View dependency tree</td><td><code>npm list</code></td><td><code>yarn list</code></td><td><code>uv tree</code></td></tr><tr><td>Run script/command</td><td><code>npm run script</code></td><td><code>yarn run script</code></td><td><code>uv run script</code></td></tr><tr><td>Execute tool</td><td><code>npx command</code></td><td><code>yarn dlx command</code></td><td><code>uvx</code> or <code>uv tool run</code></td></tr></tbody></table>
+<h2 id="hands-on-demo-building-a-fastapi-project"><a aria-label="Hands-on Demo: Building a FastAPI Project" href="#hands-on-demo-building-a-fastapi-project"><span class="icon icon-link"></span></a>Hands-on Demo: Building a FastAPI Project</h2>
+<p>Let’s walk through creating a complete project using <code>uv</code>, similar to creating a new <code>express.js</code> project in the Node.js world. We’ll build a simple API using <a href="https://fastapi.tiangolo.com/">FastAPI</a>.</p>
+<p>In case you want to jump directly into the code and test it directly, all the source code is live on <a href="https://github.com/EmaSuriano/fastapi-uv-demo.git">GitHub</a>.</p>
+<figure><img src="https://opengraph.githubassets.com/EmaSuriano/EmaSuriano/fastapi-uv-demo" alt="FastAPI uv demo preview"><figcaption>FastAPI uv demo preview</figcaption></figure>
+<h3 id="1-project-initialization"><a aria-label="1. Project Initialization" href="#1-project-initialization"><span class="icon icon-link"></span></a>1. Project Initialization</h3>
+<p>First, let’s create a new project:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Create and initialize project</span>
+uv init fastapi-uv-demo
+
+<span class="token builtin class-name">cd</span> fastapi-uv-demo
+</code></pre>
+<p>After initialization, your project structure will look like this:</p>
+<pre class="language-plain" data-language="plain"><code class="language-plain">fastapi-uv-demo/
+├── pyproject.toml      # Project configuration
+├── .python-version     # Store the python version to run the project
+├── README.md           # Project documentation
+└── hello.py            # Starting file with Hello world example
+</code></pre>
+<p>The current project configuration is as follows:</p>
+<pre class="language-toml" data-language="toml"><code class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">project</span><span class="token punctuation">]</span>
+<span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"fastapi-uv-demo"</span>
+<span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"0.1.0"</span>
+<span class="token key property">description</span> <span class="token punctuation">=</span> <span class="token string">"Add your description here"</span>
+<span class="token key property">readme</span> <span class="token punctuation">=</span> <span class="token string">"README.md"</span>
+<span class="token key property">requires-python</span> <span class="token punctuation">=</span> <span class="token string">">=3.10"</span>
+<span class="token key property">dependencies</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Before adding new dependencies we need to create a new virtual environment and activate it:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Create and activate virtual environment</span>
+uv venv
+
+<span class="token builtin class-name">source</span> .venv/bin/activate  <span class="token comment"># On Unix</span>
+<span class="token comment"># or</span>
+.venv<span class="token punctuation">\</span>Scripts<span class="token punctuation">\</span>activate     <span class="token comment"># On Windows</span>
+</code></pre>
+<h3 id="2-setting-up-dependencies"><a aria-label="2. Setting Up Dependencies" href="#2-setting-up-dependencies"><span class="icon icon-link"></span></a>2. Setting Up Dependencies</h3>
+<p>Create a <code>requirements.in</code> file (similar to package.json):</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Add production dependencies</span>
+uv <span class="token function">add</span> fastapi <span class="token string">'uvicorn[standard]'</span> pydantic
+</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Add development dependencies</span>
+uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> pytest black ruff mypy httpx
+</code></pre>
+<p>Our project configuration should look like:</p>
+<pre class="language-toml" data-language="toml"><code class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">project</span><span class="token punctuation">]</span>
+<span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"fastapi-uv-demo"</span>
+<span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"0.1.0"</span>
+<span class="token key property">description</span> <span class="token punctuation">=</span> <span class="token string">"Add your description here"</span>
+<span class="token key property">readme</span> <span class="token punctuation">=</span> <span class="token string">"README.md"</span>
+<span class="token key property">requires-python</span> <span class="token punctuation">=</span> <span class="token string">">=3.10"</span>
+<span class="token key property">dependencies</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+    <span class="token string">"fastapi>=0.115.6"</span><span class="token punctuation">,</span>
+    <span class="token string">"pydantic>=2.10.5"</span><span class="token punctuation">,</span>
+    <span class="token string">"uvicorn[standard]>=0.34.0"</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">dependency-groups</span><span class="token punctuation">]</span>
+<span class="token key property">dev</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+    <span class="token string">"black>=24.10.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"mypy>=1.14.1"</span><span class="token punctuation">,</span>
+    <span class="token string">"pytest>=8.3.4"</span><span class="token punctuation">,</span>
+    <span class="token string">"httpx>=0.28.1"</span><span class="token punctuation">,</span>
+    <span class="token string">"ruff>=0.9.2"</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+
+</code></pre>
+<p>Also you might notice that a new file has been created in your repository called <code>uv.lock</code>, this is serves the same pourpose as <code>yarn.lock</code> or <code>package-lock.json</code> which is to guarantee exact same version of every package on installation.</p>
+<h3 id="3-creating-the-api"><a aria-label="3. Creating the API" href="#3-creating-the-api"><span class="icon icon-link"></span></a>3. Creating the API</h3>
+<p>Let’s create a new folder <code>src</code> to store the files of our project and a new file called <code>main.py</code> with the code for our FastAPI server:</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI
+<span class="token keyword">from</span> pydantic <span class="token keyword">import</span> BaseModel
+
+app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Item</span><span class="token punctuation">(</span>BaseModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name<span class="token punctuation">:</span> <span class="token builtin">str</span>
+    price<span class="token punctuation">:</span> <span class="token builtin">float</span>
+    is_offer<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+
+<span class="token comment"># Root endpoint</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">read_root</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"Hello"</span><span class="token punctuation">:</span> <span class="token string">"World"</span><span class="token punctuation">}</span>
+
+<span class="token comment"># Item endpoint</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>item_id<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">}</span>
+
+<span class="token comment"># Create item endpoint</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">create_item</span><span class="token punctuation">(</span>item<span class="token punctuation">:</span> Item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> item
+</code></pre>
+<h3 id="4-running-the-application"><a aria-label="4. Running the Application" href="#4-running-the-application"><span class="icon icon-link"></span></a>4. Running the Application</h3>
+<p>Start the server using uvicorn:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">uv run uvicorn src.main:app <span class="token parameter variable">--reload</span>
+</code></pre>
+<p>Your API is now running at <code>http://localhost:8000</code>. You can access:</p>
+<ul>
+<li>API documentation at <code>http://localhost:8000/docs</code></li>
+<li>Root endpoint at <code>http://localhost:8000/</code></li>
+<li>Items endpoint at <code>http://localhost:8000/items/{id}</code></li>
+</ul>
+<p>Let’s not forget about the tests as well! Let’s add another file called <code>main_test.py</code> with the following code:</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> fastapi<span class="token punctuation">.</span>testclient <span class="token keyword">import</span> TestClient
+<span class="token keyword">from</span> main <span class="token keyword">import</span> app
+
+<span class="token comment"># Create a test client</span>
+client <span class="token operator">=</span> TestClient<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_root</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    response <span class="token operator">=</span> client<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> response<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span>
+    <span class="token keyword">assert</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">{</span><span class="token string">"Hello"</span><span class="token punctuation">:</span> <span class="token string">"World"</span><span class="token punctuation">}</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_get_item</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    response <span class="token operator">=</span> client<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"/items/1"</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> response<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span>
+    <span class="token keyword">assert</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_create_item</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    test_item <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Test Item"</span><span class="token punctuation">,</span> <span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">10.5</span><span class="token punctuation">,</span> <span class="token string">"is_offer"</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">}</span>
+    response <span class="token operator">=</span> client<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">,</span> json<span class="token operator">=</span>test_item<span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> response<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span>
+    <span class="token keyword">assert</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> test_item
+
+</code></pre>
+<h3 id="5-running-tools"><a aria-label="5. Running tools" href="#5-running-tools"><span class="icon icon-link"></span></a>5. Running tools</h3>
+<p>You can also run development tools directly using <code>uvx</code>:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Run type checking</span>
+uvx mypy src/
+
+<span class="token comment"># Format code</span>
+uvx black main.py
+
+<span class="token comment"># Run linter</span>
+uvx ruff check main.py
+
+<span class="token comment"># Run tests</span>
+uvx pytest
+
+<span class="token comment"># Build the project</span>
+uv build
+</code></pre>
+<p>Because we also have this tools installed as development dependencies, they can also be executed with <code>uv run</code>.</p>
+<h3 id="6-setting-up-cicd-with-github-actions"><a aria-label="6. Setting Up CI/CD with GitHub Actions" href="#6-setting-up-cicd-with-github-actions"><span class="icon icon-link"></span></a>6. Setting Up CI/CD with GitHub Actions</h3>
+<p>Let’s finish our pet project setting up a nice pipeline with Github Actions so we are sure that we don’t break any of our code between commits.</p>
+<p>Create a new file <code>.github/workflows/ci.yml</code>:</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> CI
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">]</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">test</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Tests
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v4
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install uv and set Python version
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> astral<span class="token punctuation">-</span>sh/setup<span class="token punctuation">-</span>uv@v5
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">enable-cache</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">cache-dependency-glob</span><span class="token punctuation">:</span> <span class="token string">"uv.lock"</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install dependencies
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> uv sync <span class="token punctuation">-</span><span class="token punctuation">-</span>all<span class="token punctuation">-</span>extras <span class="token punctuation">-</span><span class="token punctuation">-</span>dev
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Type check with mypy
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> uv run mypy src/
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Lint with Ruff
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> uv run ruff check src/
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Format check with Black
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> uv run black src/ <span class="token punctuation">-</span><span class="token punctuation">-</span>check
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Run tests
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> uv run pytest
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build package
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> uv build
+</code></pre>
+<p>This CI/CD pipeline follows <code>uv</code>’s official best practices:</p>
+<ul>
+<li>Uses the official <code>astral-sh/setup-uv</code> action for reliable Python and uv setup</li>
+<li>Enables caching with proper <code>cache-dependency-glob: "uv.lock"</code> for faster builds</li>
+<li>Respects project’s Python version from <code>.python-version</code> file</li>
+<li>Uses <code>uv sync --all-extras --dev</code> for complete dependency installation</li>
+<li>Runs commands with <code>uv run</code> in the project environment (like <code>uv run pytest</code>)</li>
+<li>Performs code quality checks:
+<ul>
+<li>Type checking with MyPy</li>
+<li>Linting with Ruff</li>
+<li>Formatting with Black</li>
+<li>Package building with uv build</li>
+</ul>
+</li>
+</ul>
+<h2 id="closing-words"><a aria-label="Closing words" href="#closing-words"><span class="icon icon-link"></span></a>Closing words</h2>
+<p>For Python developers, especially those with JavaScript/TypeScript experience, <code>uv</code> provides a comprehensive solution that bridges the gap between modern package management expectations and Python’s traditional tooling. Its focus on performance, reliability, and developer experience makes it an essential tool for modern Python development.</p>
+<p>For me, it changed completely the way I work with Python. Working with different projects used to quite messy because each one was requiring different dependencies and I had to decipher what kind of tool I was required to use, how do I keep up with my installed packages, etc. Having one tool to manage everything makes the whole workflow much better!</p>
+<p>Hope this will help others like, and thanks for reading.</p><section class="block"><h3>Related articles</h3><ul><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2026-05-12-sesame-wake">Sesame Wake: A Bring-Your-Own Wake Word Launcher for Sesame</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2025-07-11-building-a-universal-ai-chat-interface-with-streamlit-and-litellm">Building a Universal AI Chat Interface with Streamlit and LiteLLM</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/til/2025-01-23-vs-code-profiles---a-game-changer-for-managing-different-development-setups">VS Code Profiles - A Game-Changer for Managing Different Development Setups</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/til/2024-11-07-deploying-and-using-your-ml-model-with-streamlit">Deploying and using your ML model with Streamlit</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/blog/2024-06-23-drawing-3d-functions-with-plotly-correctly">Drawing 3D functions with Plotly</a></li><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1106/til/2024-06-21-running-jupyter-notebook-in-the-browser">Running Jupyter notebook in the browser</a></li></ul></section></section><script type="module" src="/portfolio/pr-preview/pr-1106/_astro/PostContent.astro_astro_type_script_index_0_lang.BsyKlNyb.js"></script><script type="module" src="/portfolio/pr-preview/pr-1106/_astro/PostContent.astro_astro_type_script_index_1_lang.BsD0WNPE.js"></script><script type="module">document.addEventListener(`DOMContentLoaded`,()=>{if(window.location.hash){let e=document.querySelector(window.location.hash);e&&e.scrollIntoView({behavior:`smooth`,block:`start`})}});</script></article><section class="block h-fit" id="blog-comments"><script src="https://utteranc.es/client.js" repo="EmaSuriano/portfolio" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async></script></section></main><footer data-astro-transition-scope="astro-crtsh4k5-4" class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"><ul class="flex max-w-full flex-shrink-0 flex-wrap"><li class="mr-4 mt-2"><a href="https://github.com/EmaSuriano" class="link-underline">GitHub</a></li><li class="mr-4 mt-2"><a href="https://twitter.com/EmaSuriano" class="link-underline">Twitter</a></li><li class="mr-4 mt-2"><a href="https://www.youtube.com/c/EmaSuriano" class="link-underline">YouTube</a></li><li class="mr-4 mt-2"><a href="https://www.linkedin.com/in/emanuel-suriano" class="link-underline">LinkedIn</a></li><li class="mr-4 mt-2"><a href="https://emasuriano.com/rss.xml" class="link-underline">RSS</a></li></ul></footer></div><div id="search-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"><div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 overflow-hidden"><div id="search" class="pagefind-ui pagefind-init" data-pagefind-ui data-bundle-path="/portfolio/pr-preview/pr-1106/pagefind/" data-ui-options="{&quot;autofocus&quot;:true,&quot;showImages&quot;:true}"></div><script type="module" src="/portfolio/pr-preview/pr-1106/_astro/Search.astro_astro_type_script_index_0_lang.B4d6LIMb.js"></script></div></div></body></html>
