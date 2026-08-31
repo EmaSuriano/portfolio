@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import remarkMath from "remark-math";
@@ -14,9 +15,11 @@ export default defineConfig({
   base: pagesBase || "/",
   integrations: [tailwind(), sitemap(), icon(), pagefind()],
   markdown: {
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins,
+    }),
     syntaxHighlight: "prism",
-    remarkPlugins: [remarkMath],
-    rehypePlugins,
   },
   output: "static",
   redirects: {

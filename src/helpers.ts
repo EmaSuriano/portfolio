@@ -57,7 +57,7 @@ export const getPostLink = (post: Post) => {
   switch (post.collection) {
     case "blog":
     case "til":
-      return new URL(`${post.collection}/${post.slug}`, base).toString();
+      return new URL(`${post.collection}/${post.id}`, base).toString();
 
     case "external":
       return post.data.external;

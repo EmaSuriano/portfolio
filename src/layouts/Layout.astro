@@ -39,7 +39,23 @@ const routeList = Object.keys(routes)
 
 const { pathname, origin } = Astro.url;
 const url = Astro.url.toString();
-const isHome = pathname === "/";
+const base = import.meta.env.BASE_URL;
+const stripTrailing = (path: string) =>
+  path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
+const withBase = (path: string) => {
+  const prefix = base.endsWith("/") ? base : `${base}/`;
+  if (path === "/") return prefix;
+  return `${prefix}${path.replace(/^\//, "")}`;
+};
+const currentPath = (() => {
+  const prefix = stripTrailing(base);
+  let path = pathname;
+  if (prefix && (path === prefix || path.startsWith(`${prefix}/`))) {
+    path = path.slice(prefix.length) || "/";
+  }
+  return stripTrailing(path) || "/";
+})();
+const isHome = currentPath === "/";
 
 const {
   title,
@@ -198,9 +214,9 @@ const jsonLd = {
                 routeList.map(({ route, title }) => (
                   <li>
                     <a
-                      href={route}
-                      class={`link-underline ${pathname === route ? "pointer-events-none opacity-50" : ""}`}
-                      aria-disabled={pathname === route ? "true" : "false"}
+                      href={withBase(route)}
+                      class={`link-underline ${currentPath === route ? "pointer-events-none opacity-50" : ""}`}
+                      aria-disabled={currentPath === route ? "true" : "false"}
                     >
                       {title}
                     </a>

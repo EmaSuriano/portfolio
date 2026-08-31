@@ -29,7 +29,7 @@ const enhanceCover = (cover: string) => {
 };
 
 const { title, publishedAt, summary, tags } = Astro.props.entry.data;
-const { slug, id, collection } = Astro.props.entry;
+const { id, collection } = Astro.props.entry;
 
 const cover =
   collection === "blog"
@@ -37,7 +37,7 @@ const cover =
     : undefined;
 
 const publishDate = format(publishedAt, "MMMM d, yyyy");
-const minutesRead = getReadingTime(Astro.props.entry.body);
+const minutesRead = getReadingTime(Astro.props.entry.body ?? "");
 const canonical = Astro.url.toString();
 
 const blogPostingJsonLd = {
@@ -133,7 +133,7 @@ const blogPostingJsonLd = {
           </time>
           <p>{minutesRead.text}</p>
         </div>
-        <ViewCounter slug={slug} />
+        <ViewCounter slug={id} />
       </div>
     </header>
 

@@ -9,7 +9,7 @@ const slugs = new GithubSlugger();
 
 const { body } = Astro.props.entry;
 
-const titles = extractMarkdownTitles(body).map(({ level, title }) => ({
+const titles = extractMarkdownTitles(body ?? "").map(({ level, title }) => ({
   margin: level <= 2 ? "ml-4" : level === 3 ? "ml-6" : "ml-8",
   title,
   slug: slugs.slug(title),
