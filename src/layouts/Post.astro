@@ -65,6 +65,7 @@ const blogPostingJsonLd = {
 ---
 
 <Layout
+  wide={collection === "blog"}
   title={title}
   description={summary}
   article={{ date: publishDate }}
@@ -94,6 +95,7 @@ const blogPostingJsonLd = {
     )
   }
 
+  <div class={collection === "blog" ? "lg:grid lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-x-12 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-x-16" : undefined}>
   <article
     class="my-6"
     item-prop="blogPost"
@@ -137,7 +139,6 @@ const blogPostingJsonLd = {
       </div>
     </header>
 
-    {collection === "blog" && <PostNav entry={Astro.props.entry} />}
 
     <PostContent>
       <slot />
@@ -146,5 +147,8 @@ const blogPostingJsonLd = {
     </PostContent>
   </article>
 
-  <CommentBox repo="EmaSuriano/portfolio" />
+    {collection === "blog" && <PostNav entry={Astro.props.entry} />}
+    <CommentBox repo="EmaSuriano/portfolio" />
+  </div>
+
 </Layout>

@@ -10,95 +10,102 @@ const slugs = new GithubSlugger();
 const { body } = Astro.props.entry;
 
 const titles = extractMarkdownTitles(body ?? "").map(({ level, title }) => ({
-  margin: level <= 2 ? "ml-4" : level === 3 ? "ml-6" : "ml-8",
+  pad: level <= 2 ? "pl-3" : level === 3 ? "pl-5" : "pl-7",
   title,
   slug: slugs.slug(title),
 }));
 ---
 
-<nav
-  id="blog-navigation"
-  class="transition-opacity sticky top-24 hidden lg:block overflow-x"
->
-  <div class="absolute right-0 w-60 -mr-40">
-    <b>Content</b>
-    <ol>
-      {
-        titles.map(({ title, margin, slug }) => (
+{
+  titles.length > 0 && (
+    <nav
+      id="blog-navigation"
+      class="sticky top-24 hidden self-start pt-6 transition-opacity lg:block"
+      aria-label="On this page"
+    >
+      <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
+        On this page
+      </p>
+      <ol class="m-0 list-none border-l border-slate-200 p-0 dark:border-slate-700">
+        {titles.map(({ title, pad, slug }) => (
           <li>
             <a
               href={`#${slug}`}
-              class={`transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ${margin}`}
+              data-slug={slug}
+              class={`-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 ${pad}`}
             >
               {title}
             </a>
           </li>
-        ))
-      }
-    </ol>
-  </div>
-</nav>
+        ))}
+      </ol>
+    </nav>
+  )
+}
 
 <style>
   a {
     text-decoration: none;
-    display: block;
+  }
 
-    padding: 0.125rem 0;
+  a[aria-current="location"] {
+    border-left-color: theme(colors.indigo.500);
+    color: theme(colors.indigo.700);
+    font-weight: 600;
+    background-color: theme(colors.indigo.50);
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    a[aria-current="location"] {
+      border-left-color: theme(colors.indigo.400);
+      color: theme(colors.indigo.300);
+      background-color: rgb(99 102 241 / 0.18);
+    }
   }
 </style>
 
 <script>
-  const navLinks = document.querySelectorAll("#blog-navigation li a");
-  let lastVisible = navLinks[0]; // Start with the first link as the initial selection
+  const nav = document.querySelector("#blog-navigation");
+  if (nav) {
+    const links = [...nav.querySelectorAll<HTMLAnchorElement>("a[data-slug]")];
+    const headings = links
+      .map((link) => document.getElementById(link.dataset.slug ?? ""))
+      .filter((node): node is HTMLElement => node instanceof HTMLElement);
 
-  const observer = new IntersectionObserver((entries) => {
-    let intersectingEntries: Element[] = [];
-
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
-        const elem = document.querySelector(`nav li a[href="#${id}"]`)!;
-
-        intersectingEntries.push(elem);
+    const setCurrent = (id: string) => {
+      for (const link of links) {
+        if (link.dataset.slug === id) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       }
-    });
+    };
 
-    // Clear all highlights
-    navLinks.forEach((link) => {
-      link.classList.remove("opacity-100");
-      link.classList.add("opacity-30");
-    });
+    const onScroll = () => {
+      const line = 128;
+      let current = headings[0];
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top <= line) {
+          current = heading;
+        }
+      }
+      if (current) setCurrent(current.id);
+    };
 
-    // If there are intersecting entries, highlight the first one
-    if (intersectingEntries[0]) {
-      intersectingEntries[0].classList.add("opacity-100");
-      intersectingEntries[0].classList.remove("opacity-30");
-      lastVisible = intersectingEntries[0];
-    } else if (lastVisible) {
-      // If no sections are intersecting, highlight the last visible link
-      lastVisible.classList.add("opacity-100");
-      lastVisible.classList.remove("opacity-30");
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("hashchange", onScroll);
+
+    const comments = document.querySelector("#blog-comments");
+    if (comments) {
+      const hide = new IntersectionObserver((entries) => {
+        const hidden = Boolean(entries[0]?.isIntersecting);
+        nav.classList.toggle("opacity-0", hidden);
+        nav.classList.toggle("pointer-events-none", hidden);
+      });
+      hide.observe(comments);
     }
-  });
-
-  // Track all sections that have an `id` applied
-  document.querySelectorAll("h2[id], h3[id], h4[id]").forEach((target) => {
-    observer.observe(target);
-  });
-</script>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const elem = document.querySelector(`#blog-navigation`)!;
-      if (entry.isIntersecting) {
-        elem.classList.add("opacity-0");
-      } else {
-        elem.classList.remove("opacity-0");
-      }
-    });
-  });
-
-  observer.observe(document.querySelector("#blog-comments")!);
+  }
 </script>
