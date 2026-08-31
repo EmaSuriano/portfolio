@@ -12,7 +12,7 @@ export async function GET() {
     .map((post) => ({
       id: post.id,
       collection: post.collection,
-      slug: post.slug,
+      slug: post.id,
       url: getPostLink(post),
       data: {
         title: post.data.title,

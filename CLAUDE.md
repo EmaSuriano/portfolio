@@ -77,7 +77,7 @@ This will prompt you to:
 
 ### Content Collections
 
-Content is managed using Astro's Content Collections (defined in `src/content/config.ts`):
+Content is managed using Astro's Content Collections (defined in `src/content.config.ts`):
 
 - `blog/` - Long-form blog posts with cover images
 - `til/` - Short Today I Learned entries
