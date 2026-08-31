@@ -35,6 +35,7 @@ export async function GET() {
     urlEntry(`${SITE}/about`, undefined, "monthly", "0.8"),
     urlEntry(`${SITE}/blog`, undefined, "weekly", "0.8"),
     urlEntry(`${SITE}/til`, undefined, "weekly", "0.7"),
+    urlEntry(`${SITE}/tools`, undefined, "weekly", "0.7"),
     urlEntry(`${SITE}/llms.txt`, undefined, "weekly", "0.5"),
     urlEntry(`${about.website}rss.xml`, undefined, "daily", "0.5"),
   ];

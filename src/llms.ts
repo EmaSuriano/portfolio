@@ -21,6 +21,7 @@ export async function getLlmsMarkdown() {
     `- [About](${origin}/about)`,
     `- [Blog](${origin}/blog)`,
     `- [TIL](${origin}/til)`,
+    `- [Tools](${origin}/tools)`,
     `- [RSS](${origin}/rss.xml)`,
     `- [Sitemap](${origin}/sitemap-index.xml)`,
   ].join("\n");

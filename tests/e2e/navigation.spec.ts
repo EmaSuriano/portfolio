@@ -16,6 +16,10 @@ test.describe("Navigation", () => {
     await page.locator('nav a[href="/til"]').click();
     await expect(page).toHaveURL("/til");
 
+    // Navigate to Tools
+    await page.locator('nav a[href="/tools"]').click();
+    await expect(page).toHaveURL("/tools");
+
     // Navigate back to Home
     await page.locator('nav a[href="/"]').click();
     await expect(page).toHaveURL("/");
