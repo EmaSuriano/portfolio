@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="en" data-astro-transition-scope="astro-smooz4hq-1"> <head><meta charset="UTF-8"><title>How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial | Ema Suriano</title><meta charset="utf-8"><link rel="canonical" href="https://emasuriano.github.io/portfolio/pr-preview/pr-1100/blog/2024-07-31-install-fuzzy-clips/"><meta name="description" content="How to set up and use Fuzzy CLIPS to create a fuzzy logic system for controlling fan speed based on temperature and humidity."><meta name="robots" content="index, follow"><meta property="og:title" content="How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial"><meta property="og:type" content="article"><meta property="og:image" content="https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?q=30&w=1400&h=600&fit=crop"><meta property="og:url" content="https://emasuriano.github.io/portfolio/pr-preview/pr-1100/blog/2024-07-31-install-fuzzy-clips/"><meta property="og:description" content="How to set up and use Fuzzy CLIPS to create a fuzzy logic system for controlling fan speed based on temperature and humidity."><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Ema Suriano"><meta property="og:image:url" content="https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?q=30&w=1400&h=600&fit=crop"><meta property="og:image:alt" content="Ema Suriano Portfolio"><meta property="article:published_time" content="July 31, 2024"><meta property="article:author" content="Ema Suriano"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@EmaSuriano"><meta name="twitter:title" content="How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial"><meta name="twitter:image" content="https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?q=30&w=1400&h=600&fit=crop"><meta name="twitter:description" content="How to set up and use Fuzzy CLIPS to create a fuzzy logic system for controlling fan speed based on temperature and humidity."><meta name="twitter:creator" content="@EmaSuriano"><meta name="viewport" content="width=device-width"><link href="/favicon.ico" rel="icon"><link href="/icon-192.png" rel="icon" type="image/png"><link href="/apple-touch-icon.png" rel="apple-touch-icon"><link href="/manifest.json" rel="manifest"><link rel="alternate" type="text/markdown" href="https://emasuriano.github.io/llms.md"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/","image":"https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d","jobTitle":"Software Engineer","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","worksFor":{"@type":"Organization","name":"Revolut","url":"https://revolut.com/"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"Organization","@id":"https://emasuriano.com/#brand","name":"Ema Suriano","url":"https://emasuriano.com/","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","founder":{"@id":"https://emasuriano.com/#person"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"WebSite","@id":"https://emasuriano.com/#website","url":"https://emasuriano.com/","name":"Ema Suriano","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","publisher":{"@id":"https://emasuriano.com/#person"}}]}</script><!-- Katex --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"><meta content="#fff" name="theme-color"><style>.medium-zoom-overlay{inset:0;opacity:0;position:fixed;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{cursor:pointer;cursor:zoom-out;position:relative;will-change:transform}
+</style>
+<link rel="stylesheet" href="/portfolio/pr-preview/pr-1100/_astro/_slug_.BRlP9li9.css">
+<style>.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}@media(prefers-color-scheme:dark){.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(23 23 23/var(--tw-bg-opacity,1))!important}}.medium-zoom-image{border-radius:.375rem}a[data-astro-cid-bknnyp27]{display:block;padding:.125rem 0;text-decoration:none}code[class*=language-],pre[class*=language-]{background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+</style>
+<link rel="stylesheet" href="/portfolio/pr-preview/pr-1100/_astro/_slug_.BFgJWleE.css">
+<style>.gradient[data-astro-cid-zfufvvig]{animation:slide 10s linear infinite;-webkit-background-clip:text;background-clip:text;background-image:linear-gradient(90deg,#fb7185,#d946ef 33%,#6366f1 66%,#fb7185);background-size:200% auto}@keyframes slide{to{background-position:200%}}.hover[data-astro-cid-zfufvvig]{transition-duration:.15s;transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);--b:.1em;--c:#6366f1;background:linear-gradient(var(--c) 50%,#000 0) 0 calc(100% - var(--_p, 0%)) /100% 200%,linear-gradient(var(--c) 0 0) 0 var(--_p,0) /var(--_p,0) var(--b) no-repeat;-webkit-background-clip:text,padding-box;background-clip:text,padding-box;color:#0000;padding-block:var(--b);transition:.3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s, 0s))}.hover[data-astro-cid-zfufvvig]:hover{--_p:100%;--_s:.3s}
+.image-container[data-astro-cid-kh7btl4r]{border-radius:1.5rem;height:15rem;position:relative;transition-duration:.15s;transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);width:15rem}@media(min-width:1024px){.image-container[data-astro-cid-kh7btl4r]{height:20rem;width:20rem}}.image-container[data-astro-cid-kh7btl4r]{--r:40px;--c1:#6366f1 99%,#0000 101%;--c2:#fb7185 99%,#0000 101%;--s:calc(var(--r)*.866);--g0:radial-gradient(var(--r),var(--c1));--g1:radial-gradient(var(--r),var(--c2));--f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));--p:radial-gradient(var(--r) at 100% 50%,var(--c2));background:var(--f) 0 calc(var(--r)*-5/2),var(--f) calc(var(--s)*-2) calc(var(--r)/2),var(--p) 0 calc(var(--r)*-2),var(--g0) var(--s) calc(var(--r)*-5/2),var(--g1) var(--s) calc(var(--r)*5/2),radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(var(--r)*-1),radial-gradient(var(--r) at 0 50%,var(--c1)) 0 calc(var(--r)*-4),var(--g1) calc(var(--s)*-1) calc(var(--r)*-7/2),var(--g0) calc(var(--s)*-1) calc(var(--r)*-5/2),var(--p) calc(var(--s)*-2) var(--r),var(--g0) calc(var(--s)*-1) calc(var(--r)/2),var(--g1) calc(var(--s)*-1) calc(var(--r)/-2),var(--g0) 0 calc(var(--r)*-1),var(--g1) var(--s) calc(var(--r)/-2),var(--g0) var(--s) calc(var(--r)/2) #fb7185;background-size:calc(var(--s)*4) calc(var(--r)*6)}
+</style><style>[data-astro-transition-scope="astro-smooz4hq-1"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-smooz4hq-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-smooz4hq-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-smooz4hq-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-smooz4hq-1"] { animation: none; mix-blend-mode: normal; }</style><style>[data-astro-transition-scope="astro-p74ezckc-2"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-p74ezckc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-p74ezckc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-lyu3at5e-3"] { view-transition-name: astro-lyu3at5e-3; }@layer astro { ::view-transition-old(astro-lyu3at5e-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-lyu3at5e-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-lyu3at5e-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-lyu3at5e-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-lyu3at5e-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-lyu3at5e-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style><style>[data-astro-transition-scope="astro-nqfck5zj-4"] { view-transition-name: footer; }@layer astro { ::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-nqfck5zj-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-nqfck5zj-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    "> <div class="w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl min-h-full"> <header class="relative" data-astro-transition-scope="astro-p74ezckc-2"> <a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a> <nav class="text-sm sm:text-base"> <div class="flex justify-between items-center w-full"> <ul class="relative flex list-none space-x-4 pl-0"> <li> <a href="/" class="link-underline " aria-disabled="false"> Home </a> </li><li> <a href="/about" class="link-underline " aria-disabled="false"> About </a> </li><li> <a href="/blog" class="link-underline " aria-disabled="false"> Blog </a> </li><li> <a href="/til" class="link-underline " aria-disabled="false"> TIL </a> </li><li> <a href="/tools" class="link-underline " aria-disabled="false"> Tools </a> </li> </ul> <button id="search-button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="ri:search-line">   <symbol id="ai:ri:search-line"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use>  </svg> </button> <script type="module">function a(){const n=document.getElementById("search-button");function d(){const e=document.getElementById("search-modal");e?.classList.remove("hidden"),e?.addEventListener("click",t=>{t.target===e&&e?.classList.add("hidden")}),e?.addEventListener("keydown",t=>{t.key==="Escape"&&e?.classList.add("hidden")}),setTimeout(()=>{document.getElementById("search")?.querySelector('input[type="text"]')?.focus()},100)}const c=n?.cloneNode(!0);n?.parentNode?.replaceChild(c,n),c?.addEventListener("click",d)}a();document.addEventListener("astro:page-load",a);</script> </div> </nav> </header> <main id="skip" class="flex flex-grow flex-col py-12" data-astro-transition-scope="astro-lyu3at5e-3">  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial","description":"How to set up and use Fuzzy CLIPS to create a fuzzy logic system for controlling fan speed based on temperature and humidity.","datePublished":"2024-07-31T00:00:00.000Z","url":"https://emasuriano.github.io/portfolio/pr-preview/pr-1100/blog/2024-07-31-install-fuzzy-clips/","mainEntityOfPage":"https://emasuriano.github.io/portfolio/pr-preview/pr-1100/blog/2024-07-31-install-fuzzy-clips/","image":"https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?q=30&w=1400&h=600&fit=crop","keywords":["CLIPS","Fuzzy CLIPS","Fuzzy"],"author":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/"},"publisher":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano"}}</script> <div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg" data-zoomable> <img src="https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?q=30&w=1400&h=600&fit=crop" data-pagefind-meta="image[src]" alt="How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial" loading="lazy" decoding="async" fetchpriority="auto" width="1400" height="600"> </div><article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting"> <h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="title"> How to Install Fuzzy CLIPS: A Quick and Easy Setup Tutorial </h1> <header class="mb-8 flex items-center sm:mb-10"> <figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"> <img src="https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d?s=150" alt="Ema Suriano" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="150"> </figure> <div class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"> <div> <span item-prop="author" item-scope item-type="https://schema.org/Person"> <span item-prop="name">Ema Suriano</span> </span>
+at
+<time item-prop="datePublished" date-time="Wed Jul 31 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"> July 31, 2024 </time> <p>8 min read</p> </div> <view-counter data-slug="2024-07-31-install-fuzzy-clips" class="flex items-center gap-1"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 text-current" data-icon="ri:eye-fill">   <symbol id="ai:ri:eye-fill"><path fill="currentColor" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></symbol><use href="#ai:ri:eye-fill"></use>  </svg> <span data-view-number>--</span> <span>views</span> </view-counter> <script type="module">const i=document.querySelector("[data-view-number]");if(i){const t=document.location.pathname.replaceAll("/",""),s=await fetch(`https://visits.emasuriano.com/api/${t}`).then(e=>e.text());i.innerHTML=s,setTimeout(()=>{const e=localStorage.getItem("visits")||"";e.includes(t)||(localStorage.setItem("visits",e.concat(t)),fetch(`https://visits.emasuriano.com/api/${t}`,{method:"POST"}))},5e3)}</script> </div> </header> <nav id="blog-navigation" class="transition-opacity sticky top-24 hidden lg:block overflow-x" data-astro-cid-bknnyp27> <div class="absolute right-0 w-60 -mr-40" data-astro-cid-bknnyp27> <b data-astro-cid-bknnyp27>Content</b> <ol data-astro-cid-bknnyp27> <li data-astro-cid-bknnyp27> <a href="#why-fuzzy-logic" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-bknnyp27> Why Fuzzy Logic? </a> </li><li data-astro-cid-bknnyp27> <a href="#installing-fuzzy-clips" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-bknnyp27> Installing Fuzzy CLIPS </a> </li><li data-astro-cid-bknnyp27> <a href="#fuzzy-concepts" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-bknnyp27> Fuzzy Concepts </a> </li><li data-astro-cid-bknnyp27> <a href="#demo-time-fan-control-system" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-bknnyp27> Demo time: Fan Control System </a> </li><li data-astro-cid-bknnyp27> <a href="#1-definition-of-membership-functions" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-bknnyp27> 1. Definition of Membership functions </a> </li><li data-astro-cid-bknnyp27> <a href="#2-definition-of-rules" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-bknnyp27> 2. Definition of rules </a> </li><li data-astro-cid-bknnyp27> <a href="#3-definition-of-facts" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-bknnyp27> 3. Definition of Facts </a> </li><li data-astro-cid-bknnyp27> <a href="#4-running-the-system" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-6" data-astro-cid-bknnyp27> 4. Running the system </a> </li><li data-astro-cid-bknnyp27> <a href="#fun-fact-clips-is-compatible-with-clojure-syntax" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-bknnyp27> Fun fact: Clips is compatible with Clojure syntax </a> </li><li data-astro-cid-bknnyp27> <a href="#closing-words" class="transition-opacity opacity-30 focus:opacity-80 hover:opacity-80 ml-4" data-astro-cid-bknnyp27> Closing words </a> </li> </ol> </div> </nav>  <script type="module">const t=new IntersectionObserver(o=>{o.forEach(s=>{const e=document.querySelector("#blog-navigation");s.isIntersecting?e.classList.add("opacity-0"):e.classList.remove("opacity-0")})});t.observe(document.querySelector("#blog-comments"));</script> <script type="module">const c=document.querySelectorAll("#blog-navigation li a");let s=c[0];const r=new IntersectionObserver(i=>{let e=[];i.forEach(t=>{if(t.isIntersecting){const o=t.target.getAttribute("id"),a=document.querySelector(`nav li a[href="#${o}"]`);e.push(a)}}),c.forEach(t=>{t.classList.remove("opacity-100"),t.classList.add("opacity-30")}),e[0]?(e[0].classList.add("opacity-100"),e[0].classList.remove("opacity-30"),s=e[0]):s&&(s.classList.add("opacity-100"),s.classList.remove("opacity-30"))});document.querySelectorAll("h2[id], h3[id], h4[id]").forEach(i=>{r.observe(i)});</script> <section class="prose mx-auto w-full dark:prose-dark">   <p>Fuzzy CLIPS is an extension of <a href="https://www.clipsrules.net/">CLIPS</a> (C Language Integrated Production System) designed for handling fuzzy logic. It allows systems to make decisions based on approximate or imprecise information.</p>
+<p>Fuzzy CLIPS is an older tool with limited and outdated online documentation. This is the main reason I’m writing this short post.</p>
+<h2 id="why-fuzzy-logic"><a aria-label="Why Fuzzy Logic?" href="#why-fuzzy-logic"><span class="icon icon-link"></span></a>Why Fuzzy Logic?</h2>
+<p>Fuzzy logic excels at handling real-world complexity and imprecision, it allows you to model human-like reasoning, deal with ambiguous data, and create more intuitive control systems. By using degrees of truth instead of binary (<code>true</code>/<code>false</code>) decisions, fuzzy logic can provide smoother, more accurate results in situations where traditional logic falls short</p>
+<p>It’s precious in fields like control engineering, decision support systems, and AI, which can lead to more robust and flexible solutions that better mimic human decision-making processes.</p>
+<h2 id="installing-fuzzy-clips"><a aria-label="Installing Fuzzy CLIPS" href="#installing-fuzzy-clips"><span class="icon icon-link"></span></a>Installing Fuzzy CLIPS</h2>
+<p>The source code can be found in <a href="https://github.com/rorchard/FuzzyCLIPS">GitHub</a> but as expected, this cannot be directly executed in our system. We need to compile the program to run it locally.</p>
+<figure><img src="https://opengraph.githubassets.com/EmaSuriano/rorchard/FuzzyCLIPS" alt="FuzzyCLIPS Github"><figcaption>FuzzyCLIPS Github</figcaption></figure>
+<p>Let’s start by cloning the repository:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">$ <span class="token function">git</span> clone https://github.com/rorchard/FuzzyCLIPS <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">cd</span> FuzzyCLIPS/source
+</code></pre>
+<p>Now we are going to make use of the <code>make</code> command which is available by default in OSX and Linux. In case you are running Windows, please check to install using <code>choco</code> (<a href="https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows">reference</a>).</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">$ <span class="token function">make</span> fzclips
+</code></pre>
+<p>This should create an executable binary called <code>fzclips</code> which we can execute:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">$ ./fz_clips
+
+FuzzyCLIPS V6.10d <span class="token punctuation">(</span><span class="token number">10</span>/22/2004<span class="token punctuation">)</span>
+FuzzyCLIPS<span class="token operator">></span>
+</code></pre>
+<h2 id="fuzzy-concepts"><a aria-label="Fuzzy Concepts" href="#fuzzy-concepts"><span class="icon icon-link"></span></a>Fuzzy Concepts</h2>
+<p>To understand how Fuzzy Clips works, is better to do a small recap of some of the core concepts of Fuzzy Logic.</p>
+<p><strong>Fuzzy sets</strong>: extend classical set theory by allowing partial membership. In a classical set, an element either belongs to the set (1) or doesn’t (0). In a fuzzy set, an element can have any value between 0 and 1, indicating its degree of membership.</p>
+<ul>
+<li>Example: In a fuzzy set for “tall people,” someone who is 5’10” might have a membership degree of 0.7, while someone who is 6’2” might have a membership degree of 0.9.</li>
+</ul>
+<p><strong>Linguistic variables</strong>: These are variables whose values are words or sentences rather than numbers. They allow us to express complex concepts in natural language terms.</p>
+<ul>
+<li>Example: Temperature could be a linguistic variable with values like “cold,” “cool,” “warm,” and “hot.”</li>
+</ul>
+<p><strong>Fuzzy rules</strong>: These are conditional statements that use linguistic variables, typically in an IF-THEN format. They form the basis of fuzzy reasoning.</p>
+<ul>
+<li>Example: “IF temperature is hot AND humidity is high THEN comfort is low”</li>
+</ul>
+<p><strong>Fuzzification</strong>: This is the process of converting crisp (precise) input values into fuzzy values. It involves determining the degree to which these inputs belong to each of the appropriate fuzzy sets.</p>
+<ul>
+<li>Example: Converting a precise temperature of 28°C into fuzzy values like “0.7 warm” and “0.3 hot”</li>
+</ul>
+<p><strong>Inference</strong>: This step applies the fuzzy rules to the fuzzified inputs to determine the fuzzy output. It involves evaluating all rules in parallel and combining their results.</p>
+<ul>
+<li>Example: Applying multiple rules about temperature, humidity, and wind to determine the overall comfort level</li>
+</ul>
+<p><strong>Defuzzification</strong>: This is the final step where the fuzzy output is converted back into a crisp (precise) value. There are several methods for this, such as the centroid method or mean of maximum.</p>
+<ul>
+<li>Example: Converting a fuzzy comfort level (e.g., “0.6 uncomfortable”) into a specific value on a scale of 1-10</li>
+</ul>
+<h2 id="demo-time-fan-control-system"><a aria-label="Demo time: Fan Control System" href="#demo-time-fan-control-system"><span class="icon icon-link"></span></a>Demo time: Fan Control System</h2>
+<p>Let’s create a fuzzy logic system to control a fan based on temperature and humidity. The system will adjust the fan speed (low, medium, high) depending on the fuzzy input values for temperature and humidity.</p>
+<p>Create a new file with the extension <code>.clp</code> and open it with any code editor that you want.</p>
+<blockquote>
+<p>I created a <a href="https://github.com/EmaSuriano/fuzzy-clips-demo.git">Github Repository</a> with the following code, so it will be easier to run it locally.</p>
+</blockquote>
+<h3 id="1-definition-of-membership-functions"><a aria-label="1. Definition of Membership functions" href="#1-definition-of-membership-functions"><span class="icon icon-link"></span></a>1. Definition of Membership functions</h3>
+<pre class="language-clojure" data-language="clojure"><code is:raw="" class="language-clojure"><span class="token punctuation">(</span><span class="token function">deftemplate</span> Temperature
+  <span class="token number">0</span> <span class="token number">40</span>
+  <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">cold</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">warm</span> <span class="token punctuation">(</span><span class="token number">5</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">20</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">30</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">hot</span> <span class="token punctuation">(</span><span class="token number">25</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token function">deftemplate</span> Humidity
+  <span class="token number">0</span> <span class="token number">100</span>
+  <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">low</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">20</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">medium</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">50</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">90</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">high</span> <span class="token punctuation">(</span><span class="token number">70</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Here, <code>Temperature</code> and <code>Humidity</code> are the fuzzy variables with membership functions <code>cold</code>, <code>warm</code>, <code>hot</code>, <code>low</code>, <code>medium</code>, and <code>high</code>. These are going to be our entry points for the system.</p>
+<pre class="language-clojure" data-language="clojure"><code is:raw="" class="language-clojure"><span class="token punctuation">(</span><span class="token function">deftemplate</span> FanSpeed
+  <span class="token number">0</span> <span class="token number">100</span>
+  <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">slow</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">30</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">medium</span> <span class="token punctuation">(</span><span class="token number">20</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">50</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">80</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">fast</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Lastly let’s add the <code>FanSpeed</code> with <code>slow</code>, <code>medium</code>, and <code>fast</code> functions, which are going to get activated based on the rules of the system.</p>
+<h3 id="2-definition-of-rules"><a aria-label="2. Definition of rules" href="#2-definition-of-rules"><span class="icon icon-link"></span></a>2. Definition of rules</h3>
+<p>Create rules to determine the fan speed based on temperature and humidity:</p>
+<pre class="language-clojure" data-language="clojure"><code is:raw="" class="language-clojure"><span class="token punctuation">(</span><span class="token function">defrule</span> cool-fan
+  <span class="token punctuation">(</span><span class="token function">Temperature</span> cold<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token function">Humidity</span> low<span class="token punctuation">)</span>
+ =>
+  <span class="token punctuation">(</span><span class="token keyword">assert</span> <span class="token punctuation">(</span><span class="token function">FanSpeed</span> slow<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token function">defrule</span> moderate-fan
+  <span class="token punctuation">(</span><span class="token function">Temperature</span> warm<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token function">Humidity</span> medium<span class="token punctuation">)</span>
+ =>
+  <span class="token punctuation">(</span><span class="token keyword">assert</span> <span class="token punctuation">(</span><span class="token function">FanSpeed</span> medium<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token function">defrule</span> hot-humid-fan
+  <span class="token punctuation">(</span><span class="token function">Temperature</span> hot<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token function">Humidity</span> high<span class="token punctuation">)</span>
+ =>
+  <span class="token punctuation">(</span><span class="token keyword">assert</span> <span class="token punctuation">(</span><span class="token function">FanSpeed</span> fast<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>These rules set the fan speed to <code>slow</code>, <code>medium</code>, or <code>fast</code> based on the combination of temperature and humidity.</p>
+<h3 id="3-definition-of-facts"><a aria-label="3. Definition of Facts" href="#3-definition-of-facts"><span class="icon icon-link"></span></a>3. Definition of Facts</h3>
+<p>Provide sample data for temperature and humidity:</p>
+<pre class="language-clojure" data-language="clojure"><code is:raw="" class="language-clojure"><span class="token comment">;; Sample facts for temperature and humidity</span>
+<span class="token punctuation">(</span><span class="token function">deffacts</span> sample-facts
+  <span class="token punctuation">(</span><span class="token function">Temperature</span> <span class="token punctuation">(</span><span class="token number">25</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">25</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">25</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token function">Humidity</span> <span class="token punctuation">(</span><span class="token number">40</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>These facts represent a temperature of 25°C and a humidity of 40%.</p>
+<h3 id="4-running-the-system"><a aria-label="4. Running the system" href="#4-running-the-system"><span class="icon icon-link"></span></a>4. Running the system</h3>
+<p>Open a new terminal in your system and execute the program <code>fz_clips</code> - the one that we compiled in the beginning. Once running, we need to load our program into the library. For this, we need to use the <code>load</code> function and send the path of the file containing the rules we defined previously:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>load ./demo.clp<span class="token punctuation">)</span>
+Defining deftemplate: Temperature
+Defining deftemplate: Humidity
+Defining deftemplate: FanSpeed
+Defining defrule: cool-fan +j+j
+Defining defrule: moderate-fan +j+j
+Defining defrule: hot-humid-fan +j+j
+Defining deffacts: sample-facts
+TRUE
+</code></pre>
+<p>Now we need to initialize the environment, to load all the facts and rules into the memory:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>reset<span class="token punctuation">)</span>
+</code></pre>
+<p>We can double-check if everything was loaded correctly with:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>facts<span class="token punctuation">)</span>
+f-0 <span class="token punctuation">(</span>initial-fact<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+f-1 <span class="token punctuation">(</span>Temperature ???<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+        <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">25.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">25.0</span> <span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">25.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span>
+
+f-2 <span class="token punctuation">(</span>Humidity ???<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+        <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">40.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40.0</span> <span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span>
+
+For a total of <span class="token number">3</span> facts.
+</code></pre>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>rules<span class="token punctuation">)</span>
+cool-fan
+moderate-fan
+hot-humid-fan
+For a total of <span class="token number">3</span> defrules.
+</code></pre>
+<p>Now it’s time to execute the rules based on the asserted facts.</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>run<span class="token punctuation">)</span>
+</code></pre>
+<p>Alternatively, we can make partial execution by specifying the number of steps, for example, rule by rule:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>run <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>At any point, we always check our facts to see the status of our system.</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>facts<span class="token punctuation">)</span>
+f-0 <span class="token punctuation">(</span>initial-fact<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+f-1 <span class="token punctuation">(</span>Temperature ???<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+        <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">25.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">25.0</span> <span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">25.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span>
+
+f-2 <span class="token punctuation">(</span>Humidity ???<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+        <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">40.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40.0</span> <span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">40.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span>
+
+f-3 <span class="token punctuation">(</span>FanSpeed ???<span class="token punctuation">)</span> CF <span class="token number">1.00</span>
+        <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">20.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">35.0</span> <span class="token number">0.5</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">65.0</span> <span class="token number">0.5</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">80.0</span> <span class="token number">0.0</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span>
+
+For a total of <span class="token number">4</span> facts.
+</code></pre>
+<p>As we can see the fact of <code>FanSpeed</code> has been loaded and some values set. Fuzzy clips provides a way to <strong>visualize</strong> it in the terminal by using the function <code>plot-fuzzy-value</code>:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>plot-fuzzy-value t + <span class="token number">0</span> <span class="token number">100</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+Fuzzy Value: FanSpeed
+Linguistic Value: ??? <span class="token punctuation">(</span>+<span class="token punctuation">)</span>
+
+ <span class="token number">1.00</span>
+ <span class="token number">0.95</span>
+ <span class="token number">0.90</span>
+ <span class="token number">0.85</span>
+ <span class="token number">0.80</span>
+ <span class="token number">0.75</span>
+ <span class="token number">0.70</span>
+ <span class="token number">0.65</span>
+ <span class="token number">0.60</span>
+ <span class="token number">0.55</span>
+ <span class="token number">0.50</span>                  +++++++++++++++
+ <span class="token number">0.45</span>                 +               +
+ <span class="token number">0.40</span>                +                 +
+ <span class="token number">0.35</span>               +                   +
+ <span class="token number">0.30</span>
+ <span class="token number">0.25</span>              +                     +
+ <span class="token number">0.20</span>             +                       +
+ <span class="token number">0.15</span>            +                         +
+ <span class="token number">0.10</span>
+ <span class="token number">0.05</span>           +                           +
+ <span class="token number">0.00</span>+++++++++++                             +++++++++++
+     <span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>----<span class="token operator">|</span>
+    <span class="token number">0.00</span>     <span class="token number">20.00</span>     <span class="token number">40.00</span>     <span class="token number">60.00</span>     <span class="token number">80.00</span>    <span class="token number">100.00</span>
+
+Universe of Discourse:  From   <span class="token number">0.00</span>  to  <span class="token number">100.00</span>
+</code></pre>
+<p>Finally, we can perform a defuzzification process on any fact to see its <strong>crisp</strong> value:</p>
+<pre class="language-bash" data-language="bash"><code is:raw="" class="language-bash">FuzzyCLIPS<span class="token operator">></span> <span class="token punctuation">(</span>moment-defuzzify <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token number">50.0</span>
+</code></pre>
+<h2 id="fun-fact-clips-is-compatible-with-clojure-syntax"><a aria-label="Fun fact: Clips is compatible with Clojure syntax" href="#fun-fact-clips-is-compatible-with-clojure-syntax"><span class="icon icon-link"></span></a>Fun fact: Clips is compatible with Clojure syntax</h2>
+<p>In case want to keep a strict formatting in your code, I have good news for you! You can change your syntax language to <a href="https://clojure.org/">Clojure</a> and it will format your code accordingly. The main reason is because Clojure tries to keep the same formatting practices as in LISP, therefore it’s <em>compatbile</em> with CLIPS as well!</p>
+<p>You can easily install any formatter in your code editor and on save you can pass from this:</p>
+<pre class="language-clojure" data-language="clojure"><code is:raw="" class="language-clojure"><span class="token punctuation">(</span><span class="token function">deftemplate</span> Humidity
+	<span class="token number">0</span> <span class="token number">100</span>
+	<span class="token punctuation">(</span>
+		<span class="token punctuation">(</span><span class="token function">low</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">20</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">(</span><span class="token function">medium</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">50</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">90</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">(</span><span class="token function">high</span> <span class="token punctuation">(</span><span class="token number">70</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<p>To this</p>
+<pre class="language-clojure" data-language="clojure"><code is:raw="" class="language-clojure"><span class="token punctuation">(</span><span class="token function">deftemplate</span> Humidity
+  <span class="token number">0</span> <span class="token number">100</span>
+  <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">low</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">20</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">medium</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">50</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">90</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token function">high</span> <span class="token punctuation">(</span><span class="token number">70</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">100</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Which one is better? I actually don’t care so much, what I care is all my code is now formatted in the same way and I don’t have to manually start adding spacing.</p>
+<p>Another tip, you can use the formatter as some sort of <em>compiler</em> mostly to check if you skip some parenthesis while you were writing. As you can see from the previous example, there quite a lot of them and it can quite easy to forget to close one of them. The formatter will fail in case you have some parenthesis that are not properly closed, which means that you can speed up your process because you don’t have to load and execute your program in Fuzzy CLIPS to see the error message.</p>
+<h2 id="closing-words"><a aria-label="Closing words" href="#closing-words"><span class="icon icon-link"></span></a>Closing words</h2>
+<p>As I mentioned at the beginning of this article, the amount of information about this framework is quite scarce and it took me quite some time to gather all this information. Hopefully, more people will find it handy as well!</p>
+<p>Thanks for reading.</p>   </section> <script type="module">document.addEventListener("DOMContentLoaded",()=>{if(window.location.hash){const o=document.querySelector(window.location.hash);o&&o.scrollIntoView({behavior:"smooth",block:"start"})}});</script> <script type="module" src="/portfolio/pr-preview/pr-1100/_astro/PostContent.astro_astro_type_script_index_1_lang.CtSWIMhs.js"></script> <script type="module" src="/portfolio/pr-preview/pr-1100/_astro/PostContent.astro_astro_type_script_index_2_lang.DDtk4Mzb.js"></script>  </article> <section class="block h-fit" id="blog-comments"> <script src="https://utteranc.es/client.js" repo="EmaSuriano/portfolio" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async></script> </section>  </main> <footer class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base" data-astro-transition-scope="astro-nqfck5zj-4"> <ul class="flex max-w-full flex-shrink-0 flex-wrap"> <li class="mr-4 mt-2"> <a href="https://github.com/EmaSuriano" class="link-underline"> GitHub </a> </li><li class="mr-4 mt-2"> <a href="https://twitter.com/EmaSuriano" class="link-underline"> Twitter </a> </li><li class="mr-4 mt-2"> <a href="https://www.youtube.com/c/EmaSuriano" class="link-underline"> YouTube </a> </li><li class="mr-4 mt-2"> <a href="https://www.linkedin.com/in/emanuel-suriano" class="link-underline"> LinkedIn </a> </li><li class="mr-4 mt-2"> <a href="https://emasuriano.com/rss.xml" class="link-underline"> RSS </a> </li> </ul> </footer> </div> <div id="search-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"> <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4"> <div id="search" class="pagefind-ui pagefind-init" data-pagefind-ui data-bundle-path="/portfolio/pr-preview/pr-1100/pagefind/" data-ui-options="{&#34;autofocus&#34;:true,&#34;showImages&#34;:true}"></div> <script type="module" src="/portfolio/pr-preview/pr-1100/_astro/Search.astro_astro_type_script_index_0_lang.p1ZNmlNr.js"></script> </div> </div>   </body> </html>
