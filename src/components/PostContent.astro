@@ -14,7 +14,22 @@
     "[data-zoomable] > img, article section figure > img, [id^='mermaid-']",
   );
 
-  mediumZoom(target, { margin: 24 });
+  const viewport = () => ({
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  mediumZoom(target, {
+    margin: 16,
+    scrollOffset: 0,
+    container: viewport(),
+    background: window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "#171717"
+      : "#fff",
+  });
 </script>
 
 <script>
@@ -40,12 +55,3 @@
   });
 </script>
 
-<style is:global>
-  .medium-zoom-overlay {
-    @apply bg-white dark:bg-neutral-900 !important;
-  }
-
-  .medium-zoom-image {
-    @apply rounded-md;
-  }
-</style>
