@@ -1,0 +1,379 @@
+<!DOCTYPE html><html data-astro-transition-scope="astro-yztbsuuz-1" lang="en"><head><meta charset="UTF-8"><title>Keep your Documentation updated with Cypress and Github Actions | Ema Suriano</title><meta charset="utf-8"><link rel="canonical" href="https://emasuriano.github.io/portfolio/pr-preview/pr-1109/blog/keep-your-documentation-updated-with-cypress-and-github-actions/"><meta name="description" content="How I automatize the README images of my open-source projects by using Cypress and GitHub Actions."><meta name="robots" content="index, follow"><meta property="og:title" content="Keep your Documentation updated with Cypress and Github Actions"><meta property="og:type" content="article"><meta property="og:image" content="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:url" content="https://emasuriano.github.io/portfolio/pr-preview/pr-1109/blog/keep-your-documentation-updated-with-cypress-and-github-actions/"><meta property="og:description" content="How I automatize the README images of my open-source projects by using Cypress and GitHub Actions."><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Ema Suriano"><meta property="og:image:url" content="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:image:alt" content="Ema Suriano Portfolio"><meta property="article:published_time" content="October 26, 2020"><meta property="article:author" content="Ema Suriano"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@EmaSuriano"><meta name="twitter:title" content="Keep your Documentation updated with Cypress and Github Actions"><meta name="twitter:image" content="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta name="twitter:description" content="How I automatize the README images of my open-source projects by using Cypress and GitHub Actions."><meta name="twitter:creator" content="@EmaSuriano"><meta name="viewport" content="width=device-width"><link href="/favicon.ico" rel="icon"><link href="/icon-192.png" rel="icon" type="image/png"><link href="/apple-touch-icon.png" rel="apple-touch-icon"><link href="/manifest.json" rel="manifest"><link rel="alternate" type="text/markdown" href="https://emasuriano.github.io/llms.md"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/","image":"https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d","jobTitle":"Software Engineer","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","worksFor":{"@type":"Organization","name":"Revolut","url":"https://revolut.com/"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"Organization","@id":"https://emasuriano.com/#brand","name":"Ema Suriano","url":"https://emasuriano.com/","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","founder":{"@id":"https://emasuriano.com/#person"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"WebSite","@id":"https://emasuriano.com/#website","url":"https://emasuriano.com/","name":"Ema Suriano","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","publisher":{"@id":"https://emasuriano.com/#person"}}]}</script><!-- Katex --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"><meta content="#fff" name="theme-color"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/portfolio/pr-preview/pr-1109/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CYDbzu1r.js"></script><style>.medium-zoom-overlay{opacity:0;will-change:opacity;transition:opacity .3s;position:fixed;inset:0}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{cursor:pointer;cursor:zoom-out;will-change:transform;position:relative}
+</style><link rel="stylesheet" href="/portfolio/pr-preview/pr-1109/_astro/Layout.DJXjVviB.css"><style>#blog-comments .utterances{max-width:100%;margin-left:0;margin-right:0}.medium-zoom-overlay{z-index:100;position:fixed;inset:0;--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}@media (prefers-color-scheme:dark){.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(23 23 23/var(--tw-bg-opacity,1))!important}}.medium-zoom-image{border-radius:.375rem}.medium-zoom-image--opened{-o-object-fit:contain;object-fit:contain;z-index:101;width:auto!important;max-width:100vw!important;height:auto!important;max-height:100vh!important}a[data-astro-cid-hgp7mnje]{text-decoration:none}a[data-astro-cid-hgp7mnje][aria-current=location]{color:#4338ca;background-color:#eef2ff;border-left-color:#6366f1;border-radius:0 .25rem .25rem 0;font-weight:600}@media (prefers-color-scheme:dark){a[data-astro-cid-hgp7mnje][aria-current=location]{color:#a5b4fc;background-color:#6366f12e;border-left-color:#818cf8}}code[class*=language-],pre[class*=language-]{color:#ccc;text-align:left;white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal;hyphens:none;-moz-tab-size:4;-o-tab-size:4;tab-size:4;background:0 0;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;line-height:1.5}pre[class*=language-]{margin:.5em 0;padding:1em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{white-space:normal;border-radius:.3em;padding:.1em}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+.gradient[data-astro-cid-2ynwtmkb]{background-image:linear-gradient(90deg,#fb7185,#d946ef 33%,#6366f1 66%,#fb7185);background-size:200%;-webkit-background-clip:text;background-clip:text;animation:10s linear infinite slide}@keyframes slide{to{background-position:200%}}.hover[data-astro-cid-2ynwtmkb]{--b:.1em;--c:#6366f1;background:linear-gradient(var(--c) 50%,#000 0) 0 calc(100% - var(--_p,0%)) /100% 200%,linear-gradient(var(--c) 0 0) 0 var(--_p,0) /var(--_p,0) var(--b) no-repeat;color:#0000;padding-block:var(--b);transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);transition:.3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));-webkit-background-clip:text,padding-box;background-clip:text,padding-box}.hover[data-astro-cid-2ynwtmkb]:hover{--_p:100%;--_s:.3s}
+.image-container[data-astro-cid-ta2fbyqs]{border-radius:1.5rem;width:15rem;height:15rem;transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);position:relative}@media (width>=1024px){.image-container[data-astro-cid-ta2fbyqs]{width:20rem;height:20rem}}.image-container[data-astro-cid-ta2fbyqs]{--r:40px;--c1:#6366f1 99%,#0000 101%;--c2:#fb7185 99%,#0000 101%;--s:calc(var(--r)*.866);--g0:radial-gradient(var(--r),var(--c1));--g1:radial-gradient(var(--r),var(--c2));--f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));--p:radial-gradient(var(--r) at 100% 50%,var(--c2));background:var(--f) 0 calc(var(--r)*-5/2),var(--f) calc(var(--s)*-2) calc(var(--r)/2),var(--p) 0 calc(var(--r)*-2),var(--g0) var(--s) calc(var(--r)*-5/2),var(--g1) var(--s) calc(var(--r)*5/2),radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(var(--r)*-1),radial-gradient(var(--r) at 0 50%,var(--c1)) 0 calc(var(--r)*-4),var(--g1) calc(var(--s)*-1) calc(var(--r)*-7/2),var(--g0) calc(var(--s)*-1) calc(var(--r)*-5/2),var(--p) calc(var(--s)*-2) var(--r),var(--g0) calc(var(--s)*-1) calc(var(--r)/2),var(--g1) calc(var(--s)*-1) calc(var(--r)/-2),var(--g0) 0 calc(var(--r)*-1),var(--g1) var(--s) calc(var(--r)/-2),var(--g0) var(--s) calc(var(--r)/2) #fb7185;background-size:calc(var(--s)*4) calc(var(--r)*6)}
+</style><style>[data-astro-transition-scope="astro-yztbsuuz-1"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }</style><style>[data-astro-transition-scope="astro-jgduxsen-2"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-m4cmtus4-3"] { view-transition-name: astro-m4cmtus4-3; }@layer astro { ::view-transition-old(astro-m4cmtus4-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-m4cmtus4-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-m4cmtus4-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-m4cmtus4-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style><style>[data-astro-transition-scope="astro-crtsh4k5-4"] { view-transition-name: footer; }@layer astro { ::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    "><div class="w-full m-auto p-6 flex-grow flex flex-col max-w-5xl xl:max-w-6xl min-h-full"><header data-astro-transition-persist="header" data-astro-transition-scope="astro-jgduxsen-2" class="relative"><a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a><nav class="text-sm sm:text-base"><div class="flex justify-between items-center w-full"><ul class="relative flex list-none space-x-4 pl-0"><li><a href="/portfolio/pr-preview/pr-1109/" class="link-underline " aria-disabled="false">Home</a></li><li><a href="/portfolio/pr-preview/pr-1109/about" class="link-underline " aria-disabled="false">About</a></li><li><a href="/portfolio/pr-preview/pr-1109/blog" class="link-underline " aria-disabled="false">Blog</a></li><li><a href="/portfolio/pr-preview/pr-1109/til" class="link-underline " aria-disabled="false">TIL</a></li><li><a href="/portfolio/pr-preview/pr-1109/tools" class="link-underline " aria-disabled="false">Tools</a></li></ul><button id="search-button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="ri:search-line"><symbol id="ai:ri:search-line"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use></svg></button><script type="module">function e(){let e=document.getElementById(`search-button`);function t(){let e=document.getElementById(`search-modal`);e?.classList.remove(`hidden`),e?.addEventListener(`click`,t=>{t.target===e&&e?.classList.add(`hidden`)}),e?.addEventListener(`keydown`,t=>{t.key===`Escape`&&e?.classList.add(`hidden`)}),setTimeout(()=>{(document.getElementById(`search`)?.querySelector(`input[type="text"]`))?.focus()},100)}let n=e?.cloneNode(!0);e?.parentNode?.replaceChild(n,e),n?.addEventListener(`click`,t)}e(),document.addEventListener(`astro:page-load`,e);</script></div></nav></header><main data-astro-transition-scope="astro-m4cmtus4-3" id="skip" class="flex flex-grow flex-col py-12"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Keep your Documentation updated with Cypress and Github Actions","description":"How I automatize the README images of my open-source projects by using Cypress and GitHub Actions.","datePublished":"2020-10-26T00:00:00.000Z","url":"https://emasuriano.github.io/portfolio/pr-preview/pr-1109/blog/keep-your-documentation-updated-with-cypress-and-github-actions/","mainEntityOfPage":"https://emasuriano.github.io/portfolio/pr-preview/pr-1109/blog/keep-your-documentation-updated-with-cypress-and-github-actions/","image":"https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=30&w=1400&h=600&fit=crop","author":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/"},"publisher":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano"}}</script><div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg" data-zoomable><img src="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=30&amp;w=1400&amp;h=600&amp;fit=crop" data-pagefind-meta="image[src]" alt="Keep your Documentation updated with Cypress and Github Actions" loading="lazy" decoding="async" width="1400" height="600"></div><div class="lg:grid lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-x-12 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-x-16"><article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting"><h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="title">Keep your Documentation updated with Cypress and Github Actions</h1><header class="mb-8 flex items-center sm:mb-10"><figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"><img src="https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d?s=150" alt="Ema Suriano" loading="lazy" decoding="async" width="150" height="150"></figure><div class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"><div><span item-prop="author" item-scope item-type="https://schema.org/Person"><span item-prop="name">Ema Suriano</span></span>at<time item-prop="datePublished" date-time="Mon Oct 26 2020 00:00:00 GMT+0000 (Coordinated Universal Time)">October 26, 2020</time><p>10 min read</p></div><view-counter data-slug="keep-your-documentation-updated-with-cypress-and-github-actions" class="flex items-center gap-1"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 text-current" data-icon="ri:eye-fill"><symbol id="ai:ri:eye-fill"><path fill="currentColor" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></symbol><use href="#ai:ri:eye-fill"></use></svg><span data-view-number>--</span><span>views</span></view-counter><script type="module">var e=document.querySelector(`[data-view-number]`);if(e){let t=document.location.pathname.replaceAll(`/`,``);e.innerHTML=await fetch(`https://visits.emasuriano.com/api/${t}`).then(e=>e.text()),setTimeout(()=>{let e=localStorage.getItem(`visits`)||``;e.includes(t)||(localStorage.setItem(`visits`,e.concat(t)),fetch(`https://visits.emasuriano.com/api/${t}`,{method:`POST`}))},5e3)}</script></div></header><section class="prose prose-lg max-w-none dark:prose-dark"><p>One of my favorite ways to document projects is by adding screenshots of how it looks, to provide a quick overview of what it does and looks like. Sadly these images are quite easy to get out-dated, and I was being forced to manually update them … In this post, how I automatize this task by using Cypress and GitHub Actions.</p>
+<h2 id="my-case-in-particular"><a aria-label="My Case in Particular" href="#my-case-in-particular"><span class="icon icon-link"></span></a>My Case in Particular</h2>
+<p>I am the owner and maintainer of the <a href="https://github.com/EmaSuriano/gatsby-starter-mate">Gatsby Starter Mate</a>, which allows developers or tech writers to bootstrap their portfolio and manage its content with a CMS.</p>
+<figure><img src="https://opengraph.githubassets.com/EmaSuriano/EmaSuriano/gatsby-starter-mate" alt="gatsby-starter-mate Github"><figcaption>gatsby-starter-mate Github</figcaption></figure>
+<p>Although one can always open the <a href="https://gatsby-starter-mate.netlify.app/">Demo website</a> and navigate through it to see how the project is, I decided to create a simple Table where I show how each of the sections looks like. Here is the table extracted from the <a href="https://github.com/EmaSuriano/gatsby-starter-mate/blob/master/README.md#screenshot-and-design-">README.md</a>.</p>
+<figure><img src="https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Landing.png" alt="Home"><figcaption>Home</figcaption></figure><figure><img src="https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/About.png" alt="About me"><figcaption>About me</figcaption></figure><figure><img src="https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Projects.png" alt="Projects"><figcaption>Projects</figcaption></figure><figure><img src="https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/Writing.png" alt="Writing"><figcaption>Writing</figcaption></figure><figure><img src="https://cdn.statically.io/gh/emasuriano/gatsby-starter-mate/master/media/screenshots/404.png" alt="404"><figcaption>404</figcaption></figure>
+<p>As I highlighted at the beginning of this post, in case I made a change in the UI: CSS change, content change, add/remove new components, etc. I had to regenerate these screenshots … The process was as follows:</p>
+<ol>
+<li>Start the development server.</li>
+<li>Open the website in the browser (trying to always use the same window size).</li>
+<li>Take a screenshot and store it in the repository.</li>
+<li>Remove the old image and rename the new with the original name.</li>
+</ol>
+<p>Besides the process was not hard to follow, I had to repeat it for each of the sections and in many times I forgot to do it after I made any change … It was time to bring the machines to the play! 🦾</p>
+<h2 id="setting-up-cypress-"><a aria-label="Setting up Cypress 🤖" href="#setting-up-cypress-"><span class="icon icon-link"></span></a>Setting up Cypress 🤖</h2>
+<p><a href="https://www.cypress.io/">Cypress</a> is a JavaScript End-to-End Testing that provides a nice framework to work with and it’s capable of emulating a browser that can interact with any website by using the browser APIs.</p>
+<p>Even though this tool was built in mind of Testing you can use it as a <em>Photographer</em>, to make the Browser to take screenshots of your website and store them on your repository!</p>
+<p>As this tool is not needed when the application is running in production, it’s always recommended installing it as a development dependency:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># npm</span>
+<span class="token operator">></span> <span class="token function">npm</span> <span class="token function">install</span> cypress --save-dev
+
+<span class="token comment"># yarn</span>
+<span class="token operator">></span> <span class="token function">yarn</span> <span class="token function">add</span> cypress <span class="token parameter variable">--dev</span>
+</code></pre>
+<p>Then you have to create a file called <code>cypress.json</code> located at the root of your directory, providing the URL of your project:</p>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"baseUrl"</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000/"</span><span class="token punctuation">,</span>
+  <span class="token property">"screenshotsFolder"</span><span class="token operator">:</span> <span class="token string">"screenshots"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>DISCLAIMER:</strong> In case you provided a <code>localhost</code> route, you have to ensure that your development server is running in the background when Cypress is running.</p>
+<p>Next, let’s add a simple health check that will navigate to the Home Page of the project and check if the local server is answering correctly. For that create a file called <code>health.spec.js</code>, located inside a folder called <code>cypress/integration</code> at the root folder of the repository:</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// cypress/integration/health.spec.js</span>
+
+<span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"health test"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  cy<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>After this you can finally execute Cypress by running:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> <span class="token function">yarn</span> cypress run
+
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+
+  <span class="token punctuation">(</span>Run Starting<span class="token punctuation">)</span>
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:    <span class="token number">5.4</span>.0                                                                              │
+  │ Browser:    Electron <span class="token number">85</span> <span class="token punctuation">(</span>headless<span class="token punctuation">)</span>                                                             │
+  │ Specs:      <span class="token number">1</span> found <span class="token punctuation">(</span>health.spec.js<span class="token punctuation">)</span>                                                           │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Running:  health.spec.js                                                                  <span class="token punctuation">(</span><span class="token number">1</span> of <span class="token number">1</span><span class="token punctuation">)</span>
+
+
+  ✓ health <span class="token builtin class-name">test</span> <span class="token punctuation">(</span>293ms<span class="token punctuation">)</span>
+
+  <span class="token number">1</span> passing <span class="token punctuation">(</span>304ms<span class="token punctuation">)</span>
+
+
+  <span class="token punctuation">(</span>Results<span class="token punctuation">)</span>
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        <span class="token number">1</span>                                                                                │
+  │ Passing:      <span class="token number">1</span>                                                                                │
+  │ Failing:      <span class="token number">0</span>                                                                                │
+  │ Pending:      <span class="token number">0</span>                                                                                │
+  │ Skipped:      <span class="token number">0</span>                                                                                │
+  │ Screenshots:  <span class="token number">0</span>                                                                                │
+  │ Video:        <span class="token boolean">false</span>                                                                            │
+  │ Duration:     <span class="token number">0</span> seconds                                                                        │
+  │ Spec Ran:     health.spec.js                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+
+  <span class="token punctuation">(</span>Run Finished<span class="token punctuation">)</span>
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔  health.spec.js                           301ms        <span class="token number">1</span>        <span class="token number">1</span>        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✔  All specs passed<span class="token operator">!</span>                        301ms        <span class="token number">1</span>        <span class="token number">1</span>        -        -        -
+
+✨  Done <span class="token keyword">in</span> <span class="token number">9</span>.67s.
+</code></pre>
+<p>This command will create the folders of <code>plugins</code> and <code>support</code> inside the Cypress folder with some boilerplate inside, which will come in handy for the future steps.</p>
+<h2 id="taking-screenshots-with-cypress-"><a aria-label="Taking screenshots with Cypress 📸" href="#taking-screenshots-with-cypress-"><span class="icon icon-link"></span></a>Taking screenshots with Cypress 📸</h2>
+<p>Time to make Cypress take those screenshots! Let’s start by adding a new file inside <code>integration</code> called <code>photographer.test.js</code>, with some basic tests:</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Photographer"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    cy<span class="token punctuation">.</span><span class="token function">viewport</span><span class="token punctuation">(</span><span class="token string">"macbook-15"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Desktop viewport</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Taking screenshots by Sections</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Landing Section"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    cy<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cy<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"#home"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">screenshot</span><span class="token punctuation">(</span><span class="token string">"Landing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"About Section"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    cy<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cy<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"#about"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">screenshot</span><span class="token punctuation">(</span><span class="token string">"About"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Taking screenshots of the whole page</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"404 Page"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    cy<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cy<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"#404"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">screenshot</span><span class="token punctuation">(</span><span class="token string">"404"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The URL of the pages to visit and CSS selectors may change depending on your project, but the idea will remain the same:</p>
+<ul>
+<li>Visit a particular route of your application.</li>
+<li>Use a CSS selector to pick a section or grab all the content.</li>
+<li>Take a screenshot and save it using a descriptive name.</li>
+</ul>
+<p>Once you are done with setting the routes and name of your section, run Cypress by executing <code>yarn cypress run</code>, and you will see a new folder called <code>screenshots</code> located at the root of your project with the screenshots taken by Cypress.</p>
+<pre class="language-plain" data-language="plain"><code class="language-plain">📦screenshots
+ ┗ 📂photographer.test.js
+   ┣ 🖼404.png
+   ┣ 🖼About.png
+   ┣ 🖼Landing.png
+   ┣ 🖼Projects.png
+   ┗ 🖼Writing.png
+</code></pre>
+<p>Be aware that Cypress will remove and recreate this folder on every run, so don’t worry if your images disappear between runs. Also, at this point you can remove the test <code>health.spec.js</code>, because it’s not needed anymore 👍</p>
+<p>The last piece will be changing your documentation to point to the auto generated pictures instead of the manual. I recommend using a table because it provides a very clear interface for the readers to visualize the pictures. This is the one I used:</p>
+<pre class="language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> Screenshot and Design 🖼</span>
+
+<span class="token table"><span class="token table-header-row"><span class="token punctuation">|</span><span class="token table-header important"> Section  </span><span class="token punctuation">|</span><span class="token table-header important">                         Screenshot                         </span><span class="token punctuation">|</span>
+</span><span class="token table-line"><span class="token punctuation">|</span> <span class="token punctuation">--------</span> <span class="token punctuation">|</span> <span class="token punctuation">:--------------------------------------------------------:</span> <span class="token punctuation">|</span>
+</span><span class="token table-data-rows"><span class="token punctuation">|</span><span class="token table-data"> Home     </span><span class="token punctuation">|</span><span class="token table-data">   <span class="token url"><span class="token operator">!</span>[<span class="token content">Home</span>](<span class="token url">screenshots/photographer.test.js/Landing.png</span>)</span>    </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> About me </span><span class="token punctuation">|</span><span class="token table-data">  <span class="token url"><span class="token operator">!</span>[<span class="token content">About me</span>](<span class="token url">screenshots/photographer.test.js/About.png</span>)</span>   </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> Projects </span><span class="token punctuation">|</span><span class="token table-data"> <span class="token url"><span class="token operator">!</span>[<span class="token content">Projects</span>](<span class="token url">screenshots/photographer.test.js/Projects.png</span>)</span> </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> Writing  </span><span class="token punctuation">|</span><span class="token table-data">  <span class="token url"><span class="token operator">!</span>[<span class="token content">Writing</span>](<span class="token url">screenshots/photographer.test.js/Writing.png</span>)</span>  </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> 404      </span><span class="token punctuation">|</span><span class="token table-data">      <span class="token url"><span class="token operator">!</span>[<span class="token content">404</span>](<span class="token url">screenshots/photographer.test.js/404.png</span>)</span>      </span><span class="token punctuation">|</span>
+</span></span></code></pre>
+<h2 id="automatizing-the-screenshot-now-for-real"><a aria-label="Automatizing the screenshot (now for real)" href="#automatizing-the-screenshot-now-for-real"><span class="icon icon-link"></span></a>Automatizing the screenshot (now for real)</h2>
+<p>Up to this point, Cypress is taking the screenshots for me, but I still have the task to call it by running <code>yarn cypress run</code>, and also I have to make sure my development server is running at that time to generate valid screenshots.</p>
+<p>To address the latter, I recommend using an npm package called <code>start-server-and-test</code> which does exactly what is says: start any server, wait for a specific port to be open, and finally run the test. It’s very useful in these situations 🙌</p>
+<p>To install it, you can use either yarn or npm.</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># npm</span>
+<span class="token operator">></span> <span class="token function">npm</span> <span class="token function">install</span> start-server-and-test --save-dev
+
+<span class="token comment"># yarn</span>
+<span class="token operator">></span> <span class="token function">yarn</span> <span class="token function">add</span> start-server-and-test <span class="token parameter variable">--dev</span>
+</code></pre>
+<p>Then inside your <code>package.json</code>, you can add the following commands inside the <code>scripts</code> property:</p>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"cypress run"</span><span class="token punctuation">,</span>
+    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"react-scripts start"</span><span class="token punctuation">,</span>
+    <span class="token property">"take-screenshots"</span><span class="token operator">:</span> <span class="token string">"start-server-and-test 3000"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>To test it, you can simply execute the <code>take-screenshot</code> command and you should be able to see something like:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">➜  my-project git:<span class="token punctuation">(</span>master<span class="token punctuation">)</span> ✗ <span class="token function">yarn</span> take-screenshots
+<span class="token function">yarn</span> run v1.22.5
+$ start-server-and-test <span class="token number">3000</span>
+<span class="token number">1</span>: starting server using <span class="token builtin class-name">command</span> <span class="token string">"npm run start"</span>
+and when url <span class="token string">"[ 'http://localhost:3000' ]"</span> is responding with HTTP status code <span class="token number">200</span>
+running tests using <span class="token builtin class-name">command</span> <span class="token string">"npm run test"</span>
+
+<span class="token punctuation">..</span>.
+</code></pre>
+<p>Now I only need something that will call this command automatically for me and push it into my Repository. This is when GitHub Actions comes into the Game!</p>
+<p><strong>DISCLAIMER:</strong> you can use any Continuous Integration technology (Travis CI, Circle CI, etc.), but I find the implementation with Actions quite simple and straight forward.</p>
+<p>To enable GitHub Actions, you have to create a new <em>Workflow</em> file located inside <code>.github/workflows</code> folder. You can name this file as you want, the only rule to follow is that it has to be a YAML file.</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># .github/workflows/update-docs.yml</span>
+
+<span class="token comment"># Workflow name</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> Update Docs
+
+<span class="token comment"># Run on every push to master</span>
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span> master
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token comment"># Job name</span>
+  <span class="token key atrule">update-readme</span><span class="token punctuation">:</span>
+    <span class="token comment"># Environment setup</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token comment"># job</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout repository
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Node
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v1
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install dependencies
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn install <span class="token punctuation">-</span><span class="token punctuation">-</span>frozen<span class="token punctuation">-</span>lockfile
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Take screenshots
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn take<span class="token punctuation">-</span>screenshots
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Commit screenshots
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> stefanzweifel/git<span class="token punctuation">-</span>auto<span class="token punctuation">-</span>commit<span class="token punctuation">-</span>action@v4
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">commit_message</span><span class="token punctuation">:</span> Update Screenshots
+</code></pre>
+<p>Something I like about the Workflows from GitHub Actions is how descriptive they are. It consists of:</p>
+<ul>
+<li>Name of the workflow, which serves as an identifier (<code>name</code>).</li>
+<li>When the Workflow will be triggered (<code>on</code>).</li>
+<li>What it will do once triggered (<code>jobs</code>). Each Job has:
+<ul>
+<li>Unique identifier.</li>
+<li>On which environment it will run (<code>runs-on</code>).</li>
+<li>Set of steps to run scripts or call other Actions (<code>steps</code>).</li>
+</ul>
+</li>
+</ul>
+<p>One of the best features of GitHub Actions is the ability to compose Actions. In the example from above, to commit the changes inside the screenshots I am using the <code>git-auto-commit-action</code> which will look at my changes and then perform a <code>git commit -am "commit_message"</code> into my repository.</p>
+<p>Finally, to test if your Workflow is working you have to push your changes into your <code>master</code> branch. Here you can see a normal execution I run inside <a href="https://github.com/EmaSuriano/gatsby-starter-mate/runs/1309156962">gatsby-starter-mate</a>.</p>
+<h2 id="taking-it-to-the-next-level-"><a aria-label="Taking it to the next level 🚀" href="#taking-it-to-the-next-level-"><span class="icon icon-link"></span></a>Taking it to the next level 🚀</h2>
+<p>In case you have noticed inside the <code>photographer.test.js</code> file, I had to type the name of my routes and the selectors that I wanted to use. But what if, I can also automate this too? 🤔</p>
+<p>The first step will be to collect all the routes inside the application. This will change depending on the technology and routing you have picked. But from here you should produce a file called <code>routes.json</code> with the list of all the routes.</p>
+<p>Next, you have to store this file inside the folder <code>cypress/fixtures</code>, so then Cypress can have access to it inside the <code>photographer.test.js</code> file:</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Dynamic Photographer"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../fixtures/routes.json"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    cy<span class="token punctuation">.</span><span class="token function">viewport</span><span class="token punctuation">(</span><span class="token string">"macbook-15"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Desktop viewport</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  routes<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">route</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>route<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      cy<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      cy<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"#shared-section-id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">screenshot</span><span class="token punctuation">(</span>route<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Finally, you have to generate the table based on the <code>routes.json</code> file or from the generated images. In this case, I will do it from the file, but in both cases, the output should be the same.</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// generate-docs-readme.js</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./cypress/fixtures/routes.json"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">routeToTable</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">route</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+  <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">| </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>route<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> | ![</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>route<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">](screenshots/photographer.test.js/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>route<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.png) |</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> content <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">"## Pages Screenshots"</span><span class="token punctuation">,</span>
+  <span class="token string">"Dynamic screenshots based on the last version deployed."</span><span class="token punctuation">,</span>
+  <span class="token string">"| Page  | Screenshot |"</span><span class="token punctuation">,</span>
+  <span class="token string">"| --- | :---: |"</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>routes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>routeToTable<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">"photographer.md"</span><span class="token punctuation">,</span> content<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>This idea can be improved in several ways:</p>
+<ul>
+<li>Expose specific CSS selectors depending on the screen, to have more accurate screenshots.</li>
+<li>Expose names of screens instead of treating them as routes.</li>
+<li>With the combination of the idea from above, your file <code>routes.json</code> can tell Cypress to take more than one picture from a Page.</li>
+</ul>
+<h2 id="last-words"><a aria-label="Last Words" href="#last-words"><span class="icon icon-link"></span></a>Last Words</h2>
+<p>I had a ton of fun integrating these two tools and, I think the result it’s quite useful. I hope more people also found it appealing and decided to try it on their own projects to battle against out-dated documentation 😅</p>
+<p>In this post, I nearly used all the potential from these two tools. I highly recommend passing by though their official documentation: <a href="https://docs.cypress.io">Cypress Docs</a> and <a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions">GitHub Actions Docs</a>. They provide much more functionality inside.</p>
+<p>Thanks for reading and let’s keep building stuff together! 👷‍♂️</p>
+<h3 id="references"><a aria-label="References" href="#references"><span class="icon icon-link"></span></a>References</h3>
+<ul>
+<li><a href="https://github.com/EmaSuriano/gatsby-starter-mate">Gatsby Starter Mate</a></li>
+<li><a href="https://docs.cypress.io">Cypress Documentation Page</a></li>
+<li><a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions">GitHub Actions Documentation</a></li>
+<li><a href="https://github.com/EmaSuriano/gatsby-starter-mate/runs/1309156962">Example GitHub Actions in Gatsby Starter Mate</a></li>
+</ul></section><script type="module" src="/portfolio/pr-preview/pr-1109/_astro/PostContent.astro_astro_type_script_index_0_lang.C2F-K7nx.js"></script></article><nav id="blog-navigation" class="sticky top-24 hidden self-start pt-6 lg:block" aria-label="On this page" data-astro-cid-hgp7mnje><p class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400" data-astro-cid-hgp7mnje>On this page</p><ol class="m-0 list-none border-l border-slate-200 p-0 dark:border-slate-700" data-astro-cid-hgp7mnje><li data-astro-cid-hgp7mnje><a href="#my-case-in-particular" data-slug="my-case-in-particular" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>My Case in Particular</a></li><li data-astro-cid-hgp7mnje><a href="#setting-up-cypress-" data-slug="setting-up-cypress-" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Setting up Cypress 🤖</a></li><li data-astro-cid-hgp7mnje><a href="#taking-screenshots-with-cypress-" data-slug="taking-screenshots-with-cypress-" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Taking screenshots with Cypress 📸</a></li><li data-astro-cid-hgp7mnje><a href="#automatizing-the-screenshot-now-for-real" data-slug="automatizing-the-screenshot-now-for-real" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Automatizing the screenshot (now for real)</a></li><li data-astro-cid-hgp7mnje><a href="#taking-it-to-the-next-level-" data-slug="taking-it-to-the-next-level-" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Taking it to the next level 🚀</a></li><li data-astro-cid-hgp7mnje><a href="#last-words" data-slug="last-words" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Last Words</a></li><li data-astro-cid-hgp7mnje><a href="#references" data-slug="references" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-5" data-astro-cid-hgp7mnje>References</a></li></ol></nav><script type="module">var e;document.addEventListener(`astro:page-load`,()=>{e?.abort(),e=new AbortController;let{signal:t}=e,n=document.querySelector(`#blog-navigation`);if(!n)return;let r=[...n.querySelectorAll(`a[data-slug]`)],i=r.map(e=>document.getElementById(e.dataset.slug??``)).filter(e=>e instanceof HTMLElement),a=e=>{for(let t of r)t.dataset.slug===e?t.setAttribute(`aria-current`,`location`):t.removeAttribute(`aria-current`)},o=()=>{let e=i[0];for(let t of i)t.getBoundingClientRect().top<=128&&(e=t);e&&a(e.id)};o(),window.addEventListener(`scroll`,o,{passive:!0,signal:t}),window.addEventListener(`hashchange`,o,{signal:t})});</script><section class="block h-fit" id="blog-comments"><script src="https://utteranc.es/client.js" repo="EmaSuriano/portfolio" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async></script></section></div></main><footer data-astro-transition-scope="astro-crtsh4k5-4" class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"><ul class="flex max-w-full flex-shrink-0 flex-wrap"><li class="mr-4 mt-2"><a href="https://github.com/EmaSuriano" class="link-underline">GitHub</a></li><li class="mr-4 mt-2"><a href="https://twitter.com/EmaSuriano" class="link-underline">Twitter</a></li><li class="mr-4 mt-2"><a href="https://www.youtube.com/c/EmaSuriano" class="link-underline">YouTube</a></li><li class="mr-4 mt-2"><a href="https://www.linkedin.com/in/emanuel-suriano" class="link-underline">LinkedIn</a></li><li class="mr-4 mt-2"><a href="https://emasuriano.com/rss.xml" class="link-underline">RSS</a></li></ul></footer></div><div id="search-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"><div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 overflow-hidden"><div id="search" class="pagefind-ui pagefind-init" data-pagefind-ui data-bundle-path="/portfolio/pr-preview/pr-1109/pagefind/" data-ui-options="{&quot;autofocus&quot;:true,&quot;showImages&quot;:true}"></div><script type="module" src="/portfolio/pr-preview/pr-1109/_astro/Search.astro_astro_type_script_index_0_lang.BKmr5qej.js"></script></div></div></body></html>
