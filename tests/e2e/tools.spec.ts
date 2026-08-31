@@ -7,12 +7,12 @@ test.describe("Tools", () => {
     await expect(page.locator("h1")).toContainText("Tools");
   });
 
-  test("should display tool entries", async ({ page }) => {
+  test("should display the tools markdown", async ({ page }) => {
     await page.goto("/tools");
 
     const content = page.locator("main");
     await expect(content).toBeVisible();
-    await expect(page.locator("ul")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Github" })).toBeVisible();
   });
 
   test("should list the four starter tools", async ({ page }) => {
