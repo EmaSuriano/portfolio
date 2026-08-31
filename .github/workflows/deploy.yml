@@ -61,3 +61,14 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=portfolio
+
+  update-profile-readme:
+    name: Update GitHub profile README
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger profile README update
+        env:
+          GH_TOKEN: ${{ secrets.AUTO_MERGE_PR_TOKEN }}
+        run: |
+          gh api --method POST repos/EmaSuriano/EmaSuriano/dispatches -f event_type=portfolio-deployed
