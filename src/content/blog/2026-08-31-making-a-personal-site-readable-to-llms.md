@@ -2,7 +2,7 @@
 publishedAt: 2026-08-31
 title: Making a personal site readable to LLMs
 summary: I watched a talk about getting LLMs to recommend an open source library, then tried the same idea on my portfolio. The homepage did not change. The scores did.
-cover: https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&h=600&fit=crop
+cover: https://images.unsplash.com/photo-1674027326254-88c960d8e561?q=80&w=1400&h=600&fit=crop
 tags:
   - llm
   - seo
