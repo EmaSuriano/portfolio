@@ -15,6 +15,7 @@ export type Props = {
   };
   image?: string | undefined;
   viewTransitionEnabled?: boolean;
+  wide?: boolean;
 };
 
 const ROUTE_TITLE_MAP: Record<string, string> = {
@@ -63,6 +64,7 @@ const {
   description = about.bio,
   image = origin.concat("/preview.png"),
   viewTransitionEnabled = true,
+  wide = false,
 } = Astro.props;
 
 const pageTitle = title.includes(about.name)
@@ -200,7 +202,7 @@ const jsonLd = {
     ${isHome ? " flex items-center" : ""}`}
   >
     <div
-      class={`w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl ${
+      class={`w-full m-auto p-6 flex-grow flex flex-col ${wide ? "max-w-5xl xl:max-w-6xl" : "max-w-3xl lg:max-w-4xl"} ${
         isHome ? "h-full max-h-[44rem]" : "min-h-full"
       }`}
     >
