@@ -7,8 +7,11 @@ import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 
 // https://astro.build/config
+const pagesBase = /** @type {any} */ (globalThis)['process']?.env?.PAGES_BASE;
+
 export default defineConfig({
-  site: "https://emasuriano.com/",
+  site: pagesBase ? "https://emasuriano.github.io" : "https://emasuriano.com/",
+  base: pagesBase || "/",
   integrations: [tailwind(), sitemap(), icon(), pagefind()],
   markdown: {
     syntaxHighlight: "prism",
