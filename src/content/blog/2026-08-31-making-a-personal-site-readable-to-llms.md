@@ -23,17 +23,17 @@ The constraint I set at the start, and kept: **do not change the visible homepag
 
 ## Two scorecards, two personalities
 
-I used two scanners, and they do not agree on how "product-like" a personal site should be.
+I used two scorecards, and they do not agree on how "product-like" a personal site should be.
 
-[Ora](https://ora.ai/score/emasuriano.com) (orank) treats the site like a SaaS. It wants API keys, MCP, OAuth, SDKs, a developer portal. It started around **11/100 (F)**. After the first files it moved to **22**. After Cloudflare stopped eating AI crawlers and the sitemap actually existed, it jumped to **52**. Later scans sat in the **53–66/100 (C)** range. The live page, last I checked, is **66/100 (C)**.
+[Ora](https://ora.ai/score/emasuriano.com) (orank) treats the site like a SaaS. It wants API keys, MCP, OAuth, SDKs, a developer portal. First scan, 27 Aug: **11/100 (F)**. After `llms.txt`, `robots.txt`, Person JSON-LD, and unique titles went live: **22**. After a real `/sitemap.xml` plus the Cloudflare dashboard allowlist: **52**. Same afternoon, an Ora export with a different layer breakdown: **53**. The scan from 28 Aug at 07:06 UTC, which is what the public Ora page shows now: **66/100 (C)**.
 
-[is-agentic](https://is-agentic.com/scan/emasuriano.com) is the same flavor of audit, but kinder to a homepage that is a person. It landed at **90/100**. The remaining fails were mostly "add more homepage copy", "add a /developers portal", and "add contact + privacy". In other words: become a product.
+[is-agentic](https://is-agentic.com/scan/emasuriano.com) is not a second crawler. It re-weights the same Ora evidence, and it is kinder to a homepage that is a person. Same timestamp as the 66 scan: **90/100**. The remaining fails were mostly "add more homepage copy", "add a /developers portal", and "add contact + privacy". In other words: become a product.
 
-I treated Ora as a noisy dashboard and is-agentic as a sanity check. Neither is the goal. The goal is that an agent can fetch who I am, what I wrote, and which projects are mine, without executing a bundle of JavaScript.
+I treated Ora as a noisy dashboard and is-agentic as a second reading of the same evidence. Neither is the goal. The goal is that an agent can fetch who I am, what I wrote, and which projects are mine, without executing a bundle of JavaScript.
 
 ## What actually moved the needle
 
-Roughly in the order I did it.
+All of 11 to 52 happened on the afternoon of 27 Aug, in this order.
 
 ### 1. Stop blocking the new crawlers
 
@@ -41,13 +41,11 @@ Roughly in the order I did it.
 
 On top of that I generate [`/llms.txt`](https://emasuriano.com/llms.txt) and [`/llms.md`](https://emasuriano.com/llms.md) from `author.json`. Same content, two content types. That file is the version of the site I wish a model would read: who I am, when the site is useful, pages, API, projects, posts, talks, social.
 
-Ora moved a bit. Not enough to care.
-
 ### 2. Tell machines I am a person, not a blank HTML document
 
 Person + WebSite JSON-LD, unique titles, canonical URLs, and a markdown alternate. Later I added Berlin and LinkedIn on the Person node. I did **not** invent an email or a phone number so Organization.contactPoint would look "complete". If a crawler wants to reach me, the LinkedIn URL is the contact point.
 
-Still a low score. The files existed. Something else was wrong.
+That first bundle took Ora from 11 to 22. Not enough to care.
 
 ### 3. Ship a sitemap that is actually a sitemap
 
@@ -57,11 +55,11 @@ The fix was a real `/sitemap.xml` urlset, and listing both that and `sitemap-ind
 
 ### 4. The Cloudflare dashboard, not more files
 
-This was the jump from **22 to 52**, and it was not a pull request.
+This was the jump from **22 to 52**, together with the sitemap, and it was not a pull request.
 
 The site is on Cloudflare Pages. Bot Fight Mode and a blanket "block AI bots" rule were eating GPTBot and friends before they ever saw `robots.txt` or `llms.txt`. I allowed AI search/agent bots in the dashboard and turned the fight-mode hammer off.
 
-Files I had already shipped started counting. If your agent-readiness score is stuck after you added `llms.txt`, check whether your WAF is eating the crawler. I lost a few days to that.
+Files I had already shipped started counting. If your agent-readiness score is stuck after you added `llms.txt`, check whether your WAF is eating the crawler. That was the same afternoon.
 
 ### 5. Document the APIs I already had
 
@@ -73,7 +71,7 @@ No fake MCP server. No OAuth. No SDK. No CLI. No sandbox. Scorecards love those 
 
 Browsers still get HTML. Clients that send `Accept: text/markdown` on `/` get the same body as `/llms.md`.
 
-Static Astro cannot negotiate that on its own, so a Cloudflare `_worker.js` does it. Same worker later started serving `/.well-known/agent-skills/index.json`, because putting that file under `public/.well-known` never reached `dist`. jampack was stripping the dot-directory.
+Static Astro cannot negotiate that on its own, so a Cloudflare `_worker.js` does it. Same worker later started serving `/.well-known/agent-skills/index.json`. I had put that file under `public/.well-known`, but the dot-directory never reached `dist`, so production 404'd until the worker served it.
 
 That is the one place where crawlers and humans see different bytes, and it is content negotiation, not hidden homepage text. I will come back to that.
 
@@ -102,10 +100,10 @@ Ora still fails, or half-fails, a set of checks that all say the same thing: *pr
 I closed the pull requests that would have:
 
 - padded the homepage to 500+ characters of visible HTML
-- added `sr-only` / hidden text so a crawler saw copy a human did not
 - linked `/api/*` from the homepage
 - added a Contact page
-- added a `/developers` portal
+
+I also refused hidden `sr-only` copy so a crawler would see text a human did not. That never became a PR.
 
 The homepage HTML is still about **152 characters** of visible text. is-agentic calls that out. I am fine with it. Hidden text to game a "content without JS" check is cloaking, and I do not want that on a site with my name on it.
 
@@ -117,8 +115,8 @@ I also refused to invent an email address for schema.org. Berlin + LinkedIn was 
 
 | Scanner | Last look | Grade |
 |---|---|---|
-| [Ora](https://ora.ai/score/emasuriano.com) | 66/100 | C |
-| [is-agentic](https://is-agentic.com/scan/emasuriano.com) | 90/100 | — |
+| [Ora](https://ora.ai/score/emasuriano.com) | 66/100 (28 Aug, 07:06 UTC) | C |
+| [is-agentic](https://is-agentic.com/scan/emasuriano.com) | 90/100 (same timestamp) | — |
 
 Ora is still mad about the missing developer portal. is-agentic is still mad about the short homepage. Both of those are the constraint working as designed.
 
