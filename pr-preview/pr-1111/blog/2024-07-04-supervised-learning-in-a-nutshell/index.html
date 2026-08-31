@@ -1,0 +1,302 @@
+<!DOCTYPE html><html data-astro-transition-scope="astro-yztbsuuz-1" lang="en"><head><meta charset="UTF-8"><title>Supervised Learning in a Nutshell | Ema Suriano</title><meta charset="utf-8"><link rel="canonical" href="https://emasuriano.github.io/portfolio/pr-preview/pr-1111/blog/2024-07-04-supervised-learning-in-a-nutshell/"><meta name="description" content="Key steps and improvements in supervised learning, from data splitting to advanced techniques for better performance"><meta name="robots" content="index, follow"><meta property="og:title" content="Supervised Learning in a Nutshell"><meta property="og:type" content="article"><meta property="og:image" content="https://images.unsplash.com/photo-1598112155290-484266d5d312?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:url" content="https://emasuriano.github.io/portfolio/pr-preview/pr-1111/blog/2024-07-04-supervised-learning-in-a-nutshell/"><meta property="og:description" content="Key steps and improvements in supervised learning, from data splitting to advanced techniques for better performance"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Ema Suriano"><meta property="og:image:url" content="https://images.unsplash.com/photo-1598112155290-484266d5d312?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta property="og:image:alt" content="Ema Suriano Portfolio"><meta property="article:published_time" content="October 7, 2024"><meta property="article:author" content="Ema Suriano"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@EmaSuriano"><meta name="twitter:title" content="Supervised Learning in a Nutshell"><meta name="twitter:image" content="https://images.unsplash.com/photo-1598112155290-484266d5d312?q=30&amp;w=1400&amp;h=600&amp;fit=crop"><meta name="twitter:description" content="Key steps and improvements in supervised learning, from data splitting to advanced techniques for better performance"><meta name="twitter:creator" content="@EmaSuriano"><meta name="viewport" content="width=device-width"><link href="/favicon.ico" rel="icon"><link href="/icon-192.png" rel="icon" type="image/png"><link href="/apple-touch-icon.png" rel="apple-touch-icon"><link href="/manifest.json" rel="manifest"><link rel="alternate" type="text/markdown" href="https://emasuriano.github.io/llms.md"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/","image":"https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d","jobTitle":"Software Engineer","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","worksFor":{"@type":"Organization","name":"Revolut","url":"https://revolut.com/"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"Organization","@id":"https://emasuriano.com/#brand","name":"Ema Suriano","url":"https://emasuriano.com/","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","founder":{"@id":"https://emasuriano.com/#person"},"address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},"contactPoint":{"@type":"ContactPoint","contactType":"author","url":"https://www.linkedin.com/in/emanuel-suriano"},"sameAs":["https://github.com/EmaSuriano","https://twitter.com/EmaSuriano","https://www.youtube.com/c/EmaSuriano","https://www.linkedin.com/in/emanuel-suriano","https://emasuriano.com/rss.xml"]},{"@type":"WebSite","@id":"https://emasuriano.com/#website","url":"https://emasuriano.com/","name":"Ema Suriano","description":"Passionate Engineer driven by all the Javascript ecosystem. In my spare time I like to write and speak publicly","publisher":{"@id":"https://emasuriano.com/#person"}}]}</script><!-- Katex --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"><meta content="#fff" name="theme-color"><style>.medium-zoom-overlay{opacity:0;will-change:opacity;transition:opacity .3s;position:fixed;inset:0}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{cursor:pointer;cursor:zoom-out;will-change:transform;position:relative}
+</style><link rel="stylesheet" href="/portfolio/pr-preview/pr-1111/_astro/Layout.DJXjVviB.css"><style>#blog-comments .utterances{max-width:100%;margin-left:0;margin-right:0}.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}@media (prefers-color-scheme:dark){.medium-zoom-overlay{--tw-bg-opacity:1!important;background-color:rgb(23 23 23/var(--tw-bg-opacity,1))!important}}.medium-zoom-image{border-radius:.375rem}a[data-astro-cid-hgp7mnje]{text-decoration:none}a[data-astro-cid-hgp7mnje][aria-current=location]{color:#4338ca;background-color:#eef2ff;border-left-color:#6366f1;border-radius:0 .25rem .25rem 0;font-weight:600}@media (prefers-color-scheme:dark){a[data-astro-cid-hgp7mnje][aria-current=location]{color:#a5b4fc;background-color:#6366f12e;border-left-color:#818cf8}}code[class*=language-],pre[class*=language-]{color:#ccc;text-align:left;white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal;hyphens:none;-moz-tab-size:4;-o-tab-size:4;tab-size:4;background:0 0;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;line-height:1.5}pre[class*=language-]{margin:.5em 0;padding:1em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{white-space:normal;border-radius:.3em;padding:.1em}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+.gradient[data-astro-cid-2ynwtmkb]{background-image:linear-gradient(90deg,#fb7185,#d946ef 33%,#6366f1 66%,#fb7185);background-size:200%;-webkit-background-clip:text;background-clip:text;animation:10s linear infinite slide}@keyframes slide{to{background-position:200%}}.hover[data-astro-cid-2ynwtmkb]{--b:.1em;--c:#6366f1;background:linear-gradient(var(--c) 50%,#000 0) 0 calc(100% - var(--_p,0%)) /100% 200%,linear-gradient(var(--c) 0 0) 0 var(--_p,0) /var(--_p,0) var(--b) no-repeat;color:#0000;padding-block:var(--b);transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);transition:.3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));-webkit-background-clip:text,padding-box;background-clip:text,padding-box}.hover[data-astro-cid-2ynwtmkb]:hover{--_p:100%;--_s:.3s}
+.image-container[data-astro-cid-ta2fbyqs]{border-radius:1.5rem;width:15rem;height:15rem;transition-property:all;transition-duration:.15s;transition-timing-function:cubic-bezier(.4,0,.2,1);position:relative}@media (width>=1024px){.image-container[data-astro-cid-ta2fbyqs]{width:20rem;height:20rem}}.image-container[data-astro-cid-ta2fbyqs]{--r:40px;--c1:#6366f1 99%,#0000 101%;--c2:#fb7185 99%,#0000 101%;--s:calc(var(--r)*.866);--g0:radial-gradient(var(--r),var(--c1));--g1:radial-gradient(var(--r),var(--c2));--f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));--p:radial-gradient(var(--r) at 100% 50%,var(--c2));background:var(--f) 0 calc(var(--r)*-5/2),var(--f) calc(var(--s)*-2) calc(var(--r)/2),var(--p) 0 calc(var(--r)*-2),var(--g0) var(--s) calc(var(--r)*-5/2),var(--g1) var(--s) calc(var(--r)*5/2),radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(var(--r)*-1),radial-gradient(var(--r) at 0 50%,var(--c1)) 0 calc(var(--r)*-4),var(--g1) calc(var(--s)*-1) calc(var(--r)*-7/2),var(--g0) calc(var(--s)*-1) calc(var(--r)*-5/2),var(--p) calc(var(--s)*-2) var(--r),var(--g0) calc(var(--s)*-1) calc(var(--r)/2),var(--g1) calc(var(--s)*-1) calc(var(--r)/-2),var(--g0) 0 calc(var(--r)*-1),var(--g1) var(--s) calc(var(--r)/-2),var(--g0) var(--s) calc(var(--r)/2) #fb7185;background-size:calc(var(--s)*4) calc(var(--r)*6)}
+</style><style>[data-astro-transition-scope="astro-yztbsuuz-1"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-yztbsuuz-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-yztbsuuz-1"] { animation: none; mix-blend-mode: normal; }</style><style>[data-astro-transition-scope="astro-jgduxsen-2"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jgduxsen-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jgduxsen-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-m4cmtus4-3"] { view-transition-name: astro-m4cmtus4-3; }@layer astro { ::view-transition-old(astro-m4cmtus4-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-m4cmtus4-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-m4cmtus4-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-m4cmtus4-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-m4cmtus4-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-m4cmtus4-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style><style>[data-astro-transition-scope="astro-crtsh4k5-4"] { view-transition-name: footer; }@layer astro { ::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(footer) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-crtsh4k5-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-crtsh4k5-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body class="bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem] antialiased transition-colors
+    "><div class="w-full m-auto p-6 flex-grow flex flex-col max-w-5xl xl:max-w-6xl min-h-full"><header data-astro-transition-scope="astro-jgduxsen-2" class="relative"><a href="#skip" class="sr-only focus:not-sr-only">Skip to content</a><nav class="text-sm sm:text-base"><div class="flex justify-between items-center w-full"><ul class="relative flex list-none space-x-4 pl-0"><li><a href="/portfolio/pr-preview/pr-1111/" class="link-underline " aria-disabled="false">Home</a></li><li><a href="/portfolio/pr-preview/pr-1111/about" class="link-underline " aria-disabled="false">About</a></li><li><a href="/portfolio/pr-preview/pr-1111/blog" class="link-underline " aria-disabled="false">Blog</a></li><li><a href="/portfolio/pr-preview/pr-1111/til" class="link-underline " aria-disabled="false">TIL</a></li><li><a href="/portfolio/pr-preview/pr-1111/tools" class="link-underline " aria-disabled="false">Tools</a></li></ul><button id="search-button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="ri:search-line"><symbol id="ai:ri:search-line"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use></svg></button><script type="module">function e(){let e=document.getElementById(`search-button`);function t(){let e=document.getElementById(`search-modal`);e?.classList.remove(`hidden`),e?.addEventListener(`click`,t=>{t.target===e&&e?.classList.add(`hidden`)}),e?.addEventListener(`keydown`,t=>{t.key===`Escape`&&e?.classList.add(`hidden`)}),setTimeout(()=>{(document.getElementById(`search`)?.querySelector(`input[type="text"]`))?.focus()},100)}let n=e?.cloneNode(!0);e?.parentNode?.replaceChild(n,e),n?.addEventListener(`click`,t)}e(),document.addEventListener(`astro:page-load`,e);</script></div></nav></header><main data-astro-transition-scope="astro-m4cmtus4-3" id="skip" class="flex flex-grow flex-col py-12"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Supervised Learning in a Nutshell","description":"Key steps and improvements in supervised learning, from data splitting to advanced techniques for better performance","datePublished":"2024-10-07T00:00:00.000Z","url":"https://emasuriano.github.io/portfolio/pr-preview/pr-1111/blog/2024-07-04-supervised-learning-in-a-nutshell/","mainEntityOfPage":"https://emasuriano.github.io/portfolio/pr-preview/pr-1111/blog/2024-07-04-supervised-learning-in-a-nutshell/","image":"https://images.unsplash.com/photo-1598112155290-484266d5d312?q=30&w=1400&h=600&fit=crop","keywords":["Machine Learning","Supervised learning","scikit-learn"],"author":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano","url":"https://emasuriano.com/"},"publisher":{"@type":"Person","@id":"https://emasuriano.com/#person","name":"Ema Suriano"}}</script><div aria-label="cover" class="overflow-hidden rounded-2xl shadow-lg" data-zoomable><img src="https://images.unsplash.com/photo-1598112155290-484266d5d312?q=30&amp;w=1400&amp;h=600&amp;fit=crop" data-pagefind-meta="image[src]" alt="Supervised Learning in a Nutshell" loading="lazy" decoding="async" width="1400" height="600"></div><div class="lg:grid lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-x-12 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-x-16"><article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting"><h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="title">Supervised Learning in a Nutshell</h1><header class="mb-8 flex items-center sm:mb-10"><figure class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full"><img src="https://secure.gravatar.com/avatar/de8225213d7b8bc59895625735574f7d?s=150" alt="Ema Suriano" loading="lazy" decoding="async" width="150" height="150"></figure><div class="flex flex-col text-sm text-slate-600 dark:text-slate-400 sm:w-full sm:flex-row sm:justify-between"><div><span item-prop="author" item-scope item-type="https://schema.org/Person"><span item-prop="name">Ema Suriano</span></span>at<time item-prop="datePublished" date-time="Mon Oct 07 2024 00:00:00 GMT+0000 (Coordinated Universal Time)">October 7, 2024</time><p>11 min read</p></div><view-counter data-slug="2024-07-04-supervised-learning-in-a-nutshell" class="flex items-center gap-1"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 text-current" data-icon="ri:eye-fill"><symbol id="ai:ri:eye-fill"><path fill="currentColor" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></symbol><use href="#ai:ri:eye-fill"></use></svg><span data-view-number>--</span><span>views</span></view-counter><script type="module">var e=document.querySelector(`[data-view-number]`);if(e){let t=document.location.pathname.replaceAll(`/`,``);e.innerHTML=await fetch(`https://visits.emasuriano.com/api/${t}`).then(e=>e.text()),setTimeout(()=>{let e=localStorage.getItem(`visits`)||``;e.includes(t)||(localStorage.setItem(`visits`,e.concat(t)),fetch(`https://visits.emasuriano.com/api/${t}`,{method:`POST`}))},5e3)}</script></div></header><section class="prose prose-lg max-w-none dark:prose-dark"><p>A couple of weeks ago I started venturing into Supervised Learning (yes, finally Machine Learning topics!), and to be fully honest the beginning was not the best for me. This was related to the amount of concepts and possible improvements that you can make to your model and data to improve the performance of your model. In this post, I want to cover the fundamentals, like building the most minimal model that can predict a value with a decent degree level.</p>
+<p>Friendly advice: the idea of this post is to give a quick overview of what supervised learning means and how you can implement it. In case you want a more deep-dive explanation I would highly recommend this book: <a href="https://www.oreilly.com/library/view/introduction-to-machine/9781449369880/">Introduction to Machine Learning with Python</a>, by Andreas C. Müller &#x26; Sarah Guido.</p>
+<h2 id="supervised-learning"><a aria-label="”Supervised” Learning" href="#supervised-learning"><span class="icon icon-link"></span></a>”Supervised” Learning</h2>
+<p>Let’s start by understanding what we mean when we use the word <em>Supervised</em> learning. Imagine you’re teaching a child to identify different fruits. You show them apples, bananas, and oranges, telling them what each one is called. After seeing many examples, the child learns to recognize and name these fruits on their own. That’s essentially what supervised learning does!</p>
+<p>In supervised learning, we provide a computer algorithm with:</p>
+<ol>
+<li>Input data (properties of fruits): called <code>features</code></li>
+<li>Correct labels for that data (the names of the fruits): called <code>target</code></li>
+</ol>
+<p>The algorithm then learns to make connections between the <code>features</code> and <code>target</code>. The main idea is that once the model is trained, it can make predictions or classifications on new, unseen data, that we don’t know its <code>target</code>.</p>
+<h2 id="type-of-supervised-learning"><a aria-label="Type of Supervised Learning" href="#type-of-supervised-learning"><span class="icon icon-link"></span></a>Type of Supervised Learning</h2>
+<p>Depending on the type of our <code>target</code> value we have to split our problem-solving into two categories:</p>
+<ul>
+<li><strong>Regression</strong>: when <code>target</code> is a number. This means that the values can be approximated because they are continuous.</li>
+<li><strong>Classification</strong>: when <code>target</code> is a string or object. Normally it represents some kind of category, like the fruits.</li>
+</ul>
+<p>Identifying what kind of problem we are dealing with is key. Some models are meant to be used for Regression and others for Classification (except some that can run in both cases…).</p>
+<h2 id="introducing-your-best-learning-library-scikit-learn"><a aria-label="Introducing your best learning library scikit-learn" href="#introducing-your-best-learning-library-scikit-learn"><span class="icon icon-link"></span></a>Introducing your best learning library <code>scikit-learn</code></h2>
+<p><a href="https://scikit-learn.org/">Scikit-learn</a> is an open-source toolkit that provides simple and efficient tools for data analysis and machine learning. It offers a consistent interface for a wide range of algorithms, making it easy to implement, compare, and deploy various machine-learning models.</p>
+<p>It’s also the standard when it comes to learning because it provides many helpers for most of the steps in the training of a model. It will be used throughout the whole post, and I will explain each function when the implementation of it arrives to keep engaged.</p>
+<p>To install it, run the following command in your terminal:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> pip <span class="token function">install</span> scikit-learn
+</code></pre>
+<h2 id="minimal-workflow-for-supervised-learning"><a aria-label="Minimal Workflow for Supervised Learning" href="#minimal-workflow-for-supervised-learning"><span class="icon icon-link"></span></a>Minimal Workflow for Supervised Learning</h2>
+<p>When one is venturing into a new topic, dealing with an overflow of information can be overwhelming and it can easily make you forget the final output of our system. This is why I want to share what the smallest workflow for Supervised Learning will look like to train a model with a decent performance.</p>
+<blockquote>
+<p>At the end of the post I would include extra steps that I <strong>do</strong> recommend to do when you are planning to run the model in production.</p>
+</blockquote>
+<p>The process will be divided into 5 steps:</p>
+<ol>
+<li>Load the Dataset</li>
+<li>Split the Data</li>
+<li>Train the Model</li>
+<li>Make predictions</li>
+<li>Evaluate the Model</li>
+</ol>
+<pre class="mermaid">graph TD
+ A(1. Load the Dataset) --> B(2. Split the Data)
+ B --> B1(Training Data)
+ B --> B2(Testing Data)
+
+ B1 --> C(3. Train the Model)
+ C --> D(Model Trained)
+
+ B2 --> E(4. Make predictions)
+ D --> E
+
+ E --> F(5. Evaluate the Model)
+</pre>
+<blockquote>
+<p>All the code for this workflow can be found in my deployed instance of Jupyter Lite: <a href="https://emasuriano.github.io/jupyterlite/notebooks/index.html?path=minimal-workflow-supervised.ipynb">Minimal Workflow Supervised Learning</a></p>
+</blockquote>
+<h3 id="1-load-our-dataset"><a aria-label="1. Load our Dataset" href="#1-load-our-dataset"><span class="icon icon-link"></span></a>1. Load our Dataset</h3>
+<p>Something that we <strong>need</strong> to train a model is <strong>data</strong> and when it comes to Supervised Learning, this data has to be <strong>labeled</strong>, which depending on the situation can be hard … Luckily <code>scikit-learn</code> includes many datasets that we can load and start playing around.</p>
+<p>For this quick example, I’m going to be using the <a href="https://scikit-learn.org/1.5/modules/generated/sklearn.datasets.load_wine.html">Wine dataset</a>, which includes 13 chemical features that describe different types of wine. This problem is a <strong>Classification</strong> problem where our <code>target</code> value is the type of wine that takes the value of: <code>0</code>, <code>1</code>, or <code>2</code>. This is very important to highlight because if we treat this as a Regression problem, we are inferring that the class <code>0</code> is closer to class <code>1</code> than <code>2</code>, which is not correct for this problem.</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># import for datasets</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>datasets <span class="token keyword">import</span> load_wine
+
+ds <span class="token operator">=</span> load_wine<span class="token punctuation">(</span><span class="token keyword">return</span><span class="token punctuation">)</span>
+
+X <span class="token operator">=</span> ds<span class="token punctuation">.</span>data  <span class="token comment"># Features</span>
+y <span class="token operator">=</span> ds<span class="token punctuation">.</span>target  <span class="token comment"># Labels</span>
+</code></pre>
+<p>By convention in the ML world, we call <code>X</code> to the features and <code>y</code> to the labels. This comes from the mathematical plots where we have a function (<code>f(x) = y</code>) and the result when we call it passing <code>x</code> will return the value for <code>y</code>.</p>
+<blockquote>
+<p>Tip: All the datasets from <code>scikit-learn</code> come with a very handy description that will elaborate on the meaning of the features and labels. To see it, you have to access the value of <code>DESCR</code> of the dataset.</p>
+</blockquote>
+<pre class="language-plain" data-language="plain"><code class="language-plain">Wine recognition dataset
+------------------------
+
+**Data Set Characteristics:**
+
+:Number of Instances: 178
+:Number of Attributes: 13 numeric, predictive attributes and the class
+:Attribute Information:
+ - Alcohol
+ - Malic acid
+ - Ash
+ - Alcalinity of ash
+ - Magnesium
+ - Total phenols
+ - Flavanoids
+ - Nonflavanoid phenols
+ - Proanthocyanins
+ - Color intensity
+ - Hue
+ - OD280/OD315 of diluted wines
+ - Proline
+ - class:
+ - class_0
+ - class_1
+ - class_2
+
+:Summary Statistics:
+
+============================= ==== ===== ======= =====
+ Min   Max   Mean     SD
+============================= ==== ===== ======= =====
+Alcohol:                      11.0  14.8    13.0   0.8
+Malic Acid:                   0.74  5.80    2.34  1.12
+Ash:                          1.36  3.23    2.36  0.27
+Alcalinity of Ash:            10.6  30.0    19.5   3.3
+Magnesium:                    70.0 162.0    99.7  14.3
+Total Phenols:                0.98  3.88    2.29  0.63
+Flavanoids:                   0.34  5.08    2.03  1.00
+Nonflavanoid Phenols:         0.13  0.66    0.36  0.12
+Proanthocyanins:              0.41  3.58    1.59  0.57
+Colour Intensity:              1.3  13.0     5.1   2.3
+Hue:                          0.48  1.71    0.96  0.23
+OD280/OD315 of diluted wines: 1.27  4.00    2.61  0.71
+Proline:                       278  1680     746   315
+============================= ==== ===== ======= =====
+
+:Missing Attribute Values: None
+:Class Distribution: class_0 (59), class_1 (71), class_2 (48)
+:Creator: R.A. Fisher
+:Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+:Date: July, 1988
+</code></pre>
+<h3 id="2-split-the-data"><a aria-label="2. Split the Data" href="#2-split-the-data"><span class="icon icon-link"></span></a>2. Split the Data</h3>
+<p>To train a model, we need to feed him with data so the model will learn the patterns of the data. But we cannot simply give the model the whole dataset, otherwise, it prevents us from performing a proper assessment of how well the model will perform in real-world applications. This is because if we check the model performance on already seen data, the performance will most probably be very high, but whenever we want to use the model with unseen data the performance might not be that great after all.</p>
+<p>For this reason, we have to separate our data into two parts. This is called Hold-Out Method, where we split the dataset into a <code>training</code> set and a <code>testing</code> set:</p>
+<ul>
+<li><strong>Training Set</strong>: This subset is used to fit the model.</li>
+<li><strong>Test Set</strong>: data that the model hasn’t seen during training. It serves as a benchmark for evaluating the model’s performance.</li>
+</ul>
+<p>Normally we we reserve 80% of the data for <code>training</code> and 20% for <code>testing</code>, but in some situations where you have a lot of data available reserving 20% for testing might be too much.</p>
+<p>Sci-kit learn comes with a very handy function called <code>train_test_split</code> which helps us with this task. To use it we need to pass the features (<code>X</code>) and targets (<code>y</code>) to be split, along with some optional parameters such as <code>train_size</code> to determine the percentage of the training dataset and the <code>random_state</code> which works as a way to remove random behavior of the splitting process.</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+
+
+X_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>
+ X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> train_size<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">0</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="3-train-the-model"><a aria-label="3. Train the Model" href="#3-train-the-model"><span class="icon icon-link"></span></a>3. Train the Model</h3>
+<p>Now, we can initialize and train our ML model on the <code>training</code> data. In this case, we are going to use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">RandomForestClassifier</a> which as the says is a Classifier algorithm, that uses Decision Tree inside (it’s a bit more complex, but for now let’s keep it simple).</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> RandomForestClassifier
+
+model <span class="token operator">=</span> RandomForestClassifier<span class="token punctuation">(</span>random_state<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+
+</code></pre>
+<p>One of the best things about Sci-kit Learn is its consistency of interfaces along all the functions and helpers. This means that in case we want to use a different model, like a <a href="https://scikit-learn.org/dev/modules/generated/sklearn.svm.SVC.html">Support Vector Machine</a> we just import the model and call the <code>fit</code> method. This becomes quite handy when one is looking for the most adequate model to solve the problem.</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> SVC
+
+<span class="token comment"># Now using SVC</span>
+model <span class="token operator">=</span> SVC<span class="token punctuation">(</span>kernel<span class="token operator">=</span><span class="token string">'linear'</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="4-make-predictions"><a aria-label="4. Make predictions" href="#4-make-predictions"><span class="icon icon-link"></span></a>4. Make predictions</h3>
+<p>Once the model is trained, it’s time to use the test data that we reserve at the beginning. In this case, the model will try to <strong>predict</strong> what kind of wine type given the characteristics of each wine.</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># Now using the test set to predict its target</span>
+y_pred <span class="token operator">=</span> model<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+</code></pre>
+<p>This will be our output when the model is running in production, so knowing if this is the correct answer is very important to understand how good our system is. Therefore the next step is key when building a model.</p>
+<h3 id="5-evaluate-the-model"><a aria-label="5. Evaluate the Model" href="#5-evaluate-the-model"><span class="icon icon-link"></span></a>5. Evaluate the Model</h3>
+<p>Once you have your predictions there is a world of metrics available for you to try. One of the simplest is the <strong>accuracy score</strong>, which measures the proportion of correctly predicted instances out of the total instances.</p>
+<p>As expected there is a function inside Sci-kit Learn called <code>accuracy_score</code> that allows you to simply compare the prediction (<code>y_pred</code>) against the real targets (<code>y_test</code>) that comes from the splitting that we did.</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score
+
+accuracy <span class="token operator">=</span> accuracy_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Accuracy: </span><span class="token interpolation"><span class="token punctuation">{</span>accuracy<span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+</code></pre>
+<p>The output is:</p>
+<pre class="language-plain" data-language="plain"><code class="language-plain">Accuracy: 0.98
+</code></pre>
+<p>This means that our model has a 98% rate of successfully identifying the correct wine type. Which is already a very good score!</p>
+<p>Because we are dealing with a classification problem, there is another type of evaluation to gain deeper insights into the model’s performance, you can also use a <strong>confusion matrix</strong>. This matrix provides a detailed breakdown of the model’s predictions compared to the true labels, showing how many instances were correctly and incorrectly classified for each class.</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> confusion_matrix
+<span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+<span class="token comment"># Generate confusion matrix</span>
+cm <span class="token operator">=</span> confusion_matrix<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span>
+
+<span class="token comment"># Visualize the confusion matrix</span>
+plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+sns<span class="token punctuation">.</span>heatmap<span class="token punctuation">(</span>cm<span class="token punctuation">,</span> annot<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> fmt<span class="token operator">=</span><span class="token string">"d"</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">"Blues"</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"Predicted Labels"</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"True Labels"</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Confusion Matrix"</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>The resulting graph is:</p>
+<figure><img alt="Confusion Matrix" loading="lazy" decoding="async" width="653" height="547" src="/portfolio/pr-preview/pr-1111/_astro/confusion-matrix.DrrZodyQ_sLa0i.webp" srcset=""><figcaption>Confusion Matrix</figcaption></figure>
+<p>As we can see most of the types of wine were correctly predicted, with the exception that in one case the system predicted to be Wine type 2, but it was supposed to be 1.</p>
+<h2 id="going-further-key-improvements-in-supervised-learning"><a aria-label="Going Further: Key Improvements in Supervised Learning" href="#going-further-key-improvements-in-supervised-learning"><span class="icon icon-link"></span></a>Going Further: Key Improvements in Supervised Learning</h2>
+<p>For this example, our workflow gave us very good results, but this might not be always the case. In most cases, we are not going to count on a “ready-to-train” Dataset, and we might have to work extra before training our model.</p>
+<p>This process is called <strong>Feature Engineering</strong>, and it involves creating, transforming, or selecting relevant features from the data to improve model performance and predictive accuracy. It’s a big topic to cover now, which is why I will tackle it in a separate post.</p>
+<p>In most of the models, the developer can assign a set of options or parameters to customize certain aspects of the model. These options can greatly increase the performance of our model. Finding the best options to initialize our model is called <strong>Hyperparameter Tuning</strong>. For some algorithms, this is a must to have good results.</p>
+<p>Lastly, in many situations, we don’t know which model will be the best fit for our case, which is why it’s always important to run a <strong>Model Selection</strong> process, before going live. This typically involves training several models, evaluating their performance, and choosing the one that performs best based on specific metrics. Model selection can also include hyperparameter tuning to optimize each model.</p>
+<h2 id="closing-thoughts"><a aria-label="Closing Thoughts" href="#closing-thoughts"><span class="icon icon-link"></span></a>Closing Thoughts</h2>
+<p>While the minimal workflow helps you get started with machine learning, adding techniques like cross-validation, feature scaling, and model selection can significantly improve your model’s performance and generalization to new data.</p>
+<p>Remember, building successful models is an iterative process. Experimenting with different methods and refining your approach will lead to more reliable and effective machine-learning solutions.</p>
+<p>Thanks for reading.</p><section class="block"><h3>Related articles</h3><ul><li><a href="https://emasuriano.github.io/portfolio/pr-preview/pr-1111/til/2024-11-07-deploying-and-using-your-ml-model-with-streamlit">Deploying and using your ML model with Streamlit</a></li></ul></section></section><script type="module" src="/portfolio/pr-preview/pr-1111/_astro/PostContent.astro_astro_type_script_index_0_lang.BsyKlNyb.js"></script><script type="module" src="/portfolio/pr-preview/pr-1111/_astro/PostContent.astro_astro_type_script_index_1_lang.BsD0WNPE.js"></script><script type="module">document.addEventListener(`DOMContentLoaded`,()=>{if(window.location.hash){let e=document.querySelector(window.location.hash);e&&e.scrollIntoView({behavior:`smooth`,block:`start`})}});</script></article><nav id="blog-navigation" class="sticky top-24 hidden self-start pt-6 lg:block" aria-label="On this page" data-astro-cid-hgp7mnje><p class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400" data-astro-cid-hgp7mnje>On this page</p><ol class="m-0 list-none border-l border-slate-200 p-0 dark:border-slate-700" data-astro-cid-hgp7mnje><li data-astro-cid-hgp7mnje><a href="#supervised-learning" data-slug="supervised-learning" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>&quot;Supervised&quot; Learning</a></li><li data-astro-cid-hgp7mnje><a href="#type-of-supervised-learning" data-slug="type-of-supervised-learning" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Type of Supervised Learning</a></li><li data-astro-cid-hgp7mnje><a href="#introducing-your-best-learning-library-scikit-learn" data-slug="introducing-your-best-learning-library-scikit-learn" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Introducing your best learning library `scikit-learn`</a></li><li data-astro-cid-hgp7mnje><a href="#minimal-workflow-for-supervised-learning" data-slug="minimal-workflow-for-supervised-learning" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Minimal Workflow for Supervised Learning</a></li><li data-astro-cid-hgp7mnje><a href="#1-load-our-dataset" data-slug="1-load-our-dataset" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-5" data-astro-cid-hgp7mnje>1. Load our Dataset</a></li><li data-astro-cid-hgp7mnje><a href="#2-split-the-data" data-slug="2-split-the-data" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-5" data-astro-cid-hgp7mnje>2. Split the Data</a></li><li data-astro-cid-hgp7mnje><a href="#3-train-the-model" data-slug="3-train-the-model" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-5" data-astro-cid-hgp7mnje>3. Train the Model</a></li><li data-astro-cid-hgp7mnje><a href="#4-make-predictions" data-slug="4-make-predictions" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-5" data-astro-cid-hgp7mnje>4. Make predictions</a></li><li data-astro-cid-hgp7mnje><a href="#5-evaluate-the-model" data-slug="5-evaluate-the-model" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-5" data-astro-cid-hgp7mnje>5. Evaluate the Model</a></li><li data-astro-cid-hgp7mnje><a href="#going-further-key-improvements-in-supervised-learning" data-slug="going-further-key-improvements-in-supervised-learning" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Going Further: Key Improvements in Supervised Learning</a></li><li data-astro-cid-hgp7mnje><a href="#closing-thoughts" data-slug="closing-thoughts" class="-ml-px block border-l-2 border-transparent py-1 text-sm text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 pl-3" data-astro-cid-hgp7mnje>Closing Thoughts</a></li></ol></nav><script type="module">var e=document.querySelector(`#blog-navigation`);if(e){let t=[...e.querySelectorAll(`a[data-slug]`)],n=t.map(e=>document.getElementById(e.dataset.slug??``)).filter(e=>e instanceof HTMLElement),r=e=>{for(let n of t)n.dataset.slug===e?n.setAttribute(`aria-current`,`location`):n.removeAttribute(`aria-current`)},i=()=>{let e=n[0];for(let t of n)t.getBoundingClientRect().top<=128&&(e=t);e&&r(e.id)};i(),window.addEventListener(`scroll`,i,{passive:!0}),window.addEventListener(`hashchange`,i)}</script><section class="block h-fit" id="blog-comments"><script src="https://utteranc.es/client.js" repo="EmaSuriano/portfolio" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async></script></section></div></main><footer data-astro-transition-scope="astro-crtsh4k5-4" class="mb-4 flex flex-col justify-end text-sm sm:flex-row sm:items-end sm:text-base"><ul class="flex max-w-full flex-shrink-0 flex-wrap"><li class="mr-4 mt-2"><a href="https://github.com/EmaSuriano" class="link-underline">GitHub</a></li><li class="mr-4 mt-2"><a href="https://twitter.com/EmaSuriano" class="link-underline">Twitter</a></li><li class="mr-4 mt-2"><a href="https://www.youtube.com/c/EmaSuriano" class="link-underline">YouTube</a></li><li class="mr-4 mt-2"><a href="https://www.linkedin.com/in/emanuel-suriano" class="link-underline">LinkedIn</a></li><li class="mr-4 mt-2"><a href="https://emasuriano.com/rss.xml" class="link-underline">RSS</a></li></ul></footer></div><div id="search-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[99999] hidden bg-black bg-opacity-50 flex items-start justify-center pt-20"><div class="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-2xl mx-4 overflow-hidden"><div id="search" class="pagefind-ui pagefind-init" data-pagefind-ui data-bundle-path="/portfolio/pr-preview/pr-1111/pagefind/" data-ui-options="{&quot;autofocus&quot;:true,&quot;showImages&quot;:true}"></div><script type="module" src="/portfolio/pr-preview/pr-1111/_astro/Search.astro_astro_type_script_index_0_lang.RQFvLC8k.js"></script></div></div></body></html>
