@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const tools = await getCollection("tools");
+
+const categories = [...new Set(tools.map((tool) => tool.data.category))].sort(
+  (a, b) => a.localeCompare(b),
+);
+
+const toolsByCategory = categories.map((category) => ({
+  category,
+  tools: tools
+    .filter((tool) => tool.data.category === category)
+    .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+}));
+---
+
+<Layout
+  title="Tools"
+  description="Websites I keep coming back to."
+>
+  <section class="prose max-w-full dark:prose-dark">
+    <h1>Tools</h1>
+    <p>
+      A plain list of websites I keep coming back to. I'll add more as I find
+      them.
+    </p>
+
+    {
+      toolsByCategory.map(({ category, tools: items }) => (
+        <>
+          <h2>{category}</h2>
+          <ul class="list-none space-y-8 pl-0">
+            {items.map((tool) => (
+              <li>
+                <a href={tool.data.url} class="truncate">
+                  <Icon
+                    name="ri:external-link-line"
+                    class="ml-1 inline h-4 w-4 align-baseline"
+                  />
+                  {tool.data.title}
+                </a>
+                <p class="my-1">{tool.data.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+    }
+  </section>
+</Layout>

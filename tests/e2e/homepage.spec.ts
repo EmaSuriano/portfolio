@@ -29,6 +29,7 @@ test.describe("Homepage", () => {
     await expect(page.locator('nav a[href="/about"]')).toBeVisible();
     await expect(page.locator('nav a[href="/blog"]')).toBeVisible();
     await expect(page.locator('nav a[href="/til"]')).toBeVisible();
+    await expect(page.locator('nav a[href="/tools"]')).toBeVisible();
   });
 
   test("should have social links in footer", async ({ page }) => {

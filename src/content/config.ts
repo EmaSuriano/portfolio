@@ -24,9 +24,18 @@ const externalSchema = z.object({
   publishedAt: z.date(),
 });
 
+const toolsSchema = z.object({
+  title: z.string(),
+  summary: z.string(),
+  url: z.string().url(),
+  category: z.string(),
+  tags: z.array(z.string()).optional(),
+});
+
 
 export const collections = {
   blog: defineCollection({ schema: blogSchema }),
   external: defineCollection({ schema: externalSchema }),
   til: defineCollection({ schema: tilSchema }),
+  tools: defineCollection({ schema: toolsSchema }),
 };
