@@ -15,7 +15,11 @@ tags:
   - openapi
 ---
 
-I came across this via an AI Engineer talk: [How We Got LLMs to Recommend Our Open Source Library](https://www.youtube.com/watch?v=V_5bn4q-vAI) by Christopher Burns from Inth. The short version is that if you want ChatGPT, Perplexity, or Claude to mention your project, you cannot only optimize for Google. You have to make the site readable to the bots that feed those models.
+I came across this via an AI Engineer talk by Christopher Burns from Inth: [How We Got LLMs to Recommend Our Open Source Library](https://www.youtube.com/watch?v=V_5bn4q-vAI).
+
+<lite-youtube videoid="V_5bn4q-vAI" videotitle="How We Got LLMs to Recommend Our Open Source Library — Christopher Burns, Inth"></lite-youtube>
+
+The short version is that if you want ChatGPT, Perplexity, or Claude to mention your project, you cannot only optimize for Google. You have to make the site readable to the bots that feed those models.
 
 The talk is about a library. I do not have a library. I have [emasuriano.com](https://emasuriano.com), a small Astro 5 site on Cloudflare Pages: who I am, the open source I ship, and some writing. I wanted to know how far the same idea goes on a personal site, without turning the homepage into a product landing page.
 
@@ -26,6 +30,16 @@ The constraint I set at the start, and kept: **do not change the visible homepag
 I used two scorecards, and they do not agree on how "product-like" a personal site should be.
 
 [Ora](https://ora.ai/score/emasuriano.com) (orank) treats the site like a SaaS. It wants API keys, MCP, OAuth, SDKs, a developer portal. First scan, 27 Aug: **11/100 (F)**. After `llms.txt`, `robots.txt`, Person JSON-LD, and unique titles went live: **22**. After a real `/sitemap.xml` plus the Cloudflare dashboard allowlist: **52**. Same afternoon, an Ora export with a different layer breakdown: **53**. The scan from 28 Aug at 07:06 UTC, which is what the public Ora page shows now: **66/100 (C)**.
+
+```mermaid
+flowchart LR
+  A["11 F<br/>first scan"] --> B["22<br/>llms + robots"]
+  B --> C["52<br/>sitemap + Cloudflare"]
+  C --> D["53"]
+  D --> E["66 C"]
+```
+
+![Ora score, 66 out of 100](../../static/assets/blog/2026-08-31-making-a-personal-site-readable-to-llms/ora-score.png)
 
 [is-agentic](https://is-agentic.com/scan/emasuriano.com) is not a second crawler. It re-weights the same Ora evidence, and it is kinder to a homepage that is a person. Same timestamp as the 66 scan: **90/100**. The remaining fails were mostly "add more homepage copy", "add a /developers portal", and "add contact + privacy". In other words: become a product.
 
