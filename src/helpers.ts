@@ -51,13 +51,17 @@ export const groupPostsByDate = (posts: Post[]): Group[] => {
 };
 
 export const getPostLink = (post: Post) => {
-  const { SITE, DEV } = import.meta.env;
-  const base = new URL(DEV ? "http://localhost:4321" : SITE);
+  const { SITE, BASE_URL, DEV } = import.meta.env;
+  const origin = new URL(DEV ? "http://localhost:4321" : SITE);
+  const root = new URL(
+    BASE_URL.endsWith("/") ? BASE_URL : `${BASE_URL}/`,
+    origin,
+  );
 
   switch (post.collection) {
     case "blog":
     case "til":
-      return new URL(`${post.collection}/${post.id}`, base).toString();
+      return new URL(`${post.collection}/${post.id}`, root).toString();
 
     case "external":
       return post.data.external;
