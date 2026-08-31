@@ -20,7 +20,7 @@ const titles = extractMarkdownTitles(body ?? "").map(({ level, title }) => ({
   titles.length > 0 && (
     <nav
       id="blog-navigation"
-      class="sticky top-24 hidden self-start pt-6 transition-opacity lg:block"
+      class="sticky top-24 hidden self-start pt-6 lg:block"
       aria-label="On this page"
     >
       <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -97,15 +97,5 @@ const titles = extractMarkdownTitles(body ?? "").map(({ level, title }) => ({
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("hashchange", onScroll);
-
-    const comments = document.querySelector("#blog-comments");
-    if (comments) {
-      const hide = new IntersectionObserver((entries) => {
-        const hidden = Boolean(entries[0]?.isIntersecting);
-        nav.classList.toggle("opacity-0", hidden);
-        nav.classList.toggle("pointer-events-none", hidden);
-      });
-      hide.observe(comments);
-    }
   }
 </script>
