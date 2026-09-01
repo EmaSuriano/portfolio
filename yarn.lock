@@ -15,7 +15,7 @@
     package-manager-detector "^1.3.0"
     tinyexec "^1.0.1"
 
-"@astrojs/check@^0.9.0", "@astrojs/check@^0.9.10":
+"@astrojs/check@^0.9.10":
   version "0.9.10"
   resolved "https://registry.yarnpkg.com/@astrojs/check/-/check-0.9.10.tgz#76595cdb9ea990e155bf5be695a65ecb3ece334d"
   integrity sha512-zgx/UQMozdjOa3bOxjgeCFdtpE3c9rRX6xHwa+2QXvy8z8Akifu2AtubHyv/zzC2znO8dl8fFWL4K+Ba9kS8HQ==
@@ -1793,12 +1793,10 @@ astro-pagefind@^1.8.6:
     pagefind "^1.2.0"
     sirv "^3.0.0"
 
-astro-seo@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-1.1.0.tgz#c7bd751669df413124ff86f37d59c082bfa32c73"
-  integrity sha512-G6LDNDyga30o+52v58jU7C35n3cORUzk7RSuY+xf/ZRbW6JiNplyaOO1VoYVKO+xzYNaBcxqNln2RFRR/wgJNQ==
-  dependencies:
-    "@astrojs/check" "^0.9.0"
+astro-seo@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-1.2.0.tgz#eca09139407c3a77b56b8683a94e9d6704011a98"
+  integrity sha512-ZqS2ZLKJ9GZwcONho9W95xkGBWuPpikTsMBzjuq/6CKtKUEgMDbSZkoLwoZsmLVq/p52T4z7JwgjC3AtMg7Trg==
 
 astro@7.2.9:
   version "7.2.9"
@@ -3479,10 +3477,10 @@ magicast@^0.5.2:
     "@babel/types" "^7.29.7"
     source-map-js "^1.2.1"
 
-markdown-it@^14.3.0:
-  version "14.3.0"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-14.3.0.tgz#8542fa5506e3530f7e2b08dc3885630135c5620e"
-  integrity sha512-RCEsPjR+sr0x+AuYp601tKTkgFG4YEPLCzHST3cQ/fhlJkqAkz1L2/Qbp1j9qw5SBwQHFBoW8+hoN5xssOF0Tw==
+markdown-it@^14.3.1:
+  version "14.3.1"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-14.3.1.tgz#8974e2473779363ed5682ea377f31564ee51e292"
+  integrity sha512-4Ej49aYTDFIQ+uBkfX8GBvJGccoARxxPep+7aWTs55ozbjQJpW9M26Fe53vnGgvLeVzva/amzjQQaQu9w0vMhA==
   dependencies:
     argparse "^2.0.1"
     entities "^4.5.0"
