@@ -13,18 +13,19 @@ const title = `${about.name} - ${about.role}`;
     <p
       class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
     >
-      I'm a {about.role} at
-      <a href={about.company.url} class="link-underline">{about.company.name}</a
-      >.
+      I'm a {about.role} at{' '}
+      <a href={about.company.url} class="link-underline">{about.company.name}</a>.
     </p>
 
     <p
       class="block font-medium text-slate-400 transition-colors duration-200 hover:text-slate-600 dark:hover:text-slate-200 sm:text-xl sm:leading-relaxed"
     >
-      I contribute to <a href={`${import.meta.env.BASE_URL}about#projects`} class="link-underline"
+      I contribute to{' '}
+      <a href={`${import.meta.env.BASE_URL}about#projects`} class="link-underline"
         >Open Source</a
-      >, and
-      <a href={`${import.meta.env.BASE_URL}blog`} class="link-underline">write</a> about web development.
+      >, and{' '}
+      <a href={`${import.meta.env.BASE_URL}blog`} class="link-underline">write</a> about web
+      development.
     </p>
   </section>
 </Layout>
