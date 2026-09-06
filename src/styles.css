@@ -140,6 +140,7 @@ html.js [data-reveal="down"] {
 html.js [data-reveal][data-revealed] {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
