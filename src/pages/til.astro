@@ -14,23 +14,25 @@ const postsByDate = groupPostsByDate(tilPosts.filter((post) => !isDraft(post)));
   description="Here is my blog. I started to write not so long ago and trying my best"
 >
   <section class="prose max-w-full dark:prose-dark">
-    <h1>Today I Learned</h1>
-    <p>
-      This is a collection of short articles about things I've learned. They are
-      too short for my <a href="/blog">Blog</a>
-    </p>
-    <p>
-      I <span class="line-through">stole</span> took this idea from
-      <a href="https://github.com/jbranchaud/til">jbranchaud/til</a>
-    </p>
+    <h1 data-reveal="left">Today I Learned</h1>
+    <div data-reveal="down">
+      <p>
+        This is a collection of short articles about things I've learned. They are
+        too short for my <a href="/blog">Blog</a>
+      </p>
+      <p>
+        I <span class="line-through">stole</span> took this idea from
+        <a href="https://github.com/jbranchaud/til">jbranchaud/til</a>
+      </p>
+    </div>
 
     {
       postsByDate.map((group) => (
         <>
-          <h2>{group.year}</h2>
+          <h2 data-reveal="left">{group.year}</h2>
           <ul class="list-none space-y-8 pl-0">
-            {group.posts.map((post) => (
-              <li>
+            {group.posts.map((post, i) => (
+              <li data-reveal="up" style={`--reveal-delay: ${i * 60}ms`}>
                 <div class="flex justify-between">
                   <a href={getPostLink(post)} class="truncate">
                     {post.data.title}

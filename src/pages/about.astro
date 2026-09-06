@@ -9,16 +9,16 @@ import { Image } from "astro:assets";
 
 <Layout title="About me">
   <section class="prose max-w-full dark:prose-dark">
-    <h1>About me</h1>
+    <h1 data-reveal="left">About me</h1>
 
     <div
       class="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-8"
     >
-      <div class="max-w-full sm:max-w-md">
+      <div class="max-w-full sm:max-w-md" data-reveal="down">
         <Content />
       </div>
 
-      <div class="not-prose image-container">
+      <div class="not-prose image-container" data-reveal="right">
         <div
           class="aspect-square h-full w-full overflow-hidden rounded-lg bg-white transition-transform dark:bg-neutral-900 sm:rounded-3xl sm:hover:-translate-x-5 sm:hover:-translate-y-5 sm:hover:shadow-lg"
         >
@@ -32,15 +32,27 @@ import { Image } from "astro:assets";
       </div>
     </div>
 
-    <h2 id="projects">Projects</h2>
+    <h2 id="projects" data-reveal="left">Projects</h2>
 
     <div class="grid gap-6 sm:grid-cols-2">
-      {about.projects.map((url) => <Project url={url} />)}
+      {
+        about.projects.map((url, i) => (
+          <div data-reveal="up" style={`--reveal-delay: ${i * 80}ms`}>
+            <Project url={url} />
+          </div>
+        ))
+      }
     </div>
 
-    <h2 id="talks">Talks</h2>
+    <h2 id="talks" data-reveal="left">Talks</h2>
 
-    {about.talks.map((talk) => <Talk {...talk} />)}
+    {
+      about.talks.map((talk, i) => (
+        <div data-reveal="up" style={`--reveal-delay: ${i * 90}ms`}>
+          <Talk {...talk} />
+        </div>
+      ))
+    }
   </section>
 </Layout>
 
