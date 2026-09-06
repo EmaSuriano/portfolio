@@ -36,14 +36,14 @@ const blogJsonLd = {
     set:html={JSON.stringify(blogJsonLd)}
   />
   <section class="prose max-w-full dark:prose-dark">
-    <h1>Blog</h1>
+    <h1 data-reveal="left">Blog</h1>
     {
       grouped.map((group) => (
         <>
-          <h2>{group.year}</h2>
+          <h2 data-reveal="left">{group.year}</h2>
           <ul class="list-none space-y-8 pl-0">
-            {group.posts.map((post) => (
-              <li>
+            {group.posts.map((post, i) => (
+              <li data-reveal="up" style={`--reveal-delay: ${i * 60}ms`}>
                 <div class="flex justify-between">
                   <a href={getPostLink(post)} class="truncate">
                     {post.collection === "external" && (
