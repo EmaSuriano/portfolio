@@ -133,7 +133,7 @@ const jsonLd = {
 <!doctype html>
 <html lang="en" transition:name="root" transition:animate="none">
   <head>
-    <script is:inline>
+    <script is:inline data-cfasync="false">
       document.documentElement.classList.add("js");
     </script>
     <meta charset="UTF-8" />
@@ -236,7 +236,7 @@ const jsonLd = {
       <main
         id="skip"
         class="flex flex-grow flex-col py-12"
-        transition:animate="slide"
+        transition:animate="none"
       >
         <slot />
       </main>
@@ -260,16 +260,37 @@ const jsonLd = {
 
     <SearchModal />
 
-    <script is:inline>
+    <script is:inline data-cfasync="false">
       (function () {
+        var observer = null;
+        var revealToken = 0;
+
         function revealAll(els) {
           for (var i = 0; i < els.length; i++) {
             els[i].setAttribute("data-revealed", "");
           }
         }
+
+        function inViewport(el) {
+          var rect = el.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          return rect.bottom > 0 && rect.top < vh;
+        }
+
         function initReveal() {
-          var els = document.querySelectorAll("[data-reveal]:not([data-revealed])");
+          if (observer) {
+            observer.disconnect();
+            observer = null;
+          }
+
+          // Ensure progressive-enhancement class even if the head script was deferred
+          document.documentElement.classList.add("js");
+
+          var els = document.querySelectorAll(
+            "[data-reveal]:not([data-revealed])",
+          );
           if (!els.length) return;
+
           if (
             window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
             !("IntersectionObserver" in window)
@@ -277,20 +298,47 @@ const jsonLd = {
             revealAll(els);
             return;
           }
-          var io = new IntersectionObserver(
+
+          var immediate = [];
+          var deferred = [];
+          for (var i = 0; i < els.length; i++) {
+            if (inViewport(els[i])) immediate.push(els[i]);
+            else deferred.push(els[i]);
+          }
+
+          // Double rAF so opacity:0 paints before we reveal — CSS transition
+          // then runs on every navigation, not only the first.
+          var token = ++revealToken;
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              if (token !== revealToken) return;
+              revealAll(immediate);
+            });
+          });
+
+          if (!deferred.length) return;
+
+          observer = new IntersectionObserver(
             function (entries) {
               for (var i = 0; i < entries.length; i++) {
                 var entry = entries[i];
                 if (!entry.isIntersecting) continue;
                 entry.target.setAttribute("data-revealed", "");
-                io.unobserve(entry.target);
+                observer.unobserve(entry.target);
               }
             },
-            { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+            // Full viewport + threshold 0 so near-fold year groups (e.g. 2024)
+            // do not stay incorrectly hidden after load.
+            { rootMargin: "0px", threshold: 0 },
           );
-          for (var j = 0; j < els.length; j++) io.observe(els[j]);
+          for (var j = 0; j < deferred.length; j++) observer.observe(deferred[j]);
         }
-        document.addEventListener("astro:page-load", initReveal);
+
+        if (!window.__portfolioRevealBound) {
+          window.__portfolioRevealBound = true;
+          document.addEventListener("astro:page-load", initReveal);
+        }
+
         if (document.readyState === "loading") {
           document.addEventListener("DOMContentLoaded", initReveal);
         } else {
