@@ -32,7 +32,7 @@
     "@types/markdown-it": "^14.2.0",
     "@types/prismjs": "^1.26.6",
     "@types/sanitize-html": "^2.16.1",
-    "astro": "7.3.5",
+    "astro": "7.4.7",
     "astro-icon": "^1.2.0",
     "astro-pagefind": "^1.8.6",
     "astro-seo": "^1.2.0",
